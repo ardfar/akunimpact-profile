@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <title>Login</title>
+</head>
+<body>
+ 
+    <div class="loginkontainer">
+        <div class="img">
+            <img src="src/Mascot.png" alt="">
+        </div>
+    
+    <div class="formlogin">
+        <form action="">
+            <h2>Welcome</h2>
+            <div class="inputdiv one ">
+                <div class="i">
+                    <i class='bx bx-user' ></i>
+                </div>
+                <div>
+                    <h5>Username</h5>
+                    <input class="input" type="text" required>
+                </div>
+            </div>
+            <div class="inputdiv two ">
+                <div class="i">
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <div>
+                    <h5>Password</h5>
+                    <input class="input" type="password" required>
+                </div>
+            </div>
+            <a href="">Lupa Password?</a>
+            <input type="button" class="loginbtn" value="Login">
+        </form>
+    </div>
+</div>
+<script>
+const input = document.querySelectorAll(".input");  
+function fungsifoc(){
+    let parent = this.parentNode.parentNode;
+    parent.classList.add('focus');
+}
+function fungsiblur(){
+    let parent = this.parentNode.parentNode;
+    if(this.value == ""){
+        parent.classList.remove('focus');
+    }
+    
+}
+input.forEach(input=>{
+    input.addEventListener('focus',fungsifoc)
+    input.addEventListener('blur',fungsiblur)
+})
+</script>
+</body>
+</html>

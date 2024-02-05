@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akun Impact</title>
+    <link rel="stylesheet" href="akun.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/57fc687294.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="kontainer">
+            <div class="logo">
+                <a href=""><img src="src/Logo transparan.png" alt="logo" /></a>
+            </div>
+            <nav class="menu">
+                <div class="head">
+                    <div class="logo">
+                        <img src="src/Logo transparan.png" alt="logo" />
+                    </div>
+                    <button type="button" class="btnpenutupmenu"></button>
+                </div>
+                <ul>
+                    <li class="menu2">
+                        <a href=""><i class="bx bxs-home-circle home"></i> Home</a>
+                    </li>
+                    <li class="menu2">
+                        <a href="./tentangkami.html"><i class="bx bxs-user home2"></i>Tentang Kami</a>
+                    </li>
+                    <li class="menu2">
+                        <a><i class="bx bx-question-mark home3"></i>Cara Untuk</a>
+                        <i class="bx bx-chevron-down active"></i>
+                        <ul class="anakmenu">
+                            <li>
+                                <a href=""><span>Cara Jual</span></a>
+                            </li>
+                            <li>
+                                <a href=""><span>Cara Beli</span></a>
+                            </li>
+                            <li>
+                                <a href=""><span>Cara Rekber</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu2">
+                        <a><i class="bx bx-book-open home4"></i>Rules</a>
+                        <i class="bx bx-chevron-down active"></i>
+                        <ul class="anakmenu">
+                            <li>
+                                <a href=""><span>Rules Penjual</span></a>
+                            </li>
+                            <li>
+                                <a href=""><span>Rules Pembeli</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <button type="button" class="log"><a>Login</a></button>
+            </nav>
+            <div class="headerkanan">
+                <button type="button" class="user-btn">
+                    <a href="./login.html"><i class="bx bx-user"></i></a>
+                </button>
+                <button type="button" class="btnbukamenu">
+                    <span class="line line-1"></span>
+                    <span class="line line-2"></span>
+                    <span class="line line-3"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="konten">
+            <div class="textBox">
+                <h2>AkunImpact</h2>
+                <p>
+                    Selamat datang di Akun Impact, tempat terbaik untuk menjelajahi
+                    dunia jual-beli akun dengan keamanan terbaik dan transaksi bebas
+                    biaya tambahan!
+                </p>
+                <a href="./index.html">Cari Tahu</a>
+            </div>
+
+            <div class="imgBox">
+                <img id="mascot" src="./src/Mascot.png" class="maskot" />
+            </div>
+        </div>
+        <ul class="social-media">
+            <li>
+                <a href=""><i class="bx bxl-whatsapp"></i></a>
+            </li>
+            <li>
+                <a href=""><i class="bx bxl-instagram"></i></a>
+            </li>
+            <li>
+                <a href=""><i class="bx bxl-telegram"></i></a>
+            </li>
+        </ul>
+        <div class="pohon"><img src="src/pohon.png" alt="" /></div>
+        <div class="bangunan"><img src="src/bangunan.png" alt="" /></div>
+        <div class="burung1"><img src="src/burung kiri.png" alt="" /></div>
+        <div class="burung2"><img src="src/burung.png" alt="" /></div>
+    </section>
+    <section class="endSection">
+        <div class="end-text">
+            <p>Copyright © @2023. All Rights Reserved Designed By Akun Impact.</p>
+        </div>
+    </section>
+    <script>
+        const menu = document.querySelector(".menu");
+        const btnbukamenu = document.querySelector(".btnbukamenu");
+        const btnpenutupmenu = document.querySelector(".btnpenutupmenu");
+
+        [btnbukamenu, btnpenutupmenu].forEach((btn) => {
+            btn.addEventListener("click", () => {
+                menu.classList.toggle("open");
+                menu.style.transition = "transform 0.5s ease";
+            });
+        });
+        menu.addEventListener("transitionend", function () {
+            this.removeAttribute("style");
+        });
+        menu.querySelectorAll(".menu2 > i").forEach((arrow) => {
+            arrow.addEventListener("click", function () {
+                this.closest(".menu2").classList.toggle(".active");
+            });
+        });
+
+        var responsiveImage = document.getElementById("mascot");
+
+        // Fungsi untuk mengganti source gambar berdasarkan lebar layar
+        function updateImageSource() {
+            var windowWidth = window.innerWidth;
+
+            // Ganti source gambar berdasarkan lebar layar
+            if (windowWidth > 960) {
+                responsiveImage.src = "src/Mascot.png";
+            } else {
+                responsiveImage.src = "src/pohon2.png";
+            }
+        }
+
+        // Panggil fungsi saat halaman dimuat dan saat ukuran layar berubah
+        window.onload = updateImageSource;
+        window.addEventListener("resize", updateImageSource);
+    </script>
+</body>
+
+</html>
