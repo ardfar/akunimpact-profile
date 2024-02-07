@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AkunImpact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        @font-face {
+            font-family: "sifonn";
+            src: url("assets/fonts/sifonn-basic.otf");
+        }
+
+        body {
+            font-family: "sifonn";
+        }
+
+        .glassmorphism-main {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(4.1px);
+            -webkit-backdrop-filter: blur(4.1px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glassmorphism-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(4.1px);
+            -webkit-backdrop-filter: blur(4.1px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .neumorphism-main {
+            background: linear-gradient(145deg, #448fad, #3a7992);
+            box-shadow: 20px 20px 60px #285364,
+                -20px -20px 60px #58b9e0;
+        }
+
+        .neumorphism-secondary {
+            background: linear-gradient(145deg, #002b41, #00334d);
+            box-shadow:  20px 20px 60px #00293d,
+                        -20px -20px 60px #003753;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -> START  -->
+    <nav
+        class="fixed top-0 -left-[130px] z-20 h-full w-[130px] flex flex-col items-center justify-between bg-[#4086A2] transition-all duration-200">
+
+        <!-- LOGO PLACEMENT  -->
+        <div class="w-full h-1/5 p-4 flex items-center justify-center">
+            <img src="assets/images/logos/logo-light.png" alt="" class="w-full h-auto" />
+        </div>
+
+        <!-- MENU CONTENT  -->
+        <div class="relative w-full h-3/5 flex flex-col items-center justify-center gap-y-4 text-white">
+            <div class="group relative flex flex-col w-full h-fit cursor-pointer">
+                <div class="w-full h-fit">
+                    <p class="text-center w-full flex justify-center">
+                        <span
+                            class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
+                            payments
+                        </span>
+                    </p>
+                    <p class="flex items-center justify-center text-lighter">
+                        Transaksi
+                    </p>
+                </div>
+                <div
+                    class="absolute z-30 -right-[120px] hidden group-hover:block hover:block w-[125px] h-fit p-4 bg-[#4086A2] rounded-lg">
+                    <a href="">
+                        Jual Akun
+                    </a>
+                    <a href="">
+                        Beli Akun
+                    </a>
+                    <a href="">
+                        RekBer
+                    </a>
+                </div>
+            </div>
+            <div class="group relative flex flex-col w-full h-fit cursor-pointer">
+                <div class="w-full h-fit">
+                    <p class="text-center w-full flex justify-center">
+                        <span
+                            class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
+                            developer_guide
+                        </span>
+                    </p>
+                    <p class="flex items-center justify-center text-lighter">
+                        Rules
+                    </p>
+                </div>
+                <div
+                    class="absolute z-30 -right-[120px] hidden group-hover:block hover:block w-[125px] h-fit p-4 bg-[#4086A2] rounded-lg">
+                    <a href="">
+                        Penjual
+                    </a>
+                    <a href="">
+                        Pembeli
+                    </a>
+                </div>
+            </div>
+            
+            <a href="#" class="group">
+                <p class="text-center w-full flex justify-center">
+                    <span
+                        class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
+                        help
+                    </span>
+                </p>
+                <p class="flex items-center justify-center text-lighter">
+                    Tentang Kami
+                </p>
+            </a>
+            <a href="#" class="group">
+                <p class="text-center w-full flex justify-center">
+                    <span
+                        class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
+                        headphones
+                    </span>
+                </p>
+                <p class="flex items-center justify-center text-lighter">Bantuan</p>
+            </a>
+        </div>
+
+        <!-- ACCOUNT ACCESS (LOGIN/LOGOUT)  -->
+        <div class="w-full h-1/5"></div>
+
+        <!-- SHOW-HIDE BUTTON  -->
+        <div class="group w-16 h-16 absolute -z-10 flex items-center justify-end top-1/2 -right-8 hover:-right-10 bg-[#4086A2] rounded-xl duration-150 cursor-pointer"
+            id="side-nav-closure">
+            <span class="material-symbols-outlined text-4xl p-0 text-white relative rotate-0 duration-200"
+                id="side-nav-closure-icon">
+                chevron_right
+            </span>
+        </div>
+    </nav>
+    <!-- NAVIGATION BAR -> END  -->
+
+    <!-- HEADER -> START  -->
+    <header class="banner flex items-center justify-center relative w-full h-[35vh] bg-[url('assets/images/backgrounds/main.png')] overflow-hidden">
+        <div class="w-fit h-fit px-20 py-6 glassmorphism-main flex flex-col justify-center">
+            <h1 class="md:text-6xl text-[#4086A2] text-center">
+                Cara Beli Akun 
+            </h1>
+            <p class="capitalize p-4 text-[#4086A2] text-center text-xl">
+                Genshin Impact / Honkai Star Rail di akunimpact
+            </p>
+        </div>
+    </header>
+    <!-- HEADER -> END  -->
+
+    <section class="w-full min-h-[100vh] bg-[#285364]">
+
+    </section>
+
+    
+
+    <!-- SCRIPTING -> START  -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- NAVIGATION BAR SCRIPTING -> START  -->
+    <script>
+        $("#side-nav-closure").on("click", () => {
+
+            <!-- Nav is Open  -->
+            if ($("nav").hasClass("left-0")) {
+                $("nav").removeClass("left-0").addClass("-left-[130px]")
+
+                $("#side-nav-closure-icon").removeClass("rotate-180").addClass("rotate-0")
+            } else {
+                $("nav").removeClass("-left-[130px]").addClass("left-0")
+
+                $("#side-nav-closure-icon").removeClass("rotate-0").addClass("rotate-180")
+            }
+
+        })
+    </script>
+    <!-- NAVIGATION BAR SCRIPTING -> END  -->
+
+    <!-- SCRIPTING -> END  -->
+</body>
+
+</html>

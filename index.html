@@ -62,8 +62,8 @@
         </div>
 
         <!-- MENU CONTENT  -->
-        <div class="w-full h-3/5 flex flex-col items-center justify-center gap-y-4 text-white">
-            <a href="#" class="group peer relative flex flex-col w-full">
+        <div class="relative w-full h-3/5 flex flex-col items-center justify-center gap-y-4 text-white">
+            <div class="group relative flex flex-col w-full h-fit cursor-pointer">
                 <div class="w-full h-fit">
                     <p class="text-center w-full flex justify-center">
                         <span
@@ -76,7 +76,7 @@
                     </p>
                 </div>
                 <div
-                    class="absolute z-30 -translate-y-full -right-[120px] hidden peer-hover:block hover:block w-[125px] h-fit p-4 bg-[#4086A2] rounded-lg">
+                    class="absolute z-30 -right-[120px] hidden group-hover:block hover:block w-[125px] h-fit p-4 bg-[#4086A2] rounded-lg">
                     <a href="">
                         Jual Akun
                     </a>
@@ -87,7 +87,30 @@
                         RekBer
                     </a>
                 </div>
-            </a>
+            </div>
+            <div class="group relative flex flex-col w-full h-fit cursor-pointer">
+                <div class="w-full h-fit">
+                    <p class="text-center w-full flex justify-center">
+                        <span
+                            class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
+                            developer_guide
+                        </span>
+                    </p>
+                    <p class="flex items-center justify-center text-lighter">
+                        Rules
+                    </p>
+                </div>
+                <div
+                    class="absolute z-30 -right-[120px] hidden group-hover:block hover:block w-[125px] h-fit p-4 bg-[#4086A2] rounded-lg">
+                    <a href="">
+                        Penjual
+                    </a>
+                    <a href="">
+                        Pembeli
+                    </a>
+                </div>
+            </div>
+            
             <a href="#" class="group">
                 <p class="text-center w-full flex justify-center">
                     <span
@@ -434,17 +457,47 @@
             </ul>
         </div>
 
+        <div class="w-1/5 h-full flex items-center text-white p-6">
+            <ul class="w-fit">
+                <li class="pt-2">
+                    <a href="">
+                        Beranda
+                    </a>
+                </li>
+                <li class="pt-2">
+                    <a href="">
+                        Tentang Kami
+                    </a>
+                </li>
+            </ul>
+        </div>
+
         <!-- SOCIAL MEDIA  -->
-        <div class="w-2/5 h-full flex items-center justify-end text-white p-6">
+        <div class="w-1/5 h-full flex items-center justify-end text-white p-6">
             <ul>
-                <li>
-                    Instagram
+                <li class="px-6 py-2">
+                    <a href="https://instagram.com/akunimpact" class="flex gap-x-2 justify-end" target="_blank">
+                        <p>
+                            akunimpact
+                        </p>
+                        <img src="assets/images/logos/apps/instagram.png" alt="" class="w-[25px]">
+                    </a>
                 </li>
-                <li>
-                    Whatsapp
+                <li class="px-6 py-2">
+                    <a href="https://wa.me/+6282185222005" class="flex gap-x-2 justify-end" target="_blank">
+                        <p>
+                            082185222005
+                        </p>
+                        <img src="assets/images/logos/apps/whatsapp.png" alt="" class="w-[25px]">
+                    </a>
                 </li>
-                <li>
-                    Telegram
+                <li class="px-6 py-2">
+                    <a href="https://t.me/+6282185222005" class="flex gap-x-2 justify-end" target="_blank">
+                        <p>
+                            082185222005
+                        </p>
+                        <img src="assets/images/logos/apps/telegram.png" alt="" class="w-[25px]">
+                    </a>
                 </li>
             </ul>
         </div>
