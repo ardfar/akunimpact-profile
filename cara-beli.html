@@ -53,8 +53,7 @@
 <body>
 
     <!-- NAVIGATION BAR -> START  -->
-    <nav
-        class="fixed top-0 -left-[130px] z-20 h-full w-[130px] flex flex-col items-center justify-between bg-[#4086A2] transition-all duration-200">
+    <nav class="fixed top-0 -left-[130px] z-20 h-full w-[130px] flex flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 text-center">
 
         <!-- LOGO PLACEMENT  -->
         <div class="w-full h-1/5 p-4 flex items-center justify-center">
@@ -148,12 +147,13 @@
     <!-- NAVIGATION BAR -> END  -->
 
     <!-- HEADER -> START  -->
-    <header class="banner flex items-center justify-center relative w-full h-[35vh] bg-[url('assets/images/backgrounds/main.png')] overflow-hidden">
-        <div class="w-fit h-fit px-20 py-6 glassmorphism-main flex flex-col justify-center">
-            <h1 class="md:text-6xl text-[#4086A2] text-center">
+    <header class="banner flex items-center justify-center relative w-full min-h-[55vh] bg-[url('assets/images/backgrounds/main.png')] overflow-hidden">
+        <div class="w-fit h-fit p-4 glassmorphism-main flex flex-col justify-center mx-4">
+            <h1 class="md:text-6xl text-[#4086A2] text-center text-[35px] border-0">
                 Cara Beli Akun 
             </h1>
-            <p class="capitalize p-4 text-[#4086A2] text-center text-xl">
+
+            <p class="capitalize w-full text-[#4086A2] text-center md:text-xl text-[15px] border-0 my-4">
                 Genshin Impact / Honkai Star Rail di akunimpact
             </p>
         </div>
@@ -161,19 +161,20 @@
     <!-- HEADER -> END  -->
 
     <!-- CONTAINER: START  -->
-    <section class="w-full min-h-[100vh] bg-[#4086A2] flex flex-col items-center py-20 gap-y-10">
+    <section class="w-full min-h-[100vh] bg-[#4086A2] flex flex-col gap-2 items-center py-20 gap-y-10 text-white">
 
-        <div class="w-4/5 h-fit grid grid-cols-5 bg-white rounded-xl neumorphism-main p-8">
-            <div class="w-full h-full text-white flex items-center justify-center">
-                <img src="assets/images/stickers/curious-2.png" alt="" class="w-full h-auto">
+        <div class="neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[80%] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-2 rounded-xl">
+            <div class="sm:w-1/5 w-[60%] flex justify-center items-center mb-4 border-0">
+                <img src="assets/images/stickers/curious-2.png" alt="" class="w-full h-full">
             </div>
-            <div class="col-span-4 flex items-center pr-6 gap-y-6">
+
+            <div class="border-0 mx-2 text-center sm:text-left w-4/5">
                 <div>
-                    <h2 class="text-white text-5xl capitalize text-left">
+                    <h1 class="capitalize underline text-white text-glow text-2xl sm:text-3xl md:text-4xl mb-5 border-0">
                         pilih akun yang mau dibeli
-                    </h2>
-                    <p class="text-xl text-white font-mono capitalize mt-8">
-                        silahkan kunjungi akun <a href="" class="underline">instagram</a> akunimpact dan lihat-lihat akun yang menarik untuk-mu. 
+                    </h1>
+                    <p class="capitalize text-[15px] md:text-lg sm:mb-4 border-0 sm:text-justify">
+                        Silahkan kunjungi akun <a href="" class="underline">instagram</a> akunimpact dan lihat-lihat akun yang menarik untuk-mu. 
                         jika kamu telah menemukan akun yang cocok, silahkan kirimkan id akun yang dimulai dengan format AXX-XXX atau screenshot postingan 
                         kepada admin di <a href="" class="underline">instagram</a> atau <a href="" class="underline">telegram</a>.
                     </p>
@@ -181,31 +182,34 @@
             </div>
         </div>
 
-        <div class="w-4/5 h-fit grid grid-cols-5 bg-white rounded-xl neumorphism-main p-8">
-            <div class="w-full h-full text-white flex items-center justify-center">
+        <div class="neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[80%] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-2 rounded-xl">
+            <div class="sm:w-1/5 w-[60%] flex justify-center items-center mb-4 border-0">
                 <img src="assets/images/stickers/purchased.png" alt="" class="w-full h-auto">
             </div>
-            <div class="col-span-4 flex items-center pr-6 gap-y-6">
+
+            <div class="border-0 mx-2 text-center sm:text-left w-4/5">
                 <div>
-                    <h2 class="text-white text-5xl capitalize text-left">
+                    <h1 class="capitalize underline text-white text-glow text-2xl sm:text-3xl md:text-4xl mb-5 border-0">
                         lakukan pembayaran
-                    </h2>
-                    <p class="text-xl text-white font-mono capitalize mt-8">
+                    </h1>
+
+                    <p class="capitalize text-[15px] md:text-lg sm:mb-4 border-0 sm:text-justify">
                         setelah menemukan akun yang cocok, kamu bisa lakukan pembayaran dengan metode pembayaran seperti QRIS, transfer bank ataupun e-wallet.
                 </div>
             </div>
         </div>
 
-        <div class="w-4/5 h-fit grid grid-cols-5 bg-white rounded-xl neumorphism-main p-8">
-            <div class="w-full h-full text-white flex items-center justify-center">
+        <div class="neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[80%] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-2 rounded-xl">
+            <div class="sm:w-1/5 w-[60%] flex justify-center items-center mb-4 border-0">
                 <img src="assets/images/stickers/thankyou.png" alt="" class="w-full h-auto">
             </div>
-            <div class="col-span-4 flex items-center pr-6 gap-y-6">
+
+            <div class="border-0 mx-2 text-center sm:text-left w-4/5">
                 <div>
-                    <h2 class="text-white text-5xl capitalize text-left">
+                    <h1 class="capitalize underline text-white text-glow text-2xl sm:text-3xl md:text-4xl mb-5 border-0">
                         terima akunmu dan amankan
-                    </h2>
-                    <p class="text-xl text-white font-mono capitalize mt-8">
+                    </h1>
+                    <p class="capitalize text-[15px] md:text-lg sm:mb-4 border-0 sm:text-justify">
                         pembayaranmu akan dikonfirmasi terlebih dahulu oleh admin. jika pembayaran valid, akunmu akan diserahkan. 
                         harap segera konfirmasi akunnya dan amankan akunmu. jangan lupa untuk tulis testimoni terkait pelayanan kami.
                 </div>
@@ -218,10 +222,10 @@
 
 
     <!-- SECTION: FOOTER -> START  -->
-    <section class="w-full h-[30vh] flex flex-row items-end bg-black">
+    <section class="w-full min-h-[30vh] flex flex-row flex-wrap justify-center items-center text-center sm:text-left bg-black">
         <!-- LOGO PLACEMENT  -->
-        <div class="w-2/5 h-full p-4 flex flex-row ">
-            <div class="w-1/2 h-fit">
+        <div class="w-[90%] sm:w-2/5 h-full p-1 flex flex-row flex-wrap sm:flex-nowrap justify-center border-0">
+            <div class="w-2/5 h-fit">
                 <img src="assets/images/logos/logo-light.png" alt="" class="w-full" />
             </div>
             <div class="flex items-center">
@@ -229,7 +233,7 @@
                     <h1 class="text-2xl text-white uppercase">
                         akunimpact
                     </h1>
-                    <p class="text-white mt-4">
+                    <p class="text-white mt-4 text-[15px]">
                         Tempatnya Jual/Beli akun Genshin Impact & HSR Terpercaya
                     </p>
                 </div>
@@ -237,49 +241,50 @@
         </div>
 
         <!-- USEFULL LINKS  -->
-        <div class="w-1/5 h-full flex items-center text-white p-6">
+        <div class="w-fit h-full flex justify-center items-center text-white p-6 border-0">
             <ul class="w-fit">
                 <li class="pt-2">
-                    <a href="">
+                    <a href="" class="hover:underline">
                         Jual Akun
                     </a>
                 </li>
                 <li class="pt-2">
-                    <a href="">
+                    <a href="" class="hover:underline">
                         Beli Akun
                     </a>
                 </li>
                 <li class="pt-2">
-                    <a href="">
+                    <a href="" class="hover:underline">
                         RekBer Akun
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="w-1/5 h-full flex items-center text-white p-6">
+
+        <div class="w-full sm:w-fit h-full flex justify-center items-center text-white p-6 border-0">
             <ul class="w-fit">
                 <li class="pt-2">
-                    <a href="">
+                    <a href="" class="hover:underline">
                         Rules Penjual
                     </a>
                 </li>
                 <li class="pt-2">
-                    <a href="">
+                    <a href="" class="hover:underline">
                         Rules Pembeli
                     </a>
                 </li>
             </ul>
         </div>
 
-        <div class="w-1/5 h-full flex items-center text-white p-6">
-            <ul class="w-fit">
+        <div class="w-full sm:w-1/5 h-full flex items-center text-white p-6 border-0 text-center sm:text-left">
+            <ul class="border-0 mx-auto">
                 <li class="pt-2">
-                    <a href="">
+                    <a href="" class="hover:underline">
                         Beranda
                     </a>
                 </li>
                 <li class="pt-2">
-                    <a href="">
+                    <a href="" class="hover:underline">
                         Tentang Kami
                     </a>
                 </li>
@@ -287,30 +292,30 @@
         </div>
 
         <!-- SOCIAL MEDIA  -->
-        <div class="w-1/5 h-full flex items-center justify-end text-white p-6">
-            <ul>
+        <div class="w-fit h-full flex items-center justify-center text-white p-6 border-0">
+            <ul class="text-left border-0">
                 <li class="px-6 py-2">
-                    <a href="https://instagram.com/akunimpact" class="flex gap-x-2 justify-end" target="_blank">
-                        <p>
+                    <a href="https://instagram.com/akunimpact" class="flex gap-x-2" target="_blank">
+                        <img src="assets/images/logos/apps/instagram.png" alt="" class="w-[25px]">
+                        <p class="hover:underline">
                             akunimpact
                         </p>
-                        <img src="assets/images/logos/apps/instagram.png" alt="" class="w-[25px]">
                     </a>
                 </li>
                 <li class="px-6 py-2">
-                    <a href="https://wa.me/+6282185222005" class="flex gap-x-2 justify-end" target="_blank">
-                        <p>
-                            082185222005
-                        </p>
+                    <a href="https://wa.me/+6282185222005" class="flex gap-x-2" target="_blank">
                         <img src="assets/images/logos/apps/whatsapp.png" alt="" class="w-[25px]">
+                        <p class="hover:underline">
+                            082185222005
+                        </p>
                     </a>
                 </li>
                 <li class="px-6 py-2">
-                    <a href="https://t.me/+6282185222005" class="flex gap-x-2 justify-end" target="_blank">
-                        <p>
+                    <a href="https://t.me/+6282185222005" class="flex gap-x-2" target="_blank">
+                        <img src="assets/images/logos/apps/telegram.png" alt="" class="w-[25px]">
+                        <p class="hover:underline">
                             082185222005
                         </p>
-                        <img src="assets/images/logos/apps/telegram.png" alt="" class="w-[25px]">
                     </a>
                 </li>
             </ul>
