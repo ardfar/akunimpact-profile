@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <style>
         @font-face {
             font-family: "sifonn";
@@ -78,6 +79,18 @@
                 background-position: 0% 50%;
             }
         }
+
+        @layer utilities {
+            /* Chrome, Safari and Opera */
+            .no-scrollbar::-webkit-scrollbar {
+            display: none;
+            }
+
+            .no-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+            }
+        }
     </style>
 </head>
 
@@ -92,8 +105,8 @@
         </div>
 
         <!-- MENU CONTENT  -->
-        <div class="relative w-full min-h-3/5 flex flex-col items-center justify-center gap-y-8 text-white border-0">
-            <div class="group relative flex flex-col w-full h-fit cursor-pointer">
+        <div class="relative w-full min-h-[80vh] flex flex-col items-center justify-center gap-y-8 text-white border-0 max-[400px]:hover:overflow-y-auto max-[400px]:py-6 no-scrollbar">
+            <div class="group flex flex-col w-full min-h-fit cursor-pointer max-[400px]:mt-5 ">
                 <div class="w-full h-fit">
                     <p class="text-center w-full flex justify-center">
                         <span
@@ -105,18 +118,21 @@
                         Transaksi
                     </p>
                 </div>
-                <div class="absolute z-30 -right-[120px] hidden group-hover:block hover:block w-[125px] h-fit p-4 bg-[#4086A2] rounded-lg">
-                    <a href="./cara-jual.html" rel="nofollow">
+
+                <!-- dropdown content -->
+                <div class="absolute z-30 h-fit min-[401px]:p-4 py-1 bg-[#30657a] hidden group-hover:block max-[400px]:w-[127px] w-[145px] min-[401px]:-right-[120px] rounded-lg max-[400px]:mt-12 ">
+                    <a href="./cara-jual.html" rel="nofollow" class="hover:underline text-center sm:text-left block my-2">
                         Jual Akun
                     </a>
-                    <a href="./cara-beli.html" rel="nofollow">
+                    <a href="./cara-beli.html" rel="nofollow" class="hover:underline text-center sm:text-left block my-2">
                         Beli Akun
                     </a>
-                    <a href="" rel="noopener noreferrer">
+                    <a href="" rel="noopener noreferrer" class="hover:underline text-center sm:text-left block my-2">
                         RekBer
                     </a>
                 </div>                
             </div>
+            
             <div class="group relative flex flex-col w-full h-fit cursor-pointer">
                 <div class="w-full h-fit">
                     <p class="text-center w-full flex justify-center">
@@ -129,11 +145,13 @@
                         Rules
                     </p>
                 </div>
-                <div class="absolute z-30 -right-[120px] hidden group-hover:block hover:block w-[125px] h-fit p-4 bg-[#4086A2] rounded-lg">
-                    <a href="./rules-penjual.html" rel="noopener noreferrer">
+
+                <!-- <div class="absolute z-30 -right-[120px] hidden group-hover:block hover:block w-[125px] h-fit p-4 bg-[#4086A2] rounded-lg"> -->
+                <div class="absolute z-30 h-fit min-[401px]:p-4 p-1 bg-[#30657a] hidden group-hover:block  w-[127px] min-[401px]:w-[135px] min-[501px]:-right-[110px] rounded-lg max-[400px]:mt-12">
+                    <a href="./rules-penjual.html" rel="noopener noreferrer" class="hover:underline text-center sm:text-left block my-2">
                         Penjual
                     </a>
-                    <a href="./rules-pembeli.html" rel="noopener noreferrer">
+                    <a href="./rules-pembeli.html" rel="noopener noreferrer" class="hover:underline text-center sm:text-left block my-2">
                         Pembeli
                     </a>
                 </div>                
@@ -271,7 +289,7 @@
             </div>
             <div class="flex items-center">
                 <div class="h-fit">
-                    <h1 class="text-2xl text-white uppercase">
+                    <h1 class="sm:text-2xl text-white uppercase max-[330px]:text-[15px]">
                         akunimpact
                     </h1>
                     <p class="text-white mt-4 text-[15px]">
@@ -338,7 +356,7 @@
                 <li class="px-6 py-2">
                     <a href="https://instagram.com/akunimpact" class="flex gap-x-2" target="_blank" rel="noopener noreferrer">
                         <img src="assets/images/logos/apps/instagram.png" alt="" class="w-[25px]">
-                        <p class="hover:underline">
+                        <p class="hover:underline max-[330px]:text-[15px]">
                             akunimpact
                         </p>
                     </a>
@@ -346,7 +364,7 @@
                 <li class="px-6 py-2">
                     <a href="https://wa.me/+6282185222005" class="flex gap-x-2" target="_blank" rel="noopener noreferrer">
                         <img src="assets/images/logos/apps/whatsapp.png" alt="" class="w-[25px]">
-                        <p class="hover:underline">
+                        <p class="hover:underline max-[330px]:text-[15px]">
                             082185222005
                         </p>
                     </a>
@@ -354,7 +372,7 @@
                 <li class="px-6 py-2">
                     <a href="https://t.me/+6282185222005" class="flex gap-x-2" target="_blank" rel="noopener noreferrer">
                         <img src="assets/images/logos/apps/telegram.png" alt="" class="w-[25px]">
-                        <p class="hover:underline">
+                        <p class="hover:underline max-[330px]:text-[15px]">
                             082185222005
                         </p>
                     </a>
