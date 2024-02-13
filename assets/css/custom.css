@@ -80,3 +80,26 @@ body {
     scrollbar-width: none; /* Firefox */
     }
 }
+
+.custom-form input[type="text"],
+        .custom-form input[type="email"],
+        .custom-form textarea {
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .custom-form input[type="text"]:focus,
+        .custom-form input[type="email"]:focus,
+        .custom-form textarea:focus {
+            border-color: #4c51bf;
+            box-shadow: 0 0 0 1px #4c51bf;
+        }
+
+        .contactPage {
+            background-image: url('../images/backgrounds/bg-contact-kami.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
