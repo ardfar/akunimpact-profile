@@ -17,11 +17,11 @@
 
         body {
             font-family: "sifonn";
-            background-color: #3a7992;
+            /* background-color: #3a7992; */
         }
 
         .glassmorphism-main {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(4.1px);
@@ -62,11 +62,21 @@
         }
 
         .logo-glow {
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 1), inset 0 0 10px rgba(255, 255, 255, 1);
         }
 
         .nav-glow {
             box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .title-opening {
+            color: #fff;
+            text-shadow: 0 0 20px rgb(187, 187, 187);
+        }
+
+        .teks-opening {
+            color: #fff;
+            text-shadow: 0 0 5px rgb(149, 149, 149);
         }
 
         @keyframes gradientAnimation {
@@ -208,39 +218,29 @@
     <!-- NAVIGATION BAR -> END  -->
 
     <!-- HEADER -> START  -->
-    <header class="banner block relative w-full h-[100vh] bg-[url('assets/images/backgrounds/main.png')] overflow-hidden cursor-default">
+    <header class="relative overflow-hidden h-screen mb-[-5px] ">
+        <div class="absolute inset-0 bottom-0 top-0 left-0 right-0 overflow-hidden z-0 bg-gradient-to-b from-white to-blue-200">
+            <img src="assets/images/backgrounds/main/pohon.png" alt="" class="opacity-20 absolute z-10 -bottom-20 right-0 lg:-right-1/4 border-0 border-blue-500 h-[100%] object-cover mx-0" />
 
-        <!-- BACKGROUND IMAGES PLACEMENT  -->
-        <div class="absolute z-0 top-0 left-0 w-full h-full overflow-hidden bg-[rgba(0,0,0,0.03)] sm:bg-[rgba(0,0,0,0)]">            
-            <img src="assets/images/backgrounds/main/pohon.png" alt="" class="absolute z-10 -bottom-20 sm:-right-1/4 border-0 border-blue-500 sm:w-auto h-[100%] sm:max-w-[90%] mx-auto object-cover" />
-        
-            <img src="assets/images/backgrounds/main/bangunan.png" alt="" class="max-h-3/4 z-0 absolute -bottom-8 -left-[125px] border-0 border-yellow-500 hidden sm:block" />
-            
-            <img src="assets/images/backgrounds/main/burung.png" alt="" class="border-0 border-green-800" />
-            
-            <img src="assets/images/backgrounds/main/burung-kiri.png" alt="" class="absolute h-full top-0 left-0 border-0 border-green-500 hidden sm:block" />
+            <img src="assets/images/backgrounds/main/bangunan.png" alt="" class="opacity-20 max-h-3/4 z-0 absolute -bottom-8 -left-[75px] border-0 border-yellow-500 hidden lg:block" />
+
+            <img src="assets/images/backgrounds/main/burung.png" alt="" class="opacity-20 border-0 border-green-800" />
+
+            <img src="assets/images/backgrounds/main/burung-kiri.png" alt="" class="opacity-20 absolute w-full h-full top-0 left-0 border-0 border-green-500 hidden sm:block" />
         </div>
         
-        <!-- HEADER CONTENT  -->
-        <div class="absolute w-full h-full z-10 top-0 left-0 flex flex-col gap-y-10 items-center justify-center border-0 border-red-800">
-            <!-- MAIN LOGO START -->
-            <div class="bg-[#4086A2] flex items-center justify-center mx-5 w-fit h fit p-4 rounded-full border-0 logo-glow">
-                <img src="assets/images/logos/logo-light.png" alt="" srcset="" class="w-[125px]" />
+        <div class="absolute inset-0 flex flex-col justify-center items-center z-10">
+            <div class="flex items-center justify-center w-fit h-fit p-2 rounded-full glassmorphism-main">
+                <img src="assets/images/logos/logo-blue.png" alt="" class="w-[125px]" />
             </div>
-            <!-- MAIN LOGO END -->
 
-            <div class="flex flex-col lg:max-w-[700px] max-w-[90%] md:max-w-[550px] sm:w-[98%] mx-4 border-0 border-red-800 items-center justify-center glassmorphism-main rounded-xl p-10">
-                <div>
-                    <h1 class="lg:text-6xl md:text-4xl sm:text-4xl text-3xl text-[#4086A2] tracking-wide glow-title text-wrap">AkunImpact</h1>
-                </div>
+            <div class="text-center mt-8 mx-2 glassmorphism-main w-[90%] sm:w-[70%] p-3 border-0">
+                <h1 class="max-[325px]:text-2xl text-4xl sm:text-4xl md:text-6xl font-bold tracking-wide text-[#4086A2] mt-5 sm:mb-12 title-opening underline">AkunImpact</h1>
+                <p class="my-4 text-sm sm:text-lg md:text-xl text-[#4086A2]">The best place for buying and selling Genshin Impact accounts with the highest security and no additional fees.</p>
+            </div>
 
-                <div class="mt-8">
-                    <p class="font-thin text-center text-[15px] md:text-lg text-[#4086A2]">
-                        Tempat terbaik untuk transaksi jual-beli akun genshin impact
-                        maupun Honkai Star Rail dengan keamanan terbaik dan bebas biaya
-                        tambahan.
-                    </p>
-                </div>
+            <div class="mt-8">
+                <a href="#featured" class="bg-white text-[#4086A2] font-semibold px-6 py-3 rounded-full shadow-md hover:bg-[#4086A2] hover:text-white transition-colors duration-300">Explore Now</a>
             </div>
         </div>
     </header>
