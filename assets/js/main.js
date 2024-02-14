@@ -1,10 +1,10 @@
 $("#side-nav-closure").on("click", () => {
     // Check the screen width
     if ($("#side-nav").hasClass("left-0")) {
-        $("#side-nav").removeClass("left-0").addClass("-left-[135px]");
+        $("#side-nav").removeClass("left-0").addClass("-left-[155px]");
         $("#side-nav-closure-icon").removeClass("rotate-180").addClass("rotate-0");
     } else {
-        $("#side-nav").removeClass("-left-[135px]").addClass("left-0");
+        $("#side-nav").removeClass("-left-[155px]").addClass("left-0");
         $("#side-nav-closure-icon").removeClass("rotate-0").addClass("rotate-180");
     }
 });
