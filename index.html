@@ -8,171 +8,78 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <style>
-        @font-face {
-            font-family: "sifonn";
-            src: url("assets/fonts/sifonn-basic.otf");
-        }
-
-        body {
-            font-family: "sifonn";
-            /* background-color: #3a7992; */
-        }
-
-        .glassmorphism-main {
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(4.1px);
-            -webkit-backdrop-filter: blur(4.1px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .glassmorphism-secondary {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(4.1px);
-            -webkit-backdrop-filter: blur(4.1px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .neumorphism-main {
-            background: linear-gradient(145deg, #448fad, #3a7992);
-            box-shadow: 10px 10px 40px #285364,
-                -10px -10px 40px #58b9e0;
-        }
-
-        .neumorphism-secondary {
-            /* background: linear-gradient(145deg, #002b41, #00334d); */
-            box-shadow:  10px 10px 50px #014568,
-                        -10px -10px 50px #014769;
-            margin: 10px;
-        }
-
-        .glow {
-            color: #fff;
-            text-shadow: 0 0 20px cyan;
-        }
-        
-        .glow-title {
-            color: #fff;
-            text-shadow: 0 0 80px cyan;
-        }
-
-        .logo-glow {
-            box-shadow: 0 0 50px rgba(255, 255, 255, 1), inset 0 0 10px rgba(255, 255, 255, 1);
-        }
-
-        .nav-glow {
-            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .title-opening {
-            color: #fff;
-            text-shadow: 0 0 20px rgb(187, 187, 187);
-        }
-
-        .teks-opening {
-            color: #fff;
-            text-shadow: 0 0 5px rgb(149, 149, 149);
-        }
-
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @layer utilities {
-            /* Chrome, Safari and Opera */
-            .no-scrollbar::-webkit-scrollbar {
-            display: none;
-            }
-
-            .no-scrollbar {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-            }
-        }
-    </style>
-    
+    <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 
 <body>
-    <!-- NAVIGATION BAR -> START  -->
-    <nav class="fixed top-0 -left-[130px] z-20 h-full w-[130px] flex flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 nav-glow">
+    <!-- NAVIGATION BAR: DESKTOP-TABLET -> START  -->
+<nav class="fixed top-0 -left-[135px] z-20 h-full w-[135px] hidden md:flex flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 nav-glow" id="side-nav">
 
-        <!-- LOGO PLACEMENT  -->
-        <div class="w-full h-1/5 p-4 flex items-center justify-center">
-            <img src="assets/images/logos/logo-light.png" alt="" class="w-full h-auto" />
-        </div>
-
-        <!-- MENU CONTENT  -->
-        <div class="relative w-full min-h-[80vh] flex flex-col items-center justify-center gap-y-8 text-white border-0 max-[400px]:hover:overflow-y-auto max-[400px]:py-6 no-scrollbar">
-            <div class="group flex flex-col w-full min-h-fit cursor-pointer max-[400px]:mt-5 ">
-                <div class="w-full h-fit">
-                    <p class="text-center w-full flex justify-center">
-                        <span
-                            class="material-symbols-outlined text-2xl px-3 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg ">
-                            payments
-                        </span>
-                    </p>
-                    <p class="flex items-center justify-center text-lighter text-center glow">
-                        Transaksi
-                    </p>
-                </div>
-
-                <!-- dropdown content -->
-                <div class="absolute z-30 h-fit min-[401px]:p-4 py-1 bg-[#30657a] hidden group-hover:block max-[400px]:w-[127px] w-[145px] min-[401px]:-right-[120px] rounded-lg max-[400px]:mt-12 ">
-                    <a href="./cara-jual.html" rel="nofollow" class="hover:underline text-center sm:text-left block my-2">
-                        Jual Akun
-                    </a>
-                    <a href="./cara-beli.html" rel="nofollow" class="hover:underline text-center sm:text-left block my-2">
-                        Beli Akun
-                    </a>
-                    <a href="" rel="noopener noreferrer" class="hover:underline text-center sm:text-left block my-2">
-                        RekBer
-                    </a>
-                </div>                
-            </div>
-            
-            <div class="group relative flex flex-col w-full h-fit cursor-pointer">
-                <!-- dropdown trigger -->
-                <div class="w-full h-fit">
-                    <p class="text-center w-full flex justify-center">
-                        <span
-                            class="material-symbols-outlined text-2xl px-3 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg ">
-                            developer_guide
-                        </span>
-                    </p>
-                    <p class="flex items-center justify-center text-lighter text-center glow">
-                        Rules
-                    </p>
-                </div>
-
-                <!-- dropdown content -->
-                <div class="absolute z-30 h-fit min-[401px]:p-4 p-1 bg-[#30657a] hidden group-hover:block w-[127px] min-[401px]:w-[135px] min-[401px]:-right-[110px] rounded-lg max-[400px]:mt-12">
-                    <a href="./rules-penjual.html" rel="noopener noreferrer" class="hover:underline text-center sm:text-left block my-2">
-                        Penjual
-                    </a>
-                    <a href="./rules-pembeli.html" rel="noopener noreferrer" class="hover:underline text-center sm:text-left block my-2">
-                        Pembeli
-                    </a>
-                </div>                
-            </div>
-            
-            <a href="#" class="group">
+    <!-- LOGO PLACEMENT  -->
+    <div class="w-full h-1/5 p-4 flex items-center justify-center">
+        <img src="assets/images/logos/logo-light.png" alt="" class="w-full h-auto" />
+    </div>
+    
+    <!-- MENU CONTENT  -->
+    <div class="w-full h-3/5 flex flex-col items-center justify-center gap-y-6 text-white">
+        <div class="group relative flex flex-col w-full">
+            <div class="w-full h-fit glow">
                 <p class="text-center w-full flex justify-center">
                     <span
-                        class="material-symbols-outlined text-2xl px-3 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg ">
+                        class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
+                        payments
+                    </span>
+                </p>
+                <p class="flex items-center justify-center text-lighter">
+                    Transaksi
+                </p>
+            </div>
+    
+            <div class="absolute z-30 -right-[135px] hidden group-hover:block hover:block w-[145px] min-h-[30px] p-4 bg-[#4086A2] rounded-lg text-center">
+                <a href="cara-jual.html" class="hover:underline">
+                    Jual Akun
+                </a>
+    
+                <a href="cara-beli.html" class="hover:underline">
+                    Beli Akun
+                </a>
+    
+                <a href="" class="hover:underline">
+                    RekBer
+                </a>
+            </div>
+        </div>
+
+        <div class="group relative flex flex-col w-full">
+            <div class="w-full h-fit glow">
+                <p class="text-center w-full flex justify-center">
+                    <span
+                        class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
+                        developer_guide
+                    </span>
+                </p>
+                <p class="flex items-center justify-center text-lighter">
+                    Aturan
+                </p>
+            </div>
+    
+            <div class="absolute z-30 -right-[135px] hidden group-hover:block hover:block w-[145px] min-h-[30px] p-4 bg-[#4086A2] rounded-lg text-center">
+                <a href="rules-penjual.html" class="hover:underline">
+                    Penjual
+                </a>
+    
+                <a href="rules-pembeli.html" class="hover:underline">
+                    Pembeli
+                </a>
+    
+            </div>
+        </div>
+        
+        <div class="group">
+            <a href="">
+                <p class="text-center w-full flex justify-center glow">
+                    <span
+                        class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
                         help
                     </span>
                 </p>
@@ -180,67 +87,198 @@
                     Tentang Kami
                 </p>
             </a>
-
-            <a href="#" class="group">
-                <p class="text-center w-full flex justify-center">
+        </div>
+    
+        <div class="group">
+            <a href="./kontak-kami.html">
+                <p class="text-center w-full flex justify-center glow">
                     <span
-                        class="material-symbols-outlined text-2xl px-3 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg ">
+                        class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
                         headphones
                     </span>
                 </p>
-                <p class="flex items-center justify-center text-lighter text-center glow">Bantuan</p>
-            </a>
-
-            <!-- I want to add more for login/logout in this navbar -->
-            <a href="#" class="group">
-                <p class="text-center w-full flex justify-center">
-                    <span
-                        class="material-symbols-outlined text-2xl px-3 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg border-0">
-                        account_circle
-                    </span>
-                </p>
-                <p class="flex items-center justify-center text-lighter text-center glow">Logout</p>
+                <p class="flex items-center justify-center text-lighter glow">Bantuan</p>
             </a>
         </div>
+    </div>
+    
+    <!-- ACCOUNT ACCESS (LOGIN/LOGOUT)  -->
+    <div class="w-full h-1/5 flex items-end justify-center p-4">
+        <button class="w-full h-fit py-2 neumorphism-main text-white text-xl glow rounded-md">
+            Login
+        </button>
+    </div>
+    
+    <!-- SHOW-HIDE BUTTON  -->
+    <div class="group w-16 h-16 absolute -z-10 flex items-center justify-end top-1/2 -right-8 hover:-right-10 bg-[#4086A2] rounded-xl duration-150 cursor-pointer"
+        id="side-nav-closure">
+        <span class="material-symbols-outlined text-4xl p-0 text-white relative rotate-0 duration-200"
+            id="side-nav-closure-icon">
+            chevron_right
+        </span>
+    </div>
+</nav>
+<!-- NAVIGATION BAR: DESKTOP-TABLET -> END  -->    <!-- NAVIGATION BAR: MOBILE -> START  -->
+<nav class="fixed top-0 -left-full z-20 h-full w-full flex md:hidden flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 nav-glow" id="full-nav">
 
-        <!-- ACCOUNT ACCESS (LOGIN/LOGOUT)  -->
-        <div class="w-full h-1/5"></div>
+    <!-- LOGO PLACEMENT  -->
+    <div class="w-full h-1/5 p-4 flex items-center justify-evenly">
+        <img src="assets/images/logos/logo-light.png" alt="" class="w-2/5 h-auto" />
+        <div class="w-1/2 flex flex-col justify-center">
+            <h1 class="text-white text-2xl text-left">
+                AKUNIMPACT
+            </h1>
+            <h2 class="capitalize text-white text-sm">
+                Tempatnya Jual Beli akun genshin & HSR
+            </h2>
+        </div>
+    </div>
+    
+    <!-- MENU CONTENT  -->
+    <div class="w-full h-3/5 flex flex-col items-center justify-center gap-y-4 text-white pl-6">
 
-        <!-- SHOW-HIDE BUTTON  -->
-        <div class="group w-16 h-16 absolute -z-10 flex items-center justify-end top-1/2 -right-8 hover:-right-10 bg-[#4086A2] rounded-xl duration-150 cursor-pointer"
-            id="side-nav-closure">
-            <span class="material-symbols-outlined text-4xl p-0 text-white relative rotate-0 duration-200"
-                id="side-nav-closure-icon">
-                chevron_right
+        
+        <div class="h-fit w-fit absolute top-1/2 -translate-y-[50%] -right-[38px] py-4 px-2 rounded-md flex items-center justify-centers bg-[#4086A2]" id="full-nav-closure">
+            <span class="material-symbols-outlined text-3xl" id="full-nav-closure-icon">
+            chevron_right
             </span>
         </div>
-    </nav>
-    <!-- NAVIGATION BAR -> END  -->
-
-    <!-- HEADER -> START  -->
-    <header class="relative overflow-hidden h-screen mb-[-5px] ">
-        <div class="absolute inset-0 bottom-0 top-0 left-0 right-0 overflow-hidden z-0 bg-gradient-to-b from-white to-blue-200">
-            <img src="assets/images/backgrounds/main/pohon.png" alt="" class="opacity-20 absolute z-10 -bottom-20 right-0 lg:-right-1/4 border-0 border-blue-500 h-[100%] object-cover mx-0" />
-
-            <img src="assets/images/backgrounds/main/bangunan.png" alt="" class="opacity-20 max-h-3/4 z-0 absolute -bottom-8 -left-[75px] border-0 border-yellow-500 hidden lg:block" />
-
-            <img src="assets/images/backgrounds/main/burung.png" alt="" class="opacity-20 border-0 border-green-800" />
-
-            <img src="assets/images/backgrounds/main/burung-kiri.png" alt="" class="opacity-20 absolute w-full h-full top-0 left-0 border-0 border-green-500 hidden sm:block" />
-        </div>
         
-        <div class="absolute inset-0 flex flex-col justify-center items-center z-10">
-            <div class="flex items-center justify-center w-fit h-fit p-2 rounded-full glassmorphism-main">
-                <img src="assets/images/logos/logo-blue.png" alt="" class="w-[125px]" />
-            </div>
 
-            <div class="text-center mt-8 mx-2 glassmorphism-main w-[90%] sm:w-[70%] p-3 border-0">
-                <h1 class="max-[325px]:text-2xl text-4xl sm:text-4xl md:text-6xl font-bold tracking-wide text-[#4086A2] mt-5 sm:mb-12 title-opening underline">AkunImpact</h1>
-                <p class="my-4 text-sm sm:text-lg md:text-xl text-[#4086A2]">The best place for buying and selling Genshin Impact accounts with the highest security and no additional fees.</p>
+        <div class="w-full h-fit">
+            <div class="collapsible w-full h-fit flex flex-row items-center justify-start gap-x-2">
+                <span
+                    class="material-symbols-outlined text-4xl">
+                    payments
+                </span>
+                <p class="text-2xl  glow">
+                    Transaksi
+                </p>
+                <span
+                    class="material-symbols-outlined text-4xl transition-all duration-150 ease-in-out rotate-0">
+                    expand_less
+                </span>
             </div>
+            <div class="overflow-hidden max-h-0 transition-all duration-200 ease-out flex flex-col">
+                <a href="./cara-beli.html" class="text-lg">
+                    Beli Akun
+                </a>
+                <a href="./cara-jual.html" class="text-lg">
+                    Jual Akun
+                </a>
+                <a href="" class="text-lg">
+                    Rekber
+                </a>
+            </div>
+        </div>
 
-            <div class="mt-8">
-                <a href="#featured" class="bg-white text-[#4086A2] font-semibold px-6 py-3 rounded-full shadow-md hover:bg-[#4086A2] hover:text-white transition-colors duration-300">Explore Now</a>
+        <div class="w-full h-fit">
+            <div class="collapsible w-full h-fit flex flex-row items-center justify-start gap-x-2">
+                <span
+                    class="material-symbols-outlined text-4xl">
+                    developer_guide
+                </span>
+                <p class="text-2xl  glow">
+                    Aturan
+                </p>
+                <span
+                    class="material-symbols-outlined text-4xl transition-all duration-150 ease-in-out rotate-0">
+                    expand_less
+                </span>
+            </div>
+            <div class="overflow-hidden max-h-0 transition-all duration-200 ease-out flex flex-col">
+                <a href="./rules-penjual.html" class="text-lg">
+                    Penjual
+                </a>
+                <a href="./rules-pembeli.html" class="text-lg">
+                    Pembeli
+                </a>
+            </div>
+        </div>
+
+        <div class="w-full h-fit">
+            <a href="">
+                <div class="w-full h-fit flex flex-row items-center justify-start gap-x-2">
+                    <span
+                        class="material-symbols-outlined text-4xl">
+                        help
+                    </span>
+                    <p class="text-2xl  glow">
+                        Tentang Kami
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class="w-full h-fit">
+            <a href="./kontak-kami.html">
+                <div class="w-full h-fit flex flex-row items-center justify-start gap-x-2">
+                    <span
+                        class="material-symbols-outlined text-4xl">
+                        headphones
+                    </span>
+                    <p class="text-2xl  glow">
+                        Bantuan
+                    </p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+    
+    <!-- ACCOUNT ACCESS (LOGIN/LOGOUT)  -->
+    <div class="w-full h-1/5 flex items-end justify-center p-8">
+        <button class="w-full h-fit py-4 neumorphism-main text-white text-xl glow">
+            Login
+        </button>
+    </div>
+
+</nav>
+<!-- NAVIGATION BAR: MOBILE -> END  -->
+    <!-- HEADER -> START  -->
+    <header
+        class="banner block relative w-full h-[100vh] bg-[url('assets/images/backgrounds/main.png')] overflow-hidden cursor-default">
+
+        <!-- BACKGROUND IMAGES PLACEMENT  -->
+        <div
+            class="absolute z-0 top-0 left-0 w-full h-full overflow-hidden bg-[rgba(0,0,0,0.03)] sm:bg-[rgba(0,0,0,0)]">
+            <img src="assets/images/backgrounds/main/pohon.png" alt=""
+                class="absolute -bottom-20 sm:-right-1/4 border-0 border-blue-500 sm:w-auto h-[100%] sm:max-w-[90%] mx-auto object-cover" />
+
+            <img src="assets/images/backgrounds/main/bangunan.png" alt=""
+                class="h-3/4 absolute -bottom-8 -left-[125px] border-0 border-yellow-500 hidden sm:block " />
+
+            <img src="assets/images/backgrounds/main/burung.png" alt=""
+                class="border-0 border-green-800" />
+
+            <img src="assets/images/backgrounds/main/burung-kiri.png" alt=""
+                class="absolute h-full top-0 left-0 border-0 border-green-500 hidden sm:block " />
+        </div>
+
+
+        <!-- HEADER CONTENT  -->
+        <div
+            class="absolute w-full h-full z-10 top-0 left-0 flex flex-col gap-y-10 items-center justify-center border-0 border-red-800">
+            <!-- MAIN LOGO START -->
+            <div class="bg-[#4086A2] flex items-center justify-center mx-5 w-fit h fit p-4 rounded-full border-0">
+                <img src="assets/images/logos/logo-light.png" alt="" srcset="" class="w-[125px]" />
+            </div>
+            <!-- MAIN LOGO END -->
+
+            <div
+                class="flex flex-col lg:w-1/2 md:w-[550px] sm:w-[98%] mx-4 border-0 border-red-800 items-center justify-center glassmorphism-main rounded-xl p-10">
+                <div>
+                    <h1 class="lg:text-8xl md:text-4xl sm:text-4xl text-3xl text-[#4086A2] tracking-wide text-wrap">
+                        AkunImpact</h1>
+                </div>
+
+                <div class="mt-8">
+                    <p class="font-thin text-center text-[15px] md:text-lg text-[#4086A2]">
+                        Tempat terbaik untuk transaksi jual-beli akun genshin impact
+                        maupun Honkai Star Rail dengan keamanan terbaik dan bebas biaya
+                        tambahan.
+                    </p>
+                </div>
             </div>
         </div>
     </header>
@@ -254,7 +292,7 @@
         <div class="w-full h-fit flex justify-center items-center mt-10">
             <img src="assets/images/stickers/curious.png" alt="" class="w-[200px]">
         </div>
-        
+
         <div class="w-full h-fit flex justify-center items-center">
             <h2 class="capitalize text-white text-xl text-center sm:text-5xl mx-4 cursor-default">
                 Kenapa harus di AkunImpact?
@@ -263,10 +301,11 @@
         <!-- HEADING -> END  -->
 
         <!-- CARD CONTAINER -> START -->
-        <div class="flex flex-row flex-wrap justify-center gap-4 text-white my-12">
+        <div class="flex flex-row flex-wrap justify-center gap-6 text-white my-12 w-full">
 
             <!-- NEUMORPHISM CARD -> START -->
-            <div class="neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[550px] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
+            <div
+                class="w-[500px] md:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
                 <div class="border-0 w-1/5 flex justify-center items-center mb-4">
                     <span class="material-symbols-outlined text-6xl sm:text-8xl text-white">
                         verified_user
@@ -275,12 +314,12 @@
 
                 <div class="border-0 mx-2 text-center w-4/5">
                     <div class="mb-4">
-                        <h1 class="underline text-white text-glow text-xl sm:text-3xl">
+                        <h1 class="underline text-white text-glow text-2xl md:text-3xl">
                             Sistem Transaksi Teraman
                         </h1>
                     </div>
                     <div class="">
-                        <p class="text-[15px] border-0 mx-2 sm:mb-4">
+                        <p class="text-[16px] border-0 mx-2 mb-4">
                             Kami dengan bangga menyediakan layanan dengan sistem teraman dengan verifikasi KTP dan data
                             diri kepada penjual akun.
                         </p>
@@ -290,7 +329,8 @@
             <!-- NEUMORPHISM CARD -> END -->
 
             <!-- NEUMORPHISM CARD -> START -->
-            <div class="neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[550px] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
+            <div
+                class="w-[500px] md:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
                 <div class="border-0 w-1/5 flex justify-center items-center mb-4">
                     <span class="material-symbols-outlined text-6xl sm:text-8xl text-white">
                         acute
@@ -299,12 +339,12 @@
 
                 <div class="border-0 mx-2 text-center w-4/5">
                     <div class="mb-4">
-                        <h1 class="underline text-white text-glow text-xl sm:text-3xl">
+                        <h1 class="underline text-white text-glow text-2xl md:text-3xl">
                             Transaksi Cepat
                         </h1>
                     </div>
                     <div class="">
-                        <p class="text-[15px] border-0 mx-2 sm:mb-4">
+                        <p class="text-[16px] border-0 mx-2 mb-4">
                             Nikmati layanan transaksi kami yang instant dan efisien baik untuk penjual maupun pembeli.
                         </p>
                     </div>
@@ -313,7 +353,8 @@
             <!-- NEUMORPHISM CARD -> END -->
 
             <!-- NEUMORPHISM CARD -> START -->
-            <div class="neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[550px] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
+            <div
+                class="w-[500px] md:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
                 <div class="border-0 w-1/5 flex justify-center items-center mb-4">
                     <span class="material-symbols-outlined text-6xl sm:text-8xl text-white">
                         handshake
@@ -322,12 +363,12 @@
 
                 <div class="border-0 mx-4 text-center w-4/5">
                     <div class="mb-4">
-                        <h1 class="underline text-white text-glow text-xl sm:text-3xl">
+                        <h1 class="underline text-white text-glow text-2xl md:text-3xl">
                             Transparan dan Berkomitmen
                         </h1>
                     </div>
                     <div class="">
-                        <p class="text-[15px] border-0 mx-2 sm:mb-4">
+                        <p class="text-[16px] border-0 mx-2 mb-4">
                             Proses transaksi kami lakukan secara komitmen dan kesepakatan bersama.
                             Kami akan transparan kepada pihak terkait transaksi yang berjalan.
                         </p>
@@ -337,7 +378,8 @@
             <!-- NEUMORPHISM CARD -> END -->
 
             <!-- NEUMORPHISM CARD -> START -->
-            <div class="neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[550px] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
+            <div
+                class="w-[500px] md:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
                 <div class="border-0 w-1/5 flex justify-center items-center mb-4">
                     <span class="material-symbols-outlined text-6xl sm:text-8xl text-white">
                         diversity_2
@@ -346,12 +388,12 @@
 
                 <div class="border-0 mx-2 text-center w-4/5">
                     <div class="mb-4">
-                        <h1 class="underline text-white text-glow text-xl sm:text-3xl">
+                        <h1 class="underline text-white text-glow text-2xl md:text-3xl">
                             Jangkauan Konsumen Luas
                         </h1>
                     </div>
                     <div class="">
-                        <p class="text-[15px] border-0 mx-2 sm:mb-4">
+                        <p class="text-[16px] border-0 mx-2 mb-4">
                             Kami memiliki jaringan tertarget di berbagai sosial media dan komunitas game.
                             Penjual dapat melakukan promosi melalui cara khusus yang kami sediakan.
                         </p>
@@ -367,7 +409,8 @@
     <!-- SECTION: PLUS -> END  -->
 
     <!-- SECTION: TESTIMONY -> START  -->
-    <section class="w-full min-h-[100vh] flex flex-row justify-center items-center flex-wrap py-20 bg-[url('assets/images/backgrounds/wavy-1.svg')] bg-cover bg-norepeat bg-center border-0">
+    <section
+        class="w-full min-h-[100vh] flex flex-row justify-center items-center flex-wrap py-20 bg-[url('assets/images/backgrounds/wavy-1.svg')] bg-cover bg-norepeat bg-center border-0">
 
         <div class="w-full sm:w-2/5 max-h-[100vh] flex items-center border-0">
             <!-- HEADING -> START  -->
@@ -381,23 +424,16 @@
             <!-- HEADING -> END  -->
         </div>
 
-        <div class="w-full sm:w-3/5 min-h-[700px] sm:h-[550px] flex items-center justify-center gap-x-6 p-6 border-0">
+        <div class="w-full sm:w-3/5 min-h-[700px] sm:h-[600px] flex items-center justify-center gap-x-6 p-6 border-0">
             <!-- TESTIMONY SWIPER -> START  -->
-            <div class="swiper w-fit h-full border-0" >
+            <div class="swiper w-fit h-full border-0">
                 <div class="swiper-wrapper w-full h-full border-0">
 
                     <!-- TESTIMONY CARD -> START  -->
                     <div class="swiper-slide w-full h-full" style="height: fit-content;">
                         <div class="w-full h-fit rounded-xl overflow-hidden">
-                            <img src="assets/images//testimony/1.jpg" alt="" srcset="" class="w-full h-full">
-                        </div>
-                    </div>
-                    <!-- TESTIMONY CARD -> END  -->
-                    
-                    <!-- TESTIMONY CARD -> START  -->
-                    <div class="swiper-slide w-full h-full" style="height: fit-content;">
-                        <div class="w-full h-fit rounded-xl overflow-hidden">
-                            <img src="assets/images//testimony/2.jpg" alt="" srcset="" class="w-full h-full">
+                            <img src="assets/images/testimony/1.jpg" alt="" srcset=""
+                                class="w-full h-full">
                         </div>
                     </div>
                     <!-- TESTIMONY CARD -> END  -->
@@ -405,7 +441,8 @@
                     <!-- TESTIMONY CARD -> START  -->
                     <div class="swiper-slide w-full h-full" style="height: fit-content;">
                         <div class="w-full h-fit rounded-xl overflow-hidden">
-                            <img src="assets/images//testimony/3.jpg" alt="" srcset="" class="w-full">
+                            <img src="assets/images/testimony/2.jpg" alt="" srcset=""
+                                class="w-full h-full">
                         </div>
                     </div>
                     <!-- TESTIMONY CARD -> END  -->
@@ -413,7 +450,7 @@
                     <!-- TESTIMONY CARD -> START  -->
                     <div class="swiper-slide w-full h-full" style="height: fit-content;">
                         <div class="w-full h-fit rounded-xl overflow-hidden">
-                            <img src="assets/images//testimony/4.jpg" alt="" srcset="" class="w-full">
+                            <img src="assets/images/testimony/3.jpg" alt="" srcset="" class="w-full">
                         </div>
                     </div>
                     <!-- TESTIMONY CARD -> END  -->
@@ -421,7 +458,7 @@
                     <!-- TESTIMONY CARD -> START  -->
                     <div class="swiper-slide w-full h-full" style="height: fit-content;">
                         <div class="w-full h-fit rounded-xl overflow-hidden">
-                            <img src="assets/images//testimony/5.jpg" alt="" srcset="" class="w-full">
+                            <img src="assets/images/testimony/4.jpg" alt="" srcset="" class="w-full">
                         </div>
                     </div>
                     <!-- TESTIMONY CARD -> END  -->
@@ -429,7 +466,15 @@
                     <!-- TESTIMONY CARD -> START  -->
                     <div class="swiper-slide w-full h-full" style="height: fit-content;">
                         <div class="w-full h-fit rounded-xl overflow-hidden">
-                            <img src="assets/images//testimony/6.jpg" alt="" srcset="" class="w-full">
+                            <img src="assets/images/testimony/5.jpg" alt="" srcset="" class="w-full">
+                        </div>
+                    </div>
+                    <!-- TESTIMONY CARD -> END  -->
+
+                    <!-- TESTIMONY CARD -> START  -->
+                    <div class="swiper-slide w-full h-full" style="height: fit-content;">
+                        <div class="w-full h-fit rounded-xl overflow-hidden">
+                            <img src="assets/images/testimony/6.jpg" alt="" srcset="" class="w-full">
                         </div>
                     </div>
                     <!-- TESTIMONY CARD -> END  -->
@@ -444,158 +489,145 @@
 
     <!-- SECTION: CTA -> START  -->
     <section class="w-full min-h-[70vh] flex flex-col pt-10 pb-[100px] gap-y-10 bg-[#003048] border-0">
-    
-    <div class="w-full h-fit flex items-center">
-        <!-- HEADING -> START  -->
-        <div class="w-full h-fit block mt-10 mx-4">
-            <h2 class="capitalize text-white text-2xl sm:text-5xl text-center glow">
-                mau transaksi apa hari ini?
-            </h2>
-        </div>
-        <!-- HEADING -> END  -->
-    </div>
 
-    <!-- CTA BUTTON: START  -->
-    <div class="w-full h-fit flex flex-row flex-wrap items-center justify-center p-6 gap-x-12 text-center">
-        <a href="" class="capitalize text-xl text-white neumorphism-secondary px-[50px] py-4 rounded-lg hover:scale-105 duration-200">
-            jual akun
-        </a>
-        <a href="" class="capitalize text-xl text-white neumorphism-secondary px-[50px] py-4 rounded-lg hover:scale-105 duration-200">
-            beli akun
-        </a>
-        <a href="" class="capitalize text-xl text-white neumorphism-secondary px-[50px] py-4 rounded-lg hover:scale-105 duration-200">
-            rekber
-        </a>
-    </div>
-    <!-- CTA BUTTON: END  -->
+        <div class="w-full h-fit flex items-center">
+            <!-- HEADING -> START  -->
+            <div class="w-full h-fit block mt-10 mx-4">
+                <h2 class="capitalize text-white text-2xl sm:text-5xl text-center glow">
+                    mau transaksi apa hari ini?
+                </h2>
+            </div>
+            <!-- HEADING -> END  -->
+        </div>
+
+        <!-- CTA BUTTON: START  -->
+        <div class="w-full h-fit flex flex-row flex-wrap items-center justify-center p-6 gap-x-12 text-center">
+            <a href=""
+                class="capitalize text-xl text-white neumorphism-secondary px-[50px] py-4 rounded-lg hover:scale-105 duration-200">
+                jual akun
+            </a>
+            <a href=""
+                class="capitalize text-xl text-white neumorphism-secondary px-[50px] py-4 rounded-lg hover:scale-105 duration-200">
+                beli akun
+            </a>
+            <a href=""
+                class="capitalize text-xl text-white neumorphism-secondary px-[50px] py-4 rounded-lg hover:scale-105 duration-200">
+                rekber
+            </a>
+        </div>
+        <!-- CTA BUTTON: END  -->
     </section>
     <!-- SECTION: CTA -> END  -->
 
     <!-- SECTION: FOOTER -> START  -->
-    <section class="w-full min-h-[30vh] flex flex-row flex-wrap justify-center items-center text-center sm:text-left bg-black">
+    <footer class="w-full h-fit lg:h-[30vh] md:flex md:flex-row grid grid-cols-2 items-end bg-black p-4">
         <!-- LOGO PLACEMENT  -->
-        <div class="w-[90%] sm:w-2/5 h-full p-1 flex flex-row flex-wrap sm:flex-nowrap justify-center border-0">
-            <div class="w-2/5 h-fit">
-                <img src="assets/images/logos/logo-light.png" alt="" class="w-full" />
+        <div class="col-span-2 w-full md:w-2/6 h-full p-4 flex flex-row gap-4 items-center">
+            <div class="w-1/2 h-fit">
+                <img src="assets/images/logos/logo-light.png" alt="" class="w-full mx-auto" />
             </div>
-            <div class="flex items-center">
+            <div class="w-fit flex items-center">
                 <div class="h-fit">
-                    <h1 class="sm:text-2xl text-white uppercase max-[330px]:text-[15px]">
+                    <h1 class="text-2xl text-white uppercase">
                         akunimpact
                     </h1>
-                    <p class="text-white mt-4 text-[15px]">
+                    <p class="text-white mt-4">
                         Tempatnya Jual/Beli akun Genshin Impact & HSR Terpercaya
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- USEFULL LINKS  -->
-        <div class="w-fit h-full flex justify-center items-center text-white p-6 border-0">
+        <!-- USEFULL LINKS: START  -->
+        <div class="w-full md:w-1/6 h-full flex items-center text-white p-6">
             <ul class="w-fit">
                 <li class="pt-2">
-                    <a href="" class="hover:underline">
+                    <a href="">
                         Jual Akun
                     </a>
                 </li>
                 <li class="pt-2">
-                    <a href="" class="hover:underline">
+                    <a href="">
                         Beli Akun
                     </a>
                 </li>
                 <li class="pt-2">
-                    <a href="" class="hover:underline">
+                    <a href="">
                         RekBer Akun
                     </a>
                 </li>
             </ul>
         </div>
-
-        <div class="w-full sm:w-fit h-full flex justify-center items-center text-white p-6 border-0">
+        <div class="w-full md:w-1/6 h-full flex items-center text-white p-6">
             <ul class="w-fit">
                 <li class="pt-2">
-                    <a href="" class="hover:underline">
+                    <a href="">
                         Rules Penjual
                     </a>
                 </li>
                 <li class="pt-2">
-                    <a href="" class="hover:underline">
+                    <a href="">
                         Rules Pembeli
                     </a>
                 </li>
             </ul>
         </div>
 
-        <div class="w-full sm:w-1/5 h-full flex items-center text-white p-6 border-0 text-center sm:text-left">
-            <ul class="border-0 mx-auto">
-                <li class="pt-2">
-                    <a href="" class="hover:underline">
+        <div class="col-span-2 w-full md:w-1/6 h-full flex items-center justify-center md:justify-start text-white p-6">
+            <ul class="w-fit">
+                <li class="pt-2 text-center md:text-left">
+                    <a href="">
                         Beranda
                     </a>
                 </li>
-                <li class="pt-2">
-                    <a href="" class="hover:underline">
+                <li class="pt-2 text-center md:text-left">
+                    <a href="">
                         Tentang Kami
                     </a>
                 </li>
             </ul>
         </div>
+        <!-- USEFULL LINKS: END  -->
 
         <!-- SOCIAL MEDIA  -->
-        <div class="w-fit h-full flex items-center justify-center text-white p-6 border-0">
-            <ul class="text-left border-0">
+        <div class="col-span-2 w-full md:w-1/6 h-full flex items-center justify-center md:justify-end text-white p-6">
+            <ul>
                 <li class="px-6 py-2">
-                    <a href="https://instagram.com/akunimpact" class="flex gap-x-2" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/logos/apps/instagram.png" alt="" class="w-[25px]">
-                        <p class="hover:underline max-[330px]:text-[15px]">
+                    <a href="https://instagram.com/akunimpact" class="flex gap-x-2 justify-center md:justify-end"
+                        target="_blank">
+                        <p>
                             akunimpact
                         </p>
+                        <img src="assets/images/logos/apps/instagram.png" alt="" class="w-[25px]">
                     </a>
                 </li>
                 <li class="px-6 py-2">
-                    <a href="https://wa.me/+6282185222005" class="flex gap-x-2" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/+6282185222005" class="flex gap-x-2 justify-center md:justify-end"
+                        target="_blank">
+                        <p>
+                            082185222005
+                        </p>
                         <img src="assets/images/logos/apps/whatsapp.png" alt="" class="w-[25px]">
-                        <p class="hover:underline max-[330px]:text-[15px]">
-                            082185222005
-                        </p>
                     </a>
                 </li>
                 <li class="px-6 py-2">
-                    <a href="https://t.me/+6282185222005" class="flex gap-x-2" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/images/logos/apps/telegram.png" alt="" class="w-[25px]">
-                        <p class="hover:underline max-[330px]:text-[15px]">
+                    <a href="https://t.me/+6282185222005" class="flex gap-x-2 justify-center md:justify-end"
+                        target="_blank">
+                        <p>
                             082185222005
                         </p>
+                        <img src="assets/images/logos/apps/telegram.png" alt="" class="w-[25px]">
                     </a>
                 </li>
             </ul>
-        </div>        
-    </section>
+        </div>
+    </footer>
     <!-- SECTION: FOOTER -> END  -->
-
-    <!-- ------------------------------------------------------------------------------------------------------ -->
-    <!-- ------------------------------------------------------------------------------------------------------ -->
-    <!-- ------------------------------------------------------------------------------------------------------ -->
-
     <!-- SCRIPTING -> START  -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
-    <!-- NAVIGATION BAR SCRIPTING -> START  -->
-    <script>
-        $("#side-nav-closure").on("click", () => {
-            // Check the screen width
-            if ($("nav").hasClass("left-0")) {
-                $("nav").removeClass("left-0").addClass("-left-[130px]");
-                $("#side-nav-closure-icon").removeClass("rotate-180").addClass("rotate-0");
-            } else {
-                $("nav").removeClass("-left-[130px]").addClass("left-0");
-                $("#side-nav-closure-icon").removeClass("rotate-0").addClass("rotate-180");
-            }
-        });
-    </script>    
-    <!-- NAVIGATION BAR SCRIPTING -> END  -->
-
+    <script src="assets/js/main.js"></script>
     <!-- TESTIMONY SWIPER SCRIPTING -> START  -->
     <script>
         const swiper = new Swiper('.swiper', {
@@ -625,7 +657,6 @@
         });
     </script>
     <!-- TESTIMONY SWIPER SCRIPTING -> END  -->
-
 
     <!-- SCRIPTING -> END  -->
 
