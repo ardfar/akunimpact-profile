@@ -14,7 +14,7 @@
 
 <body>
     <!-- NAVIGATION BAR: DESKTOP-TABLET -> START  -->
-    <nav class="fixed top-0 -left-[155px] z-20 h-full w-[155px] hidden md:flex flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 nav-glow" id="side-nav">
+    <nav class="fixed top-0 -left-[155px] z-30 h-full w-[155px] hidden md:flex flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 nav-glow" id="side-nav">
 
         <!-- LOGO PLACEMENT  -->
         <div class="w-full h-1/5 p-4 flex items-center justify-center">
@@ -113,9 +113,9 @@
         </div>
         
         <!-- SHOW-HIDE BUTTON  -->
-        <div class="group w-16 h-16 absolute -z-10 flex items-center justify-end top-1/2 -right-8 hover:-right-10 bg-[#4086A2] rounded-xl duration-150 cursor-pointer"
+        <div class="group w-16 h-16 absolute z-[10] flex items-center justify-end top-1/2 -right-8 hover:-right-10 bg-[#4086A2] rounded-xl duration-150 cursor-pointer"
             id="side-nav-closure">
-            <span class="material-symbols-outlined text-4xl p-0 text-white relative rotate-0 duration-200"
+            <span class="material-symbols-outlined text-4xl p-0 text-white relative rotate-0 duration-200  glow"
                 id="side-nav-closure-icon">
                 chevron_right
             </span>
@@ -125,7 +125,7 @@
     <nav class="fixed top-0 -left-full z-20 h-full w-full flex md:hidden flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 nav-glow" id="full-nav">
 
         <!-- LOGO PLACEMENT  -->
-        <div class="w-full h-fit mt-10 p-0 flex flex-row items-center justify-around border-0">
+        <div class="w-[90%] min-h-fit mt-10 py-4 flex flex-row items-center justify-around rounded-2xl bg-[#397891] border-0">
             <a href="index.html" class="w-1/4 h-auto border-0">
                 <img src="assets/images/logos/logo-light.png" alt="" class="w-full h-auto" />
             </a>
@@ -142,13 +142,13 @@
         <!-- MENU CONTENT  -->
         <div class="w-full h-3/5 flex flex-col items-center justify-center gap-y-4 text-white pl-0">
 
-            
-            <div class="h-fit w-fit absolute top-1/2 -translate-y-[50%] -right-[38px] py-4 px-2 rounded-md flex items-center justify-centers bg-[#4086A2]" id="full-nav-closure">
+            <!-- ICON CLOSE -> START -->
+            <div class="h-fit w-fit absolute top-[60%] -translate-y-[50%] -right-[38px] py-4 px-2 rounded-md flex items-center justify-centers bg-[#4086A2] arrow-mobile-nav-glow" id="full-nav-closure">
                 <span class="material-symbols-outlined text-3xl" id="full-nav-closure-icon">
                 chevron_right
                 </span>
             </div>
-            
+            <!-- ICON CLOSE -> END -->
 
             <div class="w-full h-fit pl-2 border-0">
                 <div class="collapsible w-full h-fit flex flex-row items-center justify-start gap-x-2">
@@ -296,17 +296,16 @@
         <div class="flex flex-row flex-wrap justify-center gap-6 text-white my-12 w-full">
 
             <!-- NEUMORPHISM CARD -> START -->
-            <div
-                class="w-[500px] md:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
+            <div class="w-[500px] md:w-8/12 lg:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer px-8 m-3 rounded-xl">
                 <div class="border-0 w-1/5 flex justify-center items-center mb-4">
-                    <span class="material-symbols-outlined text-6xl sm:text-8xl text-white">
+                    <span class="material-symbols-outlined text-6xl sm:text-8xl text-white card-icon-glow">
                         verified_user
                     </span>
                 </div>
 
                 <div class="border-0 mx-2 text-center w-4/5">
                     <div class="mb-4">
-                        <h1 class="underline text-white text-glow text-2xl md:text-3xl">
+                        <h1 class="underline text-white text-glow text-2xl md:text-3xl card-icon-glow">
                             Sistem Transaksi Teraman
                         </h1>
                     </div>
@@ -321,17 +320,16 @@
             <!-- NEUMORPHISM CARD -> END -->
 
             <!-- NEUMORPHISM CARD -> START -->
-            <div
-                class="w-[500px] md:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
+            <div class="w-[500px] md:w-8/12 lg:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer px-8 m-3 rounded-xl">
                 <div class="border-0 w-1/5 flex justify-center items-center mb-4">
-                    <span class="material-symbols-outlined text-6xl sm:text-8xl text-white">
+                    <span class="material-symbols-outlined text-6xl sm:text-8xl text-white card-icon-glow">
                         acute
                     </span>
                 </div>
 
                 <div class="border-0 mx-2 text-center w-4/5">
                     <div class="mb-4">
-                        <h1 class="underline text-white text-glow text-2xl md:text-3xl">
+                        <h1 class="underline text-white text-glow text-2xl md:text-3xl card-icon-glow">
                             Transaksi Cepat
                         </h1>
                     </div>
@@ -345,17 +343,16 @@
             <!-- NEUMORPHISM CARD -> END -->
 
             <!-- NEUMORPHISM CARD -> START -->
-            <div
-                class="w-[500px] md:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
+            <div class="w-[500px] md:w-8/12 lg:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer px-8 m-3 rounded-xl">
                 <div class="border-0 w-1/5 flex justify-center items-center mb-4">
-                    <span class="material-symbols-outlined text-6xl sm:text-8xl text-white">
+                    <span class="material-symbols-outlined text-6xl sm:text-8xl text-white card-icon-glow">
                         handshake
                     </span>
                 </div>
 
                 <div class="border-0 mx-4 text-center w-4/5">
                     <div class="mb-4">
-                        <h1 class="underline text-white text-glow text-2xl md:text-3xl">
+                        <h1 class="underline text-white text-glow text-2xl md:text-3xl card-icon-glow">
                             Transparan dan Berkomitmen
                         </h1>
                     </div>
@@ -370,17 +367,16 @@
             <!-- NEUMORPHISM CARD -> END -->
 
             <!-- NEUMORPHISM CARD -> START -->
-            <div
-                class="w-[500px] md:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-3 rounded-xl">
+            <div class="w-[500px] md:w-8/12 lg:w-2/5 neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer px-8 m-3 rounded-xl">
                 <div class="border-0 w-1/5 flex justify-center items-center mb-4">
-                    <span class="material-symbols-outlined text-6xl sm:text-8xl text-white">
+                    <span class="material-symbols-outlined text-6xl sm:text-8xl text-white card-icon-glow">
                         diversity_2
                     </span>
                 </div>
 
                 <div class="border-0 mx-2 text-center w-4/5">
                     <div class="mb-4">
-                        <h1 class="underline text-white text-glow text-2xl md:text-3xl">
+                        <h1 class="underline text-white text-glow text-2xl md:text-3xl card-icon-glow">
                             Jangkauan Konsumen Luas
                         </h1>
                     </div>
@@ -441,7 +437,7 @@
             </div>
     
             <!-- TESTIMONY SWIPER -> START  -->
-            <div class="swiper w-full h-full border-0">
+            <div class="swiper w-full h-full border-0 rounded-2xl sm:rounded-none testimony-glow">
                 <div class="swiper-wrapper w-full h-full border-0">
     
                     <!-- TESTIMONY CARD -> START  -->
