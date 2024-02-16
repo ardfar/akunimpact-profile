@@ -9,7 +9,7 @@ body {
 }
 
 .glassmorphism-main {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.1px);
@@ -46,7 +46,7 @@ body {
 
 .glow-title {
     color: #fff;
-    text-shadow: 0 0 70px rgb(255, 255, 255);
+    text-shadow: 0 0 70px cyan;
 }
 
 .logo-glow {
@@ -81,38 +81,33 @@ body {
     }
 }
 
-.arrow-testimony {
-    background: rgba(0, 205, 246, 0.5);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4.1px);
-    -webkit-backdrop-filter: blur(4.1px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
 .custom-form input[type="text"],
-.custom-form input[type="email"],
-.custom-form textarea {
-    transition: border-color 0.3s ease-in-out;
-}
+        .custom-form input[type="email"],
+        .custom-form textarea {
+            transition: border-color 0.3s ease-in-out;
+        }
 
-.custom-form input[type="text"]:focus,
-.custom-form input[type="email"]:focus,
-.custom-form textarea:focus {
-    border-color: #4c51bf;
-    box-shadow: 0 0 0 1px #4c51bf;
-}
+        .custom-form input[type="text"]:focus,
+        .custom-form input[type="email"]:focus,
+        .custom-form textarea:focus {
+            border-color: #4c51bf;
+            box-shadow: 0 0 0 1px #4c51bf;
+        }
 
-@media (max-width: 500px) {
-    .testimony-glow {
-        box-shadow: 0 0 30px rgba(255, 255, 255);
-    }
-}
+        .contactPage {
+            background-image: url('../images/backgrounds/bg-contact-kami.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.card-icon-glow {
-    text-shadow: 0 0 30px rgba(255, 255, 255);
-}
-
-.arrow-mobile-nav-glow {
-    box-shadow: 0 0 30px rgba(255, 255, 255);
-}
-          
+        .arrow-testimony {
+            background: #00cdf680;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(4.1px);
+            -webkit-backdrop-filter: blur(4.1px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
