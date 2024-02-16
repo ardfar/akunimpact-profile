@@ -1,0 +1,113 @@
+@font-face {
+    font-family: "sifonn";
+    src: url("../fonts/sifonn-basic.otf");
+}
+
+body {
+    font-family: "sifonn";
+    background-color: #448fad;
+}
+
+.glassmorphism-main {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.1px);
+    -webkit-backdrop-filter: blur(4.1px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glassmorphism-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.1px);
+    -webkit-backdrop-filter: blur(4.1px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.neumorphism-main {
+    background: linear-gradient(145deg, #448fad, #3a7992);
+    box-shadow: 10px 10px 40px #285364,
+        -10px -10px 40px #58b9e0;
+}
+
+.neumorphism-secondary {
+    /* background: linear-gradient(145deg, #002b41, #00334d); */
+    box-shadow:  10px 10px 50px #014568,
+                -10px -10px 50px #014769;
+    margin: 10px;
+}
+
+.glow {
+    color: #fff;
+    text-shadow: 0 0 20px cyan;
+}
+
+.glow-title {
+    color: #fff;
+    text-shadow: 0 0 70px cyan;
+}
+
+.logo-glow {
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.nav-glow {
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@layer utilities {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+    display: none;
+    }
+
+    .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    }
+}
+
+.custom-form input[type="text"],
+        .custom-form input[type="email"],
+        .custom-form textarea {
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .custom-form input[type="text"]:focus,
+        .custom-form input[type="email"]:focus,
+        .custom-form textarea:focus {
+            border-color: #4c51bf;
+            box-shadow: 0 0 0 1px #4c51bf;
+        }
+
+        .contactPage {
+            background-image: url('../images/backgrounds/bg-contact-kami.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-testimony {
+            background: #00cdf680;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(4.1px);
+            -webkit-backdrop-filter: blur(4.1px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
