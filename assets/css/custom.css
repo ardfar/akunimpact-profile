@@ -111,3 +111,14 @@ body {
             -webkit-backdrop-filter: blur(4.1px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
+
+.title-card-glow {
+    text-shadow: 0 0 15px white;
+
+}
+
+@media (max-width: 700px) {
+    .testimony-glow {
+        box-shadow: 0 0 50px white;
+    }
+}

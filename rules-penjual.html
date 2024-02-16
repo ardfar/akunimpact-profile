@@ -10,20 +10,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- NAVIGATION BAR: DESKTOP-TABLET -> START  -->
-    <nav class="fixed top-0 -left-[155px] z-30 h-full w-[155px] hidden md:flex flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 nav-glow" id="side-nav">
-
+    <nav class="fixed top-0 -left-[135px] z-20 h-full w-[135px] hidden md:flex flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 nav-glow"
+        id="side-nav">
         <!-- LOGO PLACEMENT  -->
         <div class="w-full h-1/5 p-4 flex items-center justify-center">
-            <a href="index.html" class="w-full h-auto border-0">
-                <img src="assets/images/logos/logo-light.png" alt="" class="w-full h-auto" />
-            </a>
+            <img src="assets/images/logos/logo-light.png" alt="" class="w-full h-auto" />
         </div>
-        
+
         <!-- MENU CONTENT  -->
-        <div class="w-full h-3/5 flex flex-col items-center justify-center gap-y-6 text-white">
+        <div class="w-full h-3/5 flex flex-col items-center justify-center gap-y-4 text-white">
+            <div class="group">
+                <a href="index.html">
+                    <p class="text-center w-full flex justify-center glow">
+                        <span
+                            class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
+                            home
+                        </span>
+                    </p>
+                    <p class="flex items-center justify-center text-lighter glow">
+                        Beranda
+                    </p>
+                </a>
+            </div>
+
             <div class="group relative flex flex-col w-full">
                 <div class="w-full h-fit glow">
                     <p class="text-center w-full flex justify-center">
@@ -36,19 +49,14 @@
                         Transaksi
                     </p>
                 </div>
-        
-                <div class="absolute z-30 -right-[135px] hidden group-hover:block hover:block w-[145px] min-h-[30px] p-4 bg-[#4086A2] rounded-lg text-center">
-                    <a href="cara-jual.html" class="hover:underline">
-                        Jual Akun
-                    </a>
-        
-                    <a href="cara-beli.html" class="hover:underline">
-                        Beli Akun
-                    </a>
-        
-                    <a href="" class="hover:underline">
-                        RekBer
-                    </a>
+
+                <div
+                    class="absolute z-30 -right-[135px] hidden group-hover:block hover:block w-[145px] min-h-[30px] p-4 bg-[#4086A2] rounded-lg text-center">
+                    <a href="cara-jual.html" class="hover:underline"> Jual Akun </a>
+
+                    <a href="cara-beli.html" class="hover:underline"> Beli Akun </a>
+
+                    <a href="" class="hover:underline"> RekBer </a>
                 </div>
             </div>
 
@@ -60,339 +68,287 @@
                             developer_guide
                         </span>
                     </p>
-                    <p class="flex items-center justify-center text-lighter">
-                        Aturan
-                    </p>
+                    <p class="flex items-center justify-center text-lighter">Aturan</p>
                 </div>
-        
-                <div class="absolute z-30 -right-[135px] hidden group-hover:block hover:block w-[145px] min-h-[30px] p-4 bg-[#4086A2] rounded-lg text-center">
-                    <a href="rules-penjual.html" class="hover:underline">
-                        Penjual
-                    </a>
-        
-                    <a href="rules-pembeli.html" class="hover:underline">
-                        Pembeli
-                    </a>
-        
+
+                <div
+                    class="absolute z-30 -right-[135px] hidden group-hover:block hover:block w-[145px] min-h-[30px] p-4 bg-[#4086A2] rounded-lg text-center">
+                    <a href="rules-penjual.html" class="hover:underline"> Penjual </a>
+
+                    <a href="rules-pembeli.html" class="hover:underline"> Pembeli </a>
                 </div>
             </div>
-            
+
             <div class="group">
-                <a href="">
-                    <p class="text-center w-full flex justify-center glow">
-                        <span
-                            class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
-                            help
-                        </span>
-                    </p>
-                    <p class="flex items-center justify-center text-lighter text-center glow">
-                        Tentang Kami
-                    </p>
-                </a>
-            </div>
-        
-            <div class="group">
-                <a href="./kontak-kami.html">
+                <a href="kontak-kami.html">
                     <p class="text-center w-full flex justify-center glow">
                         <span
                             class="material-symbols-outlined text-4xl px-6 py-1 group-hover:bg-[#30657a] group-hover:scale-[1.1] transition-all duration-200 rounded-lg">
                             headphones
                         </span>
                     </p>
-                    <p class="flex items-center justify-center text-lighter glow">Bantuan</p>
+                    <p class="flex items-center justify-center text-lighter glow">
+                        Bantuan
+                    </p>
                 </a>
             </div>
         </div>
-        
+
         <!-- ACCOUNT ACCESS (LOGIN/LOGOUT)  -->
         <div class="w-full h-1/5 flex items-end justify-center p-4">
-            <button class="w-full h-fit py-2 neumorphism-main text-white text-xl glow rounded-md bg-[#21718f] hover:bg-[#003048]">
+            <button class="w-full h-fit py-2 neumorphism-main text-white text-xl glow rounded-md">
                 Login
             </button>
         </div>
-        
+
         <!-- SHOW-HIDE BUTTON  -->
-        <div class="group w-16 h-16 absolute z-[10] flex items-center justify-end top-1/2 -right-8 hover:-right-10 bg-[#4086A2] rounded-xl duration-150 cursor-pointer"
+        <div class="group w-16 h-16 absolute -z-10 flex items-center justify-end top-1/2 -right-8 hover:-right-10 bg-[#4086A2] rounded-xl duration-150 cursor-pointer"
             id="side-nav-closure">
-            <span class="material-symbols-outlined text-4xl p-0 text-white relative rotate-0 duration-200  glow"
+            <span class="material-symbols-outlined text-4xl p-0 text-white relative rotate-0 duration-200 title-card-glow"
                 id="side-nav-closure-icon">
                 chevron_right
             </span>
         </div>
     </nav>
-    <!-- NAVIGATION BAR: DESKTOP-TABLET -> END  -->    <!-- NAVIGATION BAR: MOBILE -> START  -->
-    <nav class="fixed top-0 -left-full z-20 h-full w-full flex md:hidden flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 nav-glow" id="full-nav">
-
+    <!-- NAVIGATION BAR: DESKTOP-TABLET -> END  -->
+    <!-- NAVIGATION BAR: MOBILE -> START  -->
+    <nav class="fixed top-0 -left-full z-20 h-full w-full flex md:hidden flex-col items-center justify-between bg-[#4086A2] transition-all duration-200 nav-glow"
+        id="full-nav">
         <!-- LOGO PLACEMENT  -->
-        <div class="w-[90%] min-h-fit mt-10 py-4 flex flex-row items-center justify-around rounded-2xl bg-[#397891] border-0">
-            <a href="index.html" class="w-1/4 h-auto border-0">
-                <img src="assets/images/logos/logo-light.png" alt="" class="w-full h-auto" />
-            </a>
+        <div class="w-full h-1/5 p-4 flex items-center justify-evenly">
+            <img src="assets/images/logos/logo-light.png" alt="" class="max-[430px]:w-1/4 w-2/5 h-auto" />
             <div class="w-1/2 flex flex-col justify-center">
-                <h1 class="text-white text-[20px] sm:text-3xl text-left">
-                    AKUNIMPACT
-                </h1>
-                <h2 class="capitalize text-white text-[15px] sm:text-[20px] mt-[10px]">
-                    Tempatnya Jual Beli akun genshin & HSR
-                </h2>
+                <h1 class="text-white max-[430px]:text-[25px] text-2xl text-left">AKUNIMPACT</h1>
+                <h2 class="capitalize text-white max-[430px]:text-[15px] text-sm">Tempatnya Jual Beli akun genshin & HSR</h2>
             </div>
         </div>
-        
-        <!-- MENU CONTENT  -->
-        <div class="w-full h-3/5 flex flex-col items-center justify-center gap-y-4 text-white pl-0">
 
-            <!-- ICON CLOSE -> START -->
-            <div class="h-fit w-fit absolute top-[60%] -translate-y-[50%] -right-[38px] py-4 px-2 rounded-md flex items-center justify-centers bg-[#4086A2] arrow-mobile-nav-glow" id="full-nav-closure">
+        <!-- MENU CONTENT  -->
+        <div class="w-full h-3/5 flex flex-col items-center justify-center gap-y-3 text-white pl-6 px-12">
+            <div class="h-fit w-fit absolute top-1/2 -translate-y-1/2 -right-[38px] py-4 px-2 rounded-md flex items-center justify-centers bg-[#4086A2] glow transition-all duration-200 title-card-glow"
+                id="full-nav-closure">
                 <span class="material-symbols-outlined text-3xl" id="full-nav-closure-icon">
-                chevron_right
+                    chevron_right
                 </span>
             </div>
-            <!-- ICON CLOSE -> END -->
 
-            <div class="w-full h-fit pl-2 border-0">
+            <div class="w-full h-fit bg-[#30657a] p-2 rounded-md glow">
+                <a href="index.html">
+                    <div class="w-full h-fit flex flex-row items-center justify-start gap-x-2">
+                        <span class="material-symbols-outlined text-4xl"> home </span>
+                        <p class="text-2xl pb-2">Beranda</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="w-full h-fit bg-[#30657a] p-2 rounded-md glow">
                 <div class="collapsible w-full h-fit flex flex-row items-center justify-start gap-x-2">
-                    <span
-                        class="material-symbols-outlined text-4xl">
-                        payments
-                    </span>
-                    <p class="text-2xl glow">
-                        Transaksi
-                    </p>
-                    <span class="material-symbols-outlined text-4xl absolute right-0 transition-all duration-150 ease-in-out rotate-0">
+                    <span class="material-symbols-outlined text-4xl"> payments </span>
+                    <p class="text-2xl pb-2">Transaksi</p>
+                    <span class="material-symbols-outlined text-4xl transition-all duration-150 ease-in-out rotate-0">
                         expand_less
                     </span>
                 </div>
-
-                <div class="overflow-hidden max-h-0 transition-all duration-200 ease-out flex flex-col text-center">
-                    <a href="./cara-beli.html" class="text-lg hover:underline py-2 hover:bg-[#003048]">
-                        Beli Akun
-                    </a>
-                    <a href="./cara-jual.html" class="text-lg hover:underline py-2 hover:bg-[#003048]">
-                        Jual Akun
-                    </a>
-                    <a href="" class="text-lg hover:underline py-2 hover:bg-[#003048]">
-                        Rekber
-                    </a>
+                <div class="overflow-hidden max-h-0 transition-all duration-200 ease-out flex flex-col">
+                    <a href="cara-beli.html" class="text-lg pt-2 my-2"> Beli Akun </a>
+                    <a href="cara-jual.html" class="text-lg my-2"> Jual Akun </a>
+                    <a href="" class="text-lg my-2"> Rekber </a>
                 </div>
             </div>
 
-            <div class="w-full h-fit border-0">
+            <div class="w-full h-fit bg-[#30657a] p-2 rounded-md glow">
                 <div class="collapsible w-full h-fit flex flex-row items-center justify-start gap-x-2">
-                    <span
-                        class="material-symbols-outlined text-4xl">
+                    <span class="material-symbols-outlined text-4xl">
                         developer_guide
                     </span>
-                    <p class="text-2xl  glow">
-                        Aturan
-                    </p>
-                    <span class="material-symbols-outlined text-4xl absolute right-0 transition-all duration-150 ease-in-out rotate-0">
+                    <p class="text-2xl pb-2">Aturan</p>
+                    <span class="material-symbols-outlined text-4xl transition-all duration-150 ease-in-out rotate-0">
                         expand_less
                     </span>
                 </div>
-                <div class="overflow-hidden max-h-0 transition-all duration-200 ease-out flex flex-col border-0 text-center">
-                    <a href="./rules-penjual.html" class="text-lg hover:underline py-2 hover:bg-[#003048]">
-                        Penjual
-                    </a>
-                    <a href="./rules-pembeli.html" class="text-lg hover:underline py-2 hover:bg-[#003048]">
-                        Pembeli
-                    </a>
+                <div class="overflow-hidden max-h-0 transition-all duration-200 ease-out flex flex-col">
+                    <a href="rules-penjual.html" class="text-lg pt-2 my-2"> Penjual </a>
+                    <a href="rules-pembeli.html" class="text-lg my-2"> Pembeli </a>
                 </div>
             </div>
 
-            <div class="w-full h-fit">
-                <a href="">
+            <div class="w-full h-fit bg-[#30657a] p-2 rounded-md glow">
+                <a href="kontak-kami.html">
                     <div class="w-full h-fit flex flex-row items-center justify-start gap-x-2">
-                        <span
-                            class="material-symbols-outlined text-4xl">
-                            help
-                        </span>
-                        <p class="text-2xl  glow">
-                            Tentang Kami
-                        </p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="w-full h-fit">
-                <a href="./kontak-kami.html">
-                    <div class="w-full h-fit flex flex-row items-center justify-start gap-x-2">
-                        <span
-                            class="material-symbols-outlined text-4xl">
+                        <span class="material-symbols-outlined text-4xl">
                             headphones
                         </span>
-                        <p class="text-2xl  glow">
-                            Bantuan
-                        </p>
+                        <p class="text-2xl pb-2">Bantuan</p>
                     </div>
                 </a>
             </div>
-
         </div>
-        
+
         <!-- ACCOUNT ACCESS (LOGIN/LOGOUT)  -->
-        <div class="w-full h-1/5 flex items-end justify-center p-8 border-0">
-            <button class="w-fit border-0 h-fit py-2 px-6 bg-[#21718f] text-white text-xl glow rounded-full hover:bg-[#003048]">
+        <div class="w-full h-1/5 flex items-end justify-center p-8">
+            <button class="w-full h-fit py-4 neumorphism-main text-white text-xl glow">
                 Login
             </button>
         </div>
-
     </nav>
     <!-- NAVIGATION BAR: MOBILE -> END  -->
 
 
-        <!-- Rule-Penjual -> START -->
-    <div class="bg-white p-0 shadow-md cursor-default">
-        <div class="border-0 w-full h-1/5 mx-auto py-5 bg-[url('assets/images/backgrounds/bg-rules.jpg')] bg-no-repeat bg-cover bg-center">
-            <div class="max-[400px]:w-1/3 min-[401px]:w-1/6 mx-auto h-full flex items-center justify-center logo-glow rounded-full sm:p-3 mt-12 sm:mt-0 border-0">
-                <img src="assets/images/logos/logo-blue.png" alt="" class="" />
+    <!-- Rule-Penjual -> START -->
+    <div class="bg-white p-0 shadow-md cursor-default border-0">
+        <header class="banner flex items-center justify-center relative w-full md:min-h-[55vh] min-h-[30vh]  bg-[url('assets/images/backgrounds/main.png')] overflow-hidden">
+            <img src="assets/images/backgrounds/wavy-main.svg" alt="" class="absolute w-full bottom-0 border-0" />
+            <div class="w-fit h-fit p-4 md:px-20 px-8 glassmorphism-main flex flex-col justify-center mx-4">
+                <h1 class="md:text-6xl text-[#4086A2] text-center text-4xl border-0">
+                    Rules Penjual
+                </h1>
+                <p class="capitalize w-full text-[#4086A2] text-center md:text-xl text-[15px] border-0 md:my-4 my-2">
+                    Genshin Impact / Honkai Star Rail di akunimpact
+                </p>
             </div>
-
-            <h2 class="text-2xl font-semibold my-4 text-center relative z-10 border-0 p-3 rounded-xl w-fit mx-auto">
-                <span class="bg-clip-text glow">RULES PENJUAL</span>
-            </h2>
-        </div>  
+        </header>
     
         <!-- Rules content section -->
-        <div class="bg-gradient-to-b from-white to-[#4086A2]/70 p-2 sm:p-4 md:p-8 shadow-md">
+        <div class="bg-[#4086A2] p-2 py-20 sm:p-4 md:p-8 shadow-md text-white border-0 mt-[-30px]">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <!-- Rule 1 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">😱</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Harga Yang Jelas</span> 
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Kami menerapkan sistem harga bersih, yang berarti kami memiliki hak untuk menaikkan harga sebelum mengirimkan postingan.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">😱</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Harga Yang Jelas</span> 
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Kami menerapkan sistem harga bersih, yang berarti kami memiliki hak untuk menaikkan harga sebelum mengirimkan postingan.</p>
                 </div>
                 
                 <!-- Rule 2 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🚫</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Tidak Ada Keluhan tentang Harga</span> 
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual tidak berhak mengeluhkan tentang peningkatan harga yang kami terapkan.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🚫</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Tidak Ada Keluhan tentang Harga</span> 
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual tidak berhak mengeluhkan tentang peningkatan harga yang kami terapkan.</p>
                 </div>
                 
                 <!-- Rule 3 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">💰</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Contoh Peningkatan Harga</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Sebagai contoh, jika harga bersih yang disepakati antara penjual dan kami adalah 100k, dan kami memposting akun dengan harga 125k, penjual akan tetap menerima 100k.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">💰</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Contoh Peningkatan Harga</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Sebagai contoh, jika harga bersih yang disepakati antara penjual dan kami adalah 100k, dan kami memposting akun dengan harga 125k, penjual akan tetap menerima 100k.</p>
                 </div>
     
                 <!-- Rule 4 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🆓</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">GRATIS</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Tidak ada biaya tambahan seperti fee nitip atau fee rekber, bahkan repost akun juga gratis.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🆓</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">GRATIS</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Tidak ada biaya tambahan seperti fee nitip atau fee rekber, bahkan repost akun juga gratis.</p>
                 </div>
     
                 <!-- Rule 5 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">📈</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Harga Mengikuti Rekomendasi Kami</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Harga akun yang dijual harus mengikuti rekomendasi yang kami berikan.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">📈</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Harga Mengikuti Rekomendasi Kami</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Harga akun yang dijual harus mengikuti rekomendasi yang kami berikan.</p>
                 </div>
     
                 <!-- Rule 6 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🆔</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Identifikasi Wajib</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual harus menyertakan kartu identitas (KTP/SIM/Kartu Pelajar/Kartu Keluarga) dan selfie dengan kartu identitas serta kertas yang bertuliskan @akunimpact dan tanggal hari ini. Kartu identitas dan wajah tidak boleh disensor.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🆔</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Identifikasi Wajib</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual harus menyertakan kartu identitas (KTP/SIM/Kartu Pelajar/Kartu Keluarga) dan selfie dengan kartu identitas serta kertas yang bertuliskan @akunimpact dan tanggal hari ini. Kartu identitas dan wajah tidak boleh disensor.</p>
                 </div>
     
                 <!-- Rule 7 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🎮</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Screenshot dalam Game</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Mohon kirimkan tangkapan layar dalam game, bukan hanya foto dari kamera.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🎮</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Screenshot dalam Game</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Mohon kirimkan tangkapan layar dalam game, bukan hanya foto dari kamera.</p>
                 </div>
     
                 <!-- Rule 8 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">📱</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Kontak Penjual Rahasia</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Informasi kontak penjual tidak boleh disertakan dalam deskripsi posting.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">📱</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Kontak Penjual Rahasia</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Informasi kontak penjual tidak boleh disertakan dalam deskripsi posting.</p>
                 </div>
     
                 <!-- Rule 9 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🤐</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Komunikasi Terbatas</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual dan pembeli dilarang berkomunikasi tanpa izin dari kami.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🤐</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Komunikasi Terbatas</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual dan pembeli dilarang berkomunikasi tanpa izin dari kami.</p>
                 </div>
     
                 <!-- Rule 10 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🗣️</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Komentar Dilarang</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual dilarang untuk mengomentari postingan mereka sendiri.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🗣️</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Komentar Dilarang</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual dilarang untuk mengomentari postingan mereka sendiri.</p>
                 </div>
     
                 <!-- Rule 11 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🚫</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Laporkan Jika Sudah Terjual di Tempat Lain</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Jika akun telah terjual di tempat lain, harap beri tahu kami untuk menghindari penjualan ganda.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🚫</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Laporkan Jika Sudah Terjual di Tempat Lain</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Jika akun telah terjual di tempat lain, harap beri tahu kami untuk menghindari penjualan ganda.</p>
                 </div>
     
                 <!-- Rule 12 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">✅</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Transaksi Selesai</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Setelah transaksi dikonfirmasi oleh pembeli dan penjual, tanggung jawab kami telah berakhir.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">✅</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Transaksi Selesai</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Setelah transaksi dikonfirmasi oleh pembeli dan penjual, tanggung jawab kami telah berakhir.</p>
                 </div>
     
                 <!-- Rule 13 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">💬</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Tanggapi Pertanyaan Pembeli</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual harus menjawab semua pertanyaan dari pembeli.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">💬</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Tanggapi Pertanyaan Pembeli</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual harus menjawab semua pertanyaan dari pembeli.</p>
                 </div>
     
                 <!-- Rule 14 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🔄</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Pengembalian Akun</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Akun dapat dikembalikan ke penjual jika tidak sesuai dengan informasi yang diberikan.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🔄</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Pengembalian Akun</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Akun dapat dikembalikan ke penjual jika tidak sesuai dengan informasi yang diberikan.</p>
                 </div>
     
                 <!-- Rule 15 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">💬</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Negosiasi Harga</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Harga akun dapat dinegosiasikan, dan jika terlalu tinggi tanpa pembeli, kami akan menurunkan harga sesuai kesepakatan.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">💬</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Negosiasi Harga</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Harga akun dapat dinegosiasikan, dan jika terlalu tinggi tanpa pembeli, kami akan menurunkan harga sesuai kesepakatan.</p>
                 </div>
     
                 <!-- Rule 16 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🔔</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Aktifkan Notifikasi Telegram</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Pastikan notifikasi Telegram diaktifkan, dan berikan minimal satu atau dua media sosial yang dapat dihubungi. Jika tidak ada respon dalam 24 jam, kami berhak membatalkan transaksi.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🔔</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Aktifkan Notifikasi Telegram</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Pastikan notifikasi Telegram diaktifkan, dan berikan minimal satu atau dua media sosial yang dapat dihubungi. Jika tidak ada respon dalam 24 jam, kami berhak membatalkan transaksi.</p>
                 </div>
     
                 <!-- Rule 17 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🔄</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Request Repost</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Repost minimal 2 minggu setelah posting akun sebelumnya.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🔄</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Request Repost</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Repost minimal 2 minggu setelah posting akun sebelumnya.</p>
                 </div>
     
                 <!-- Rule 18 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🔐</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Pengiriman Akun melalui Telegram</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Pengiriman akun akan dilakukan melalui platform Telegram dengan admin sebagai penengah, tanpa membuat grup, tapi komunikasi melalui admin.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🔐</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Pengiriman Akun melalui Telegram</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Pengiriman akun akan dilakukan melalui platform Telegram dengan admin sebagai penengah, tanpa membuat grup, tapi komunikasi melalui admin.</p>
                 </div>
     
                 <!-- Rule 19 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">🛡️</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Perlindungan Akun</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual harus memberikan jaminan bahwa akun yang dijual tidak memiliki riwayat pelanggaran atau sanksi yang signifikan.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">🛡️</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Perlindungan Akun</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Penjual harus memberikan jaminan bahwa akun yang dijual tidak memiliki riwayat pelanggaran atau sanksi yang signifikan.</p>
                 </div>
     
                 <!-- Rule 20 -->
-                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
-                    <span class="text-3xl m-2 text-blue-600 border-0">📉</span>
-                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm">Pemberitahuan Perubahan Harga</span>
-                    <p class="text-gray-800 my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Setelah akun terjual dan uangnya telah ditransfer sesuai postingan, penjual tidak diizinkan untuk mengubah harga lagi.</p>
+                <div class="flex min-[470px]:flex-row flex-col flex-wrap justify-center items-center mb-4 bg-[#4793b1] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 ease-in-out rounded-lg p-4 w-[95%] mx-auto">
+                    <span class="text-3xl m-2 text-blue-600 border-0 title-card-glow">📉</span>
+                    <span class="underline italic border-0 max-w-[70%] text-center min-[505px]:text-left max-[340px]:text-sm title-card-glow">Pemberitahuan Perubahan Harga</span>
+                    <p class="my-2 border-0 w-full text-[15px] sm:text-[17px] text-center">Setelah akun terjual dan uangnya telah ditransfer sesuai postingan, penjual tidak diizinkan untuk mengubah harga lagi.</p>
                 </div>
             </div>
         </div>
@@ -400,107 +356,178 @@
     <!-- Rule-Penjual -> END -->
 
     <!-- SECTION: FOOTER -> START  -->
-    <footer class="w-full h-fit min-h-[30vh] flex flex-row flex-wrap justify-center items-center bg-gradient-to-b from-[#003048] to-black gap-12 p-4 border-0">
+    <footer class="w-full sm:min-h-[30vh] hidden md:flex flex-col bg-gradient-to-b from-[#003048] to-black p-4 mt-[-50px] border-0">
+        <div class="w-full min-h-[30vh] flex flex-row flex-wrap justify-center items-center">
+            <!-- LOGO PLACEMENT  -->
+            <div class="col-span-2 w-fit lg:w-2/6 h-full p-4 flex flex-col sm:flex-row gap-4 justify-center items-center border-0">
+                <div class="w-1/4 h-fit">
+                    <img src="assets/images/logos/logo-light.png" alt="" class="w-full mx-auto" />
+                </div>
+                <div class="w-fit flex flex-col justify-center text-center sm:text-left items-center">
+                    <div class="h-fit">
+                        <h1 class="text-2xl text-white uppercase">akunimpact</h1>
+                        <p class="text-white mt-4 text-[15px] lg:text-[15px]">
+                            Tempatnya Jual/Beli akun Genshin Impact & HSR Terpercaya
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- USEFUL LINKS: START  -->
+            <div class="min-w-fit lg:w-1/6 h-full flex flex-col justify-center items-center text-white p-2 border-0 text-center sm:text-left">
+                <ul class="w-fit">
+                    <li class="pt-2">
+                        <a href="" class="hover:underline">
+                            Jual Akun
+                        </a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="" class="hover:underline">
+                            Beli Akun
+                        </a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="" class="hover:underline">
+                            RekBer Akun
+                        </a>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="min-w-fit md:w-1/6 h-full flex flex-col justify-center text-center sm:text-left items-center text-white p-6 border-0">
+                <ul class="w-fit">
+                    <li class="pt-2">
+                        <a href="" class="hover:underline">
+                            Rules Penjual
+                        </a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="" class="hover:underline">
+                            Rules Pembeli
+                        </a>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="col-span-2 min-w-fit md:w-1/6 h-full flex items-center justify-center md:justify-start text-white p-6 border-0">
+                <ul class="w-fit">
+                    <li class="pt-2 text-center md:text-left">
+                        <a href="" class="hover:underline">
+                            Beranda
+                        </a>
+                    </li>
+                    <li class="pt-2 text-center md:text-left">
+                        <a href="" class="hover:underline">
+                            Tentang Kami
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- USEFUL LINKS: END  -->
+        </div>
+    
+        <!-- SOCIAL MEDIA  -->
+        <div class="w-full h-fit text-white py-4 border-0">
+            <ul class="flex items-center justify-center">
+                <li class="px-6 py-2">
+                    <a href="https://instagram.com/akunimpact" class="flex gap-x-2 justify-center md:justify-end title-card-glow" target="_blank">
+                        <i class="fab fa-instagram text-3xl"></i>
+                    </a>
+                </li>
+                <li class="px-6 py-2 title-card-glow">
+                    <a href="https://wa.me/+6282185222005" class="flex gap-x-2 justify-center md:justify-end title-card-glow" target="_blank">
+                        <i class="fab fa-whatsapp text-3xl"></i>
+                    </a>
+                </li>
+                <li class="px-6 py-2">
+                    <a href="https://t.me/+6282185222005" class="flex gap-x-2 justify-center md:justify-en d title-card-glow" target="_blank">
+                        <i class="fab fa-telegram text-3xl"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>    
+    <!-- SECTION: FOOTER -> END  -->
+
+    <!-- MOBILE: FOOTER -> START  -->
+    <footer class="w-full h-fit lg:h-[30vh] md:hidden bg-gradient-to-b from-[#003048] to-black flex flex-col p-4 mt-[-50px] border-0">
         <!-- LOGO PLACEMENT  -->
-        <div class="col-span-2 w-fit lg:w-2/6 h-full p-4 flex flex-col sm:flex-row gap-4 justify-center items-center border-0">
-            <div class="w-1/4 h-fit">
+        <div class="col-span-2 w-full md:w-2/6 h-full p-4 flex flex-col gap-4 items-center border-0">
+            <div class="w-1/5 h-fit">
                 <img src="assets/images/logos/logo-light.png" alt="" class="w-full mx-auto" />
             </div>
-            <div class="w-fit flex flex-col justify-center text-center sm:text-left items-center">
+            <div class="w-fit flex items-center">
                 <div class="h-fit">
-                    <h1 class="text-2xl text-white uppercase">
+                    <h1 class="text-2xl text-white uppercase text-center">
                         akunimpact
                     </h1>
-                    <p class="text-white mt-4 text-[15px] lg:text-[15px]">
+                    <p class="text-white mt-4 text-center text-[17px]">
                         Tempatnya Jual/Beli akun Genshin Impact & HSR Terpercaya
                     </p>
                 </div>
             </div>
         </div>
     
-        <!-- USEFULL LINKS: START  -->
-        <div class=" min-w-fit lg:w-1/6 h-full flex flex-col justify-center items-center text-white p-2 border-0 text-center sm:text-left">
-            <ul class="w-fit">
-                <li class="pt-2">
-                    <a href="" class="hover:underline">
-                        Jual Akun
-                    </a>
-                </li>
-                <li class="pt-2">
-                    <a href="" class="hover:underline">
-                        Beli Akun
-                    </a>
-                </li>
-                <li class="pt-2">
-                    <a href="" class="hover:underline">
-                        RekBer Akun
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <!-- USEFUL LINKS: START  -->
+        <div class="flex flex-row flex-wrap justify-around items-center min-h-fit w-full py-4 text-[17px] border-0">
+            <div class="min-w-fit h-fit flex items-center text-white p-2 border-0">
+                <ul class="w-fit">
+                    <li class="pt-2">
+                        <a href="" class="hover:underline"> Jual Akun </a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="" class="hover:underline"> Beli Akun </a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="" class="hover:underline"> RekBer Akun </a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="" class="hover:underline"> Rules Penjual </a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="" class="hover:underline"> Rules Pembeli </a>
+                    </li>
+                </ul>
+            </div>
     
-        <div class="min-w-fit md:w-1/6 h-full flex flex-col justify-center text-center sm:text-left items-center text-white p-6 border-0">
-            <ul class="w-fit">
-                <li class="pt-2">
-                    <a href="" class="hover:underline">
-                        Rules Penjual
-                    </a>
-                </li>
-                <li class="pt-2">
-                    <a href="" class="hover:underline">
-                        Rules Pembeli
-                    </a>
-                </li>
-            </ul>
+            <div class="min-w-fit h-fit flex items-start justify-center text-white p-2 border-0">
+                <ul class="min-w-fit">
+                    <li class="pt-2 text-left">
+                        <a href="" class="hover:underline"> Beranda </a>
+                    </li>
+                    <li class="pt-2 text-left">
+                        <a href="" class="hover:underline"> Tentang Kami </a>
+                    </li>
+                    <li class="pt-2 text-left">
+                        <a href="" class="hover:underline"> Kontak Kami </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    
-        <div class="col-span-2 min-w-fit md:w-1/6 h-full flex items-center justify-center md:justify-start text-white p-6 border-0">
-            <ul class="w-fit">
-                <li class="pt-2 text-center md:text-left">
-                    <a href="" class="hover:underline">
-                        Beranda
-                    </a>
-                </li>
-                <li class="pt-2 text-center md:text-left">
-                    <a href="" class="hover:underline">
-                        Tentang Kami
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- USEFULL LINKS: END  -->
+        <!-- USEFUL LINKS: END  -->
     
         <!-- SOCIAL MEDIA  -->
-        <div class="col-span-2 min-w-fit lg:w-1/6 h-full flex items-center justify-center md:justify-end text-white border-0">
-            <ul>
+        <div class="w-full h-fit text-white pb-2 border-0">
+            <ul class="flex items-center justify-center">
                 <li class="px-6 py-2">
-                    <a href="https://instagram.com/akunimpact" class="flex gap-x-2 justify-center md:justify-end" target="_blank">
-                        <p class="hover:underline">
-                            akunimpact
-                        </p>
-                        <img src="assets/images/logos/apps/instagram.png" alt="" class="w-[25px]">
+                    <a href="https://instagram.com/akunimpact" class="flex gap-x-2 justify-center md:justify-end title-card-glow" target="_blank">
+                        <i class="fab fa-instagram text-2xl"></i>
                     </a>
                 </li>
                 <li class="px-6 py-2">
-                    <a href="https://wa.me/+6282185222005" class="flex gap-x-2 justify-center md:justify-end" target="_blank">
-                        <p class="hover:underline">
-                            082185222005
-                        </p>
-                        <img src="assets/images/logos/apps/whatsapp.png" alt="" class="w-[25px]">
+                    <a href="https://wa.me/+6282185222005" class="flex gap-x-2 justify-center md:justify-end title-card-glow" target="_blank">
+                        <i class="fab fa-whatsapp text-2xl"></i>
                     </a>
                 </li>
                 <li class="px-6 py-2">
-                    <a href="https://t.me/+6282185222005" class="flex gap-x-2 justify-center md:justify-end" target="_blank">
-                        <p class="hover:underline">
-                            082185222005
-                        </p>
-                        <img src="assets/images/logos/apps/telegram.png" alt="" class="w-[25px]">
+                    <a href="https://t.me/+6282185222005" class="flex gap-x-2 justify-center md:justify-en d title-card-glow" target="_blank">
+                        <i class="fab fa-telegram text-2xl"></i>
                     </a>
                 </li>
             </ul>
         </div>
     </footer>
-    <!-- SECTION: FOOTER -> END  -->
+    <!-- MOBILE: FOOTER -> END  -->
 
     <!-- SCRIPTING -> START  -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
