@@ -209,9 +209,9 @@
     <!-- HEADER -> END  -->
 
     <!-- CONTAINER: START  -->
-    <section class="w-full min-h-[100vh] bg-[#4086A2] flex flex-col gap-2 items-center py-20 gap-y-10 text-white">
+    <section class="w-full min-h-[100vh] bg-[#4086A2] flex flex-col gap-2 items-center py-20 gap-y-10 text-white relative">
 
-        <div class="neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[80%] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-2 rounded-xl pb-4 md:pb-0">
+        <div class="neumorphism-main relative z-10 border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[80%] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-2 rounded-xl pb-4 md:pb-0">
             <div class="sm:w-1/5 w-[60%] flex justify-center items-center mb-4 border-0">
                 <img src="assets/images/stickers/curious-2.png" alt="" class="w-full h-full">
             </div>
@@ -230,7 +230,7 @@
             </div>
         </div>
 
-        <div class="neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[80%] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-2 rounded-xl pb-4 md:pb-0">
+        <div class="neumorphism-main relative z-10 border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[80%] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-2 rounded-xl pb-4 md:pb-0">
             <div class="sm:w-1/5 w-[60%] flex justify-center items-center mb-4 border-0">
                 <img src="assets/images/stickers/purchased.png" alt="" class="w-full h-auto">
             </div>
@@ -247,7 +247,7 @@
             </div>
         </div>
 
-        <div class="neumorphism-main border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[80%] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-2 rounded-xl pb-4 md:pb-0">
+        <div class="neumorphism-main relative z-10 border-0 flex flex-row justify-center flex-wrap sm:flex-nowrap items-center max-w-[80%] p-2 hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer m-2 rounded-xl pb-4 md:pb-0">
             <div class="sm:w-1/5 w-[60%] flex justify-center items-center mb-4 border-0">
                 <img src="assets/images/stickers/thankyou.png" alt="" class="w-full h-auto">
             </div>
@@ -264,12 +264,37 @@
             </div>
         </div>
 
+        <div class="absolute bottom-0 right-0 left-0 z-0 w-full h-1/2 bg-[url('./assets/images/backgrounds/wavy-1.svg')]"></div>
 
     </section>
     <!-- CONTAINER: END  -->
 
+    <!-- SECTION: CTA -> START  -->
+    <section class="w-full min-h-[50vh] flex flex-col pt-10 pb-[100px] gap-y-10 bg-[#003048] border-0 relative">
+
+        <div class="w-full h-fit flex items-center">
+            <!-- HEADING -> START  -->
+            <div class="w-full h-fit block mt-10 mx-4">
+                <h2 class="capitalize text-white text-2xl sm:text-5xl text-center glow">
+                    mau dapat cuan dari akunmu? 🤑
+                </h2>
+            </div>
+            <!-- HEADING -> END  -->
+        </div>
+
+        <!-- CTA BUTTON: START  -->
+        <div class="w-full h-fit flex flex-row flex-wrap items-center justify-center p-6 gap-x-12 text-center">
+            <a href="https://instagram.com/akunimpact"
+                class="capitalize text-xl text-white neumorphism-secondary px-[30px] md:px-[75px] py-4 rounded-lg hover:scale-105 duration-200 title-card-glow">
+                jual akunmu sekarang
+            </a>
+        </div>
+        <!-- CTA BUTTON: END  -->
+    </section>
+    <!-- SECTION: CTA -> END  -->
+
     <!-- SECTION: FOOTER -> START  -->
-    <footer class="w-full sm:min-h-[30vh] hidden md:flex flex-col bg-gradient-to-b from-[#003048] to-black p-4 mt-[-50px] border-0">
+    <footer class="w-full sm:min-h-[30vh] hidden md:flex flex-col bg-gradient-to-b from-[#003048] to-black p-4 border-0">
         <div class="w-full min-h-[30vh] flex flex-row flex-wrap justify-center items-center">
             <!-- LOGO PLACEMENT  -->
             <div class="col-span-2 w-fit lg:w-2/6 h-full p-4 flex flex-col sm:flex-row gap-4 justify-center items-center border-0">
