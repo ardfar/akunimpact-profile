@@ -123,10 +123,71 @@ body {
     }
 }
 
-/* .rad-t {
-    border-radius: 20px 20px 0 0;
+/* FAQ -> START */
+/* .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    width: 450px;
+  } */
+
+/* .box{
+    width: 100%;
+    background-color: blue;
+    color: #fff;
+    margin-bottom: 12px;
+} */
+/* .box .label_box{
+    display: flex;
+    align-items: center;
+} */
+/* .label_box h1{
+    font-size: 35px;
+    width: 90%;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+} */
+
+.box {
+    border-radius: 10px;
 }
 
-.rad-b {
-    border-radius: 0 0 20px 20px;
-} */
+.label_box span{
+    position: relative;
+}
+.label_box span .line1{
+    width: 3px;
+    height: 16px;
+    background-color: #fff;
+    transition: 0.3s;
+}
+.label_box span .line2{
+    width: 3px;
+    height: 16px;
+    background-color: #fff;
+    position: absolute;
+    top: 0px;
+    /* rotate: 90deg; */
+    transition: 0.3s;
+}
+
+.box .description{
+    padding: 12px;
+    /* font-size: 20px; */
+    background-color: #fcfcfc;
+    color: #000;
+    transition: 0.2s;
+    border-radius: 0 0 10px 10px;
+}
+
+.box .description{
+    padding: 0px;
+    height: 0px;
+    overflow: hidden;
+    background-color: #fcfcfc;
+    color: #000;
+    transition: 0.2s;
+}
+/* FAQ -> END */
