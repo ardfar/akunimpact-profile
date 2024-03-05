@@ -41,8 +41,8 @@ box.forEach((item , index) => {
   if (description.style.height == "0px") {
     line1.style.rotate = "90deg";
     line2.style.rotate = "0deg";
-    description.style.height = description.scrollHeight + 35 + "px";
-    // description.style.height = "auto";
+    // description.style.height = description.scrollHeight + 45 + "px";
+    description.style.height = "auto";
     description.style.padding = "12px";
   }else{
     line1.style.rotate = "90deg";
