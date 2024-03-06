@@ -43,7 +43,7 @@ box.forEach((item , index) => {
     line2.style.rotate = "0deg";
     // description.style.height = description.scrollHeight + 45 + "px";
     description.style.height = "auto";
-    description.style.padding = "12px";
+    description.style.padding = "20px";
   }else{
     line1.style.rotate = "90deg";
     line2.style.rotate = "90deg";
