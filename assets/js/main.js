@@ -24,26 +24,34 @@ $("#full-nav-closure").on("click", () => {
     }
 });
 
-var coll = document.getElementsByClassName("collapsible");
-var i;
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
+// // FAQ JS -> START
 
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-
-    var chevron = $(this).children("span").eq(1)
-
-    if (chevron.hasClass("rotate-0")){
-        chevron.removeClass("rotate-0").addClass("rotate-180")
-    } else {
-        chevron.removeClass("rotate-180").addClass("rotate-0")
-
-    }
-  });
+let box = document.querySelectorAll(".box");
+  
+box.forEach((item , index) => {
+  
+  let description = item.querySelector(".description");
+  let label_box = item.querySelector(".label_box");
+  let line1 = item.querySelector(".line1");
+  let line2 = item.querySelector(".line2");
+  
+  description.style.height = "0px";
+  label_box.onclick = function(){
+  if (description.style.height == "0px") {
+    line1.style.rotate = "90deg";
+    line2.style.rotate = "0deg";
+    // description.style.height = description.scrollHeight + 45 + "px";
+    description.style.height = "auto";
+    description.style.padding = "20px";
+  }else{
+    line1.style.rotate = "90deg";
+    line2.style.rotate = "90deg";
+    description.style.height = "0px";
+    description.style.padding = "0px";
+  }
 }
+
+});
+
+// // FAQ JS -> END
