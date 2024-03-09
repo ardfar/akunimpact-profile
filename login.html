@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AkunImpact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+
+        .loginkontainer {
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            column-gap: 50px;
+
+            background: rgba(66, 136, 163, .65);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(11px);
+            -webkit-backdrop-filter: blur(11px);
+            padding: 25px;
+        }
+
+        .img img {
+            width: 440px;
+        }
+
+        .img {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .formlogin {
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        form {
+            width: 360px;
+
+        }
+
+        form h2 {
+            font-size: 2.9rem;
+            text-transform: uppercase;
+            /* margin: 40px 0; */
+            color: #f0f0f0;
+            text-align: center;
+        }
+
+        .inputdiv {
+            position: relative;
+            display: grid;
+            /* grid-column: auto; */
+            /* grid-template-columns: 7% 93%; */
+            /* grid-template-columns: 27% 93%; */
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            /* margin: 25px 0; */
+            /* padding: 5px 0; */
+            border-bottom: 2px solid #2c6979;
+            /* border: 2px solid white; */
+        }
+
+        .inputdiv::after,
+        .inputdiv::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            width: 50%;
+            height: 2px;
+            background-color: #ffffff;
+            transition: .3s
+        }
+
+        .inputdiv::after {
+            right: 50%;
+        }
+
+        .inputdiv::before {
+            left: 50%;
+        }
+
+        .inputdiv.focus .i i {
+            color: #f0f0f0;
+        }
+
+        .inputdiv.focus div h5 {
+            top: -5px;
+            font-size: 20px;
+        }
+
+        .inputdiv.focus::after,
+        .inputdiv.focus::before {
+            width: 50%;
+        }
+
+        .inputdiv.one {
+            margin-top: 0;
+        }
+
+        .inputdiv.two {
+            margin-bottom: 4px;
+        }
+
+        .i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .i i {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .inputdiv>div {
+            position: relative;
+            height: 45px;
+        }
+
+        .inputdiv>div h5 {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f0f0f0;
+            font-size: 18px;
+            transition: .3s;
+
+        }
+
+        .input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            /* border: none; */
+            /* border: 2px solid white; */
+            border-radius: 30px;
+            outline: none;
+            background: none;
+            /* padding: 0.5rem 0.7rem; */
+            padding: 0;
+            font-size: 1.2rem;
+            color: #f0f0f0;
+
+        }
+
+        @media screen and (max-width:1050px) {
+            .loginkontainer {
+                grid-gap: 5rem;
+
+            }
+        }
+
+        @media screen and (max-width:1000px) {
+            form {
+                width: 290px;
+            }
+
+            form h2 {
+                font-size: 2.4rem;
+                margin: 8px 0;
+            }
+
+            .img img {
+                width: 400px;
+            }
+        }
+
+        @media screen and (max-width:900px) {
+            .img {
+                display: none;
+            }
+
+            .loginkontainer {
+                grid-template-columns: 1fr;
+            }
+
+            .formlogin {
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width:380px) {
+            form {
+                width: 200px;
+            }
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #ffffff;
+            transition: background-color 5000s ease-in-out 0s;
+            box-shadow: inset 0 0 20px 20px rgba(0,0,0,0);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="border-0 bg-[url('assets/images/backgrounds/waive-register.svg')] bg-cover bg-no-repeat min-h-screen w-full flex flex-row-reverse flex-wrap items-center justify-center md:justify-around lg:gap-4">
+
+        <div class="border-0 w-1/4 h-fit hidden md:flex flex-col items-center justify-center gap-4">
+            <img src="assets/images/logos/logo-light.png" alt="" class="border-0 w-full h-full border-0" />
+            <h1 class="text-center text-white text-4xl lg:text-5xl title-card-glow mt-[-70px]">Akunimpact</h1>
+        </div>
+
+        <div class="border-0 w-[95%] md:w-[50%]">
+            <div class="formlogin w-full border-0">
+                <form action="" method="POST" class="w-full glassmorphism-secondary p-6">
+                    <h2 style="padding: 20px 0px">
+                        Login
+                    </h2>
+
+                    <div class="inputdiv one ">
+                        <div class="i">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div>
+                            <h5 class="title-card-glow">Username</h5>
+                            <input class="input" type="text" name="Username" required>
+                        </div>
+                    </div>
+
+                    <div class="inputdiv one ">
+                        <div class="i">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div>
+                            <h5 class="title-card-glow">Email</h5>
+                            <input class="input" type="email" name="email" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="inputdiv two ">
+                        <div class="i">
+                            <i class="bx bxs-lock-alt"></i>
+                        </div>
+                        <div>
+                            <h5 class="title-card-glow">Password</h5>
+                            <input class="input" type="password" name="password" required="">
+                        </div>
+                    </div>
+                    
+                    <div class="w-[60%] sm:w-[40%] mx-auto my-4">
+                        <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Masuk</button>
+                    </div>
+
+                    <p class="mt-12 text-center text-white inline">Belum punya akun? <a href="login.html" class="text-gray-300 hover:text-white hover:title-card-glow hover:underline inline font-extrabold transition-all duration-200 ease-in-out">Daftar</a></p>
+                </form>
+            </div>
+        </div>
+
+    </div>    
+
+    <script>
+        const input = document.querySelectorAll(".input");
+
+        function fungsifoc() {
+            let parent = this.parentNode.parentNode;
+            parent.classList.add('focus');
+        }
+
+        function fungsiblur() {
+            let parent = this.parentNode.parentNode;
+            if (this.value == "") {
+                parent.classList.remove('focus');
+            }
+
+        }
+        input.forEach(input => {
+            input.addEventListener('focus', fungsifoc)
+            input.addEventListener('blur', fungsiblur)
+        })
+    </script>
+
+</body>
+
+</html>
