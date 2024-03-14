@@ -134,10 +134,6 @@ body {
 
 /* FAQ -> START */
 
-.box {
-    border-radius: 10px;
-}
-
 .label_box span{
     position: relative;
 }
