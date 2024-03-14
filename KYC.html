@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KYC page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="flex flex-row overflow-x-auto snap-mandatory snap-x sm:hidden">
+        <!-- SLIDE 0 -> START -->
+        <div class="border-0 min-w-full min-h-screen snap-center flex flex-col items-center">
+            <div class="m-auto border-0 w-full">
+                <h1 class="text-4xl text-white p-2 break-normal text-center mx-auto mt-auto title-card-glow">Welcome To Akunimpact!</h1>
+                
+                <div class="border-0 w-full flex flex-row items-center justify-around gap-4 mt-12">
+                    <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Lewati</button>
+                    <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Lanjut</button>
+                </div>
+            </div>
+        </div>
+        <!-- SLIDE 0 -> END -->
+        
+        <!-- ------------------------------------ -->
+        
+        <!-- SLIDE 1 -> START -->
+        <div class="border-0 min-w-full min-h-screen snap-center flex flex-col items-center">
+            <form class="w-full p-3 md:p-6 mx-auto rounded-xl shadow-lg relative z-10 shrink-0 glassmorphism-secondary my-auto">
+                <h1 class="text-2xl font-bold mb-4 text-center text-white title-card-glow">Daftar</h1>
+
+                <div class="mb-4">
+                    <label for="fullname" class="block text-white">Nama Lengkap</label>
+                    <input type="text" id="fullname" name="fullname" class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded" required placeholder="Nama Lengkap Anda..." style="background-color: transparent;">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-white">No. Handphone (Whatsapp)</label>
+                    <input type="email" id="email" name="email" class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded" required placeholder="Valid/Aktif Email Anda..." style="background-color: transparent;">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-white">Username IG</label>
+                    <input type="password" id="password" name="password" class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded" required placeholder="Password 6 - 8 karakter..." style="background-color: transparent;">
+                </div>
+                <div class="mb-4">
+                    <label for="confirm-password" class="block text-white">Konfirmasi Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded" required placeholder="Ketik ulang password anda..." style="background-color: transparent;">
+                </div>
+                
+                <div class="border-0 w-[100%] sm:w-[40%] mx-auto flex flex-row justify-around items-center">
+                    <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Kembali</button>
+                    <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Lanjut</button>
+                </div>
+            </form>       
+        </div>
+        <!-- SLIDE 1 -> END -->
+        
+        <!-- ------------------------------------ -->
+        
+        <!-- SLIDE 2 -> START -->
+        <div class="border-0 min-w-full min-h-screen snap-center flex flex-col justify-center items-center">
+            <label for="ktp-upload" class="text-center text-white bg-blue-700 p-2 rounded-2xl">
+                Unggah Foto KTP
+            </label>
+            <input type="file" id="ktp-upload" accept="image/*" class="hidden" />
+            <span class="border-0 text-white text-center my-4">Pastikan tidak buram, tidak ada cahaya pantulan, dan jelas terbaca keseluruhan</span>
+
+            <div class="border-0 w-full flex flex-row items-center justify-around gap-4 mt-12">
+                <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Kembali</button>
+                <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Lanjut</button>
+            </div>
+        </div>
+        
+        <!-- SLIDE 2 -> END -->
+        
+        <!-- ------------------------------------ -->
+        
+        <!-- SLIDE 3 -> START -->
+        <div class="border-0 min-w-full min-h-screen snap-center flex flex-col items-center justify-center p-2">
+            <label for="ktp-upload" class="text-center text-white bg-blue-700 p-2 rounded-2xl">
+                Ambil Foto Selfi
+            </label>
+            <input type="file" id="ktp-upload" accept="image/*" class="hidden" />
+            <p class="text-center text-white my-4">Pastikan sedang berada di ruangan dengan cahaya yang cukup dan jelas</p>
+
+            <div class="border-0 w-full flex flex-row items-center justify-around gap-4 mt-12">
+                <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Kembali</button>
+                <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Lanjut</button>
+            </div>            
+        </div>
+        <!-- SLIDE 3 -> END -->
+    </div>
+
+    <script>
+        const input = document.querySelectorAll(".input");
+
+        function fungsifoc() {
+            let parent = this.parentNode.parentNode;
+            parent.classList.add('focus');
+        }
+
+        function fungsiblur() {
+            let parent = this.parentNode.parentNode;
+            if (this.value == "") {
+                parent.classList.remove('focus');
+            }
+
+        }
+        input.forEach(input => {
+            input.addEventListener('focus', fungsifoc)
+            input.addEventListener('blur', fungsiblur)
+        })
+    </script>
+    
+</body>
+</html>
