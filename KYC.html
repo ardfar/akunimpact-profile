@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,91 +9,269 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/custom.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(100%);
+        }
+    </style>
 
 </head>
+
+
 <body>
-    <div class="flex flex-row overflow-x-auto snap-mandatory snap-x sm:hidden">
-        <!-- SLIDE 0 -> START -->
-        <div class="border-0 min-w-full min-h-screen snap-center flex flex-col items-center">
-            <div class="m-auto border-0 w-full">
-                <h1 class="text-4xl text-white p-2 break-normal text-center mx-auto mt-auto title-card-glow">Welcome To Akunimpact!</h1>
-                
-                <div class="border-0 w-full flex flex-row items-center justify-around gap-4 mt-12">
-                    <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Lewati</button>
-                    <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Lanjut</button>
+
+    <section
+        class="relative w-full h-full bg-[url('assets/images/backgrounds/circle-scatter-vertical.svg')] bg-cover bg-center bg-no-repeat p-4">
+
+        <!-- FORMULIR SWIPER -> START  -->
+        <div class="swiper w-full h-screen sm:rounded-none">
+            <div class="swiper-wrapper w-full h-full">
+
+                <!-- WELCOME SLIDE  -->
+                <!-- FORMULIR CARD -> START  -->
+                <div class="swiper-slide w-full h-full flex items-center justify-center">
+                    <!-- SLIDE INNER CONTENT -> START  -->
+                    <div class="w-full h-fit glassmorphism-third py-8 px-4">
+                        <img src="assets/images/stickers/welcome.png" alt="" class="w-3/4 mx-auto">
+                        <h1 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
+                            <span class="text-xl lowercase">
+                                Selamat Datang di
+                            </span>
+                            <br>
+                            AkunImpact
+                        </h1>
+
+                        <div class="border-0 w-full flex flex-row items-center justify-around gap-4 mt-12">
+                            <button type="submit"
+                                class="slide-button next w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md title-card-glow"
+                                style="box-shadow: 0 0 10px white;">Lanjut</button>
+                        </div>
+                    </div>
+                    <!-- SLIDE INNER CONTENT -> END  -->
                 </div>
+                <!-- FORMULIR CARD -> END  -->
+
+                <!-- NOTICE SLIDE  -->
+                <!-- FORMULIR CARD -> START  -->
+                <div class="swiper-slide w-full h-full flex items-center justify-center">
+                    <!-- SLIDE INNER CONTENT -> START  -->
+                    <div class="w-full h-fit glassmorphism-third py-8 px-4">
+                        <img src="assets/images/stickers/curious-2.png" alt="" class="w-1/2 mx-auto">
+                        <h2 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
+                            <span class="text-xl lowercase">
+                                Sebelum memulai proses
+                            </span>
+                            <br>
+                            Verifikasi Diri
+                        </h2>
+
+                        <div class="text-white w-full text-lg flex flex-col gap-y-4 mt-4">
+                            <p>
+                                Pastikan Kamu mempersiapkan hal dibawah ini:
+                            </p>
+
+                            <ol class="list-decimal px-6">
+                                <li>
+                                    KTP / SIM
+                                </li>
+                                <li>
+                                    Kertas
+                                </li>
+                                <li>
+                                    Pulpen
+                                </li>
+                            </ol>
+
+                            <p class="">
+                                Dan pastikan kamu berada ditempat yang cukup cahaya untuk proses pengambilan gambar
+                            </p>
+                        </div>
+
+                        <div class="border-0 w-full flex flex-row items-center justify-between gap-4 mt-12">
+                            <button
+                                class="slide-button prev w-4/5 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md title-card-glow"
+                                style="box-shadow: 0 0 10px white;">Sebelumnya</button>
+                            <button
+                                class="slide-button next w-4/5 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md title-card-glow"
+                                style="box-shadow: 0 0 10px white;">Lanjut</button>
+                        </div>
+                    </div>
+                    <!-- SLIDE INNER CONTENT -> END  -->
+                </div>
+                <!-- FORMULIR CARD -> END  -->
+
+                <!-- FORM SLIDE  -->
+                <!-- FORMULIR CARD -> START  -->
+                <div class="swiper-slide w-full h-full flex items-center justify-center">
+                    <!-- SLIDE INNER CONTENT -> START  -->
+                    <div class="w-full h-fit glassmorphism-third py-8 px-4">
+                        <h2 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
+                            Data Diri
+                        </h2>
+
+                        <div class="text-white w-full text-lg flex flex-col gap-y-4 mt-4">
+                            <div>
+                                <label for="fullname" class="block text-white">Nama Lengkap</label>
+                                <input type="text" id="fullname" name="fullname"
+                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded"
+                                    required placeholder="Nama Lengkapmu" style="background-color: transparent;">
+                            </div>
+                            <div>
+                                <label for="birthday" class="block text-white">Tanggal Lahir</label>
+                                <input type="date" id="birthday" name="birthday"
+                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded"
+                                    required style="background-color: transparent;fill: white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-white">No. Handphone (Whatsapp)</label>
+                                <input type="email" id="email" name="email"
+                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded fill-white"
+                                    required placeholder="Valid/Aktif Emailmu" style="background-color: transparent;">
+                            </div>
+                            <div>
+                                <label for="user_ig" class="block text-white">Username IG</label>
+                                <input type="user_ig" id="user_ig" name="user_ig"
+                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded"
+                                    required placeholder="Username Instagram yang bisa dihubungi"
+                                    style="background-color: transparent;">
+                            </div>
+                        </div>
+
+                        <div class="border-0 w-full flex flex-row items-center justify-between gap-4 mt-12">
+                            <button
+                                class="slide-button prev w-4/5 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md title-card-glow"
+                                style="box-shadow: 0 0 10px white;">Sebelumnya</button>
+                            <button
+                                class="slide-button next w-4/5 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md title-card-glow"
+                                style="box-shadow: 0 0 10px white;">Lanjut</button>
+                        </div>
+                    </div>
+                    <!-- SLIDE INNER CONTENT -> END  -->
+                </div>
+                <!-- FORMULIR CARD -> END  -->
+
+                <!-- KTP SLIDE  -->
+                <!-- FORMULIR CARD -> START  -->
+                <div class="swiper-slide w-full h-full flex items-center justify-center">
+                    <!-- SLIDE INNER CONTENT -> START  -->
+                    <div class="w-full h-fit glassmorphism-third py-8 px-4">
+                        <h2 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
+                            <span class="text-xl lowercase">
+                                Verifikasi
+                            </span>
+                            <br>
+                            KTP/SIM
+                        </h2>
+
+                        <div class="text-white w-full h-fit text-lg flex flex-col gap-y-4 mt-4">
+                            <div>
+                                <video id="video" class="w-[full] aspect-[3/4] object-cover" autoplay></video>
+                                <canvas id="canvas" class="w-[full] aspect-[3/4]" style="display:none;"></canvas>
+                            </div>
+                            <div class="flex flex-row gap-x-4 justify-center">
+                                <button class="bg-white p-4 rounded-full" id="flash">
+                                    <span class="material-symbols-outlined text-black">
+                                        bolt
+                                    </span>
+                                </button>
+                                <button class="bg-white p-4 rounded-full flex flex-row">
+                                    <span class="material-symbols-outlined text-black">
+                                        photo_camera
+                                    </span>
+                                </button>
+                                <button class="bg-white p-4 rounded-full">
+                                    <span class="material-symbols-outlined text-black">
+                                        cached
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border-0 w-full flex flex-row items-center justify-between gap-4 mt-12">
+                            <button
+                                class="slide-button prev w-4/5 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md title-card-glow"
+                                style="box-shadow: 0 0 10px white;">Sebelumnya</button>
+                            <button
+                                class="slide-button next w-4/5 bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md title-card-glow"
+                                style="box-shadow: 0 0 10px white;">Lanjut</button>
+                        </div>
+                    </div>
+                    <!-- SLIDE INNER CONTENT -> END  -->
+                </div>
+                <!-- FORMULIR CARD -> END  -->
             </div>
         </div>
-        <!-- SLIDE 0 -> END -->
-        
-        <!-- ------------------------------------ -->
-        
-        <!-- SLIDE 1 -> START -->
-        <div class="border-0 min-w-full min-h-screen snap-center flex flex-col items-center">
-            <form class="w-full p-3 md:p-6 mx-auto rounded-xl shadow-lg relative z-10 shrink-0 glassmorphism-secondary my-auto">
-                <h1 class="text-2xl font-bold mb-4 text-center text-white title-card-glow">Daftar</h1>
+        <!-- FORMULIR SWIPER -> END  -->
+    </section>
 
-                <div class="mb-4">
-                    <label for="fullname" class="block text-white">Nama Lengkap</label>
-                    <input type="text" id="fullname" name="fullname" class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded" required placeholder="Nama Lengkap Anda..." style="background-color: transparent;">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-white">No. Handphone (Whatsapp)</label>
-                    <input type="email" id="email" name="email" class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded" required placeholder="Valid/Aktif Email Anda..." style="background-color: transparent;">
-                </div>
-                <div class="mb-4">
-                    <label for="password" class="block text-white">Username IG</label>
-                    <input type="password" id="password" name="password" class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded" required placeholder="Password 6 - 8 karakter..." style="background-color: transparent;">
-                </div>
-                <div class="mb-4">
-                    <label for="confirm-password" class="block text-white">Konfirmasi Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded" required placeholder="Ketik ulang password anda..." style="background-color: transparent;">
-                </div>
-                
-                <div class="border-0 w-[100%] sm:w-[40%] mx-auto flex flex-row justify-around items-center">
-                    <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Kembali</button>
-                    <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Lanjut</button>
-                </div>
-            </form>       
-        </div>
-        <!-- SLIDE 1 -> END -->
-        
-        <!-- ------------------------------------ -->
-        
-        <!-- SLIDE 2 -> START -->
-        <div class="border-0 min-w-full min-h-screen snap-center flex flex-col justify-center items-center">
-            <label for="ktp-upload" class="text-center text-white bg-blue-700 p-2 rounded-2xl">
-                Unggah Foto KTP
-            </label>
-            <input type="file" id="ktp-upload" accept="image/*" class="hidden" />
-            <span class="border-0 text-white text-center my-4">Pastikan tidak buram, tidak ada cahaya pantulan, dan jelas terbaca keseluruhan</span>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        let streamOut;
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                var video = document.getElementById('video');
+                streamOut = stream;
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function (err) {
+                console.log("An error occurred: " + err);
+            });
 
-            <div class="border-0 w-full flex flex-row items-center justify-around gap-4 mt-12">
-                <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Kembali</button>
-                <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Lanjut</button>
-            </div>
-        </div>
-        
-        <!-- SLIDE 2 -> END -->
-        
-        <!-- ------------------------------------ -->
-        
-        <!-- SLIDE 3 -> START -->
-        <div class="border-0 min-w-full min-h-screen snap-center flex flex-col items-center justify-center p-2">
-            <label for="ktp-upload" class="text-center text-white bg-blue-700 p-2 rounded-2xl">
-                Ambil Foto Selfi
-            </label>
-            <input type="file" id="ktp-upload" accept="image/*" class="hidden" />
-            <p class="text-center text-white my-4">Pastikan sedang berada di ruangan dengan cahaya yang cukup dan jelas</p>
+        function toggleFlash() {
+            if (!streamOut) return; // Make sure the streamOut is available
 
-            <div class="border-0 w-full flex flex-row items-center justify-around gap-4 mt-12">
-                <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Kembali</button>
-                <button type="submit" class="w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl title-card-glow" style="box-shadow: 0 0 10px white;">Lanjut</button>
-            </div>            
-        </div>
-        <!-- SLIDE 3 -> END -->
-    </div>
+            const videoTracks = streamOut.getVideoTracks();
+
+            // Check if the camera supports turning on the flash
+            if (videoTracks.length > 0 && 'applyConstraints' in videoTracks[0]) {
+                const constraints = {
+                    advanced: [{ torch: true }]
+                };
+
+                // Apply the constraints to activate the flash
+                videoTracks[0].applyConstraints(constraints)
+                    .then(() => {
+                        console.log('Flash activated');
+                    })
+                    .catch(error => {
+                        console.error('Error activating flash: ', error);
+                    });
+            } else {
+                console.warn('Camera does not support turning on the flash.');
+            }
+        }
+
+        const flashButton = document.getElementById('flash');
+        flashButton.addEventListener('click', toggleFlash);
+
+        const swiper = new Swiper(".swiper", {
+            // Optional parameters
+            loop: false,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: ".custom-swiper-next-button",
+                prevEl: ".custom-swiper-previous-button",
+            },
+            on: {
+                click: function (swiper, event) {
+                    // Check if the clicked element is a button with specific class
+                    if (event.target.classList.contains('slide-button')) {
+                        const buttonClass = event.target.classList[1]; // "next" or "prev"
+
+                        if (buttonClass === 'next') {
+                            swiper.slideNext();
+                        } else if (buttonClass === 'prev') {
+                            swiper.slidePrev();
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 
     <script>
         const input = document.querySelectorAll(".input");
@@ -114,6 +293,7 @@
             input.addEventListener('blur', fungsiblur)
         })
     </script>
-    
+
 </body>
+
 </html>
