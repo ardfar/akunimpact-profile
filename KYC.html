@@ -165,6 +165,9 @@
                         </h2>
 
                         <div class="text-white w-full h-fit text-lg flex flex-col gap-y-4 mt-4">
+                            <p class="text-center">
+                                pastikan kamu berada diruangan dengan cahaya yang cukup 
+                            </p>
                             <div>
                                 <video id="video" class="w-[full] aspect-[3/4] object-cover" autoplay></video>
                                 <canvas id="canvas" class="w-[full] aspect-[3/4]" style="display:none;"></canvas>
@@ -212,7 +215,8 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        let currentFacingMode = 'environment';
+
+        // VIDEO STREAMER: START 
         let streamOut;
         navigator.mediaDevices.getUserMedia({ video: true })
             .then(function (stream) {
@@ -224,9 +228,12 @@
             .catch(function (err) {
                 console.log("An error occurred: " + err);
             });
+        // VIDEO STREAMER: END 
 
 
+        // FLASH TOGGLER: START
         let flashToggled = false;
+        const flashButton = document.getElementById('flash');
         function toggleFlash() {
             if (!streamOut) return; // Make sure the streamOut is available
 
@@ -252,10 +259,10 @@
                 console.warn('Camera does not support turning on the flash.');
             }
         }
-
-        const flashButton = document.getElementById('flash');
         flashButton.addEventListener('click', toggleFlash);
+        // FLASH TOGGLER: END
 
+        let currentFacingMode = 'environment';
 
         function switchCamera() {
             if (!streamOut) return; // Make sure the stream is available
@@ -278,7 +285,7 @@
               .catch(error => {
                 console.error('Error switching camera: ', error);
               });
-          }
+        }
 
         const switchCam = document.getElementById('switch');
         switchCam.addEventListener('click', switchCamera);
