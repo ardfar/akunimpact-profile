@@ -225,15 +225,19 @@
                 console.log("An error occurred: " + err);
             });
 
+
+        let flashToggled = false;
         function toggleFlash() {
             if (!streamOut) return; // Make sure the streamOut is available
 
             const videoTracks = streamOut.getVideoTracks();
 
+            flashToggled = flashToggled == true ? false : true;
+
             // Check if the camera supports turning on the flash
             if (videoTracks.length > 0 && 'applyConstraints' in videoTracks[0]) {
                 const constraints = {
-                    torch: true
+                    torch: flashToggled
                 };
 
                 // Apply the constraints to activate the flash
