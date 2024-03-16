@@ -180,7 +180,7 @@
                                         photo_camera
                                     </span>
                                 </button>
-                                <button class="bg-white p-4 rounded-full">
+                                <button class="bg-white p-4 rounded-full" id="switch">
                                     <span class="material-symbols-outlined text-black">
                                         cached
                                     </span>
@@ -209,6 +209,7 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        let currentFacingMode = 'environment';
         let streamOut;
         navigator.mediaDevices.getUserMedia({ video: true })
             .then(function (stream) {
@@ -247,6 +248,33 @@
 
         const flashButton = document.getElementById('flash');
         flashButton.addEventListener('click', toggleFlash);
+
+
+        function switchCamera() {
+            if (!streamOut) return; // Make sure the stream is available
+          
+            // Toggle the currentFacingMode variable between 'environment' and 'user'
+            currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+          
+            // Access the camera with the updated facing mode
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: currentFacingMode } })
+              .then(mediaStream => {
+                // Stop the previous stream
+                streamOut.getTracks().forEach(track => {
+                  track.stop();
+                });
+          
+                // Update the video element with the new stream
+                document.getElementById('video').srcObject = mediaStream;
+                streamOut = mediaStream;
+              })
+              .catch(error => {
+                console.error('Error switching camera: ', error);
+              });
+          }
+
+        const switchCam = document.getElementById('switch');
+        switchCam.addEventListener('click', switchCamera);
 
         const swiper = new Swiper(".swiper", {
             // Optional parameters
