@@ -229,7 +229,7 @@
             // Check if the camera supports turning on the flash
             if (videoTracks.length > 0 && 'applyConstraints' in videoTracks[0]) {
                 const constraints = {
-                    advanced: [{ torch: true }]
+                    torch: true
                 };
 
                 // Apply the constraints to activate the flash
