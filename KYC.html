@@ -14,6 +14,16 @@
         input[type="date"]::-webkit-calendar-picker-indicator {
             filter: invert(100%);
         }
+
+        .gradient-background {
+            background: linear-gradient(
+                to bottom,
+                #003048 0%,
+                transparent 50%,
+                #003048 100%
+            );
+        }
+        
     </style>
 
 </head>
@@ -22,17 +32,21 @@
 <body>
 
     <section
-        class="relative w-full h-full bg-[url('assets/images/backgrounds/circle-scatter-vertical.svg')] bg-cover bg-center bg-no-repeat p-4">
+        class="relative w-full h-full ">
+
+        <!-- BG IMAGE LINEAR GRADIENT -->
+        <div class="absolute w-full h-full gradient-background z-10"></div>
+        <div class="absolute w-full h-full bg-[url('assets/images/backgrounds/bg-waves-big.png')] bg-center bg-cover bg-no-repeat z-0 opacity-10"></div>
 
         <!-- FORMULIR SWIPER -> START  -->
-        <div class="swiper w-full h-screen sm:rounded-none">
+        <div class="swiper w-full h-screen sm:rounded-none p-4 z-20">
             <div class="swiper-wrapper w-full h-full">
 
                 <!-- WELCOME SLIDE  -->
                 <!-- FORMULIR CARD -> START  -->
-                <div class="swiper-slide w-full h-full flex items-center justify-center">
+                <div class="swiper-slide w-full h-full flex items-center justify-center ">
                     <!-- SLIDE INNER CONTENT -> START  -->
-                    <div class="w-full h-fit glassmorphism-third py-8 px-4">
+                    <div class="w-full h-fit py-8 px-4">
                         <img src="assets/images/stickers/welcome.png" alt="" class="w-3/4 mx-auto">
                         <h1 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
                             <span class="text-xl lowercase">
@@ -44,8 +58,9 @@
 
                         <div class="border-0 w-full flex flex-row items-center justify-around gap-4 mt-12">
                             <button type="submit"
-                                class="slide-button next w-[30%] bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md title-card-glow"
-                                style="box-shadow: 0 0 10px white;">Lanjut</button>
+                                class="slide-button next w-[30%] neumorphism-secondary bg-[#003048] text-white px-4 py-2 rounded-md">
+                                Lanjut
+                            </button>
                         </div>
                     </div>
                     <!-- SLIDE INNER CONTENT -> END  -->
@@ -56,7 +71,7 @@
                 <!-- FORMULIR CARD -> START  -->
                 <div class="swiper-slide w-full h-full flex items-center justify-center">
                     <!-- SLIDE INNER CONTENT -> START  -->
-                    <div class="w-full h-fit glassmorphism-third py-8 px-4">
+                    <div class="w-full h-fit py-8 px-4">
                         <img src="assets/images/stickers/curious-2.png" alt="" class="w-1/2 mx-auto">
                         <h2 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
                             <span class="text-xl lowercase">
@@ -105,7 +120,7 @@
                 <!-- FORMULIR CARD -> START  -->
                 <div class="swiper-slide w-full h-full flex items-center justify-center">
                     <!-- SLIDE INNER CONTENT -> START  -->
-                    <div class="w-full h-fit glassmorphism-third py-8 px-4">
+                    <div class="w-full h-fit py-8 px-4">
                         <h2 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
                             Data Diri
                         </h2>
@@ -155,7 +170,7 @@
                 <!-- FORMULIR CARD -> START  -->
                 <div class="swiper-slide w-full h-full flex items-center justify-center">
                     <!-- SLIDE INNER CONTENT -> START  -->
-                    <div class="w-full h-fit glassmorphism-third py-8 px-4">
+                    <div class="w-full h-fit py-8 px-4">
                         <h2 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
                             <span class="text-xl lowercase">
                                 Verifikasi
@@ -166,14 +181,14 @@
 
                         <div class="text-white w-full h-fit text-lg flex flex-col gap-y-4 mt-4">
                             <p class="text-center">
-                                pastikan kamu berada diruangan dengan cahaya yang cukup 
+                                pastikan kamu berada diruangan dengan cahaya yang cukup
                             </p>
                             <div>
-                                <video id="video" class="w-[full] aspect-[3/4] object-cover" autoplay></video>
-                                <canvas id="canvas" class="w-[full] aspect-[3/4]" style="display:none;"></canvas>
+                                <video id="video-id" class="w-[full] aspect-[3/4] object-cover" autoplay></video>
+                                <canvas id="canvas-id" class="w-[full] aspect-[3/4]" style="display:none;"></canvas>
                             </div>
                             <div class="flex flex-row gap-x-4 justify-center">
-                                <button class="flex items-center bg-white p-4 rounded-full" id="flash">
+                                <button class="flex items-center bg-white p-4 rounded-full" id="flash-id">
                                     <span class="material-symbols-outlined text-black">
                                         bolt
                                     </span>
@@ -186,7 +201,7 @@
                                         Ambil Foto
                                     </span>
                                 </button>
-                                <button class="flex items-center bg-white p-4 rounded-full" id="switch">
+                                <button class="flex items-center bg-white p-4 rounded-full" id="switch-id">
                                     <span class="material-symbols-outlined text-black">
                                         cached
                                     </span>
@@ -216,80 +231,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
 
-        // VIDEO STREAMER: START 
-        let streamOut;
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-                var video = document.getElementById('video');
-                streamOut = stream;
-                video.srcObject = stream;
-                video.play();
-            })
-            .catch(function (err) {
-                console.log("An error occurred: " + err);
-            });
-        // VIDEO STREAMER: END 
-
-
-        // FLASH TOGGLER: START
-        let flashToggled = false;
-        const flashButton = document.getElementById('flash');
-        function toggleFlash() {
-            if (!streamOut) return; // Make sure the streamOut is available
-
-            const videoTracks = streamOut.getVideoTracks();
-
-            flashToggled = flashToggled == true ? false : true;
-
-            // Check if the camera supports turning on the flash
-            if (videoTracks.length > 0 && 'applyConstraints' in videoTracks[0]) {
-                const constraints = {
-                    torch: flashToggled
-                };
-
-                // Apply the constraints to activate the flash
-                videoTracks[0].applyConstraints(constraints)
-                    .then(() => {
-                        console.log('Flash activated');
-                    })
-                    .catch(error => {
-                        console.error('Error activating flash: ', error);
-                    });
-            } else {
-                console.warn('Camera does not support turning on the flash.');
-            }
-        }
-        flashButton.addEventListener('click', toggleFlash);
-        // FLASH TOGGLER: END
-
-        let currentFacingMode = 'environment';
-
-        function switchCamera() {
-            if (!streamOut) return; // Make sure the stream is available
-          
-            // Toggle the currentFacingMode variable between 'environment' and 'user'
-            currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
-          
-            // Access the camera with the updated facing mode
-            navigator.mediaDevices.getUserMedia({ video: { facingMode: currentFacingMode } })
-              .then(mediaStream => {
-                // Stop the previous stream
-                streamOut.getTracks().forEach(track => {
-                  track.stop();
-                });
-          
-                // Update the video element with the new stream
-                document.getElementById('video').srcObject = mediaStream;
-                streamOut = mediaStream;
-              })
-              .catch(error => {
-                console.error('Error switching camera: ', error);
-              });
-        }
-
-        const switchCam = document.getElementById('switch');
-        switchCam.addEventListener('click', switchCamera);
-
         const swiper = new Swiper(".swiper", {
             // Optional parameters
             loop: false,
@@ -310,6 +251,98 @@
                             swiper.slidePrev();
                         }
                     }
+                },
+
+                slideChange: function (swiper, event) {
+                    let activeIndex = swiper.activeIndex
+                    let part;
+
+                    switch (activeIndex) {
+                        case 3:
+                            part = "id";
+                            break;
+                        case 4:
+                            part = "selfie"
+                    }
+
+                    if (activeIndex > 2) {
+                        // VIDEO STREAMER: START 
+                        let streamOut;
+                        let videoDisplay = document.getElementById('video-' + part)
+                        navigator.mediaDevices.getUserMedia({ video: true })
+                            .then(function (stream) {
+                                var video = videoDisplay;
+                                streamOut = stream;
+                                video.srcObject = stream;
+                                video.play();
+                            })
+                            .catch(function (err) {
+                                console.log("An error occurred: " + err);
+                            });
+                        // VIDEO STREAMER: END 
+
+
+                        // FLASH TOGGLER: START
+                        let flashToggled = false;
+                        const flashButton = document.getElementById('flash-' + part);
+                        function toggleFlash() {
+                            if (!streamOut) return; // Make sure the streamOut is available
+
+                            const videoTracks = streamOut.getVideoTracks();
+
+                            flashToggled = flashToggled == true ? false : true;
+
+                            // Check if the camera supports turning on the flash
+                            if (videoTracks.length > 0 && 'applyConstraints' in videoTracks[0]) {
+                                const constraints = {
+                                    torch: flashToggled
+                                };
+
+                                // Apply the constraints to activate the flash
+                                videoTracks[0].applyConstraints(constraints)
+                                    .then(() => {
+                                        console.log('Flash activated');
+                                    })
+                                    .catch(error => {
+                                        console.error('Error activating flash: ', error);
+                                    });
+                            } else {
+                                console.warn('Camera does not support turning on the flash.');
+                            }
+                        }
+                        flashButton.addEventListener('click', toggleFlash);
+                        // FLASH TOGGLER: END
+
+                        //CHANGE CAM: START 
+                        let currentFacingMode = 'environment';
+                        const switchCam = document.getElementById('switch-' + part);
+                        function switchCamera() {
+                            if (!streamOut) return; // Make sure the stream is available
+
+                            // Toggle the currentFacingMode variable between 'environment' and 'user'
+                            currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+
+                            // Access the camera with the updated facing mode
+                            navigator.mediaDevices.getUserMedia({ video: { facingMode: currentFacingMode } })
+                                .then(mediaStream => {
+                                    // Stop the previous stream
+                                    streamOut.getTracks().forEach(track => {
+                                        track.stop();
+                                    });
+
+                                    // Update the video element with the new stream
+                                    document.getElementById('video').srcObject = mediaStream;
+                                    streamOut = mediaStream;
+                                })
+                                .catch(error => {
+                                    console.error('Error switching camera: ', error);
+                                });
+                        }
+                        switchCam.addEventListener('click', switchCamera);
+                        //CHANGE CAM: END 
+                    }
+
+
                 }
             }
         });

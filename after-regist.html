@@ -11,21 +11,29 @@
     <link rel="stylesheet" href="assets/css/custom.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
+    <style>
+        .gradient-background {
+            background: linear-gradient(
+                to bottom,
+                #003048 0%,
+                transparent 50%,
+                #003048 100%
+            );
+        }
+    </style>
 
 </head>
 
 <body>
     
-    <section class="flex flex-col justify-center items-center gap-y-4 bg-[url('assets/images/backgrounds/wave-stacked-vertical.svg')] bg-center bg-cover bg-no-repeat min-h-screen w-full">
-        <!-- <div class="border-0 w-full md:w-1/4 h-fit flex flex-col items-center justify-center gap-4">
-            <img src="assets/images/logos/logo-light.png" alt="" class="mb-10 md:mb-0 w-[150px] md:w-[300px] h-full border-0" />
-    
-            <h1 class="text-center text-white text-4xl lg:text-5xl title-card-glow mt-[-70px]">Akunimpact</h1>
-        </div> -->
+    <section class="relative flex flex-col justify-center items-center gap-y-4 min-h-screen w-full">
+        <!-- BG IMAGE LINEAR GRADIENT -->
+        <div class="absolute w-full h-full gradient-background z-10"></div>
+        <div class="absolute w-full h-full bg-[url('assets/images/backgrounds/bg-waves-big.png')] bg-center bg-cover bg-no-repeat z-0 opacity-10"></div>
 
-        <img src="assets/images/stickers/thankyou.png" alt="" class="w-[300px] md:w-[350px] mx-auto " />
+        <img src="assets/images/stickers/thankyou.png" alt="" class="w-[300px] md:w-[325px] mx-auto  z-20" />
     
-        <div class="glassmorphism-third p-0 lg:px-20 py-5 border-0 rounded-lg flex flex-col gap-y-8 w-[85%] lg:w-1/2">
+        <div class="glassmorphism-third p-0 lg:px-20 py-5 border-0 rounded-lg flex flex-col gap-y-8 w-[85%] lg:w-1/2 z-20">
             
             <h1 class="text-4xl text-white text-center">
                 Registrasi Berhasil
@@ -36,14 +44,14 @@
         </div>
     
     
-        <div class="glassmorphism-third px-4 py-5 border-0 rounded-lg w-[85%] lg:w-3/4 flex flex-col gap-4">
+        <div class="glassmorphism-third px-4 py-5 border-0 rounded-lg w-[85%] lg:w-3/4 flex flex-col gap-4 z-20">
             <p class="text-lg text-white text-center capitalize">
                 Atau kamu bisa lanjut proses KYC (verifikasi data diri) untuk bisa mulai berjualan akun di AkunImpact
             </p>
 
             <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
                 <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login Saja</a>
-                <a href="#" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Lanjut KYC</a>
+                <a href="#" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Lanjut KYC (Belum Tersedia)</a>
             </div>
         </div>
     </section>
