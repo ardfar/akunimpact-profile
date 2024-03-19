@@ -338,7 +338,7 @@
                                     });
 
                                     // Update the video element with the new stream
-                                    document.getElementById('video').srcObject = mediaStream;
+                                    document.getElementById('video-' + part).srcObject = mediaStream;
                                     streamOut = mediaStream;
                                 })
                                 .catch(error => {
