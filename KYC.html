@@ -16,14 +16,11 @@
         }
 
         .gradient-background {
-            background: linear-gradient(
-                to bottom,
-                #003048 0%,
-                transparent 50%,
-                #003048 100%
-            );
+            background: linear-gradient(to bottom,
+                    #003048 0%,
+                    transparent 50%,
+                    #003048 100%);
         }
-        
     </style>
 
 </head>
@@ -31,12 +28,13 @@
 
 <body>
 
-    <section
-        class="relative w-full h-full ">
+    <section class="relative w-full h-full ">
 
         <!-- BG IMAGE LINEAR GRADIENT -->
         <div class="absolute w-full h-full gradient-background z-10"></div>
-        <div class="absolute w-full h-full bg-[url('assets/images/backgrounds/bg-waves-big.png')] bg-center bg-cover bg-no-repeat z-0 opacity-10"></div>
+        <div
+            class="absolute w-full h-full bg-[url('assets/images/backgrounds/bg-waves-big.png')] bg-center bg-cover bg-no-repeat z-0 opacity-10">
+        </div>
 
         <!-- FORMULIR SWIPER -> START  -->
         <div class="swiper w-full h-screen sm:rounded-none p-4 z-20">
@@ -64,7 +62,7 @@
                         </div>
                     </div>
                     <!-- SLIDE INNER CONTENT -> END  -->
-                </div>                
+                </div>
                 <!-- FORMULIR CARD -> END  -->
 
                 <!-- NOTICE SLIDE  -->
@@ -173,8 +171,8 @@
                 <!-- KTP SLIDE  -->
                 <!-- FORMULIR CARD -> START  -->
                 <div class="swiper-slide w-full h-full flex items-center justify-center">
-                    <!-- SLIDE INNER CONTENT -> START  -->
-                    <div class="w-full h-fit py-8 px-4">
+                    <!-- SLIDE INNER CONTENT - CAM -> START  -->
+                    <div class="w-full h-fit py-8 px-4" id="inner-id-cam">
                         <h2 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
                             <span class="text-xl lowercase">
                                 Verifikasi
@@ -188,9 +186,11 @@
                                 pastikan kamu berada diruangan dengan cahaya yang cukup
                             </p>
                             <div class="relative">
-                                <video id="video-id" class="w-[full] aspect-[3/4] object-cover" autoplay></video>
-                                <canvas id="canvas-id" class="w-[full] aspect-[3/4]" style="display:none;"></canvas>
-                                <img src="assets/images/overlay/ktp.png" class="w-[full] aspect-[3/4] absolute z-10 top-0 left-0" alt="" srcset="">
+                                <video id="video-id" class="w-full aspect-[3/4] object-cover" autoplay></video>
+                                <canvas id="canvas-id" style="display:none;"></canvas>
+                                <img src="assets/images/overlay/ktp.png"
+                                    class="w-[full] aspect-[3/4] absolute z-10 top-0 left-0 hidden" alt="" srcset=""
+                                    id="ktp-overlay">
                             </div>
                             <div class="flex flex-row gap-x-4 justify-center">
                                 <button class="flex items-center bg-white p-4 rounded-full" id="flash-id">
@@ -198,7 +198,8 @@
                                         bolt
                                     </span>
                                 </button>
-                                <button class="bg-white p-4 rounded-full flex flex-row gap-x-4 text-black items-center">
+                                <button class="bg-white p-4 rounded-full flex flex-row gap-x-4 text-black items-center"
+                                    id="capture-id">
                                     <span class="material-symbols-outlined text-black">
                                         photo_camera
                                     </span>
@@ -225,9 +226,37 @@
                             </button>
                         </div>
                     </div>
-                    <!-- SLIDE INNER CONTENT -> END  -->
+                    <!-- SLIDE INNER CONTENT - CAM -> END  -->
+
+                    <!-- SLIDE INNER CONTENT - PREV -> START  -->
+                    <div class="w-full h-fit py-8 px-4 hidden" id="inner-id-prev">
+
+                        <div class="text-white w-full h-fit text-lg flex flex-col gap-y-4 mt-4">
+                            <p class="text-center">
+                                Apakah gambar sudah terlihat dengan jelas dan terfokuskan?
+                            </p>
+                            <div class="relative w-full aspect-[3/4]">
+                                <input type="file" name="captured-id" id="captured-id" hidden>
+                                <img class="w-[full] absolute z-10 top-0 left-0 w-full aspect-[3/4]" id="preview-captured-id">
+                            </div>
+                            <div class="flex flex-row gap-x-4 justify-center">
+                                <button class="bg-white p-4 rounded-full flex flex-row gap-x-4 text-black items-center"
+                                    id="retake-id">
+                                    <span class="material-symbols-outlined text-black">
+                                        cached
+                                    </span>
+                                    <span class="mt-1">
+                                        Ambil Ulang Foto
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SLIDE INNER CONTENT - PREV -> END -->
                 </div>
                 <!-- FORMULIR CARD -> END  -->
+
+
             </div>
         </div>
         <!-- FORMULIR SWIPER -> END  -->
@@ -263,6 +292,7 @@
                 slideChange: function (swiper, event) {
                     let activeIndex = swiper.activeIndex
                     let part;
+                    let streamOut;
 
                     switch (activeIndex) {
                         case 3:
@@ -275,13 +305,29 @@
                     if (activeIndex > 2) {
                         // VIDEO STREAMER: START 
                         let streamOut;
+                        let orWidth, orHeight;
                         let videoDisplay = document.getElementById('video-' + part)
+
+                        videoDisplay.addEventListener('loadedmetadata', function() {
+                            // Original video width
+                            orWidth = this.naturalWidth;
+                            // Original video height
+                            orHeight = this.naturalHeight;
+                      
+                            console.log('Original width:', orWidth);
+                            console.log('Original height:', orHeight);
+                      
+                            document.getElementById("ktp-overlay").style.display = "block";
+                          });
+                        
                         navigator.mediaDevices.getUserMedia({ video: true })
                             .then(function (stream) {
                                 var video = videoDisplay;
                                 streamOut = stream;
                                 video.srcObject = stream;
                                 video.play();
+
+                                document.getElementById("ktp-overlay").style.display = "block"
                             })
                             .catch(function (err) {
                                 console.log("An error occurred: " + err);
@@ -347,9 +393,51 @@
                         }
                         switchCam.addEventListener('click', switchCamera);
                         //CHANGE CAM: END 
+
+                        document.getElementById('capture-' + part).addEventListener('click', function () {
+
+                            // Switch Part
+                            document.getElementById("inner-id-cam").style.display = "none"
+                            document.getElementById("inner-id-prev").style.display = "block"
+
+                            var canvas = document.getElementById('canvas-' + part);
+                            var video = document.getElementById('video-' + part);
+
+                            canvas.height = video.videoHeight
+                            canvas.width = (3/4) * video.videoHeight
+
+                            console.log(canvas.width , canvas.height)
+                            console.log(video.videoWidth , video.videoHeight)
+
+                            sx = Math.floor((video.videoWidth - canvas.width) / 2)
+
+                            canvas.getContext('2d').drawImage(video ,sx,0, canvas.width, canvas.height,0, 0, canvas.width, canvas.height);
+
+                            // convert to Blob (async)
+                            canvas.toBlob((blob) => {
+                                const file = new File([blob], "mycanvas.png");
+                                const dT = new DataTransfer();
+                                dT.items.add(file);
+                                document.getElementById("captured-" + part).files = dT.files;
+
+                                var url = window.URL.createObjectURL(file)
+
+                                document.getElementById("preview-captured-" + part).setAttribute("src", url)
+                            });
+
+                        });
+
+                        document.getElementById('retake-' + part).addEventListener('click', function () {
+
+                            // Switch Part
+                            document.getElementById("inner-id-cam").style.display = "block"
+                            document.getElementById("inner-id-prev").style.display = "none"
+
+                            document.getElementById("captured-" + part).files = null
+                            document.getElementById("preview-captured-" + part).removeAttribute("src")
+
+                        });
                     }
-
-
                 }
             }
         });
@@ -376,6 +464,12 @@
         })
     </script>
 
+    <div class="hidden">
+        <p><strong>Fitur Baru</strong></p><br>
+        <p>1. Pembuatan sistem lupa password (2,4, 240)</p><br>
+
+        <p><strong>Perbaikan</strong></p><br>
+    </div>
 </body>
 
 </html>
