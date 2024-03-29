@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AkunImpact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 1px;
+        }
+    
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+    
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+    
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+    
+    
+</head>
+<body>
+
+    <div class="bg-[url('assets/images/backgrounds/main.png')] bg-cover bg-no-repeat min-w-screen min-h-screen cursor-default border-0 border-green-400 p-0">
+        <div class="bg-gradient-to-b from-white via-white/60 to-white bg-cover bg-no-repeat max-w-fit min-h-screen flex flex-col items-center">
+
+            <div class="border-0 border-red-800 w-fit min-h-screen flex flex-col items-center rounded-2xl my-12" >
+
+                <div class="border-0 max-w-[90%] flex flex-row justify-center sm:justify-around items-center w-screen overflow-x-auto">
+                    <button class="border-4 min-w-[180px] sm:w-[10%] border-gray-300 py-2 px-3 text-black rounded-3xl">Profile</button>
+                    
+                    <div class="min-w-[200px] hidden sm:flex border-0 flex-row gap-x-2 mx-2">
+                        <button class="bg-cyan-500 hidden sm:block py-2 px-3 text-white rounded-3xl min-w-[180px]">KYC</button>
+                        <button class="bg-cyan-500 hidden sm:block py-2 px-3 text-white rounded-3xl min-w-[180px]">Ganti Password</button>
+                        <button class="bg-red-600 hidden sm:block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sign Out</button>                
+                    </div>
+                </div>
+        
+                <div class="border-0 w-[80%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4">
+                    <!-- Left/Top side -> START -->
+                    <div class="border-4 col-span-1 lg:col-span-1 sm:col-span-2 rounded-3xl min-w-[100%] min-h-fit bg-white mx-auto">
+                        <div class="border-4 rounded-2xl w-3/4 mx-auto mt-4 mb-8 relative">
+                            <img src="assets/images/stickers/curious-2.png" class="border-0 w-full" alt="" />
+                            <i class="fas fa-check-circle text-5xl sm:text-6xl lg:text-7xl text-cyan-500 absolute right-[-20px] top-[80%] sm:top-[80%]"></i>
+                        </div>
+
+
+                        <h1 class="font-extrabold text-3xl mx-auto text-cyan-400 text-center">Reza Rahardian</h1>
+                
+                        <div class="border-0 w-[90%] sm:w-3/4 mx-auto my-4">
+                            <p><i class="fas fa-envelope font-extrabold"></i> reza@akunimpact.com</p>
+                            <p><i class="fab fa-whatsapp font-extrabold"></i> 081234557890</p>
+                            <p><i class="fas fa-hashtag font-extrabold"></i> Xxx - xxx - xxx</p>
+                        </div>
+                    </div>
+                    <!-- Left/Top side -> END -->
+                
+                    <!-- Right/Bottom side -> START -->
+                    <div class="border-4 col-span-1 sm:col-span-2 md:col-span-2 p-3 rounded-3xl bg-white">
+                        <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                            <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                                <h1 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Welcome, Reza!</span><br>Have a nice day</h1>
+
+                                <div class="mt-2">
+                                    <button class="bg-cyan-500 my-1 py-1 px-3 text-white rounded-3xl min-w-[80px]">KYC</button>
+                                    <button class="bg-cyan-500 my-1 py-1 px-3 text-white rounded-3xl min-w-[130px]">Ganti Password</button>
+                                </div>
+                            </div>
+                
+                            <i class="fas fa-edit text-4xl sm:text-3xl rounded-full bg-cyan-500 p-3 text-white cursor-pointer snap-center mx-16 sm:mx-4 hidden sm:block"></i>
+                        </div>        
+                
+                        <div class="border-0 my-12 flex flex-col gap-y-4 relative">
+                            <h2>Nama: <span></span></h2>
+                            <h2>Email: <span></span></h2>
+                            <h2>Foto Profile: <span></span></h2>
+                            <h2>No. Telepon: <span></span></h2>
+                            <h2>Status KYC: <span></span></h2>
+                            <h2>Kode Referal: <span></span></h2>
+
+                            <div class="block sm:hidden border-0 text-center mt-12 mb-[-50px]">
+                                <i class="fas fa-edit text-4xl sm:text-3xl rounded-full bg-cyan-500 p-3 text-white cursor-pointer"></i>
+                            </div>
+                        </div>                              
+                    </div>
+                    <!-- Right/Bottom side -> END -->
+
+                    <button class="bg-red-600 block sm:hidden py-2 px-3 text-white rounded-3xl min-w-[180px]">Sign Out</button> 
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
