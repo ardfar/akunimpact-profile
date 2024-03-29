@@ -408,6 +408,22 @@
                             break;
                     }
 
+                    function video_streamer(videoDisplay)
+                    {
+                        navigator.mediaDevices.getUserMedia({ video: true })
+                            .then(function (stream) {
+                                var video = videoDisplay;
+                                streamOut = stream;
+                                video.srcObject = streamOut; 
+                                video.play();
+
+                                document.getElementById("ktp-overlay").style.display = "block"
+                            })
+                            .catch(function (err) {
+                                console.log("An error occurred: " + err);
+                            });
+                    }
+
                     if (activeIndex > 2) {
                         // VIDEO STREAMER: START 
                         let orWidth, orHeight;
@@ -427,18 +443,7 @@
 
                         if (document.getElementById("captured-" + part).files.length == 0)
                         {
-                            navigator.mediaDevices.getUserMedia({ video: true })
-                            .then(function (stream) {
-                                var video = videoDisplay;
-                                streamOut = stream;
-                                video.srcObject = streamOut; 
-                                video.play();
-
-                                document.getElementById("ktp-overlay").style.display = "block"
-                            })
-                            .catch(function (err) {
-                                console.log("An error occurred: " + err);
-                            });
+                            video_streamer(videoDisplay)
                         }
                         // VIDEO STREAMER: END 
 
@@ -545,8 +550,11 @@
                             document.getElementById("inner-" + part + "-cam").style.display = "block"
                             document.getElementById("inner-" + part + "-prev").style.display = "none"
 
-                            document.getElementById("captured-" + part).files = null
+                            document.getElementById("captured-" + part).value = null
                             document.getElementById("preview-captured-" + part).removeAttribute("src")
+
+
+                            video_streamer(videoDisplay)
 
                         });
                     }
