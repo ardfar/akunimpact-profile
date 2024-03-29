@@ -215,15 +215,11 @@
                             </div>
                         </div>
 
-                        <div class="border-0 w-full flex flex-row items-center justify-between gap-4 mt-12">
+                        <div class="border-0 w-full flex flex-row items-center justify-center gap-4 mt-12">
                             <button type="submit"
                                 class="slide-button prev w-1/2 neumorphism-secondary bg-[#003048] text-white px-4 py-2 rounded-md">
                                 Sebelumnya
-                            </button>
-                            <button type="submit"
-                                class="slide-button next w-1/2 neumorphism-secondary bg-[#003048] text-white px-4 py-2 rounded-md">
-                                Lanjut
-                            </button>
+                            </button>   
                         </div>
                     </div>
                     <!-- SLIDE INNER CONTENT - CAM -> END  -->
@@ -233,7 +229,7 @@
 
                         <div class="text-white w-full h-fit text-lg flex flex-col gap-y-4 mt-4">
                             <p class="text-center">
-                                Apakah gambar sudah terlihat dengan jelas dan terfokuskan?
+                                Apakah KTP/SIM sudah terlihat dengan jelas dan tidak blur?
                             </p>
                             <div class="relative w-full aspect-[3/4]">
                                 <input type="file" name="captured-id" id="captured-id" hidden>
@@ -246,8 +242,19 @@
                                         cached
                                     </span>
                                     <span class="mt-1">
-                                        Ambil Ulang Foto
+                                        Foto Ulang
                                     </span>
+                                </button>
+                            </div>
+
+                            <div class="border-0 w-full flex flex-row items-center justify-between gap-4 mt-12">
+                                <button type="submit"
+                                    class="slide-button prev w-1/2 neumorphism-secondary bg-[#003048] text-white px-4 py-2 rounded-md">
+                                    Sebelumnya
+                                </button>
+                                <button type="submit"
+                                    class="slide-button next w-1/2 neumorphism-secondary bg-[#003048] text-white px-4 py-2 rounded-md">
+                                    Lanjut
                                 </button>
                             </div>
                         </div>
@@ -256,7 +263,97 @@
                 </div>
                 <!-- FORMULIR CARD -> END  -->
 
+                <!-- Selfie SLIDE  -->
+                <!-- FORMULIR CARD -> START  -->
+                <div class="swiper-slide w-full h-full flex items-center justify-center">
+                    <!-- SLIDE INNER CONTENT - CAM -> START  -->
+                    <div class="w-full h-fit py-8 px-4" id="inner-selfie-cam">
+                        <h2 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
+                            <span class="text-xl lowercase">
+                                Selfie dengan kertas bertuliskan
+                            </span>
+                            <br>
+                            AkunImpact
+                        </h2>
 
+                        <div class="text-white w-full h-fit text-lg flex flex-col gap-y-4 mt-4">
+                            <p class="text-center">
+                                silahkan selfie dengan kertas bertuliskan AkunImpact dan tanggal pada saat ini
+                            </p>
+                            <div class="relative">
+                                <video id="video-selfie" class="w-full aspect-[3/4] object-cover" autoplay></video>
+                                <canvas id="canvas-selfie" style="display:none;"></canvas>
+                            </div>
+                            <div class="flex flex-row gap-x-4 justify-center">
+                                <button class="flex items-center bg-white p-4 rounded-full" id="flash-selfie">
+                                    <span class="material-symbols-outlined text-black">
+                                        bolt
+                                    </span>
+                                </button>
+                                <button class="bg-white p-4 rounded-full flex flex-row gap-x-4 text-black items-center"
+                                    id="capture-selfie">
+                                    <span class="material-symbols-outlined text-black">
+                                        photo_camera
+                                    </span>
+                                    <span class="mt-1">
+                                        Ambil Foto
+                                    </span>
+                                </button>
+                                <button class="flex items-center bg-white p-4 rounded-full" id="switch-selfie">
+                                    <span class="material-symbols-outlined text-black">
+                                        cached
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="border-0 w-full flex flex-row items-center justify-center gap-4 mt-12">
+                            <button type="submit"
+                                class="slide-button prev w-1/2 neumorphism-secondary bg-[#003048] text-white px-4 py-2 rounded-md">
+                                Sebelumnya
+                            </button>   
+                        </div>
+                    </div>
+                    <!-- SLIDE INNER CONTENT - CAM -> END  -->
+
+                    <!-- SLIDE INNER CONTENT - PREV -> START  -->
+                    <div class="w-full h-fit py-8 px-4 hidden" id="inner-selfie-prev">
+
+                        <div class="text-white w-full h-fit text-lg flex flex-col gap-y-4 mt-4">
+                            <p class="text-center">
+                                Apakah selfie sudah terlihat dengan jelas tanpa buram?
+                            </p>
+                            <div class="relative w-full aspect-[3/4]">
+                                <input type="file" name="captured-selfie" id="captured-selfie" hidden>
+                                <img class="w-[full] absolute z-10 top-0 left-0 w-full aspect-[3/4]" id="preview-captured-selfie">
+                            </div>
+                            <div class="flex flex-row gap-x-4 justify-center">
+                                <button class="bg-white p-4 rounded-full flex flex-row gap-x-4 text-black items-center"
+                                    id="retake-selfie">
+                                    <span class="material-symbols-outlined text-black">
+                                        cached
+                                    </span>
+                                    <span class="mt-1">
+                                        Foto Ulang
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="border-0 w-full flex flex-row items-center justify-between gap-4 mt-12">
+                                <button type="submit"
+                                    class="slide-button prev w-1/2 neumorphism-secondary bg-[#003048] text-white px-4 py-2 rounded-md">
+                                    Sebelumnya
+                                </button>
+                                <button type="submit"
+                                    class="slide-button next w-1/2 neumorphism-secondary bg-[#003048] text-white px-4 py-2 rounded-md">
+                                    Lanjut
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SLIDE INNER CONTENT - PREV -> END -->
+                </div>
+                <!-- FORMULIR CARD -> END  -->
             </div>
         </div>
         <!-- FORMULIR SWIPER -> END  -->
@@ -266,6 +363,8 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+
+        var streamOut
 
         const swiper = new Swiper(".swiper", {
             // Optional parameters
@@ -292,7 +391,6 @@
                 slideChange: function (swiper, event) {
                     let activeIndex = swiper.activeIndex
                     let part;
-                    let streamOut;
 
                     switch (activeIndex) {
                         case 3:
@@ -300,11 +398,18 @@
                             break;
                         case 4:
                             part = "selfie"
+                            break;
+                        default:
+                            if (streamOut) {
+                                streamOut.getTracks().forEach(track => {
+                                    track.stop();
+                                });
+                            }
+                            break;
                     }
 
                     if (activeIndex > 2) {
                         // VIDEO STREAMER: START 
-                        let streamOut;
                         let orWidth, orHeight;
                         let videoDisplay = document.getElementById('video-' + part)
 
@@ -319,12 +424,14 @@
                       
                             document.getElementById("ktp-overlay").style.display = "block";
                           });
-                        
-                        navigator.mediaDevices.getUserMedia({ video: true })
+
+                        if (document.getElementById("captured-" + part).files.length == 0)
+                        {
+                            navigator.mediaDevices.getUserMedia({ video: true })
                             .then(function (stream) {
                                 var video = videoDisplay;
                                 streamOut = stream;
-                                video.srcObject = stream;
+                                video.srcObject = streamOut; 
                                 video.play();
 
                                 document.getElementById("ktp-overlay").style.display = "block"
@@ -332,8 +439,8 @@
                             .catch(function (err) {
                                 console.log("An error occurred: " + err);
                             });
+                        }
                         // VIDEO STREAMER: END 
-
 
                         // FLASH TOGGLER: START
                         let flashToggled = false;
@@ -397,8 +504,8 @@
                         document.getElementById('capture-' + part).addEventListener('click', function () {
 
                             // Switch Part
-                            document.getElementById("inner-id-cam").style.display = "none"
-                            document.getElementById("inner-id-prev").style.display = "block"
+                            document.getElementById("inner-" + part + "-cam").style.display = "none"
+                            document.getElementById("inner-" + part + "-prev").style.display = "block"
 
                             var canvas = document.getElementById('canvas-' + part);
                             var video = document.getElementById('video-' + part);
@@ -425,13 +532,18 @@
                                 document.getElementById("preview-captured-" + part).setAttribute("src", url)
                             });
 
+                            streamOut.getTracks().forEach(track => {
+                                track.stop();
+                            });
+
                         });
+                        
 
                         document.getElementById('retake-' + part).addEventListener('click', function () {
 
                             // Switch Part
-                            document.getElementById("inner-id-cam").style.display = "block"
-                            document.getElementById("inner-id-prev").style.display = "none"
+                            document.getElementById("inner-" + part + "-cam").style.display = "block"
+                            document.getElementById("inner-" + part + "-prev").style.display = "none"
 
                             document.getElementById("captured-" + part).files = null
                             document.getElementById("preview-captured-" + part).removeAttribute("src")
