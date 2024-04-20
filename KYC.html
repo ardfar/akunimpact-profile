@@ -21,6 +21,8 @@
                     transparent 50%,
                     #003048 100%);
         }
+
+
     </style>
 
 </head>
@@ -28,7 +30,7 @@
 
 <body>
 
-    <section class="relative w-full h-full ">
+    <section class="relative w-full h-full md:hidden">
 
         <!-- BG IMAGE LINEAR GRADIENT -->
         <div class="absolute w-full h-full gradient-background z-10"></div>
@@ -129,26 +131,26 @@
                             <div>
                                 <label for="fullname" class="block text-white">Nama Lengkap</label>
                                 <input type="text" id="fullname" name="fullname"
-                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded"
-                                    required placeholder="Nama Lengkapmu" style="background-color: transparent;">
+                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded outline-none"
+                                    required placeholder="Agus Doe" style="background-color: transparent;">
                             </div>
                             <div>
                                 <label for="birthday" class="block text-white">Tanggal Lahir</label>
                                 <input type="date" id="birthday" name="birthday"
-                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded"
+                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded outline-none"
                                     required style="background-color: transparent;fill: white">
                             </div>
                             <div>
-                                <label for="email" class="block text-white">No. Handphone (Whatsapp)</label>
-                                <input type="email" id="email" name="email"
-                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded fill-white"
-                                    required placeholder="Valid/Aktif Emailmu" style="background-color: transparent;">
+                                <label for="whatsapp" class="block text-white">No. Handphone (Whatsapp)</label>
+                                <input type="number" id="whatsapp" name="whatsapp"
+                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded outline-none fill-white"
+                                    required placeholder="62895xxxxxxxx" style="background-color: transparent;">
                             </div>
                             <div>
-                                <label for="user_ig" class="block text-white">Username IG</label>
-                                <input type="user_ig" id="user_ig" name="user_ig"
-                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded"
-                                    required placeholder="Username Instagram yang bisa dihubungi"
+                                <label for="ig" class="block text-white">Username IG</label>
+                                <input type="text" id="ig" name="ig"
+                                    class="input w-full px-3 py-2 border-b-2 placeholder:text-gray-300 text-white rounded outline-none"
+                                    required placeholder="someone"
                                     style="background-color: transparent;">
                             </div>
                         </div>
@@ -354,14 +356,111 @@
                     <!-- SLIDE INNER CONTENT - PREV -> END -->
                 </div>
                 <!-- FORMULIR CARD -> END  -->
+
+                
+                <!-- VALIDATION SLIDE  -->
+                <!-- FORMULIR CARD -> START  -->
+                <div class="swiper-slide w-full h-full flex items-center justify-center">
+                    <!-- SLIDE INNER CONTENT -> START  -->
+                    <div class="w-full h-fit py-8 px-4 block">
+                        <h2 class="text-5xl text-white p-2 break-normal text-center title-card-glow capitalize">
+                            <span class="text-xl lowercase">
+                                Validasi Permintaan
+                            </span>
+                            <br>
+                            KYC
+                        </h2>
+
+                        <div class="text-white w-full text-lg flex flex-col gap-y-4 mt-8">
+                            <div>
+                                <p for="fullname" class="text-center text-md glow">Nama Lengkap</p>
+                                <p class="text-center text-2xl tracking-wide mt-2" id="fullname_val">
+                                    Farras Arrafi
+                                </p>
+                            </div>
+                            <div>
+                                <p for="fullname" class="text-center text-md glow">Tanggal Lahir</p>
+                                <p class="text-center text-2xl tracking-wide mt-2" id="birthday_val">
+                                    09 September 2004
+                                </p>
+                            </div>
+                            <div>
+                                <p for="fullname" class="text-center text-md glow">No. Whatsapp</p>
+                                <p class="text-center text-2xl tracking-wide mt-2" id="whatsapp_val">
+                                    0895-3150-3505
+                                </p>
+                            </div>
+                            <div>
+                                <p for="fullname" class="text-center text-md glow">Username IG</p>
+                                <p class="text-center text-2xl tracking-wide mt-2" id="ig_val">
+                                    @aradenta_fareast
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="border-0 w-full flex flex-row items-center justify-between mt-12">
+                            <button type="submit"
+                                class="w-full neumorphism-secondary bg-[#003048] text-white px-4 py-2 rounded-md">
+                                Kirim
+                            </button>
+                        </div>
+                        <div class="border-0 w-full flex flex-row items-center justify-center">
+                            <button type="submit"
+                                class="slide-button prev w-fit neumorphism-secondary bg-[#003048] text-white px-4 py-2 rounded-md">
+                                Kembali
+                            </button>
+                        </div>
+                    </div>
+                    <!-- SLIDE INNER CONTENT -> END  -->
+                </div>
+                <!-- FORMULIR CARD -> END  -->
+                
             </div>
         </div>
         <!-- FORMULIR SWIPER -> END  -->
     </section>
 
+    <section class="w-full h-screen relative hidden md:block">
+        <div class="w-fit h-fit absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <img src="http://akunimpact.com/images/stickers/curious-2.png" alt=""
+            class="w-[300px] md:w-[325px] mx-auto  z-20" />
+
+            <h1 class="text-4xl text-white text-center">
+                Maaf, Proses KYC hanya bisa dilakukan di HP
+            </h1>
+        </div>
+    </section>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- handle Validation Form  -->
+    <script>
+        function check_val()
+        {
+            res = true;
+            ["fullname", "birthday", "whatsapp", "ig"].forEach(element => {
+                if (document.getElementById(element).value == "")
+                {
+                    res = false
+                    return
+                }
+            })
+
+            return res
+        }
+
+        function review_form()
+        {
+            document.getElementById("fullname_val").textContent = document.getElementById("fullname").value
+            document.getElementById("birthday_val").textContent = document.getElementById("birthday").value
+            document.getElementById("whatsapp_val").textContent = document.getElementById("whatsapp").value
+            document.getElementById("ig_val").textContent = document.getElementById("ig").value
+        }
+    </script>
+
+    <!-- Handle Camera Function  -->
     <script>
 
         var streamOut
@@ -381,6 +480,16 @@
                         const buttonClass = event.target.classList[1]; // "next" or "prev"
 
                         if (buttonClass === 'next') {
+
+                            if (swiper.activeIndex == 2)
+                            {
+                                if (!check_val())
+                                {
+                                    alert("Mohon Lengkapi data dirimu sebelum mengambil gambar.")
+                                    return
+                                }
+                            }
+
                             swiper.slideNext();
                         } else if (buttonClass === 'prev') {
                             swiper.slidePrev();
@@ -395,9 +504,13 @@
                     switch (activeIndex) {
                         case 3:
                             part = "id";
+                            document.getElementById("ktp-overlay").style.display = "block"
                             break;
                         case 4:
                             part = "selfie"
+                            break;
+                        case 5:
+                            review_form()
                             break;
                         default:
                             if (streamOut) {
@@ -416,15 +529,13 @@
                                 streamOut = stream;
                                 video.srcObject = streamOut; 
                                 video.play();
-
-                                document.getElementById("ktp-overlay").style.display = "block"
                             })
                             .catch(function (err) {
                                 console.log("An error occurred: " + err);
                             });
                     }
 
-                    if (activeIndex > 2) {
+                    if (part == "id" || part == "selfie") {
                         // VIDEO STREAMER: START 
                         let orWidth, orHeight;
                         let videoDisplay = document.getElementById('video-' + part)
@@ -437,21 +548,20 @@
                       
                             console.log('Original width:', orWidth);
                             console.log('Original height:', orHeight);
-                      
-                            document.getElementById("ktp-overlay").style.display = "block";
                           });
 
                         if (document.getElementById("captured-" + part).files.length == 0)
                         {
                             video_streamer(videoDisplay)
                         }
+
                         // VIDEO STREAMER: END 
 
                         // FLASH TOGGLER: START
                         let flashToggled = false;
                         const flashButton = document.getElementById('flash-' + part);
                         function toggleFlash() {
-                            if (!streamOut) return; // Make sure the streamOut is available
+                            if (!streamOut) return;
 
                             const videoTracks = streamOut.getVideoTracks();
 
@@ -543,7 +653,7 @@
 
                         });
                         
-
+                        //RETAKE HANDLER
                         document.getElementById('retake-' + part).addEventListener('click', function () {
 
                             // Switch Part
@@ -559,29 +669,10 @@
                         });
                     }
                 }
+            
+
             }
         });
-    </script>
-
-    <script>
-        const input = document.querySelectorAll(".input");
-
-        function fungsifoc() {
-            let parent = this.parentNode.parentNode;
-            parent.classList.add('focus');
-        }
-
-        function fungsiblur() {
-            let parent = this.parentNode.parentNode;
-            if (this.value == "") {
-                parent.classList.remove('focus');
-            }
-
-        }
-        input.forEach(input => {
-            input.addEventListener('focus', fungsifoc)
-            input.addEventListener('blur', fungsiblur)
-        })
     </script>
 
     <div class="hidden">
