@@ -1,0 +1,2 @@
+_5-star lightcone_:
+https://github.com/Mantan21/HSR-Warp-Simulator/tree/master/src/images/light-cones/full-art/5star

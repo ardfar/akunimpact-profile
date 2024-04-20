@@ -1,0 +1,5 @@
+_Additional Item (Oneiric Shard, special pass, regular pass)_:
+https://github.com/Mantan21/HSR-Warp-Simulator/tree/master/src/images/utils
+
+_Supply pass_:
+https://honkai-star-rail.fandom.com/wiki/Express_Supply_Pass?file=Daily+Express+Supply+Pass+Icon.png
