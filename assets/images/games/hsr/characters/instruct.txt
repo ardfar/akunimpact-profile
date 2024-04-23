@@ -1,2 +1,0 @@
-_5-star character_:
-https://github.com/Mantan21/HSR-Warp-Simulator/tree/master/src/images/characters/closeup/5star
