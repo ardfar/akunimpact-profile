@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AkunImpact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .hsr-card {
+            height: auto;
+        }
+
+        .hsr-card.selected::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.3) 100%); /* Gold gradient */
+            border-radius: 0.5rem; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body class="p-8 bg-gray-700">
+    <div id="hsr-cards-container" class="flex flex-wrap justify-center gap-8"></div>
+
+    <script>
+        const characters = {
+            "acheron.webp": "Acheron",
+            "argenti.webp": "Argenti",
+            "aventurine.webp": "Aventurine",
+            "bailu.webp": "Bailu",
+            "black-swan.webp": "Black Swan",
+            "blade.webp": "Blade",
+            "bronya.webp": "Bronya",
+            "clara.webp": "Clara",
+            "dr-ratio.webp": "Dr. Ratio",
+            "fu-xuan.webp": "Fu Xuan",
+            "gepard.webp": "Gepard",
+            "himeko.webp": "Himeko",
+            "huohuo.webp": "Huohuo",
+            "imbibitor-lunae.webp": "Imbibitor Lunae",
+            "jing-yuan.webp": "Jing Yuan",
+            "jingliu.webp": "Jingliu",
+            "kafka.webp": "Kafka",
+            "luocha.webp": "Luocha",
+            "ruan-mei.webp": "Ruan Mei",
+            "seele.webp": "Seele",
+            "silver-wolf.webp": "Silver Wolf",
+            "sparkle.webp": "Sparkle",
+            "topaz.webp": "Topaz",
+            "welt.webp": "Welt",
+            "yanqing.webp": "Yanqing"
+        };
+
+        // Function to create a card element for each image
+        function createCard(filename, characterName) {
+            const cardContainer = document.getElementById("hsr-cards-container");
+
+            const card = document.createElement("div");
+            card.classList.add("hsr-card", "bg-gray-900", "text-white", "rounded-lg", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+            card.onclick = function() { toggleSelected(this); };
+
+            const imageContainer = document.createElement("div");
+            imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "border-0", "border-red-500");
+            const image = document.createElement("img");
+            image.src = `assets/images/games/hsr/characters/${filename}`;
+            image.alt = "Character Image";
+            image.classList.add("w-3/4", "rounded-full");
+            imageContainer.appendChild(image);
+
+            const footer = document.createElement("div");
+            footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]", "absolute", "bottom-0");
+            const title = document.createElement("h1");
+            title.classList.add("font-bold", "text-xl", "text-center");
+            title.textContent = characterName;
+            footer.appendChild(title);
+
+            card.appendChild(imageContainer);
+            card.appendChild(footer);
+
+            cardContainer.appendChild(card);
+        }
+
+        // Function to toggle the 'selected' class on click
+        function toggleSelected(card) {
+            card.classList.toggle('selected');
+        }
+
+        // Create cards for each character when the page loads
+        window.onload = function() {
+            for (const [filename, characterName] of Object.entries(characters)) {
+                createCard(filename, characterName);
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AkunImpact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        .genshin-card {
+            position: relative;
+        }
+
+        .genshin-card.selected::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1) 0%, rgba(0, 255, 68, 0.5) 100%); /* Gold gradient */
+            border-radius: 0.5rem; /* Adjust as needed */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-500">
+    <div id="imageContainer" class="flex flex-wrap justify-center">
+        <!-- Images will be dynamically added here -->
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        const characters = {
+            'albedo.webp': 'Albedo',
+            'alhaitham.webp': 'Alhaitham',
+            'arataki-itto.webp': 'Arataki Itto',
+            'baizhu.webp': 'Baizhu',
+            'chiori.webp': 'Chiori',
+            'cyno.webp': 'Cyno',
+            'dehya.webp': 'Dehya',
+            'diluc.webp': 'Diluc',
+            'eula.webp': 'Eula',
+            'furina.webp': 'Furina',
+            'ganyu.webp': 'Ganyu',
+            'hu-tao.webp': 'Hu Tao',
+            'jean.webp': 'Jean',
+            'kaedehara-kazuha.webp': 'Kaedehara Kazuha',
+            'kamisato-ayaka.webp': 'Kamisato Ayaka',
+            'kamisato-ayato.webp': 'Kamisato Ayato',
+            'keqing.webp': 'Keqing',
+            'klee.webp': 'Klee',
+            'lyney.webp': 'Lyney',
+            'mona.webp': 'Mona',
+            'nahida.webp': 'Nahida',
+            'navia.webp': 'Navia',
+            'neuvillette.webp': 'Neuvillette',
+            'nilou.webp': 'Nilou',
+            'qiqi.webp': 'Qiqi',
+            'raiden-shogun.webp': 'Raiden Shogun',
+            'sangonomiya-kokomi.webp': 'Sangonomiya Kokomi',
+            'shenhe.webp': 'Shenhe',
+            'tartaglia.webp': 'Tartaglia',
+            'tighnari.webp': 'Tighnari',
+            'venti.webp': 'Venti',
+            'wanderer.webp': 'Wanderer',
+            'wriothesley.webp': 'Wriothesley',
+            'xianyun.webp': 'Xianyun',
+            'xiao.webp': 'Xiao',
+            'yae-miko.webp': 'Yae Miko',
+            'yelan.webp': 'Yelan',
+            'yoimiya.webp': 'Yoimiya',
+            'zhongli.webp': 'Zhongli'
+        };
+
+        // Function to fetch images from the JSON file
+        function fetchImages() {
+            const imageContainer = document.getElementById('imageContainer');
+
+            for (const [filename, characterName] of Object.entries(characters)) {
+                const card = document.createElement('div');
+                card.classList.add('genshin-card', 'bg-white', 'rounded-lg', 'w-[150px]', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
+                card.onclick = function() { toggleSelected(this); };
+
+                const img = document.createElement('img');
+                img.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#f4ba56]');
+                img.src = 'assets/images/games/genshin/characters/' + filename;
+                img.alt = 'Character Image';
+
+                const characterNameElement = document.createElement('p');
+                characterNameElement.classList.add('font-bold', 'text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
+                characterNameElement.textContent = characterName;
+
+                card.appendChild(img);
+                card.appendChild(characterNameElement);
+                imageContainer.appendChild(card);
+            }
+        }
+
+        // Function to toggle the 'selected' class on click
+        function toggleSelected(card) {
+            card.classList.toggle('selected');
+        }
+
+        // Fetch images when the page loads
+        window.onload = function() {
+            fetchImages();
+        };
+    </script>
+</body>
+
+</html>
