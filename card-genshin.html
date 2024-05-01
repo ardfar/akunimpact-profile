@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,6 +61,11 @@
         <!-- Images will be dynamically added here -->
     </div>
 
+    <input type="hidden" class="h-[500px] w-[700px]" id="jsonDataGenshinCharacter" name="jsonDataGenshinCharacter" />
+
+    <button onclick="extractData()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Extract Data</button>
+    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         const characters = {
@@ -109,56 +111,71 @@
         };
 
 
-        // Function to fetch images from the JSON file
-        function fetchImages() {
-            const imageContainer = document.getElementById('imageContainer');
+// Function to fetch images from the JSON file
+function fetchImages() {
+    const imageContainer = document.getElementById('imageContainer');
 
-            for (const [filename, characterName] of Object.entries(characters)) {
-                const card = document.createElement('div');
-                card.classList.add('genshin-card', 'bg-white', 'rounded-lg', 'w-[150px]', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
-                card.setAttribute('data-clicks', '0');
-                card.onclick = function() { toggleSelected(this); };
+    for (const [filename, characterName] of Object.entries(characters)) {
+        const card = document.createElement('div');
+        card.classList.add('genshin-card', 'bg-white', 'rounded-lg', 'w-[150px]', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
+        card.setAttribute('data-clicks', '0');
+        card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
+        card.onclick = function() { toggleSelected(this); };
 
-                const cornerContainer = document.createElement('div');
-                cornerContainer.classList.add('corner-container');
-                const cornerPart = document.createElement('div');
-                cornerPart.classList.add('genshin-corner-part', 'border-red-600');
-                cornerContainer.appendChild(cornerPart);
-                card.appendChild(cornerContainer);
+        const cornerContainer = document.createElement('div');
+        cornerContainer.classList.add('corner-container');
+        const cornerPart = document.createElement('div');
+        cornerPart.classList.add('genshin-corner-part', 'border-red-600');
+        cornerContainer.appendChild(cornerPart);
+        card.appendChild(cornerContainer);
 
-                const img = document.createElement('img');
-                img.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#f4ba56]');
-                img.src = 'assets/images/games/genshin/characters/' + filename;
-                img.alt = 'Character Image';
+        const img = document.createElement('img');
+        img.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#f4ba56]');
+        img.src = 'assets/images/games/genshin/characters/' + filename;
+        img.alt = 'Character Image';
 
-                const characterNameElement = document.createElement('p');
-                characterNameElement.classList.add('font-bold', 'text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
-                characterNameElement.textContent = characterName;
+        const characterNameElement = document.createElement('p');
+        characterNameElement.classList.add('font-bold', 'text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
+        characterNameElement.textContent = characterName;
 
-                card.appendChild(img);
-                card.appendChild(characterNameElement);
-                imageContainer.appendChild(card);
-            }
-        }
+        card.appendChild(img);
+        card.appendChild(characterNameElement);
+        imageContainer.appendChild(card);
+    }
+}
 
-        // Function to toggle the 'selected' class on click
-        function toggleSelected(card) {
-            const clicks = parseInt(card.getAttribute('data-clicks'));
-            if (clicks % 7 === 0) {
-                card.classList.remove('selected');
-                card.querySelector('.genshin-corner-part').innerHTML = '';
-            } else {
-                card.classList.add('selected');
-                const count = (clicks % 7) === 0 ? 0 : clicks % 7;
-                card.querySelector('.genshin-corner-part').innerHTML = `<p>C${count}</p>`;
-            }
-            card.setAttribute('data-clicks', clicks + 1);
-        }
+// Function to toggle the 'selected' class on click
+function toggleSelected(card) {
+    const clicks = parseInt(card.getAttribute('data-clicks'));
+    if (clicks % 7 === 0) {
+        card.classList.remove('selected');
+        card.querySelector('.genshin-corner-part').innerHTML = '';
+    } else {
+        card.classList.add('selected');
+        const count = (clicks % 7) === 0 ? 0 : clicks % 7;
+        card.querySelector('.genshin-corner-part').innerHTML = `<p>C${count}</p>`;
+    }
+    card.setAttribute('data-clicks', clicks + 1);
+}
 
-        // Fetch images when the page loads
-        window.onload = function() {
-            fetchImages();
-        };
+// Function to extract data from selected cards
+function extractData() {
+    const selectedCards = document.querySelectorAll('.genshin-card.selected');
+    const data = {
+        characters: Array.from(selectedCards).map(card => ({
+            name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
+            enhancement: parseInt(card.getAttribute('data-clicks')) % 7
+        }))
+    };
+    const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinCharacter');
+    jsonDataGenshinCharacterInput.value = JSON.stringify(data);
+    console.log(jsonDataGenshinCharacterInput.value); // Output JSON for debugging
+}
+
+// Fetch images when the page loads
+window.onload = function() {
+    fetchImages();
+};
     </script>
 </body>
 

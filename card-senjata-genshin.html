@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AkunImpact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .hsr-card {
+            height: auto;
+        }
+
+        .hsr-card.selected::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.3) 100%); /* Gold gradient */
+            border-radius: 0.5rem; /* Adjust as needed */
+        }
+
+        /* Styles for the small part */
+        .corner-part {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 10px;
+            background: #efa525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden; /* Hide by default */
+        }
+
+        .hsr-card.selected .corner-part {
+            visibility: visible; /* Show only when selected */
+        }
+
+        .corner-part p {
+            font-size: 1rem;
+            color: black;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="p-8 bg-gray-700">
+    <div id="hsr-cards-container" class="flex flex-wrap justify-center gap-8"></div>
+
+    <input type="hidden" class="h-[500px] w-[700px]" id="jsonDataWeapon" name="jsonDataWeapon" />
+
+    <button onclick="extractData()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Extract Data</button>
+
+    <script>
+        const weapon_bow_ghenshin = {
+            "amos-bow.webp": "Amos Bow",
+            "aqua-simulacra.webp": "Aqua Simulacra",
+            "elegy-for-the-end.webp": "Elegy for the End",
+            "hunter_s-path.webp": "Hunter's Path",
+            "polar-star.webp": "Polar Star",
+            "skyward-harp.webp": "Skyward Harp",
+            "the-first-great-magic.webp": "The First Great Magic",
+            "thundering-pulse.webp": "Thundering Pulse",
+        };
+
+        const weapon_catalyst_genshin = {
+            "a-thousand-floating-dreams.webp": "A Thousand Floating Dreams",
+            "cashflow-supervision.webp": "Cashflow Supervision",
+            "cranes-echoing-call.webp": "Cranes Echoing Call",
+            "everlasting-moonglow.webp": "Everlasting Moonglow",
+            "jadefall-splendor.webp": "Jadefall Splendor",
+            "kagura_s-verity.webp": "Kagura's Verity",
+            "lost-prayer-to-the-sacred-winds.webp": "Lost Prayer to the Sacred Winds",
+            "memory-of-dust.webp": "Memory of Dust",
+            "skyward-atlas.webp": "Skyward Atlas",
+            "tome-of-the-eternal-flow.webp": "Tome of the Eternal Flow",
+            "tulaytullah_s-remembrance.webp": "Tulaytullah's Remembrance",
+        }
+
+        const weapon_claymore_genshin = {
+            "beacon-of-the-reed-sea.webp": "Beacon of the Reed Sea",
+            "redhorn-stonethresher.webp": "Redhorn Stonethresher",
+            "skyward-pride.webp": "Skyward Pride",
+            "song-of-broken-pines.webp": "Song of Broken Pines",
+            "the-unforged.webp": "The Unforged",
+            "verdict.webp": "Verdict",
+            "wolf_s-gravestone.webp": "Wolf's Gravestone",            
+        }
+
+        const weapon_polearm_genshin = {
+            "calamity-queller.webp": "Calamity Queller",
+            "engulfing-lightning.webp": "Engulfing Lightning",
+            "primordial-jade-winged-spear.webp": "Primordial Jade Winged Spear",
+            "skyward-spine.webp": "Skyward Spine",
+            "staff-of-homa.webp": "Staff of Homa",
+            "staff-of-the-scarlet-sands.webp": "Staff of the Scarlet Sands",
+            "vortex-vanquisher.webp": "Vortex Vanquisher",            
+        }
+
+        const weapon_sword_genshin = {
+            "aquila-favonia.webp": "Aquila Favonia",
+            "freedom-sworn.webp": "Freedom Sworn",
+            "haran-geppaku-futsu.webp": "Haran Geppaku Futsu",
+            "key-of-khaj-nisut.webp": "Key of Khaj-Nisut",
+            "light-of-foliar-incision.webp": "Light of Foliar Incision",
+            "mistsplitter-reforged.webp": "Mistsplitter Reforged",
+            "primordial-jade-cutter.webp": "Primordial Jade Cutter",
+            "skyward-blade.webp": "Skyward Blade",
+            "splendor-of-tranquil-waters.webp": "Splendor of Tranquil Waters",
+            "summit-shaper.webp": "Summit Shaper",
+            "uraku-misugiri.webp": "Uraku Misugiri"            
+        }
+
+        const weaponCategories = [
+            { category: weapon_bow_ghenshin, folder: 'bow' },
+            { category: weapon_catalyst_genshin, folder: 'catalyst' },
+            { category: weapon_claymore_genshin, folder: 'claymore' },
+            { category: weapon_polearm_genshin, folder: 'polearm' },
+            { category: weapon_sword_genshin, folder: 'sword' }
+        ];
+
+        // Function to create a card element for each image
+        function createCard(filename, characterName) {
+            const cardContainer = document.getElementById("hsr-cards-container");
+
+            const card = document.createElement("div");
+            card.classList.add("hsr-card", "bg-gray-900", "text-white", "rounded-lg", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+            card.setAttribute('data-clicks', '0');
+            card.onclick = function() { toggleSelected(this); };
+
+            const cornerContainer = document.createElement('div');
+            cornerContainer.classList.add('corner-container');
+            const cornerPart = document.createElement('div');
+            cornerPart.classList.add('corner-part', 'border-red-500');
+            cornerContainer.appendChild(cornerPart);
+            card.appendChild(cornerContainer);
+
+            const imageContainer = document.createElement("div");
+            imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "border-0", "border-red-500");
+            const image = document.createElement("img");
+            image.src = filename;
+            image.alt = "Weapon Image";
+            image.classList.add("w-3/4", "rounded-full", "border-0", "border-yello-500");
+            imageContainer.appendChild(image);
+
+            const footer = document.createElement("div");
+            footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]",  "text-center", "p-2", "bg-gray-800", "opacity-90");
+            const title = document.createElement("h1");
+            title.classList.add("font-bold", "text-xl");
+            title.textContent = characterName;
+            footer.appendChild(title);
+
+            card.appendChild(imageContainer);
+            card.appendChild(footer);
+
+            cardContainer.appendChild(card);
+        }
+
+        // Function to toggle the 'selected' class on click
+        function toggleSelected(card) {
+            const clicks = parseInt(card.getAttribute('data-clicks'));
+            if (clicks % 7 === 0) {
+                card.classList.remove('selected');
+            } else {
+                card.classList.add('selected');
+                const count = (clicks % 7) === 0 ? 0 : clicks % 7;
+                const letter = count === 0 ? '' : 'C';
+                card.querySelector('.corner-part').innerHTML = `<p>${letter}${count}</p>`;
+            }
+            card.setAttribute('data-clicks', clicks + 1);
+        }
+
+        // Function to extract data from selected cards
+        function extractData() {
+            const selectedCards = document.querySelectorAll('.hsr-card.selected');
+            const data = {
+                weapons: Array.from(selectedCards).map(card => ({
+                    name: card.querySelector('.hsr-card-footer h1').textContent, // Ambil nama senjata dari footer card
+                    enhancement: parseInt(card.getAttribute('data-clicks')) % 7
+                }))
+            };
+            const jsonDataWeaponInput = document.getElementById('jsonDataWeapon');
+            jsonDataWeaponInput.value = JSON.stringify(data);
+            console.log(jsonDataWeaponInput.value); // Output JSON for debugging
+        }
+
+        // Create cards for each weapon when the page loads
+        window.onload = function() {
+            weaponCategories.forEach(weaponCategory => {
+                // Loop through each weapon in the category
+                Object.entries(weaponCategory.category).forEach(([filename, characterName]) => {
+                    // Create a card for each weapon
+                    createCard(`assets/images/games/genshin/weapons/${weaponCategory.folder}/${filename}`, characterName);
+                });
+            });
+        };
+    </script>
+</body>
+</html>
