@@ -9,8 +9,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: "genshin";
+            src: url("assets/fonts/genshin.ttf");
+        }
+
+
         .genshin-card {
             position: relative;
+            font-family: "genshin";
         }
 
         /* Container for the small part */
@@ -40,7 +47,7 @@
 
         .genshin-corner-part p {
             font-size: 1rem;
-            color: black;
+            color: #edc681;
             margin: 0;
         }
     </style>
@@ -72,7 +79,7 @@
             'ganyu.webp': 'Ganyu',
             'hu-tao.webp': 'Hu Tao',
             'jean.webp': 'Jean',
-            'kaedehara-kazuha.webp': 'Kaedehara Kazuha',
+            'kaedehara-kazuha.webp': 'Kazuha',
             'kamisato-ayaka.webp': 'Kamisato Ayaka',
             'kamisato-ayato.webp': 'Kamisato Ayato',
             'keqing.webp': 'Keqing',
@@ -85,7 +92,7 @@
             'nilou.webp': 'Nilou',
             'qiqi.webp': 'Qiqi',
             'raiden-shogun.webp': 'Raiden Shogun',
-            'sangonomiya-kokomi.webp': 'Sangonomiya Kokomi',
+            'sangonomiya-kokomi.webp': 'Kokomi',
             'shenhe.webp': 'Shenhe',
             'tartaglia.webp': 'Tartaglia',
             'tighnari.webp': 'Tighnari',
@@ -106,12 +113,15 @@ function fetchImages() {
     const imageContainer = document.getElementById('imageContainer');
 
     for (const [filename, characterName] of Object.entries(characters)) {
+
+        // Create Card 
         const card = document.createElement('div');
         card.classList.add('genshin-card', 'bg-white', 'rounded-lg', 'w-[150px]', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
         card.setAttribute('data-clicks', '0');
         card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
         card.onclick = function() { toggleSelected(this); };
 
+        // Corner Container
         const cornerContainer = document.createElement('div');
         cornerContainer.classList.add('corner-container');
         const cornerPart = document.createElement('div');
@@ -119,13 +129,15 @@ function fetchImages() {
         cornerContainer.appendChild(cornerPart);
         card.appendChild(cornerContainer);
 
+        // Character Image 
         const img = document.createElement('img');
-        img.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#c7c7c7]');
+        img.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#c7c7c7]', "rounded-br-3xl");
         img.src = 'assets/images/games/genshin/characters/' + filename;
         img.alt = 'Character Image';
 
+        // Char Name
         const characterNameElement = document.createElement('p');
-        characterNameElement.classList.add('font-bold', 'text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
+        characterNameElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
         characterNameElement.textContent = characterName;
 
         card.appendChild(img);
@@ -145,7 +157,7 @@ function toggleSelected(card) {
         image.classList.add("bg-[#efa525]")
 
         card.classList.add('selected');
-        card.querySelector('.genshin-corner-part').innerHTML = `<p style="color: #edc681">C${clicks}</p>`;
+        card.querySelector('.genshin-corner-part').innerHTML = `<p>C${clicks}</p>`;
     } else {
         image.classList.remove("bg-[#efa525]")
         image.classList.add("bg-[#c7c7c7]")
