@@ -9,8 +9,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        @font-face {
+            font-family: "hsr-ui";
+            src: url("assets/fonts/hsr-ui.ttf");
+        }
+
         .hsr-card {
+            font-family: "hsr-ui";
             height: auto;
+            overflow: hidden;
         }
 
         .hsr-card.selected::after {
@@ -21,19 +28,27 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.3) 100%); /* Gold gradient */
-            border-radius: 0.5rem; /* Adjust as needed */
+            border-top-right-radius: 30px; /* Adjust as needed */
+            border-bottom-left-radius: 7px;
+            border-bottom-right-radius: 7px;
         }
 
         /* Styles for the small part */
         .corner-part {
-            width: 2rem;
-            height: 2rem;
-            border-radius: 10px;
+            width: 5rem;
+            height: 1.5rem;
+            border-bottom-left-radius: 1.8rem;
             background: #efa525;
             display: flex;
             align-items: center;
             justify-content: center;
             visibility: hidden; /* Hide by default */
+        }
+
+        .corner-container {
+            display: flex;
+            align-items: center;
+            justify-content: end;
         }
 
         .hsr-card.selected .corner-part {
@@ -89,7 +104,7 @@
             const cardContainer = document.getElementById("hsr-cards-container");
 
             const card = document.createElement("div");
-            card.classList.add("hsr-card", "bg-gray-900", "text-white", "rounded-lg", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+            card.classList.add("hsr-card", "bg-gray-900", "text-white", "rounded-tr-[30px]", "rounded-b-[7px]", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
             card.setAttribute('data-clicks', '0');
             card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
             card.onclick = function() { toggleSelected(this); };
@@ -111,8 +126,8 @@
 
             const footer = document.createElement("div");
             footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]", "absolute", "bottom-0");
-            const title = document.createElement("h1");
-            title.classList.add("font-bold", "text-xl", "text-center");
+            const title = document.createElement("h3");
+            title.classList.add( "text-xl", "text-center");
             title.textContent = characterName;
             footer.appendChild(title);
 
