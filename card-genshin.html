@@ -116,8 +116,9 @@ function fetchImages() {
 
         // Create Card 
         const card = document.createElement('div');
-        card.classList.add('genshin-card', 'bg-white', 'rounded-lg', 'w-[150px]', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
+        card.classList.add('genshin-card', 'bg-white', 'rounded-lg', 'cursor-pointer', 'w-[150px]', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
         card.setAttribute('data-clicks', '0');
+        card.setAttribute('title', 'Click to Select Character');
         card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
         card.onclick = function() { toggleSelected(this); };
 
