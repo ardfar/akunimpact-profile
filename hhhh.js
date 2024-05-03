@@ -1,1 +1,0 @@
-{"characters":[{"name":"Wanderer","enhancement":4},{"name":"Xianyun","enhancement":3},{"name":"Yelan","enhancement":4}]}
