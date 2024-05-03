@@ -13,17 +13,6 @@
             position: relative;
         }
 
-        .genshin-card.selected::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1) 0%, rgba(0, 255, 68, 0.5) 100%); /* Gold gradient */
-            border-radius: 0.5rem; /* Adjust as needed */
-        }
-
         /* Container for the small part */
         .corner-container {
             position: absolute;
@@ -36,8 +25,9 @@
         .genshin-corner-part {
             width: 2rem;
             height: 2rem;
-            border-radius: 10px;
-            background: #efa525;
+            border-bottom-left-radius: 10px;
+            background: #a36b5e ;
+            color: #edc681;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -130,7 +120,7 @@ function fetchImages() {
         card.appendChild(cornerContainer);
 
         const img = document.createElement('img');
-        img.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#f4ba56]');
+        img.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#c7c7c7]');
         img.src = 'assets/images/games/genshin/characters/' + filename;
         img.alt = 'Character Image';
 
@@ -147,15 +137,24 @@ function fetchImages() {
 // Function to toggle the 'selected' class on click
 function toggleSelected(card) {
     const clicks = parseInt(card.getAttribute('data-clicks'));
-    if (clicks % 7 === 0) {
+    var image = card.getElementsByTagName("img")[0]
+    console.log("Click: ", clicks)
+    
+    if (clicks < 7){
+        image.classList.remove("bg-[#c7c7c7]")
+        image.classList.add("bg-[#efa525]")
+
+        card.classList.add('selected');
+        card.querySelector('.genshin-corner-part').innerHTML = `<p style="color: #edc681">C${clicks}</p>`;
+    } else {
+        image.classList.remove("bg-[#efa525]")
+        image.classList.add("bg-[#c7c7c7]")
+
         card.classList.remove('selected');
         card.querySelector('.genshin-corner-part').innerHTML = '';
-    } else {
-        card.classList.add('selected');
-        const count = (clicks % 7) === 0 ? 0 : clicks % 7;
-        card.querySelector('.genshin-corner-part').innerHTML = `<p>C${count}</p>`;
     }
-    card.setAttribute('data-clicks', clicks + 1);
+
+    card.setAttribute('data-clicks', clicks < 7 ? clicks + 1 : 0);
 }
 
 // Function to extract data from selected cards
