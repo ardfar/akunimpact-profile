@@ -126,11 +126,11 @@
             card.appendChild(cornerContainer);
 
             const imageContainer = document.createElement("div");
-            imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "border-0", "border-red-500");
+            imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "my-6");
             const image = document.createElement("img");
             image.src = `assets/images/games/hsr/light-cones/${filename}`;
             image.alt = "Character Image";
-            image.classList.add("w-3/4", "rounded-full");
+            image.classList.add("w-3/5", 'rotate-[13deg]', 'rounded-sm');
             imageContainer.appendChild(image);
 
             const footer = document.createElement("div");
@@ -150,14 +150,14 @@
         function toggleSelected(card) {
             const clicks = parseInt(card.getAttribute('data-clicks'));
 
-            if (clicks < 7) {
+            if (clicks < 6) {
                 card.classList.add('selected');
-                card.querySelector('.corner-part').innerHTML = `<p>E${clicks}</p>`;
+                card.querySelector('.corner-part').innerHTML = `<p>S${clicks}</p>`;
             } else {
                 card.classList.remove('selected');
             }
 
-            card.setAttribute('data-clicks', clicks < 7 ? clicks + 1 : 0);
+            card.setAttribute('data-clicks', clicks < 6 ? clicks + 1 : 0);
         }
 
         // Function to extract data from selected cards
