@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,7 @@
             font-family: "hsr-ui";
             height: auto;
             overflow: hidden;
+            position: relative; /* Ensure relative positioning for footer */
         }
 
         .hsr-card.selected::after {
@@ -60,8 +62,12 @@
             color: black;
             margin: 0;
         }
+
+        /* Ensure the footer does not overlap with the image */
+        
     </style>
 </head>
+
 <body class="p-8 bg-gray-700">
     <div id="hsr-cards-container" class="flex flex-wrap justify-center gap-8"></div>
 
@@ -72,32 +78,32 @@
     <button onclick="resetSelections()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">Reset Selections</button>
 
     <script>
-    const characters = {
-            "acheron.webp": "Acheron",
-            "argenti.webp": "Argenti",
-            "aventurine.webp": "Aventurine",
-            "bailu.webp": "Bailu",
-            "black-swan.webp": "Black Swan",
-            "blade.webp": "Blade",
-            "bronya.webp": "Bronya",
-            "clara.webp": "Clara",
-            "dr-ratio.webp": "Dr. Ratio",
-            "fu-xuan.webp": "Fu Xuan",
-            "gepard.webp": "Gepard",
-            "himeko.webp": "Himeko",
-            "huohuo.webp": "Huohuo",
-            "imbibitor-lunae.webp": "Imbibitor Lunae",
-            "jing-yuan.webp": "Jing Yuan",
-            "jingliu.webp": "Jingliu",
-            "kafka.webp": "Kafka",
-            "luocha.webp": "Luocha",
-            "ruan-mei.webp": "Ruan Mei",
-            "seele.webp": "Seele",
-            "silver-wolf.webp": "Silver Wolf",
-            "sparkle.webp": "Sparkle",
-            "topaz.webp": "Topaz",
-            "welt.webp": "Welt",
-            "yanqing.webp": "Yanqing"
+        const characters = {
+            'along-the-passing-shore.webp': 'Along The Passing Shore',
+            'an-instance-before-a-gaze.webp': 'An Instance Before A Gaze',
+            'baptism-of-pure-thought.webp': 'Baptism Of Pure Thought',
+            'before-dawn.webp': 'Before Dawn',
+            'brighter-than-the-sun.webp': 'Brighter Than The Sun',
+            'but-the-battle-isnt-over.webp': 'But The Battle Isnt Over',
+            'earthly-escapade.webp': 'Earthly Escapade',
+            'echoes-of-the-coffin.webp': 'Echoes Of The Coffin',
+            'i-shall-be-my-own-sword.webp': 'I Shall Be My Own Sword',
+            'in-the-name-of-the-world.webp': 'In The Name Of The World',
+            'in-the-night.webp': 'In The Night',
+            'incessant-rain.webp': 'Incessant Rain',
+            'inherently-unjust-destiny.webp': 'Inherently Unjust Destiny',
+            'moment-of-victory.webp': 'Moment Of Victory',
+            'night-of-fright.webp': 'Night Of Fright',
+            'night-on-the-milky-way.webp': 'Night On The Milky Way',
+            'past-self-in-mirror.webp': 'Past Self In Mirror',
+            'patience-is-all-you-need.webp': 'Patience Is All You Need',
+            'reforged-remembrance.webp': 'Reforged Remembrance',
+            'she-already-shut-her-eyes.webp': 'She Already Shut Her Eyes',
+            'sleep-like-the-dead.webp': 'Sleep Like The Dead',
+            'something-irreplaceable.webp': 'Something Irreplaceable',
+            'the-unreachable-side.webp': 'The Unreachable Side',
+            'time-waits-for-no-one.webp': 'Time Waits For No One',
+            'worrisome-blissful.webp': 'Worrisome Blissful',
         };
 
 
@@ -122,15 +128,15 @@
             const imageContainer = document.createElement("div");
             imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "border-0", "border-red-500");
             const image = document.createElement("img");
-            image.src = `assets/images/games/hsr/characters/${filename}`;
+            image.src = `assets/images/games/hsr/light-cones/${filename}`;
             image.alt = "Character Image";
             image.classList.add("w-3/4", "rounded-full");
             imageContainer.appendChild(image);
 
             const footer = document.createElement("div");
-            footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]", "absolute", "bottom-0");
+            footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]", );
             const title = document.createElement("h3");
-            title.classList.add( "text-xl", "text-center");
+            title.classList.add("text-xl", "text-center", "my-4", "px-2");
             title.textContent = characterName;
             footer.appendChild(title);
 
@@ -144,13 +150,13 @@
         function toggleSelected(card) {
             const clicks = parseInt(card.getAttribute('data-clicks'));
 
-            if (clicks < 7){
+            if (clicks < 7) {
                 card.classList.add('selected');
                 card.querySelector('.corner-part').innerHTML = `<p>E${clicks}</p>`;
             } else {
                 card.classList.remove('selected');
             }
-        
+
             card.setAttribute('data-clicks', clicks < 7 ? clicks + 1 : 0);
         }
 
@@ -176,15 +182,15 @@
         };
 
         // Function to reset all selected cards
-function resetSelections() {
-    const selectedCards = document.querySelectorAll('.hsr-card.selected');
-    for (const card of selectedCards) {
-        card.classList.remove('selected');
-        card.querySelector('.corner-part').innerHTML = '';
-        card.setAttribute('data-clicks', '0');
-    }
-}
-
+        function resetSelections() {
+            const selectedCards = document.querySelectorAll('.hsr-card.selected');
+            for (const card of selectedCards) {
+                card.classList.remove('selected');
+                card.querySelector('.corner-part').innerHTML = '';
+                card.setAttribute('data-clicks', '0');
+            }
+        }
     </script>
 </body>
+
 </html>

@@ -9,50 +9,60 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        .hsr-card {
-            height: auto;
+        @font-face {
+            font-family: "genshin";
+            src: url("assets/fonts/genshin.ttf");
         }
 
-        .hsr-card.selected::after {
-            content: "";
+
+        .genshin-card {
+            position: relative;
+            font-family: "genshin";
+        }
+
+        /* Container for the small part */
+        .corner-container {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.3) 100%); /* Gold gradient */
-            border-radius: 0.5rem; /* Adjust as needed */
+            right: 0;
+            z-index: 1; /* Ensure it's above the image */
         }
 
         /* Styles for the small part */
-        .corner-part {
+        .genshin-corner-part {
             width: 2rem;
             height: 2rem;
-            border-radius: 10px;
-            background: #efa525;
+            border-bottom-left-radius: 10px;
+            background: #a36b5e ;
+            color: #edc681;
             display: flex;
             align-items: center;
             justify-content: center;
             visibility: hidden; /* Hide by default */
         }
 
-        .hsr-card.selected .corner-part {
+        .genshin-card.selected .genshin-corner-part {
             visibility: visible; /* Show only when selected */
         }
 
-        .corner-part p {
+        .genshin-corner-part p {
             font-size: 1rem;
-            color: black;
+            color: #edc681;
             margin: 0;
         }
     </style>
 </head>
 <body class="p-8 bg-gray-700">
-    <div id="hsr-cards-container" class="flex flex-wrap justify-center gap-8"></div>
+    <div id="imageContainer" class="flex flex-wrap justify-center relative">
+        <!-- Images will be dynamically added here -->
+    </div>
 
     <input type="hidden" class="h-[500px] w-[700px]" id="jsonDataWeapon" name="jsonDataWeapon" />
 
     <button onclick="extractData()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Extract Data</button>
+
+    <button onclick="resetSelections()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">Reset Selections</button>
+
 
     <script>
         const weapon_bow_ghenshin = {
@@ -114,89 +124,110 @@
             "uraku-misugiri.webp": "Uraku Misugiri"            
         }
 
-        const weaponCategories = [
-            { category: weapon_bow_ghenshin, folder: 'bow' },
-            { category: weapon_catalyst_genshin, folder: 'catalyst' },
-            { category: weapon_claymore_genshin, folder: 'claymore' },
-            { category: weapon_polearm_genshin, folder: 'polearm' },
-            { category: weapon_sword_genshin, folder: 'sword' }
-        ];
 
-        // Function to create a card element for each image
-        function createCard(filename, characterName) {
-            const cardContainer = document.getElementById("hsr-cards-container");
+        // Function to fetch images from the JSON file
+        function fetchImages() {
+            const imageContainer = document.getElementById('imageContainer');
 
-            const card = document.createElement("div");
-            card.classList.add("hsr-card", "bg-gray-900", "text-white", "rounded-lg", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
-            card.setAttribute('data-clicks', '0');
-            card.onclick = function() { toggleSelected(this); };
+            const weaponCategories = [
+                { category: weapon_bow_ghenshin, folder: 'bow' },
+                { category: weapon_catalyst_genshin, folder: 'catalyst' },
+                { category: weapon_claymore_genshin, folder: 'claymore' },
+                { category: weapon_polearm_genshin, folder: 'polearm' },
+                { category: weapon_sword_genshin, folder: 'sword' }
+            ];
 
-            const cornerContainer = document.createElement('div');
-            cornerContainer.classList.add('corner-container');
-            const cornerPart = document.createElement('div');
-            cornerPart.classList.add('corner-part', 'border-red-500');
-            cornerContainer.appendChild(cornerPart);
-            card.appendChild(cornerContainer);
+            for (const { category, folder } of weaponCategories) {
+                for (const [filename, characterName] of Object.entries(category)) {
+                    // Create Card 
+                    const card = document.createElement('div');
+                    card.classList.add('genshin-card', 'bg-white', 'rounded-lg', 'cursor-pointer', 'w-[150px]', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
+                    card.setAttribute('data-clicks', '0');
+                    card.setAttribute('title', 'Click to Select Character');
+                    card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
+                    card.onclick = function() { toggleSelected(this); };
 
-            const imageContainer = document.createElement("div");
-            imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "border-0", "border-red-500");
-            const image = document.createElement("img");
-            image.src = filename;
-            image.alt = "Weapon Image";
-            image.classList.add("w-3/4", "rounded-full", "border-0", "border-yello-500");
-            imageContainer.appendChild(image);
+                    // Corner Container
+                    const cornerContainer = document.createElement('div');
+                    cornerContainer.classList.add('corner-container');
+                    const cornerPart = document.createElement('div');
+                    cornerPart.classList.add('genshin-corner-part', 'border-red-600');
+                    cornerContainer.appendChild(cornerPart);
+                    card.appendChild(cornerContainer);
 
-            const footer = document.createElement("div");
-            footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]",  "text-center", "p-2", "bg-gray-800", "opacity-90");
-            const title = document.createElement("h1");
-            title.classList.add("font-bold", "text-xl");
-            title.textContent = characterName;
-            footer.appendChild(title);
+                    // Character Image 
+                    const img = document.createElement('img');
+                    img.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#c7c7c7]', "rounded-br-3xl");
+                    img.src = `assets/images/games/genshin/weapons/${folder}/${filename}`;
+                    img.alt = 'Character Image';
 
-            card.appendChild(imageContainer);
-            card.appendChild(footer);
+                    // Char Name
+                    const characterNameElement = document.createElement('p');
+                    characterNameElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
+                    characterNameElement.textContent = characterName;
 
-            cardContainer.appendChild(card);
+                    card.appendChild(img);
+                    card.appendChild(characterNameElement);
+                    imageContainer.appendChild(card);
+                }
+            }
         }
 
         // Function to toggle the 'selected' class on click
         function toggleSelected(card) {
             const clicks = parseInt(card.getAttribute('data-clicks'));
-            if (clicks % 7 === 0) {
-                card.classList.remove('selected');
-            } else {
+            var image = card.getElementsByTagName("img")[0]
+            console.log("Click: ", clicks)
+            
+            if (clicks < 7){
+                image.classList.remove("bg-[#c7c7c7]")
+                image.classList.add("bg-[#efa525]")
+
                 card.classList.add('selected');
-                const count = (clicks % 7) === 0 ? 0 : clicks % 7;
-                const letter = count === 0 ? '' : 'C';
-                card.querySelector('.corner-part').innerHTML = `<p>${letter}${count}</p>`;
+                card.querySelector('.genshin-corner-part').innerHTML = `<p>C${clicks}</p>`;
+            } else {
+                image.classList.remove("bg-[#efa525]")
+                image.classList.add("bg-[#c7c7c7]")
+
+                card.classList.remove('selected');
+                card.querySelector('.genshin-corner-part').innerHTML = '';
             }
-            card.setAttribute('data-clicks', clicks + 1);
+
+            card.setAttribute('data-clicks', clicks < 7 ? clicks + 1 : 0);
         }
 
         // Function to extract data from selected cards
         function extractData() {
-            const selectedCards = document.querySelectorAll('.hsr-card.selected');
+            const selectedCards = document.querySelectorAll('.genshin-card.selected');
             const data = {
-                weapons: Array.from(selectedCards).map(card => ({
-                    name: card.querySelector('.hsr-card-footer h1').textContent, // Ambil nama senjata dari footer card
+                characters: Array.from(selectedCards).map(card => ({
+                    name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
                     enhancement: parseInt(card.getAttribute('data-clicks')) % 7
                 }))
             };
-            const jsonDataWeaponInput = document.getElementById('jsonDataWeapon');
-            jsonDataWeaponInput.value = JSON.stringify(data);
-            console.log(jsonDataWeaponInput.value); // Output JSON for debugging
+            const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinCharacter');
+            jsonDataGenshinCharacterInput.value = JSON.stringify(data);
+            console.log(jsonDataGenshinCharacterInput.value); // Output JSON for debugging
         }
 
-        // Create cards for each weapon when the page loads
+        // Fetch images when the page loads
         window.onload = function() {
-            weaponCategories.forEach(weaponCategory => {
-                // Loop through each weapon in the category
-                Object.entries(weaponCategory.category).forEach(([filename, characterName]) => {
-                    // Create a card for each weapon
-                    createCard(`assets/images/games/genshin/weapons/${weaponCategory.folder}/${filename}`, characterName);
-                });
-            });
+            fetchImages();
         };
+
+        // Function to reset all selected images
+function resetSelections() {
+    const selectedCards = document.querySelectorAll('.genshin-card.selected');
+    for (const card of selectedCards) {
+        const image = card.getElementsByTagName("img")[0];
+        image.classList.remove("bg-[#efa525]");
+        image.classList.add("bg-[#c7c7c7]");
+        card.classList.remove('selected');
+        card.querySelector('.genshin-corner-part').innerHTML = '';
+        card.setAttribute('data-clicks', '0');
+    }
+}
+
     </script>
 </body>
 </html>
