@@ -138,13 +138,13 @@
             ];
 
             for (const { category, folder } of weaponCategories) {
-                for (const [filename, characterName] of Object.entries(category)) {
+                for (const [filename, weaponName] of Object.entries(category)) {
                     // Create Card 
                     const card = document.createElement('div');
-                    card.classList.add('genshin-card', 'bg-white', 'rounded-lg', 'cursor-pointer', 'w-[150px]', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
+                    card.classList.add('genshin-card', 'bg-white', 'rounded-lg', 'cursor-pointer', 'w-[150px]', 'max-h-[250px]', 'pb-2', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
                     card.setAttribute('data-clicks', '0');
-                    card.setAttribute('title', 'Click to Select Character');
-                    card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
+                    card.setAttribute('title', 'Click to Select Weapon');
+                    card.setAttribute('data-weapon-name', weaponName); // Simpan nama karakter di sini
                     card.onclick = function() { toggleSelected(this); };
 
                     // Corner Container
@@ -157,17 +157,17 @@
 
                     // Character Image 
                     const img = document.createElement('img');
-                    img.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#c7c7c7]', "rounded-br-3xl");
+                    img.classList.add('w-full', 'h-[75%]', 'object-scale-down', 'bg-[#c7c7c7]', "rounded-br-3xl");
                     img.src = `assets/images/games/genshin/weapons/${folder}/${filename}`;
                     img.alt = 'Character Image';
 
                     // Char Name
-                    const characterNameElement = document.createElement('p');
-                    characterNameElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
-                    characterNameElement.textContent = characterName;
+                    const weaponNameElement = document.createElement('p');
+                    weaponNameElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'px-2');
+                    weaponNameElement.textContent = weaponName;
 
                     card.appendChild(img);
-                    card.appendChild(characterNameElement);
+                    card.appendChild(weaponNameElement);
                     imageContainer.appendChild(card);
                 }
             }
@@ -179,12 +179,12 @@
             var image = card.getElementsByTagName("img")[0]
             console.log("Click: ", clicks)
             
-            if (clicks < 7){
+            if (clicks < 6){
                 image.classList.remove("bg-[#c7c7c7]")
                 image.classList.add("bg-[#efa525]")
 
                 card.classList.add('selected');
-                card.querySelector('.genshin-corner-part').innerHTML = `<p>C${clicks}</p>`;
+                card.querySelector('.genshin-corner-part').innerHTML = `<p>R${clicks}</p>`;
             } else {
                 image.classList.remove("bg-[#efa525]")
                 image.classList.add("bg-[#c7c7c7]")
@@ -193,7 +193,7 @@
                 card.querySelector('.genshin-corner-part').innerHTML = '';
             }
 
-            card.setAttribute('data-clicks', clicks < 7 ? clicks + 1 : 0);
+            card.setAttribute('data-clicks', clicks < 6 ? clicks + 1 : 0);
         }
 
         // Function to extract data from selected cards
