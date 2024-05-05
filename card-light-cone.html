@@ -73,12 +73,12 @@
 
     <input type="hidden" class="h-[500px] w-[700px]" id="jsonDataHSRCharacter" name="jsonDataHSRCharacter" />
 
-    <button onclick="extractData()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Extract Data</button>
+    <button onclick="extractWeaponData()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Extract Data</button>
 
-    <button onclick="resetSelections()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">Reset Selections</button>
+    <button onclick="resetWeaponSelections()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">Reset Selections</button>
 
     <script>
-        const characters = {
+        const weapons = {
             'along-the-passing-shore.webp': 'Along The Passing Shore',
             'an-instance-before-a-gaze.webp': 'An Instance Before A Gaze',
             'baptism-of-pure-thought.webp': 'Baptism Of Pure Thought',
@@ -108,7 +108,7 @@
 
 
         // Function to create a card element for each image
-        function createCard(filename, characterName) {
+        function createWeaponCard(filename, characterName) {
             const cardContainer = document.getElementById("hsr-cards-container");
 
             const card = document.createElement("div");
@@ -116,7 +116,7 @@
             card.setAttribute('data-clicks', '0');
             card.setAttribute('title', 'Click to Select Character');
             card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
-            card.onclick = function() { toggleSelected(this); };
+            card.onclick = function() { toggleSelectedWeapon(this); };
 
             const cornerContainer = document.createElement('div');
             cornerContainer.classList.add('corner-container');
@@ -147,7 +147,7 @@
         }
 
         // Function to toggle the 'selected' class on click
-        function toggleSelected(card) {
+        function toggleSelectedWeapon(card) {
             const clicks = parseInt(card.getAttribute('data-clicks'));
 
             if (clicks < 6) {
@@ -161,7 +161,7 @@
         }
 
         // Function to extract data from selected cards
-        function extractData() {
+        function extractWeaponData() {
             const selectedCards = document.querySelectorAll('.hsr-card.selected');
             const data = {
                 characters: Array.from(selectedCards).map(card => ({
@@ -176,13 +176,13 @@
 
         // Create cards for each character when the page loads
         window.onload = function() {
-            for (const [filename, characterName] of Object.entries(characters)) {
-                createCard(filename, characterName);
+            for (const [filename, characterName] of Object.entries(weapons)) {
+                createWeaponCard(filename, characterName);
             }
         };
 
         // Function to reset all selected cards
-        function resetSelections() {
+        function resetWeaponSelections() {
             const selectedCards = document.querySelectorAll('.hsr-card.selected');
             for (const card of selectedCards) {
                 card.classList.remove('selected');
