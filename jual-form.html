@@ -63,10 +63,10 @@
 
     
             <!-- FORM CONTAINER: START  -->
-            <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">
-            
+            <div class="border-0 border-red-800 w-[90%] flex flex-col gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">      
+                
                 <!-- WELCOMING START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -91,7 +91,7 @@
                         </ol>
 
                         <div class="w-full flex items-center justify-center sm:justify-end ">
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -99,7 +99,7 @@
                 <!-- WELCOMING END  -->
 
                 <!-- TUTORIAL START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -124,8 +124,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -133,7 +133,7 @@
                 <!-- TUTORIAL END  -->
 
                 <!-- BASIC ACCOUNT INFO START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -207,16 +207,16 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
                 </div>
-                <!-- BASIC ACCOUNT INFO END  -->
+                <!-- BASIC ACCOUNT INFO END  -->                               
 
                 <!-- ACCOUNT CHARACTER START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -234,23 +234,175 @@
                             Kamu bisa pilih karakter apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan konstelasi karakter.
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+                        <div class="w-full h-fit my-6 gap-6">
                             
                             <!-- PUT CHARACTER CARD OF GENSHIN IMPACT HERE  -->
+
+                            <div>
+                                <div id="imageContainerCharacter" class="flex flex-wrap justify-center relative">
+                                    <!-- Images will be dynamically added here -->
+                                </div>
+                            
+                                <input type="hidden" class="h-[500px] w-[700px]" id="jsonDataGenshinCharacter" name="jsonDataGenshinCharacter" />
+                            
+                                <button onclick="extractDataCharacter()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Extract Data</button>
+                                
+                                <button onclick="resetSelectionsCharacter()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">Reset Selections</button>
+                            
+                                <script src="https://cdn.tailwindcss.com"></script>
+                                <script>
+                                    const characters = {
+                                        'albedo.webp': 'Albedo',
+                                        'alhaitham.webp': 'Alhaitham',
+                                        'arataki-itto.webp': 'Arataki Itto',
+                                        'baizhu.webp': 'Baizhu',
+                                        'chiori.webp': 'Chiori',
+                                        'cyno.webp': 'Cyno',
+                                        'dehya.webp': 'Dehya',
+                                        'diluc.webp': 'Diluc',
+                                        'eula.webp': 'Eula',
+                                        'furina.webp': 'Furina',
+                                        'ganyu.webp': 'Ganyu',
+                                        'hu-tao.webp': 'Hu Tao',
+                                        'jean.webp': 'Jean',
+                                        'kaedehara-kazuha.webp': 'Kazuha',
+                                        'kamisato-ayaka.webp': 'Kamisato Ayaka',
+                                        'kamisato-ayato.webp': 'Kamisato Ayato',
+                                        'keqing.webp': 'Keqing',
+                                        'klee.webp': 'Klee',
+                                        'lyney.webp': 'Lyney',
+                                        'mona.webp': 'Mona',
+                                        'nahida.webp': 'Nahida',
+                                        'navia.webp': 'Navia',
+                                        'neuvillette.webp': 'Neuvillette',
+                                        'nilou.webp': 'Nilou',
+                                        'qiqi.webp': 'Qiqi',
+                                        'raiden-shogun.webp': 'Raiden Shogun',
+                                        'sangonomiya-kokomi.webp': 'Kokomi',
+                                        'shenhe.webp': 'Shenhe',
+                                        'tartaglia.webp': 'Tartaglia',
+                                        'tighnari.webp': 'Tighnari',
+                                        'venti.webp': 'Venti',
+                                        'wanderer.webp': 'Wanderer',
+                                        'wriothesley.webp': 'Wriothesley',
+                                        'xianyun.webp': 'Xianyun',
+                                        'xiao.webp': 'Xiao',
+                                        'yae-miko.webp': 'Yae Miko',
+                                        'yelan.webp': 'Yelan',
+                                        'yoimiya.webp': 'Yoimiya',
+                                        'zhongli.webp': 'Zhongli'
+                                    };
+                            
+                            
+                                    // Function to fetch images from the JSON file
+                                    function fetchImagesCharacter() {
+                                        const imageContainerCharacter = document.getElementById('imageContainerCharacter');
+                            
+                                        for (const [filename_genshin, characterName_genshin] of Object.entries(characters)) {
+                            
+                                            // Create Card_genshin 
+                                            const card_genshin = document.createElement('div');
+                                            card_genshin.classList.add('genshin-card_genshin', 'bg-gray-200', 'rounded-lg', 'cursor-pointer', 'w-[150px]', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
+                                            card_genshin.setAttribute('data-clicks_genshin', '0');
+                                            card_genshin.setAttribute('title', 'Click to Select Character');
+                                            card_genshin.setAttribute('data-character-name', characterName_genshin); // Simpan nama karakter di sini
+                                            card_genshin.onclick = function() { toggleSelected(this); };
+                            
+                                            // Corner Container
+                                            const cornerContainer_genshin = document.createElement('div');
+                                            cornerContainer_genshin.classList.add('corner-container');
+                                            const cornerPart_genshin = document.createElement('div');
+                                            cornerPart_genshin.classList.add('genshin-corner-part', 'border-red-600');
+                                            cornerContainer_genshin.appendChild(cornerPart_genshin);
+                                            card_genshin.appendChild(cornerContainer_genshin);
+                            
+                                            // Character Image 
+                                            const img_genshin = document.createElement('img');
+                                            img_genshin.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-gray-200', "rounded-br-3xl");
+                                            img_genshin.src = 'assets/images/games/genshin/characters/' + filename_genshin;
+                                            img_genshin.alt = 'Character Image';
+                            
+                                            // Char Name
+                                            const characterName_genshinElement = document.createElement('p');
+                                            characterName_genshinElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
+                                            characterName_genshinElement.textContent = characterName_genshin;
+                            
+                                            card_genshin.appendChild(img_genshin);
+                                            card_genshin.appendChild(characterName_genshinElement);
+                                            imageContainerCharacter.appendChild(card_genshin);
+                                        }
+                                    }
+                            
+                                    // Function to toggle the 'selected' class on click
+                                    function toggleSelected(card_genshin) {
+                                        const clicks_genshin = parseInt(card_genshin.getAttribute('data-clicks'));
+                                        var image_genshin = card_genshin.getElementsByTagName("img")[0]
+                                        console.log("Click: ", clicks_genshin)
+                                        
+                                        if (clicks_genshin < 7){
+                                            image_genshin.classList.remove("bg-gray-200")
+                                            image_genshin.classList.add("bg-[#efa525]")
+                            
+                                            card_genshin.classList.add('selected');
+                                            card_genshin.querySelector('.genshin-corner-part').innerHTML = `<p class='bg-[#efa525] p-1 rounded-full w-full'>C${clicks_genshin}</p>`;
+                                        } else {
+                                            image_genshin.classList.remove("bg-[#efa525]")
+                                            image_genshin.classList.add("bg-gray-200")
+                            
+                                            card_genshin.classList.remove('selected');
+                                            card_genshin.querySelector('.genshin-corner-part').innerHTML = '';
+                                        }
+                            
+                                        card_genshin.setAttribute('data-clicks', clicks_genshin < 7 ? clicks_genshin + 1 : 0);
+                                    }
+                            
+                                    // Function to extract data from selected card_genshins
+                                    function extractDataCharacter() {
+                                        const selectedCard_genshins = document.querySelectorAll('.genshin-card_genshin.selected');
+                                        const data_genshin = {
+                                            characters: Array.from(selectedCard_genshins).map(card_genshin => ({
+                                                name: card_genshin.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
+                                                enhancement: parseInt(card_genshin.getAttribute('data-clicks_genshin')) % 7
+                                            }))
+                                        };
+                                        const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinCharacter');
+                                        jsonDataGenshinCharacterInput.value = JSON.stringify(data_genshin);
+                                        console.log(jsonDataGenshinCharacterInput.value); // Output JSON for debugging
+                                    }
+                                                            
+                                    // Function to reset all selected card_genshins
+                                    function resetSelectionsCharacter() {
+                                        const selectedCard_genshins = document.querySelectorAll('.genshin-card_genshin.selected');
+
+                                        for (const card_genshin of selectedCard_genshins) {
+                                            card_genshin.classList.remove('selected');
+                                            card_genshin.querySelector('.genshin-corner-part').innerHTML = '';
+                                            card_genshin.setAttribute('data-clicks_genshin', '0');
+                                            // Remove the golden background class
+                                            const image_genshin = card_genshin.querySelector('img_genshin');
+                                            image_genshin.classList.remove('bg-[#efa525]');
+                                            image_genshin.classList.add('bg-gray-200');
+                                        }
+                                    }
+                            
+                            
+                                </script>
+                            </div>
 
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
                 </div>
                 <!-- ACCOUNT CHARACTER INFO END  -->
 
+                
                 <!-- ACCOUNT WEAPON START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -268,15 +420,203 @@
                             Kamu bisa pilih senjata apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan refinement senjata.
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+                        <div class="w-full h-fit my-6 gap-6">
                             
                             <!-- PUT WEAPON CARD OF GENSHIN IMPACT HERE  -->
+
+                            <div class="w-full">
+                                <div id="imageContainerWeapon" class="flex flex-row flex-wrap justify-center relative border-0 border-red-600 w-full">
+                                    <!-- Images will be dynamically added here -->
+                                </div>
+                            
+                                <input type="hidden" class="h-[500px] w-[700px]" id="jsonDataWeapon" name="jsonDataWeapon" />
+                            
+                                <button onclick="extractData()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Extract Data</button>
+                            
+                                <button onclick="resetSelections()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">Reset Selections</button>
+                            
+                            
+                                <script>
+                                    const weapon_bow_ghenshin = {
+                                        "amos-bow.webp": "Amos Bow",
+                                        "aqua-simulacra.webp": "Aqua Simulacra",
+                                        "elegy-for-the-end.webp": "Elegy for the End",
+                                        "hunter_s-path.webp": "Hunter's Path",
+                                        "polar-star.webp": "Polar Star",
+                                        "skyward-harp.webp": "Skyward Harp",
+                                        "the-first-great-magic.webp": "The First Great Magic",
+                                        "thundering-pulse.webp": "Thundering Pulse",
+                                    };
+                            
+                                    const weapon_catalyst_genshin = {
+                                        "a-thousand-floating-dreams.webp": "A Thousand Floating Dreams",
+                                        "cashflow-supervision.webp": "Cashflow Supervision",
+                                        "cranes-echoing-call.webp": "Cranes Echoing Call",
+                                        "everlasting-moonglow.webp": "Everlasting Moonglow",
+                                        "jadefall-splendor.webp": "Jadefall Splendor",
+                                        "kagura_s-verity.webp": "Kagura's Verity",
+                                        "lost-prayer-to-the-sacred-winds.webp": "Lost Prayer to the Sacred Winds",
+                                        "memory-of-dust.webp": "Memory of Dust",
+                                        "skyward-atlas.webp": "Skyward Atlas",
+                                        "tome-of-the-eternal-flow.webp": "Tome of the Eternal Flow",
+                                        "tulaytullah_s-remembrance.webp": "Tulaytullah's Remembrance",
+                                    }
+                            
+                                    const weapon_claymore_genshin = {
+                                        "beacon-of-the-reed-sea.webp": "Beacon of the Reed Sea",
+                                        "redhorn-stonethresher.webp": "Redhorn Stonethresher",
+                                        "skyward-pride.webp": "Skyward Pride",
+                                        "song-of-broken-pines.webp": "Song of Broken Pines",
+                                        "the-unforged.webp": "The Unforged",
+                                        "verdict.webp": "Verdict",
+                                        "wolf_s-gravestone.webp": "Wolf's Gravestone",            
+                                    }
+                            
+                                    const weapon_polearm_genshin = {
+                                        "calamity-queller.webp": "Calamity Queller",
+                                        "engulfing-lightning.webp": "Engulfing Lightning",
+                                        "primordial-jade-winged-spear.webp": "Primordial Jade Winged Spear",
+                                        "skyward-spine.webp": "Skyward Spine",
+                                        "staff-of-homa.webp": "Staff of Homa",
+                                        "staff-of-the-scarlet-sands.webp": "Staff of the Scarlet Sands",
+                                        "vortex-vanquisher.webp": "Vortex Vanquisher",            
+                                    }
+                            
+                                    const weapon_sword_genshin = {
+                                        "aquila-favonia.webp": "Aquila Favonia",
+                                        "freedom-sworn.webp": "Freedom Sworn",
+                                        "haran-geppaku-futsu.webp": "Haran Geppaku Futsu",
+                                        "key-of-khaj-nisut.webp": "Key of Khaj-Nisut",
+                                        "light-of-foliar-incision.webp": "Light of Foliar Incision",
+                                        "mistsplitter-reforged.webp": "Mistsplitter Reforged",
+                                        "primordial-jade-cutter.webp": "Primordial Jade Cutter",
+                                        "skyward-blade.webp": "Skyward Blade",
+                                        "splendor-of-tranquil-waters.webp": "Splendor of Tranquil Waters",
+                                        "summit-shaper.webp": "Summit Shaper",
+                                        "uraku-misugiri.webp": "Uraku Misugiri"            
+                                    }
+                            
+                            
+                                    // Function to fetch images from the JSON file
+                                    function fetchImages() {
+                                        const imageContainer = document.getElementById('imageContainerWeapon');
+                            
+                                        const weaponCategories = [
+                                            { category: weapon_bow_ghenshin, folder: 'bow' },
+                                            { category: weapon_catalyst_genshin, folder: 'catalyst' },
+                                            { category: weapon_claymore_genshin, folder: 'claymore' },
+                                            { category: weapon_polearm_genshin, folder: 'polearm' },
+                                            { category: weapon_sword_genshin, folder: 'sword' }
+                                        ];
+                            
+                                        for (const { category, folder } of weaponCategories) {
+                                            for (const [filename, weaponName] of Object.entries(category)) {
+                                                // Create Card 
+                                                const card = document.createElement('div');
+                                                card.classList.add('genshin-card', 'bg-gray-200', 'rounded-lg', 'cursor-pointer', 'w-[150px]', 'max-h-[280px]', 'pb-2', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center', 'border-0', 'border-red-500');
+                                                card.setAttribute('data-clicks', '0');
+                                                card.setAttribute('title', 'Click to Select Weapon');
+                                                card.setAttribute('data-weapon-name', weaponName); // Simpan nama karakter di sini
+                                                card.onclick = function() { toggleSelected(this); };
+                            
+                                                // Corner Container
+                                                const cornerContainer = document.createElement('div');
+                                                cornerContainer.classList.add('corner-container');
+                                                const cornerPart = document.createElement('div');
+                                                cornerPart.classList.add('genshin-corner-part', 'border-red-600');
+                                                cornerContainer.appendChild(cornerPart);
+                                                card.appendChild(cornerContainer);
+                            
+                                                // Character Image 
+                                                const img = document.createElement('img');
+                                                img.classList.add('w-full', 'h-[65%]', 'object-scale-down', 'bg-gray-200', "rounded-br-3xl");
+                                                img.src = `assets/images/games/genshin/weapons/${folder}/${filename}`;
+                                                img.alt = 'Character Image';
+                            
+                                                // Char Name
+                                                const weaponNameElement = document.createElement('p');
+                                                weaponNameElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'px-2');
+                                                weaponNameElement.textContent = weaponName;
+                            
+                                                card.appendChild(img);
+                                                card.appendChild(weaponNameElement);
+                                                imageContainer.appendChild(card);
+                                            }
+                                        }
+                                    }
+                            
+                                    // Function to toggle the 'selected' class on click
+                                    function toggleSelected(card) {
+                                        const clicks = parseInt(card.getAttribute('data-clicks'));
+                                        var image = card.getElementsByTagName("img")[0]
+                                        console.log("Click: ", clicks)
+                                        
+                                        if (clicks < 7){
+                                            image.classList.remove("bg-[#c7c7c7]")
+                                            image.classList.add("bg-[#efa525]", "h-fit")
+                            
+                                            card.classList.add('selected');
+                                            card.querySelector('.genshin-corner-part').innerHTML = `<p class='bg-[#efa525] p-1 rounded-full w-full'>R${clicks}</p>`;
+
+                                            // Make the weaponNameElement smaller
+                                            const weaponNameElement = card.querySelector('.text-black');
+                                            weaponNameElement.classList.add('text-sm');
+                                        } else {
+                                            image.classList.remove("bg-[#efa525]", "h-fit")
+                                            image.classList.add("bg-[#c7c7c7]")
+                            
+                                            card.classList.remove('selected');
+                                            card.querySelector('.genshin-corner-part').innerHTML = '';
+
+                                            // Remove the smaller size from weaponNameElement
+                                            const weaponNameElement = card.querySelector('.text-black');
+                                            weaponNameElement.classList.remove('text-sm'); 
+                                        }
+                            
+                                        card.setAttribute('data-clicks', clicks < 7 ? clicks + 1 : 0);
+                                    }
+                            
+                                    // Function to extract data from selected cards
+                                    function extractData() {
+                                        const selectedCards = document.querySelectorAll('.genshin-card.selected');
+                                        const data = {
+                                            characters: Array.from(selectedCards).map(card => ({
+                                                name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
+                                                enhancement: parseInt(card.getAttribute('data-clicks')) % 7
+                                            }))
+                                        };
+                                        const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinCharacter');
+                                        jsonDataGenshinCharacterInput.value = JSON.stringify(data);
+                                        console.log(jsonDataGenshinCharacterInput.value); // Output JSON for debugging
+                                    }
+                            
+                                    // Fetch images when the page loads
+                                    window.onload = function() {
+                                        fetchImages();
+                                        fetchImagesCharacter();
+                                    };
+                            
+                                    // Function to reset all selected images
+                                    function resetSelections() {
+                                        const selectedCards = document.querySelectorAll('.genshin-card.selected');
+                                        for (const card of selectedCards) {
+                                            const image = card.getElementsByTagName("img")[0];
+                                            image.classList.remove("bg-[#efa525]", "h-fit");
+                                            image.classList.add("bg-[#c7c7c7]");
+                                            card.classList.remove('selected');
+                                            card.querySelector('.genshin-corner-part').innerHTML = '';
+                                            card.setAttribute('data-clicks', '0');
+                                        }
+                                    }
+                            
+                                </script>
+                            </div>
 
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -284,7 +624,7 @@
                 <!-- ACCOUNT WEAPON END  -->
 
                 <!-- ADDTIONAL ITEMS START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -362,8 +702,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -371,7 +711,7 @@
                 <!-- ADDTIONAL ITEMS END  -->
 
                 <!-- PITY START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -424,8 +764,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -433,7 +773,7 @@
                 <!-- PITY END  -->
 
                 <!-- ACCOUNT SECURITY START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -502,15 +842,15 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
                 </div>
                 <!-- ACCOUNT SECURITY END  -->
 
-                <button class="bg-red-600 block sm:hidden py-2 px-3 text-white rounded-3xl min-w-[180px]">Kembali</button> 
+                <button class="bg-red-600 block sm:hidden py-2 px-3 text-white rounded-3xl min-w-[180px]" style="display: none;">Kembali</button> 
             </div>
             <!-- FORM CONTAINER: END  -->
             
@@ -519,6 +859,27 @@
 
     </section>
     <!-- PROFILE PAGE: END  -->
+
+    <script>
+        let currentSection = 0;
+        const sections = document.querySelectorAll('#collapsible-container > div');
+
+        function showNext() {
+            if (currentSection < sections.length - 1) {
+                sections[currentSection].style.display = 'none';
+                currentSection++;
+                sections[currentSection].style.display = 'block';
+            }
+        }
+
+        function showPrev() {
+            if (currentSection > 0) {
+                sections[currentSection].style.display = 'none';
+                currentSection--;
+                sections[currentSection].style.display = 'block';
+            }
+        }
+    </script>
     
 </body>
 </html>

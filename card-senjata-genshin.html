@@ -216,17 +216,17 @@
         };
 
         // Function to reset all selected images
-function resetSelections() {
-    const selectedCards = document.querySelectorAll('.genshin-card.selected');
-    for (const card of selectedCards) {
-        const image = card.getElementsByTagName("img")[0];
-        image.classList.remove("bg-[#efa525]");
-        image.classList.add("bg-[#c7c7c7]");
-        card.classList.remove('selected');
-        card.querySelector('.genshin-corner-part').innerHTML = '';
-        card.setAttribute('data-clicks', '0');
-    }
-}
+        function resetSelections() {
+            const selectedCards = document.querySelectorAll('.genshin-card.selected');
+            for (const card of selectedCards) {
+                const image = card.getElementsByTagName("img")[0];
+                image.classList.remove("bg-[#efa525]");
+                image.classList.add("bg-[#c7c7c7]");
+                card.classList.remove('selected');
+                card.querySelector('.genshin-corner-part').innerHTML = '';
+                card.setAttribute('data-clicks', '0');
+            }
+        }
 
     </script>
 </body>
