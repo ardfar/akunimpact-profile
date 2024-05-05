@@ -12,6 +12,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <style>
+        @font-face {
+            font-family: "hsr-ui";
+            src: url("assets/fonts/hsr-ui.ttf");
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 5px;
@@ -29,10 +34,58 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
+        .hsr-card {
+            font-family: "hsr-ui";
+            height: auto;
+            overflow: hidden;
+        }
+
+        .hsr-card.selected::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.3) 100%); /* Gold gradient */
+            border-top-right-radius: 30px; /* Adjust as needed */
+            border-bottom-left-radius: 7px;
+            border-bottom-right-radius: 7px;
+        }
+
+        /* Styles for the small part */
+        .corner-part {
+            width: 5rem;
+            height: 1.5rem;
+            border-bottom-left-radius: 1.8rem;
+            background: #efa525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden; /* Hide by default */
+        }
+
+        .corner-container {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+        }
+
+        .hsr-card.selected .corner-part {
+            visibility: visible; /* Show only when selected */
+        }
+
+        .corner-part p {
+            font-size: 1rem;
+            color: black;
+            margin: 0;
+        }
     </style>
     
     
 </head>
+
 <body>
 
     <!-- PROFILE PAGE: START  -->
@@ -244,15 +297,135 @@
                             Kamu bisa pilih karakter apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan konstelasi karakter.
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+                        <div class="w-full h-fit flex flex-wrap justify-center gap-8 my-6 gap-6" id="hsr-cards-container">
                             
                             <!-- PUT CHARACTER CARD OF HONKAI STAR RAIL HERE  -->
 
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                        <input type="text" hidden id="jsonDataHSRCharacter" name="jsonDataHSRCharacter" />
+
+                        <!-- CARD SCRIPTING: START  -->
+                        <script>
+                            const characters = {
+                                    "acheron.webp": "Acheron",
+                                    "argenti.webp": "Argenti",
+                                    "aventurine.webp": "Aventurine",
+                                    "bailu.webp": "Bailu",
+                                    "black-swan.webp": "Black Swan",
+                                    "blade.webp": "Blade",
+                                    "bronya.webp": "Bronya",
+                                    "clara.webp": "Clara",
+                                    "dr-ratio.webp": "Dr. Ratio",
+                                    "fu-xuan.webp": "Fu Xuan",
+                                    "gepard.webp": "Gepard",
+                                    "himeko.webp": "Himeko",
+                                    "huohuo.webp": "Huohuo",
+                                    "imbibitor-lunae.webp": "Imbibitor Lunae",
+                                    "jing-yuan.webp": "Jing Yuan",
+                                    "jingliu.webp": "Jingliu",
+                                    "kafka.webp": "Kafka",
+                                    "luocha.webp": "Luocha",
+                                    "ruan-mei.webp": "Ruan Mei",
+                                    "seele.webp": "Seele",
+                                    "silver-wolf.webp": "Silver Wolf",
+                                    "sparkle.webp": "Sparkle",
+                                    "topaz.webp": "Topaz",
+                                    "welt.webp": "Welt",
+                                    "yanqing.webp": "Yanqing"
+                                };
+                        
+                        
+                                // Function to create a card element for each image
+                                function createCard(filename, characterName) {
+                                    const cardContainer = document.getElementById("hsr-cards-container");
+                        
+                                    const card = document.createElement("div");
+                                    card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+                                    card.setAttribute('data-clicks', '0');
+                                    card.setAttribute('title', 'Click to Select Character');
+                                    card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
+                                    card.onclick = function() { toggleSelected(this); };
+                        
+                                    const cornerContainer = document.createElement('div');
+                                    cornerContainer.classList.add('corner-container');
+                                    const cornerPart = document.createElement('div');
+                                    cornerPart.classList.add('corner-part', 'border-red-500');
+                                    cornerContainer.appendChild(cornerPart);
+                                    card.appendChild(cornerContainer);
+                        
+                                    const imageContainer = document.createElement("div");
+                                    imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "border-0", "border-red-500");
+                                    const image = document.createElement("img");
+                                    image.src = `assets/images/games/hsr/characters/${filename}`;
+                                    image.alt = "Character Image";
+                                    image.classList.add("w-3/4", "rounded-full");
+                                    imageContainer.appendChild(image);
+                        
+                                    const footer = document.createElement("div");
+                                    footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]", "absolute", "bottom-0");
+                                    const title = document.createElement("h3");
+                                    title.classList.add( "text-xl", "text-center");
+                                    title.textContent = characterName;
+                                    footer.appendChild(title);
+                        
+                                    card.appendChild(imageContainer);
+                                    card.appendChild(footer);
+                        
+                                    cardContainer.appendChild(card);
+                                }
+                        
+                                // Function to toggle the 'selected' class on click
+                                function toggleSelected(card) {
+                                    const clicks = parseInt(card.getAttribute('data-clicks'));
+                        
+                                    if (clicks < 7){
+                                        card.classList.add('selected');
+                                        card.querySelector('.corner-part').innerHTML = `<p>E${clicks}</p>`;
+                                    } else {
+                                        card.classList.remove('selected');
+                                    }
+                                
+                                    card.setAttribute('data-clicks', clicks < 7 ? clicks + 1 : 0);
+                                }
+                        
+                                // Function to extract data from selected cards
+                                function extractData() {
+                                    const selectedCards = document.querySelectorAll('.hsr-card.selected');
+                                    const data = {
+                                        characters: Array.from(selectedCards).map(card => ({
+                                            name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
+                                            enhancement: parseInt(card.getAttribute('data-clicks')) % 6 - 1
+                                        }))
+                                    };
+                                    const jsonDataHSRCharacterInput = document.getElementById('jsonDataHSRCharacter');
+                                    jsonDataHSRCharacterInput.value = JSON.stringify(data);
+                                    console.log(jsonDataHSRCharacterInput.value); // Output JSON for debugging
+                                }
+                        
+                                // Function to reset all selected cards
+                                function resetSelections() {
+                                    const selectedCards = document.querySelectorAll('.hsr-card.selected');
+                                    for (const card of selectedCards) {
+                                        card.classList.remove('selected');
+                                        card.querySelector('.corner-part').innerHTML = '';
+                                        card.setAttribute('data-clicks', '0');
+                                    }
+
+                                    document.getElementById('jsonDataHSRCharacter').value = ""
+                                }
+                        
+                        </script>
+                        <!-- CARD SCRIPTING: END -->
+
+                        <div class="flex items-center justify-between">
+
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Reset Pilihan</button>                
+                                
+                            <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            </div>
                         </div>
                         
                     </div>                              
@@ -280,15 +453,143 @@
                             Kamu bisa pilih senjata apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan refinement senjata.
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+                        <div class="w-full h-fit flex flex-wrap justify-center gap-8 my-6 gap-6" id="hsr-weapon-cards-container">
                             
                             <!-- PUT WEAPON CARD OF HONKAI STAR RAIL HERE  -->
 
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                        <input type="text" hidden id="jsonDataHSRWeapon" name="jsonDataHSRWeapon" />
+
+                        <!-- CARD SCRIPTING: START  -->
+                        <script>
+                            const weapons = {
+                                'along-the-passing-shore.webp': 'Along The Passing Shore',
+                                'an-instance-before-a-gaze.webp': 'An Instance Before A Gaze',
+                                'baptism-of-pure-thought.webp': 'Baptism Of Pure Thought',
+                                'before-dawn.webp': 'Before Dawn',
+                                'brighter-than-the-sun.webp': 'Brighter Than The Sun',
+                                'but-the-battle-isnt-over.webp': 'But The Battle Isnt Over',
+                                'earthly-escapade.webp': 'Earthly Escapade',
+                                'echoes-of-the-coffin.webp': 'Echoes Of The Coffin',
+                                'i-shall-be-my-own-sword.webp': 'I Shall Be My Own Sword',
+                                'in-the-name-of-the-world.webp': 'In The Name Of The World',
+                                'in-the-night.webp': 'In The Night',
+                                'incessant-rain.webp': 'Incessant Rain',
+                                'inherently-unjust-destiny.webp': 'Inherently Unjust Destiny',
+                                'moment-of-victory.webp': 'Moment Of Victory',
+                                'night-of-fright.webp': 'Night Of Fright',
+                                'night-on-the-milky-way.webp': 'Night On The Milky Way',
+                                'past-self-in-mirror.webp': 'Past Self In Mirror',
+                                'patience-is-all-you-need.webp': 'Patience Is All You Need',
+                                'reforged-remembrance.webp': 'Reforged Remembrance',
+                                'she-already-shut-her-eyes.webp': 'She Already Shut Her Eyes',
+                                'sleep-like-the-dead.webp': 'Sleep Like The Dead',
+                                'something-irreplaceable.webp': 'Something Irreplaceable',
+                                'the-unreachable-side.webp': 'The Unreachable Side',
+                                'time-waits-for-no-one.webp': 'Time Waits For No One',
+                                'worrisome-blissful.webp': 'Worrisome Blissful',
+                            };
+                    
+                    
+                            // Function to create a card element for each image
+                            function createWeaponCard(filename, characterName) {
+                                const cardContainer = document.getElementById("hsr-weapon-cards-container");
+                    
+                                const card = document.createElement("div");
+                                card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+                                card.setAttribute('data-clicks', '0');
+                                card.setAttribute('title', 'Click to Select Character');
+                                card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
+                                card.onclick = function() { toggleSelectedWeapon(this); };
+                    
+                                const cornerContainer = document.createElement('div');
+                                cornerContainer.classList.add('corner-container');
+                                const cornerPart = document.createElement('div');
+                                cornerPart.classList.add('corner-part', 'border-red-500');
+                                cornerContainer.appendChild(cornerPart);
+                                card.appendChild(cornerContainer);
+                    
+                                const imageContainer = document.createElement("div");
+                                imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "my-6");
+                                const image = document.createElement("img");
+                                image.src = `assets/images/games/hsr/light-cones/${filename}`;
+                                image.alt = "Character Image";
+                                image.classList.add("w-3/5", 'rotate-[13deg]', 'rounded-sm');
+                                imageContainer.appendChild(image);
+                    
+                                const footer = document.createElement("div");
+                                footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]", );
+                                const title = document.createElement("h3");
+                                title.classList.add("text-xl", "text-center", "my-4", "px-2");
+                                title.textContent = characterName;
+                                footer.appendChild(title);
+                    
+                                card.appendChild(imageContainer);
+                                card.appendChild(footer);
+                    
+                                cardContainer.appendChild(card);
+                            }
+                    
+                            // Function to toggle the 'selected' class on click
+                            function toggleSelectedWeapon(card) {
+                                const clicks = parseInt(card.getAttribute('data-clicks'));
+                    
+                                if (clicks < 6) {
+                                    card.classList.add('selected');
+                                    card.querySelector('.corner-part').innerHTML = `<p>S${clicks}</p>`;
+                                } else {
+                                    card.classList.remove('selected');
+                                }
+                    
+                                card.setAttribute('data-clicks', clicks < 6 ? clicks + 1 : 0);
+                            }
+                    
+                            // Function to extract data from selected cards
+                            function extractWeaponData() {
+                                const selectedCards = document.querySelectorAll('.hsr-card.selected');
+                                const data = {
+                                    characters: Array.from(selectedCards).map(card => ({
+                                        name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
+                                        enhancement: parseInt(card.getAttribute('data-clicks')) % 7
+                                    }))
+                                };
+                                const jsonDataHSRCharacterInput = document.getElementById('jsonDataHSRCharacter');
+                                jsonDataHSRCharacterInput.value = JSON.stringify(data);
+                                console.log(jsonDataHSRCharacterInput.value); // Output JSON for debugging
+                            }
+                    
+                            // Create cards for each character when the page loads
+                            window.onload = function() {
+                                for (const [filename, characterName] of Object.entries(weapons)) {
+                                    createWeaponCard(filename, characterName);
+                                }
+
+                                for (const [filename, characterName] of Object.entries(characters)) {
+                                    createCard(filename, characterName);
+                                }
+                            };
+                    
+                            // Function to reset all selected cards
+                            function resetWeaponSelections() {
+                                const selectedCards = document.querySelectorAll('.hsr-card.selected');
+                                for (const card of selectedCards) {
+                                    card.classList.remove('selected');
+                                    card.querySelector('.corner-part').innerHTML = '';
+                                    card.setAttribute('data-clicks', '0');
+                                }
+                            }
+                        </script>
+                        <!-- CARD SCRIPTING: END  -->
+
+                        <div class="flex items-center justify-between">
+
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
+                                
+                            <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            </div>
                         </div>
                         
                     </div>                              
