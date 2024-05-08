@@ -298,7 +298,7 @@
                             Kamu bisa pilih karakter apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan konstelasi karakter.
                         </p>
                         
-                        <div class="w-full h-fit flex flex-wrap justify-center gap-8 my-6 gap-6" id="hsr-cards-container">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-6" id="hsr-cards-container">
                             
                             <!-- PUT CHARACTER CARD OF HONKAI STAR RAIL HERE  -->
 
@@ -342,7 +342,7 @@
                                     const cardContainer = document.getElementById("hsr-cards-container");
                         
                                     const card = document.createElement("div");
-                                    card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+                                    card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
                                     card.setAttribute('data-clicks', '0');
                                     card.setAttribute('title', 'Click to Select Character');
                                     card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
@@ -366,7 +366,7 @@
                                     const footer = document.createElement("div");
                                     footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]", "absolute", "bottom-0");
                                     const title = document.createElement("h3");
-                                    title.classList.add( "text-xl", "text-center");
+                                    title.classList.add( "text-sm","sm:text-xl", "text-center");
                                     title.textContent = characterName;
                                     footer.appendChild(title);
                         
@@ -419,9 +419,9 @@
                         </script>
                         <!-- CARD SCRIPTING: END -->
 
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center flex-col sm:flex-row sm:justify-between gap-4">
 
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Reset Pilihan</button>                
+                            <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Hapus Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                                 <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
@@ -454,7 +454,7 @@
                             Kamu bisa pilih senjata apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan refinement senjata.
                         </p>
                         
-                        <div class="w-full h-fit flex flex-wrap justify-center gap-8 my-6 gap-6" id="hsr-weapon-cards-container">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-6" id="hsr-weapon-cards-container">
                             
                             <!-- PUT WEAPON CARD OF HONKAI STAR RAIL HERE  -->
 
@@ -498,7 +498,7 @@
                                 const cardContainer = document.getElementById("hsr-weapon-cards-container");
                     
                                 const card = document.createElement("div");
-                                card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+                                card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
                                 card.setAttribute('data-clicks', '0');
                                 card.setAttribute('title', 'Click to Select Character');
                                 card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
@@ -522,7 +522,7 @@
                                 const footer = document.createElement("div");
                                 footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]", );
                                 const title = document.createElement("h3");
-                                title.classList.add("text-xl", "text-center", "my-4", "px-2");
+                                title.classList.add("text-sm","sm:text-xl", "text-center", "my-4", "px-2");
                                 title.textContent = characterName;
                                 footer.appendChild(title);
                     
@@ -583,9 +583,9 @@
                         </script>
                         <!-- CARD SCRIPTING: END  -->
 
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center flex-col sm:flex-row sm:justify-between gap-4">
 
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
+                            <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                                 <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
