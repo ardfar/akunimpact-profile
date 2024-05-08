@@ -119,12 +119,12 @@
             <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">
             
                 <!-- WELCOMING START  -->
-                <div class="group border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
+                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
-                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Halo, Reza!</span><br>Sudah siap untuk dapatkan cuan dari akunmu?</h2>
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="w-[80%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-md sm:text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Halo, Reza!</span><br>Sudah siap untuk dapatkan cuan dari akunmu?</h2>
                         </div>
 
                         <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
@@ -134,9 +134,11 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
+                    <div id="content" class="flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
 
-                        <p>
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="">
                             Untuk menjual akunmu, Kamu perlu mengisi formulir dibawah ini dengan benar dan jujur agar cuan yang didapatkan bisa maksimal. <br>
                             Sebelum itu, Kamu harus memperhatikan hal-hal dibawah ini agara tidak ada kendala.
                         </p>
@@ -146,7 +148,7 @@
                             <li>Ubah email HSR ke email yang bisa diserahkan nanti</li>
                         </ol>
 
-                        <div class="w-full flex items-center justify-center sm:justify-end ">
+                        <div class="w-full flex items-center justify-center sm:justify-end pb-4">
                             <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
@@ -159,7 +161,7 @@
                 <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
                         <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">
                                 Tutorial Isi Formulir
@@ -173,7 +175,9 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
 
                         <p>
                             Kamu bisa melihat video tutorial dibawah ini sebelum mengisi formulir.
@@ -183,7 +187,7 @@
                             <iframe width="560" height="315" class="rounded-xl" src="https://www.youtube.com/embed/LrqsaO9Cf2M?si=yWbTxiP8Gv2LjEpU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                        <div class="pb-4  w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                             <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
                             <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
@@ -196,7 +200,7 @@
                 <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
                         <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Informasi Akun</h2>
                         </div>
@@ -207,13 +211,15 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
 
                         <p class="text-xl">
                             Formulir ini berisikan informasi mengenai informasi akunmu
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+                        <div class="pb-4 w-full h-fit grid grid-cols-12 my-6 gap-6">
                             
                             <!-- Server Loc  -->
                             <div class="col-span-12 sm:col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
@@ -281,7 +287,7 @@
                 <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
                         <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Kepemilikan Karakter</h2>
                         </div>
@@ -292,7 +298,9 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
 
                         <p class="text-xl">
                             Kamu bisa pilih karakter apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan konstelasi karakter.
@@ -419,7 +427,7 @@
                         </script>
                         <!-- CARD SCRIPTING: END -->
 
-                        <div class="flex items-center flex-col sm:flex-row sm:justify-between gap-4">
+                        <div class="pb-4 flex items-center flex-col sm:flex-row sm:justify-between gap-4">
 
                             <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Hapus Pilihan</button>                
                                 
@@ -437,7 +445,7 @@
                 <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
                         <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Kepemilikan Senjata</h2>
                         </div>
@@ -448,7 +456,9 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
 
                         <p class="text-xl">
                             Kamu bisa pilih senjata apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan refinement senjata.
@@ -583,7 +593,7 @@
                         </script>
                         <!-- CARD SCRIPTING: END  -->
 
-                        <div class="flex items-center flex-col sm:flex-row sm:justify-between gap-4">
+                        <div class="pb-4 flex items-center flex-col sm:flex-row sm:justify-between gap-4">
 
                             <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
                                 
@@ -601,7 +611,7 @@
                 <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
                         <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Asset Tambahan</h2>
                         </div>
@@ -612,7 +622,9 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
 
                         <p class="text-xl">
                             Silahkan isi berdasarkan item yang kamu miliki di akunmu
@@ -678,7 +690,7 @@
 
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                             <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
                             <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
@@ -691,7 +703,7 @@
                 <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
                         <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Status PITY</h2>
                         </div>
@@ -702,13 +714,15 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
 
                         <p class="text-xl">
                             Silahkan isi berdasarkan berapa kali kamu pernah gacha di banner dibawah ini
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+                        <div class="pb-4 w-full h-fit grid grid-cols-12 my-6 gap-6">
 
                             <!-- char event  -->
                             <div class="col-span-12 w-full h-fit flex flex-col gap-y-4">
@@ -755,7 +769,7 @@
                 <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
                         <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Keamanan Akun</h2>
                         </div>
@@ -766,7 +780,9 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
 
                         <p class="text-xl">
                             Silahkan isi berdasarkan apa yang pernah kamu lakukan / alami dengan akunmu
@@ -822,7 +838,7 @@
 
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                             <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
                             <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
