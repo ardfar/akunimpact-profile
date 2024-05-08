@@ -119,7 +119,7 @@
             <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">
             
                 <!-- WELCOMING START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div class="group border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -134,7 +134,7 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
 
                         <p>
                             Untuk menjual akunmu, Kamu perlu mengisi formulir dibawah ini dengan benar dan jujur agar cuan yang didapatkan bisa maksimal. <br>
@@ -147,10 +147,11 @@
                         </ol>
 
                         <div class="w-full flex items-center justify-center sm:justify-end ">
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
-                    </div>                              
+                    </div>
+
                 </div>
                 <!-- WELCOMING END  -->
 
@@ -172,7 +173,7 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
                         <p>
                             Kamu bisa melihat video tutorial dibawah ini sebelum mengisi formulir.
@@ -183,8 +184,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -206,7 +207,7 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
                         <p class="text-xl">
                             Formulir ini berisikan informasi mengenai informasi akunmu
@@ -268,8 +269,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -291,7 +292,7 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
                         <p class="text-xl">
                             Kamu bisa pilih karakter apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan konstelasi karakter.
@@ -423,8 +424,8 @@
                             <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Reset Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                             </div>
                         </div>
                         
@@ -447,7 +448,7 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
                         <p class="text-xl">
                             Kamu bisa pilih senjata apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan refinement senjata.
@@ -587,8 +588,8 @@
                             <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                             </div>
                         </div>
                         
@@ -611,7 +612,7 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
                         <p class="text-xl">
                             Silahkan isi berdasarkan item yang kamu miliki di akunmu
@@ -678,8 +679,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -701,7 +702,7 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
                         <p class="text-xl">
                             Silahkan isi berdasarkan berapa kali kamu pernah gacha di banner dibawah ini
@@ -742,8 +743,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -765,7 +766,7 @@
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 my-4 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
                         <p class="text-xl">
                             Silahkan isi berdasarkan apa yang pernah kamu lakukan / alami dengan akunmu
@@ -822,8 +823,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -839,6 +840,27 @@
 
     </section>
     <!-- PROFILE PAGE: END  -->
+
+    <script>
+        let currentSection = 0;
+        const sections = document.querySelectorAll('#collapsible-container > div > #content');
+
+        function showNext() {
+            if (currentSection < sections.length - 1) {
+                sections[currentSection].style.height = "0px";
+                currentSection++;
+                sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
+            }
+        }
+
+        function showPrev() {
+            if (currentSection > 0) {
+                sections[currentSection].style.height = "0px";
+                currentSection--;
+                sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
+            }
+        }
+    </script>
     
 </body>
 </html>
