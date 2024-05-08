@@ -12,6 +12,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
         @font-face {
             font-family: "hsr-ui";
             src: url("assets/fonts/hsr-ui.ttf");
@@ -119,7 +123,7 @@
             <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">
             
                 <!-- WELCOMING START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
+                <div id="welcome" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -158,7 +162,7 @@
                 <!-- WELCOMING END  -->
 
                 <!-- TUTORIAL START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="tutorial" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -197,7 +201,7 @@
                 <!-- TUTORIAL END  -->
 
                 <!-- BASIC ACCOUNT INFO START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="account-info" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -284,7 +288,7 @@
                 <!-- BASIC ACCOUNT INFO END  -->
 
                 <!-- ACCOUNT CHARACTER START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="account-characters" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -442,7 +446,7 @@
                 <!-- ACCOUNT CHARACTER INFO END  -->
 
                 <!-- ACCOUNT WEAPON START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="account-weapons" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -608,7 +612,7 @@
                 <!-- ACCOUNT WEAPON END  -->
 
                 <!-- ADDTIONAL ITEMS START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="additional-items" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -700,7 +704,7 @@
                 <!-- ADDTIONAL ITEMS END  -->
 
                 <!-- PITY START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="pity-rate" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -766,7 +770,7 @@
                 <!-- PITY END  -->
 
                 <!-- ACCOUNT SECURITY START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="security" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
@@ -861,19 +865,32 @@
         let currentSection = 0;
         const sections = document.querySelectorAll('#collapsible-container > div > #content');
 
+        function getParentId() {
+            if (currentSection < sections.length) {
+                const parentId = sections[currentSection].parentNode.id;
+                return parentId;
+            }
+        }
+
         function showNext() {
             if (currentSection < sections.length - 1) {
                 sections[currentSection].style.height = "0px";
                 currentSection++;
                 sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
+                setTimeout(function(){
+                    window.location.href = "#" + getParentId()
+                }, 300)
             }
         }
 
         function showPrev() {
             if (currentSection > 0) {
                 sections[currentSection].style.height = "0px";
-                currentSection--;
+                currentSection--;               
                 sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
+                setTimeout(function(){
+                    window.location.href = "#" + getParentId()
+                }, 300)
             }
         }
     </script>
