@@ -150,7 +150,7 @@
 
         // Function to toggle the 'selected' class on click
         function toggleSelected(card_genshin) {
-            const clicks_genshin = parseInt(card_genshin.getAttribute('data-clicks'));
+            const clicks_genshin = parseInt(card_genshin.getAttribute('data-clicks_genshin'));
             var image_genshin = card_genshin.getElementsByTagName("img")[0]
             console.log("Click: ", clicks_genshin)
             
@@ -168,7 +168,7 @@
                 card_genshin.querySelector('.genshin-corner-part').innerHTML = '';
             }
 
-            card_genshin.setAttribute('data-clicks', clicks_genshin < 7 ? clicks_genshin + 1 : 0);
+            card_genshin.setAttribute('data-clicks_genshin', clicks_genshin < 7 ? clicks_genshin + 1 : 0);
         }
 
         // Function to extract data from selected card_genshins

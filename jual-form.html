@@ -12,6 +12,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: "genshin";
+            src: url("assets/fonts/genshin.ttf");
+        }
+
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 5px;
@@ -29,10 +39,48 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
+        .genshin-card {
+            position: relative;
+            font-family: "genshin";
+        }
+
+        /* Container for the small part */
+        .corner-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1; /* Ensure it's above the image */
+        }
+
+        /* Styles for the small part */
+        .genshin-corner-part {
+            width: 2rem;
+            height: 2rem;
+            border-bottom-left-radius: 10px;
+            background: #a36b5e ;
+            color: #edc681;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden; /* Hide by default */
+        }
+
+        .genshin-card.selected .genshin-corner-part {
+            visibility: visible; /* Show only when selected */
+        }
+
+        .genshin-corner-part p {
+            font-size: 1rem;
+            color: #edc681;
+            margin: 0;
+        }
+
     </style>
     
     
 </head>
+
 <body>
 
     <!-- PROFILE PAGE: START  -->
@@ -53,7 +101,7 @@
             <div class="border-0 max-w-[90%] flex flex-row justify-center sm:justify-between items-center w-screen overflow-x-auto z-10">
                 <div class="border-4 min-w-[180px] sm:w-fit bg-white border-gray-300 py-2 px-8 text-black text-center rounded-3xl">
                     <h1>
-                        Formulir Jual Akun Genshin Impact
+                        Formulir Jual Akun Honkai Star Rail
                     </h1>
                 </div>
                 
@@ -63,59 +111,70 @@
 
     
             <!-- FORM CONTAINER: START  -->
-            <div class="border-0 border-red-800 w-[90%] flex flex-col gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">      
-                
+            <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">
+            
                 <!-- WELCOMING START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full">
+                <div id="welcome" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
-                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Halo, Reza!</span><br>Sudah siap untuk dapatkan cuan dari akunmu?</h2>
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="w-[80%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-md sm:text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Halo, Reza!</span><br>Sudah siap untuk dapatkan cuan dari akunmu?</h2>
+                        </div>
+
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-door-open text-2xl sm:text-3xl text-white"></i>
                         </div>
             
-                        <i class="fas fa-money-bill-wave text-4xl sm:text-3xl rounded-full bg-cyan-500 p-3 text-white cursor-pointer snap-center mx-16 sm:mx-4 hidden sm:block"></i>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
 
-                        <p>
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Untuk menjual akunmu, Kamu perlu mengisi formulir dibawah ini dengan benar dan jujur agar cuan yang didapatkan bisa maksimal. <br>
                             Sebelum itu, Kamu harus memperhatikan hal-hal dibawah ini agara tidak ada kendala.
                         </p>
-                        <ol class="list-decimal list-inside">
-                            <li>Akun Genshin bisa login</li>
+                        <ol class="text-md sm:text-xl list-decimal list-inside">
+                            <li>Akun Genshin Impact bisa login</li>
                             <li>Akun Gmail bisa login dan masih aktif</li>
-                            <li>Ubah email Genshin ke email yang bisa diserahkan nanti</li>
+                            <li>Ubah email Genshin Impact ke email yang bisa diserahkan nanti</li>
                         </ol>
 
-                        <div class="w-full flex items-center justify-center sm:justify-end ">
+                        <div class="w-full flex items-center justify-center sm:justify-end pb-4">
                             <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
-                    </div>                              
+                    </div>
+
                 </div>
                 <!-- WELCOMING END  -->
 
                 <!-- TUTORIAL START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
+                <div id="tutorial" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">
                                 Tutorial Isi Formulir
                             </h2>
                         </div>
             
-                        <i class="fas fa-money-bill-wave text-4xl sm:text-3xl rounded-full bg-cyan-500 p-3 text-white cursor-pointer snap-center mx-16 sm:mx-4 hidden sm:block"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-question text-2xl sm:text-3xl text-white"></i>
+                        </div>
+
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p>
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Kamu bisa melihat video tutorial dibawah ini sebelum mengisi formulir.
                         </p>
                         
@@ -123,7 +182,7 @@
                             <iframe width="560" height="315" class="rounded-xl" src="https://www.youtube.com/embed/LrqsaO9Cf2M?si=yWbTxiP8Gv2LjEpU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                        <div class="pb-4  w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                             <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
                             <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
@@ -133,29 +192,33 @@
                 <!-- TUTORIAL END  -->
 
                 <!-- BASIC ACCOUNT INFO START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
+                <div id="account-info" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Informasi Akun</h2>
                         </div>
             
-                        <i class="fas fa-money-bill-wave text-4xl sm:text-3xl rounded-full bg-cyan-500 p-3 text-white cursor-pointer snap-center mx-16 sm:mx-4 hidden sm:block"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-info text-2xl sm:text-3xl text-white"></i>
+                        </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Formulir ini berisikan informasi mengenai informasi akunmu
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+                        <div class="pb-4 w-full h-fit grid grid-cols-12 my-6 gap-6">
                             
                             <!-- Server Loc  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="server" class="block text-xl">Server</label>
+                            <div class="col-span-12 sm:col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="server" class="block text-md sm:text-xl">Server</label>
                                 <select name="server" id="server" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="Asia">Asia</option>
                                     <option value="America">America</option>
@@ -165,14 +228,14 @@
                             </div>
 
                             <!-- AR  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="ar" class="block text-xl">Adveture Rank</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="ar" class="block text-md sm:text-xl">Adventure Rank</label>
                                 <input type="number" min="0" max="60" name="ar" id="ar" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                             </div>
 
                             <!-- is username set Loc  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="isUsernameSet" class="block text-xl">Apakah Sudah Set Username?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="isUsernameSet" class="block text-md sm:text-xl">Apakah Sudah Set Username?</label>
                                 <select name="isUsernameSet" id="isUsernameSet" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Sudah</option>
                                     <option value="false">Belum</option>
@@ -180,8 +243,8 @@
                             </div>
 
                             <!-- Ownership status  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="ownership" class="block text-xl">Apakah Akun Milik Pribadi?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="ownership" class="block text-md sm:text-xl">Apakah Akun Milik Pribadi?</label>
                                 <select name="ownership" id="ownership" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="selfowned">Milik Sendiri</option>
                                     <option value="bought">Beli Dari Orang Lain</option>
@@ -190,8 +253,8 @@
                             </div>
 
                             <!-- have topup set Loc  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="haveTopup" class="block text-xl">Apakah Sudah Pernah Topup?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="haveTopup" class="block text-md sm:text-xl">Apakah Sudah Pernah Topup?</label>
                                 <select name="haveTopup" id="haveTopup" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Sudah</option>
                                     <option value="false">Belum</option>
@@ -199,8 +262,8 @@
                             </div>
 
                             <!-- Reason  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="reason" class="block text-xl">Alasan Jual</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="reason" class="block text-md sm:text-xl">Alasan Jual</label>
                                 <input type="text" name="reason" id="reason" class="w-full h-14 pt-2 pb-3 px-4 border-gray-300 border-4 rounded-lg">
                             </div>
 
@@ -213,410 +276,400 @@
                         
                     </div>                              
                 </div>
-                <!-- BASIC ACCOUNT INFO END  -->                               
+                <!-- BASIC ACCOUNT INFO END  -->
 
                 <!-- ACCOUNT CHARACTER START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
+                <div id="account-characters" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Kepemilikan Karakter</h2>
                         </div>
             
-                        <i class="fas fa-money-bill-wave text-4xl sm:text-3xl rounded-full bg-cyan-500 p-3 text-white cursor-pointer snap-center mx-16 sm:mx-4 hidden sm:block"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-user-tag text-2xl sm:text-3xl text-white"></i>
+                        </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Kamu bisa pilih karakter apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan konstelasi karakter.
                         </p>
                         
-                        <div class="w-full h-fit my-6 gap-6">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="genshin-cards-container">
                             
                             <!-- PUT CHARACTER CARD OF GENSHIN IMPACT HERE  -->
 
-                            <div>
-                                <div id="imageContainerCharacter" class="flex flex-wrap justify-center relative">
-                                    <!-- Images will be dynamically added here -->
-                                </div>
-                            
-                                <input type="hidden" class="h-[500px] w-[700px]" id="jsonDataGenshinCharacter" name="jsonDataGenshinCharacter" />
-                            
-                                <button onclick="extractDataCharacter()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Extract Data</button>
-                                
-                                <button onclick="resetSelectionsCharacter()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">Reset Selections</button>
-                            
-                                <script src="https://cdn.tailwindcss.com"></script>
-                                <script>
-                                    const characters = {
-                                        'albedo.webp': 'Albedo',
-                                        'alhaitham.webp': 'Alhaitham',
-                                        'arataki-itto.webp': 'Arataki Itto',
-                                        'baizhu.webp': 'Baizhu',
-                                        'chiori.webp': 'Chiori',
-                                        'cyno.webp': 'Cyno',
-                                        'dehya.webp': 'Dehya',
-                                        'diluc.webp': 'Diluc',
-                                        'eula.webp': 'Eula',
-                                        'furina.webp': 'Furina',
-                                        'ganyu.webp': 'Ganyu',
-                                        'hu-tao.webp': 'Hu Tao',
-                                        'jean.webp': 'Jean',
-                                        'kaedehara-kazuha.webp': 'Kazuha',
-                                        'kamisato-ayaka.webp': 'Kamisato Ayaka',
-                                        'kamisato-ayato.webp': 'Kamisato Ayato',
-                                        'keqing.webp': 'Keqing',
-                                        'klee.webp': 'Klee',
-                                        'lyney.webp': 'Lyney',
-                                        'mona.webp': 'Mona',
-                                        'nahida.webp': 'Nahida',
-                                        'navia.webp': 'Navia',
-                                        'neuvillette.webp': 'Neuvillette',
-                                        'nilou.webp': 'Nilou',
-                                        'qiqi.webp': 'Qiqi',
-                                        'raiden-shogun.webp': 'Raiden Shogun',
-                                        'sangonomiya-kokomi.webp': 'Kokomi',
-                                        'shenhe.webp': 'Shenhe',
-                                        'tartaglia.webp': 'Tartaglia',
-                                        'tighnari.webp': 'Tighnari',
-                                        'venti.webp': 'Venti',
-                                        'wanderer.webp': 'Wanderer',
-                                        'wriothesley.webp': 'Wriothesley',
-                                        'xianyun.webp': 'Xianyun',
-                                        'xiao.webp': 'Xiao',
-                                        'yae-miko.webp': 'Yae Miko',
-                                        'yelan.webp': 'Yelan',
-                                        'yoimiya.webp': 'Yoimiya',
-                                        'zhongli.webp': 'Zhongli'
-                                    };
-                            
-                            
-                                    // Function to fetch images from the JSON file
-                                    function fetchImagesCharacter() {
-                                        const imageContainerCharacter = document.getElementById('imageContainerCharacter');
-                            
-                                        for (const [filename_genshin, characterName_genshin] of Object.entries(characters)) {
-                            
-                                            // Create Card_genshin 
-                                            const card_genshin = document.createElement('div');
-                                            card_genshin.classList.add('genshin-card_genshin', 'bg-gray-200', 'rounded-lg', 'cursor-pointer', 'w-[150px]', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center');
-                                            card_genshin.setAttribute('data-clicks_genshin', '0');
-                                            card_genshin.setAttribute('title', 'Click to Select Character');
-                                            card_genshin.setAttribute('data-character-name', characterName_genshin); // Simpan nama karakter di sini
-                                            card_genshin.onclick = function() { toggleSelected(this); };
-                            
-                                            // Corner Container
-                                            const cornerContainer_genshin = document.createElement('div');
-                                            cornerContainer_genshin.classList.add('corner-container');
-                                            const cornerPart_genshin = document.createElement('div');
-                                            cornerPart_genshin.classList.add('genshin-corner-part', 'border-red-600');
-                                            cornerContainer_genshin.appendChild(cornerPart_genshin);
-                                            card_genshin.appendChild(cornerContainer_genshin);
-                            
-                                            // Character Image 
-                                            const img_genshin = document.createElement('img');
-                                            img_genshin.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-gray-200', "rounded-br-3xl");
-                                            img_genshin.src = 'assets/images/games/genshin/characters/' + filename_genshin;
-                                            img_genshin.alt = 'Character Image';
-                            
-                                            // Char Name
-                                            const characterName_genshinElement = document.createElement('p');
-                                            characterName_genshinElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
-                                            characterName_genshinElement.textContent = characterName_genshin;
-                            
-                                            card_genshin.appendChild(img_genshin);
-                                            card_genshin.appendChild(characterName_genshinElement);
-                                            imageContainerCharacter.appendChild(card_genshin);
-                                        }
-                                    }
-                            
-                                    // Function to toggle the 'selected' class on click
-                                    function toggleSelected(card_genshin) {
-                                        const clicks_genshin = parseInt(card_genshin.getAttribute('data-clicks'));
-                                        var image_genshin = card_genshin.getElementsByTagName("img")[0]
-                                        console.log("Click: ", clicks_genshin)
-                                        
-                                        if (clicks_genshin < 7){
-                                            image_genshin.classList.remove("bg-gray-200")
-                                            image_genshin.classList.add("bg-[#efa525]")
-                            
-                                            card_genshin.classList.add('selected');
-                                            card_genshin.querySelector('.genshin-corner-part').innerHTML = `<p class='bg-[#efa525] p-1 rounded-full w-full'>C${clicks_genshin}</p>`;
-                                        } else {
-                                            image_genshin.classList.remove("bg-[#efa525]")
-                                            image_genshin.classList.add("bg-gray-200")
-                            
-                                            card_genshin.classList.remove('selected');
-                                            card_genshin.querySelector('.genshin-corner-part').innerHTML = '';
-                                        }
-                            
-                                        card_genshin.setAttribute('data-clicks', clicks_genshin < 7 ? clicks_genshin + 1 : 0);
-                                    }
-                            
-                                    // Function to extract data from selected card_genshins
-                                    function extractDataCharacter() {
-                                        const selectedCard_genshins = document.querySelectorAll('.genshin-card_genshin.selected');
-                                        const data_genshin = {
-                                            characters: Array.from(selectedCard_genshins).map(card_genshin => ({
-                                                name: card_genshin.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
-                                                enhancement: parseInt(card_genshin.getAttribute('data-clicks_genshin')) % 7
-                                            }))
-                                        };
-                                        const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinCharacter');
-                                        jsonDataGenshinCharacterInput.value = JSON.stringify(data_genshin);
-                                        console.log(jsonDataGenshinCharacterInput.value); // Output JSON for debugging
-                                    }
-                                                            
-                                    // Function to reset all selected card_genshins
-                                    function resetSelectionsCharacter() {
-                                        const selectedCard_genshins = document.querySelectorAll('.genshin-card_genshin.selected');
-
-                                        for (const card_genshin of selectedCard_genshins) {
-                                            card_genshin.classList.remove('selected');
-                                            card_genshin.querySelector('.genshin-corner-part').innerHTML = '';
-                                            card_genshin.setAttribute('data-clicks_genshin', '0');
-                                            // Remove the golden background class
-                                            const image_genshin = card_genshin.querySelector('img_genshin');
-                                            image_genshin.classList.remove('bg-[#efa525]');
-                                            image_genshin.classList.add('bg-gray-200');
-                                        }
-                                    }
-                            
-                            
-                                </script>
-                            </div>
-
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                        <input type="text" hidden id="jsonDataHSRCharacter" name="jsonDataHSRCharacter" />
+
+                        <!-- CARD SCRIPTING: START  -->
+                        <script>
+                            const characters = {
+                                'albedo.webp': 'Albedo',
+                                'alhaitham.webp': 'Alhaitham',
+                                'arataki-itto.webp': 'Arataki Itto',
+                                'baizhu.webp': 'Baizhu',
+                                'chiori.webp': 'Chiori',
+                                'cyno.webp': 'Cyno',
+                                'dehya.webp': 'Dehya',
+                                'diluc.webp': 'Diluc',
+                                'eula.webp': 'Eula',
+                                'furina.webp': 'Furina',
+                                'ganyu.webp': 'Ganyu',
+                                'hu-tao.webp': 'Hu Tao',
+                                'jean.webp': 'Jean',
+                                'kaedehara-kazuha.webp': 'Kazuha',
+                                'kamisato-ayaka.webp': 'Kamisato Ayaka',
+                                'kamisato-ayato.webp': 'Kamisato Ayato',
+                                'keqing.webp': 'Keqing',
+                                'klee.webp': 'Klee',
+                                'lyney.webp': 'Lyney',
+                                'mona.webp': 'Mona',
+                                'nahida.webp': 'Nahida',
+                                'navia.webp': 'Navia',
+                                'neuvillette.webp': 'Neuvillette',
+                                'nilou.webp': 'Nilou',
+                                'qiqi.webp': 'Qiqi',
+                                'raiden-shogun.webp': 'Raiden Shogun',
+                                'sangonomiya-kokomi.webp': 'Kokomi',
+                                'shenhe.webp': 'Shenhe',
+                                'tartaglia.webp': 'Tartaglia',
+                                'tighnari.webp': 'Tighnari',
+                                'venti.webp': 'Venti',
+                                'wanderer.webp': 'Wanderer',
+                                'wriothesley.webp': 'Wriothesley',
+                                'xianyun.webp': 'Xianyun',
+                                'xiao.webp': 'Xiao',
+                                'yae-miko.webp': 'Yae Miko',
+                                'yelan.webp': 'Yelan',
+                                'yoimiya.webp': 'Yoimiya',
+                                'zhongli.webp': 'Zhongli'
+                            };
+                    
+                    
+                            // Function to fetch images from the JSON file
+                            function createCard() {
+                                const imageContainerCharacter = document.getElementById('genshin-cards-container');
+                    
+                                for (const [filename_genshin, characterName_genshin] of Object.entries(characters)) {
+                    
+                                    // Create Card_genshin 
+                                    const card_genshin = document.createElement('div');
+                                    card_genshin.classList.add('genshin-card', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer', 'sm:w-[150px]', 'w-full', 'object-scale-down', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
+                                    card_genshin.setAttribute('data-clicks', '0');
+                                    card_genshin.setAttribute('title', 'Click to Select Character');
+                                    card_genshin.setAttribute('data-character-name', characterName_genshin); // Simpan nama karakter di sini
+                                    card_genshin.onclick = function() { toggleSelected(this); };
+                    
+                                    // Corner Container
+                                    const cornerContainer_genshin = document.createElement('div');
+                                    cornerContainer_genshin.classList.add('corner-container');
+                                    const cornerPart_genshin = document.createElement('div');
+                                    cornerPart_genshin.classList.add('genshin-corner-part', 'border-red-600');
+                                    cornerContainer_genshin.appendChild(cornerPart_genshin);
+                                    card_genshin.appendChild(cornerContainer_genshin);
+                    
+                                    // Character Image 
+                                    const img_genshin = document.createElement('img');
+                                    img_genshin.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#c7c7c7]', "rounded-br-3xl");
+                                    img_genshin.src = 'assets/images/games/genshin/characters/' + filename_genshin;
+                                    img_genshin.alt = 'Character Image';
+                    
+                                    // Char Name
+                                    const characterName_genshinElement = document.createElement('p');
+                                    characterName_genshinElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'object-scale-down', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
+                                    characterName_genshinElement.textContent = characterName_genshin;
+                    
+                                    card_genshin.appendChild(img_genshin);
+                                    card_genshin.appendChild(characterName_genshinElement);
+                                    imageContainerCharacter.appendChild(card_genshin);
+                                }
+                            }
+                    
+                            // Function to toggle the 'selected' class on click
+                            function toggleSelected(card_genshin) {
+                                const clicks_genshin = parseInt(card_genshin.getAttribute('data-clicks'));
+                                var image_genshin = card_genshin.getElementsByTagName("img")[0]
+                                console.log("Click: ", clicks_genshin)
+                                
+                                if (clicks_genshin < 7){
+                                    image_genshin.classList.remove("bg-[#c7c7c7]")
+                                    image_genshin.classList.add("bg-[#efa525]")
+                    
+                                    card_genshin.classList.add('selected');
+                                    card_genshin.querySelector('.genshin-corner-part').innerHTML = `<p>C${clicks_genshin}</p>`;
+                                } else {
+                                    image_genshin.classList.remove("bg-[#efa525]")
+                                    image_genshin.classList.add("bg-[#c7c7c7]")
+                    
+                                    card_genshin.classList.remove('selected');
+                                    card_genshin.querySelector('.genshin-corner-part').innerHTML = '';
+                                }
+                    
+                                card_genshin.setAttribute('data-clicks', clicks_genshin < 7 ? clicks_genshin + 1 : 0);
+                            }
+                    
+                            // Function to extract data from selected card_genshins
+                            function extractDataCharacter() {
+                                const selectedCard_genshins = document.querySelectorAll('.genshin-card.selected');
+                                const data_genshin = {
+                                    characters: Array.from(selectedCard_genshins).map(card_genshin => ({
+                                        name: card_genshin.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
+                                        enhancement: parseInt(card_genshin.getAttribute('data-clicks')) % 7
+                                    }))
+                                };
+                                const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinCharacter');
+                                jsonDataGenshinCharacterInput.value = JSON.stringify(data_genshin);
+                                console.log(jsonDataGenshinCharacterInput.value); // Output JSON for debugging
+                            }
+                    
+                            // Function to reset all selected card_genshins
+                            function resetSelections() {
+                                const selectedCard_genshins = document.querySelectorAll('.genshin-card.selected');
+                                for (const card_genshin of selectedCard_genshins) {
+                                    card_genshin.classList.remove('selected');
+                                    card_genshin.querySelector('.genshin-corner-part').innerHTML = '';
+                                    card_genshin.setAttribute('data-clicks', '0');
+                                    // Remove the golden background class
+                                    const image_genshin = card_genshin.querySelector('img');
+                                    image_genshin.classList.remove('bg-[#efa525]');
+                                    image_genshin.classList.add('bg-[#c7c7c7]');
+                                }
+                            }
+                    
+                    
+                        </script>
+                        <!-- CARD SCRIPTING: END -->
+
+                        <div class="pb-4 flex items-center flex-col sm:flex-row sm:justify-between gap-4">
+
+                            <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Hapus Pilihan</button>                
+                                
+                            <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            </div>
                         </div>
                         
                     </div>                              
                 </div>
                 <!-- ACCOUNT CHARACTER INFO END  -->
 
-                
                 <!-- ACCOUNT WEAPON START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
+                <div id="account-weapons" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Kepemilikan Senjata</h2>
                         </div>
             
-                        <i class="fas fa-money-bill-wave text-4xl sm:text-3xl rounded-full bg-cyan-500 p-3 text-white cursor-pointer snap-center mx-16 sm:mx-4 hidden sm:block"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-portrait text-2xl sm:text-3xl text-white"></i>
+                        </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Kamu bisa pilih senjata apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan refinement senjata.
                         </p>
                         
-                        <div class="w-full h-fit my-6 gap-6">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="genshin-weapon-cards-container">
                             
-                            <!-- PUT WEAPON CARD OF GENSHIN IMPACT HERE  -->
-
-                            <div class="w-full">
-                                <div id="imageContainerWeapon" class="flex flex-row flex-wrap justify-center relative border-0 border-red-600 w-full">
-                                    <!-- Images will be dynamically added here -->
-                                </div>
-                            
-                                <input type="hidden" class="h-[500px] w-[700px]" id="jsonDataWeapon" name="jsonDataWeapon" />
-                            
-                                <button onclick="extractData()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Extract Data</button>
-                            
-                                <button onclick="resetSelections()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">Reset Selections</button>
-                            
-                            
-                                <script>
-                                    const weapon_bow_ghenshin = {
-                                        "amos-bow.webp": "Amos Bow",
-                                        "aqua-simulacra.webp": "Aqua Simulacra",
-                                        "elegy-for-the-end.webp": "Elegy for the End",
-                                        "hunter_s-path.webp": "Hunter's Path",
-                                        "polar-star.webp": "Polar Star",
-                                        "skyward-harp.webp": "Skyward Harp",
-                                        "the-first-great-magic.webp": "The First Great Magic",
-                                        "thundering-pulse.webp": "Thundering Pulse",
-                                    };
-                            
-                                    const weapon_catalyst_genshin = {
-                                        "a-thousand-floating-dreams.webp": "A Thousand Floating Dreams",
-                                        "cashflow-supervision.webp": "Cashflow Supervision",
-                                        "cranes-echoing-call.webp": "Cranes Echoing Call",
-                                        "everlasting-moonglow.webp": "Everlasting Moonglow",
-                                        "jadefall-splendor.webp": "Jadefall Splendor",
-                                        "kagura_s-verity.webp": "Kagura's Verity",
-                                        "lost-prayer-to-the-sacred-winds.webp": "Lost Prayer to the Sacred Winds",
-                                        "memory-of-dust.webp": "Memory of Dust",
-                                        "skyward-atlas.webp": "Skyward Atlas",
-                                        "tome-of-the-eternal-flow.webp": "Tome of the Eternal Flow",
-                                        "tulaytullah_s-remembrance.webp": "Tulaytullah's Remembrance",
-                                    }
-                            
-                                    const weapon_claymore_genshin = {
-                                        "beacon-of-the-reed-sea.webp": "Beacon of the Reed Sea",
-                                        "redhorn-stonethresher.webp": "Redhorn Stonethresher",
-                                        "skyward-pride.webp": "Skyward Pride",
-                                        "song-of-broken-pines.webp": "Song of Broken Pines",
-                                        "the-unforged.webp": "The Unforged",
-                                        "verdict.webp": "Verdict",
-                                        "wolf_s-gravestone.webp": "Wolf's Gravestone",            
-                                    }
-                            
-                                    const weapon_polearm_genshin = {
-                                        "calamity-queller.webp": "Calamity Queller",
-                                        "engulfing-lightning.webp": "Engulfing Lightning",
-                                        "primordial-jade-winged-spear.webp": "Primordial Jade Winged Spear",
-                                        "skyward-spine.webp": "Skyward Spine",
-                                        "staff-of-homa.webp": "Staff of Homa",
-                                        "staff-of-the-scarlet-sands.webp": "Staff of the Scarlet Sands",
-                                        "vortex-vanquisher.webp": "Vortex Vanquisher",            
-                                    }
-                            
-                                    const weapon_sword_genshin = {
-                                        "aquila-favonia.webp": "Aquila Favonia",
-                                        "freedom-sworn.webp": "Freedom Sworn",
-                                        "haran-geppaku-futsu.webp": "Haran Geppaku Futsu",
-                                        "key-of-khaj-nisut.webp": "Key of Khaj-Nisut",
-                                        "light-of-foliar-incision.webp": "Light of Foliar Incision",
-                                        "mistsplitter-reforged.webp": "Mistsplitter Reforged",
-                                        "primordial-jade-cutter.webp": "Primordial Jade Cutter",
-                                        "skyward-blade.webp": "Skyward Blade",
-                                        "splendor-of-tranquil-waters.webp": "Splendor of Tranquil Waters",
-                                        "summit-shaper.webp": "Summit Shaper",
-                                        "uraku-misugiri.webp": "Uraku Misugiri"            
-                                    }
-                            
-                            
-                                    // Function to fetch images from the JSON file
-                                    function fetchImages() {
-                                        const imageContainer = document.getElementById('imageContainerWeapon');
-                            
-                                        const weaponCategories = [
-                                            { category: weapon_bow_ghenshin, folder: 'bow' },
-                                            { category: weapon_catalyst_genshin, folder: 'catalyst' },
-                                            { category: weapon_claymore_genshin, folder: 'claymore' },
-                                            { category: weapon_polearm_genshin, folder: 'polearm' },
-                                            { category: weapon_sword_genshin, folder: 'sword' }
-                                        ];
-                            
-                                        for (const { category, folder } of weaponCategories) {
-                                            for (const [filename, weaponName] of Object.entries(category)) {
-                                                // Create Card 
-                                                const card = document.createElement('div');
-                                                card.classList.add('genshin-card', 'bg-gray-200', 'rounded-lg', 'cursor-pointer', 'w-[150px]', 'max-h-[280px]', 'pb-2', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'm-2', 'flex', 'flex-col', 'items-center', 'justify-center', 'border-0', 'border-red-500');
-                                                card.setAttribute('data-clicks', '0');
-                                                card.setAttribute('title', 'Click to Select Weapon');
-                                                card.setAttribute('data-weapon-name', weaponName); // Simpan nama karakter di sini
-                                                card.onclick = function() { toggleSelected(this); };
-                            
-                                                // Corner Container
-                                                const cornerContainer = document.createElement('div');
-                                                cornerContainer.classList.add('corner-container');
-                                                const cornerPart = document.createElement('div');
-                                                cornerPart.classList.add('genshin-corner-part', 'border-red-600');
-                                                cornerContainer.appendChild(cornerPart);
-                                                card.appendChild(cornerContainer);
-                            
-                                                // Character Image 
-                                                const img = document.createElement('img');
-                                                img.classList.add('w-full', 'h-[65%]', 'object-scale-down', 'bg-gray-200', "rounded-br-3xl");
-                                                img.src = `assets/images/games/genshin/weapons/${folder}/${filename}`;
-                                                img.alt = 'Character Image';
-                            
-                                                // Char Name
-                                                const weaponNameElement = document.createElement('p');
-                                                weaponNameElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'px-2');
-                                                weaponNameElement.textContent = weaponName;
-                            
-                                                card.appendChild(img);
-                                                card.appendChild(weaponNameElement);
-                                                imageContainer.appendChild(card);
-                                            }
-                                        }
-                                    }
-                            
-                                    // Function to toggle the 'selected' class on click
-                                    function toggleSelected(card) {
-                                        const clicks = parseInt(card.getAttribute('data-clicks'));
-                                        var image = card.getElementsByTagName("img")[0]
-                                        console.log("Click: ", clicks)
-                                        
-                                        if (clicks < 7){
-                                            image.classList.remove("bg-[#c7c7c7]")
-                                            image.classList.add("bg-[#efa525]", "h-fit")
-                            
-                                            card.classList.add('selected');
-                                            card.querySelector('.genshin-corner-part').innerHTML = `<p class='bg-[#efa525] p-1 rounded-full w-full'>R${clicks}</p>`;
-
-                                            // Make the weaponNameElement smaller
-                                            const weaponNameElement = card.querySelector('.text-black');
-                                            weaponNameElement.classList.add('text-sm');
-                                        } else {
-                                            image.classList.remove("bg-[#efa525]", "h-fit")
-                                            image.classList.add("bg-[#c7c7c7]")
-                            
-                                            card.classList.remove('selected');
-                                            card.querySelector('.genshin-corner-part').innerHTML = '';
-
-                                            // Remove the smaller size from weaponNameElement
-                                            const weaponNameElement = card.querySelector('.text-black');
-                                            weaponNameElement.classList.remove('text-sm'); 
-                                        }
-                            
-                                        card.setAttribute('data-clicks', clicks < 7 ? clicks + 1 : 0);
-                                    }
-                            
-                                    // Function to extract data from selected cards
-                                    function extractData() {
-                                        const selectedCards = document.querySelectorAll('.genshin-card.selected');
-                                        const data = {
-                                            characters: Array.from(selectedCards).map(card => ({
-                                                name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
-                                                enhancement: parseInt(card.getAttribute('data-clicks')) % 7
-                                            }))
-                                        };
-                                        const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinCharacter');
-                                        jsonDataGenshinCharacterInput.value = JSON.stringify(data);
-                                        console.log(jsonDataGenshinCharacterInput.value); // Output JSON for debugging
-                                    }
-                            
-                                    // Fetch images when the page loads
-                                    window.onload = function() {
-                                        fetchImages();
-                                        fetchImagesCharacter();
-                                    };
-                            
-                                    // Function to reset all selected images
-                                    function resetSelections() {
-                                        const selectedCards = document.querySelectorAll('.genshin-card.selected');
-                                        for (const card of selectedCards) {
-                                            const image = card.getElementsByTagName("img")[0];
-                                            image.classList.remove("bg-[#efa525]", "h-fit");
-                                            image.classList.add("bg-[#c7c7c7]");
-                                            card.classList.remove('selected');
-                                            card.querySelector('.genshin-corner-part').innerHTML = '';
-                                            card.setAttribute('data-clicks', '0');
-                                        }
-                                    }
-                            
-                                </script>
-                            </div>
+                            <!-- PUT WEAPON CARD OF GENSHIN WEAPON HERE  -->
 
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                        <input type="text" hidden id="jsonDataGenshinWeapon" name="jsonDataGenshinWeapon" />
+
+                        <!-- CARD SCRIPTING: START  -->
+                        <script>
+                            const weapon_bow_ghenshin = {
+                                "amos-bow.webp": "Amos Bow",
+                                "aqua-simulacra.webp": "Aqua Simulacra",
+                                "elegy-for-the-end.webp": "Elegy for the End",
+                                "hunter_s-path.webp": "Hunter's Path",
+                                "polar-star.webp": "Polar Star",
+                                "skyward-harp.webp": "Skyward Harp",
+                                "the-first-great-magic.webp": "The First Great Magic",
+                                "thundering-pulse.webp": "Thundering Pulse",
+                            };
+                    
+                            const weapon_catalyst_genshin = {
+                                "a-thousand-floating-dreams.webp": "A Thousand Floating Dreams",
+                                "cashflow-supervision.webp": "Cashflow Supervision",
+                                "cranes-echoing-call.webp": "Cranes Echoing Call",
+                                "everlasting-moonglow.webp": "Everlasting Moonglow",
+                                "jadefall-splendor.webp": "Jadefall Splendor",
+                                "kagura_s-verity.webp": "Kagura's Verity",
+                                "lost-prayer-to-the-sacred-winds.webp": "Lost Prayer to the Sacred Winds",
+                                "memory-of-dust.webp": "Memory of Dust",
+                                "skyward-atlas.webp": "Skyward Atlas",
+                                "tome-of-the-eternal-flow.webp": "Tome of the Eternal Flow",
+                                "tulaytullah_s-remembrance.webp": "Tulaytullah's Remembrance",
+                            }
+                    
+                            const weapon_claymore_genshin = {
+                                "beacon-of-the-reed-sea.webp": "Beacon of the Reed Sea",
+                                "redhorn-stonethresher.webp": "Redhorn Stonethresher",
+                                "skyward-pride.webp": "Skyward Pride",
+                                "song-of-broken-pines.webp": "Song of Broken Pines",
+                                "the-unforged.webp": "The Unforged",
+                                "verdict.webp": "Verdict",
+                                "wolf_s-gravestone.webp": "Wolf's Gravestone",            
+                            }
+                    
+                            const weapon_polearm_genshin = {
+                                "calamity-queller.webp": "Calamity Queller",
+                                "engulfing-lightning.webp": "Engulfing Lightning",
+                                "primordial-jade-winged-spear.webp": "Primordial Jade Winged Spear",
+                                "skyward-spine.webp": "Skyward Spine",
+                                "staff-of-homa.webp": "Staff of Homa",
+                                "staff-of-the-scarlet-sands.webp": "Staff of the Scarlet Sands",
+                                "vortex-vanquisher.webp": "Vortex Vanquisher",            
+                            }
+                    
+                            const weapon_sword_genshin = {
+                                "aquila-favonia.webp": "Aquila Favonia",
+                                "freedom-sworn.webp": "Freedom Sworn",
+                                "haran-geppaku-futsu.webp": "Haran Geppaku Futsu",
+                                "key-of-khaj-nisut.webp": "Key of Khaj-Nisut",
+                                "light-of-foliar-incision.webp": "Light of Foliar Incision",
+                                "mistsplitter-reforged.webp": "Mistsplitter Reforged",
+                                "primordial-jade-cutter.webp": "Primordial Jade Cutter",
+                                "skyward-blade.webp": "Skyward Blade",
+                                "splendor-of-tranquil-waters.webp": "Splendor of Tranquil Waters",
+                                "summit-shaper.webp": "Summit Shaper",
+                                "uraku-misugiri.webp": "Uraku Misugiri"            
+                            }
+                    
+                    
+                            // Function to fetch images from the JSON file
+                            function createWeaponCard() {
+                                const imageContainer = document.getElementById('genshin-weapon-cards-container');
+                    
+                                const weaponCategories = [
+                                    { category: weapon_bow_ghenshin, folder: 'bow' },
+                                    { category: weapon_catalyst_genshin, folder: 'catalyst' },
+                                    { category: weapon_claymore_genshin, folder: 'claymore' },
+                                    { category: weapon_polearm_genshin, folder: 'polearm' },
+                                    { category: weapon_sword_genshin, folder: 'sword' }
+                                ];
+                    
+                                for (const { category, folder } of weaponCategories) {
+                                    for (const [filename, weaponName] of Object.entries(category)) {
+                                        // Create Card 
+                                        const card = document.createElement('div');
+                                        card.classList.add('genshin-card', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer','w-full', 'object-scale-down', 'sm:w-[150px]', 'max-h-[250px]', 'pb-2', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
+                                        card.setAttribute('data-clicks', '0');
+                                        card.setAttribute('title', 'Click to Select Weapon');
+                                        card.setAttribute('data-weapon-name', weaponName); // Simpan nama karakter di sini
+                                        card.onclick = function() { toggleWeaponSelected(this); };
+                    
+                                        // Corner Container
+                                        const cornerContainer = document.createElement('div');
+                                        cornerContainer.classList.add('corner-container');
+                                        const cornerPart = document.createElement('div');
+                                        cornerPart.classList.add('genshin-corner-part', 'border-red-600');
+                                        cornerContainer.appendChild(cornerPart);
+                                        card.appendChild(cornerContainer);
+                    
+                                        // Character Image 
+                                        const img = document.createElement('img');
+                                        img.classList.add('w-full', 'h-[75%]', 'object-scale-down', 'bg-[#c7c7c7]', "rounded-br-3xl");
+                                        img.src = `assets/images/games/genshin/weapons/${folder}/${filename}`;
+                                        img.alt = 'Character Image';
+                    
+                                        // Char Name
+                                        const weaponNameElement = document.createElement('p');
+                                        weaponNameElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'px-2');
+                                        weaponNameElement.textContent = weaponName;
+                    
+                                        card.appendChild(img);
+                                        card.appendChild(weaponNameElement);
+                                        imageContainer.appendChild(card);
+                                    }
+                                }
+                            }
+                    
+                            // Function to toggle the 'selected' class on click
+                            function toggleWeaponSelected(card) {
+                                const clicks = parseInt(card.getAttribute('data-clicks'));
+                                var image = card.getElementsByTagName("img")[0]
+                                console.log("Click: ", clicks)
+                                
+                                if (clicks < 6){
+                                    image.classList.remove("bg-[#c7c7c7]")
+                                    image.classList.add("bg-[#efa525]")
+                    
+                                    card.classList.add('selected');
+                                    card.querySelector('.genshin-corner-part').innerHTML = `<p>R${clicks}</p>`;
+                                } else {
+                                    image.classList.remove("bg-[#efa525]")
+                                    image.classList.add("bg-[#c7c7c7]")
+                    
+                                    card.classList.remove('selected');
+                                    card.querySelector('.genshin-corner-part').innerHTML = '';
+                                }
+                    
+                                card.setAttribute('data-clicks', clicks < 6 ? clicks + 1 : 0);
+                            }
+                    
+                            // Function to extract data from selected cards
+                            function extractData() {
+                                const selectedCards = document.querySelectorAll('.genshin-card.selected');
+                                const data = {
+                                    characters: Array.from(selectedCards).map(card => ({
+                                        name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
+                                        enhancement: parseInt(card.getAttribute('data-clicks')) % 7
+                                    }))
+                                };
+                                const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinCharacter');
+                                jsonDataGenshinCharacterInput.value = JSON.stringify(data);
+                                console.log(jsonDataGenshinCharacterInput.value); // Output JSON for debugging
+                            }
+                    
+                            // Fetch images when the page loads
+                            window.onload = function() {
+                                createWeaponCard();
+                                createCard()
+                            };
+                    
+                            // Function to reset all selected images
+                            function resetWeaponSelections() {
+                                const selectedCards = document.querySelectorAll('.genshin-card.selected');
+                                for (const card of selectedCards) {
+                                    const image = card.getElementsByTagName("img")[0];
+                                    image.classList.remove("bg-[#efa525]");
+                                    image.classList.add("bg-[#c7c7c7]");
+                                    card.classList.remove('selected');
+                                    card.querySelector('.genshin-corner-part').innerHTML = '';
+                                    card.setAttribute('data-clicks', '0');
+                                }
+                            }
+                    
+                        </script>
+                        <!-- CARD SCRIPTING: END  -->
+
+                        <div class="pb-4 flex items-center flex-col sm:flex-row sm:justify-between gap-4">
+
+                            <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
+                                
+                            <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            </div>
                         </div>
                         
                     </div>                              
@@ -624,21 +677,25 @@
                 <!-- ACCOUNT WEAPON END  -->
 
                 <!-- ADDTIONAL ITEMS START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
+                <div id="additional-items" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Asset Tambahan</h2>
                         </div>
             
-                        <i class="fas fa-money-bill-wave text-4xl sm:text-3xl rounded-full bg-cyan-500 p-3 text-white cursor-pointer snap-center mx-16 sm:mx-4 hidden sm:block"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-archive text-2xl sm:text-3xl text-white"></i>
+                        </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Silahkan isi berdasarkan item yang kamu miliki di akunmu
                         </p>
                         
@@ -646,29 +703,18 @@
 
                             <!-- welkin  -->
                             <div class="col-span-12 w-full h-fit flex flex-col gap-y-4">
-                                <label for="welkin" class="text-xl capitalize">
-                                    Blessing welkin
+                                <label for="welkin" class="text-md sm:text-xl capitalize">
+                                    Blessing Welkin
                                 </label>
                                 <div class="relative w-full h-fit">
                                     <input type="number" min="0" name="welkin" id="welkin" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/genshin/add/welkin.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
-                            
-                            <!-- Primogems  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="primogems" class="text-xl">
-                                    Primogems
-                                </label>
-                                <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="primogems" id="primogems" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
-                                    <img src="assets/images/games/genshin/add/primogem.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
-                                </div>
-                            </div>
 
                             <!-- genesis  -->
                             <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="genesis" class="text-xl capitalize">
+                                <label for="genesis" class="text-md sm:text-xl capitalize">
                                     genesis crystal
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -676,32 +722,45 @@
                                     <img src="assets/images/games/genshin/add/genesis.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
+                            
+                            <!-- primogem  -->
+                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="primogem" class="text-md sm:text-xl">
+                                    Primogems
+                                </label>
+                                <div class="relative w-full h-fit">
+                                    <input type="number" min="0" name="primogem" id="primogem" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <img src="assets/images/games/genshin/add/primogem.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
+                                </div>
+                            </div>
 
+                        
                             <!-- intertwined  -->
                             <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="intertwined" class="text-xl capitalize">
+                                <label for="if" class="text-md sm:text-xl capitalize">
                                     intertwined fate
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="intertwined" id="intertwined" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="if" id="if" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/genshin/add/intertwined-fate.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
 
                             <!-- acquaint  -->
                             <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="acquaint" class="text-xl capitalize">
+                                <label for="af" class="text-md sm:text-xl capitalize">
                                     acquaint fate
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="acquaint" id="acquaint" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="af" id="af" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/genshin/add/acquaint-fate.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
 
+
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                             <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
                             <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
@@ -711,29 +770,33 @@
                 <!-- ADDTIONAL ITEMS END  -->
 
                 <!-- PITY START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
+                <div id="pity-rate" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Status PITY</h2>
                         </div>
             
-                        <i class="fas fa-money-bill-wave text-4xl sm:text-3xl rounded-full bg-cyan-500 p-3 text-white cursor-pointer snap-center mx-16 sm:mx-4 hidden sm:block"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-percentage text-2xl sm:text-3xl text-white"></i>
+                        </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Silahkan isi berdasarkan berapa kali kamu pernah gacha di banner dibawah ini
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+                        <div class="pb-4 w-full h-fit grid grid-cols-12 my-6 gap-6">
 
                             <!-- char event  -->
                             <div class="col-span-12 w-full h-fit flex flex-col gap-y-4">
-                                <label for="char_event" class="text-xl capitalize">
+                                <label for="char_event" class="text-md sm:text-xl capitalize">
                                     Banner Karakter Event
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -742,9 +805,9 @@
                             </div>
 
                             <!-- weapon  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="weapon" class="text-xl capitalize">
-                                    Banner Senjata 
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="weapon" class="text-md sm:text-xl capitalize">
+                                    Banner Senjata
                                 </label>
                                 <div class="relative w-full h-fit">
                                     <input type="number" min="0" name="weapon" id="weapon" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
@@ -752,8 +815,8 @@
                             </div>
 
                             <!-- char standart  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="char_standart" class="text-xl capitalize">
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="char_standart" class="text-md sm:text-xl capitalize">
                                     Banner Karakter Standar 
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -773,29 +836,33 @@
                 <!-- PITY END  -->
 
                 <!-- ACCOUNT SECURITY START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6" style="display: none;">
+                <div id="security" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Keamanan Akun</h2>
                         </div>
             
-                        <i class="fas fa-money-bill-wave text-4xl sm:text-3xl rounded-full bg-cyan-500 p-3 text-white cursor-pointer snap-center mx-16 sm:mx-4 hidden sm:block"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-2xl sm:text-3xl text-white"></i>
+                        </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Silahkan isi berdasarkan apa yang pernah kamu lakukan / alami dengan akunmu
                         </p>
                         
                         <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
 
                             <!-- was hacked  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="was_hacked" class="block text-xl">Apakah Pernah dihack?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="was_hacked" class="block text-md sm:text-xl">Apakah Pernah dihack?</label>
                                 <select name="was_hacked" id="was_hacked" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Iya, Pernah</option>
                                     <option value="false">Tidak, tidak pernah</option>
@@ -803,8 +870,8 @@
                             </div>
 
                             <!-- was banned  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="was_banned" class="block text-xl">Apakah Pernah diban?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="was_banned" class="block text-md sm:text-xl">Apakah Pernah diban?</label>
                                 <select name="was_banned" id="was_banned" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Iya, Pernah</option>
                                     <option value="false">Tidak, tidak pernah</option>
@@ -812,8 +879,8 @@
                             </div>
 
                             <!-- was cheat  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="was_cheated" class="block text-xl">Apakah Pernah Cheat?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="was_cheated" class="block text-md sm:text-xl">Apakah Pernah Cheat?</label>
                                 <select name="was_cheated" id="was_cheated" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Iya, Pernah</option>
                                     <option value="false">Tidak, tidak pernah</option>
@@ -821,8 +888,8 @@
                             </div>
 
                             <!-- was minus  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="was_minus" class="block text-xl">Apakah Pernah Item Ingame Minus?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="was_minus" class="block text-md sm:text-xl">Apakah Pernah Item Ingame Minus?</label>
                                 <select name="was_minus" id="was_minus" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Iya, Pernah</option>
                                     <option value="false">Tidak, tidak pernah</option>
@@ -841,7 +908,7 @@
 
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                             <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
                             <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
@@ -850,7 +917,7 @@
                 </div>
                 <!-- ACCOUNT SECURITY END  -->
 
-                <button class="bg-red-600 block sm:hidden py-2 px-3 text-white rounded-3xl min-w-[180px]" style="display: none;">Kembali</button> 
+                <button class="bg-red-600 block sm:hidden py-2 px-3 text-white rounded-3xl min-w-[180px]">Kembali</button> 
             </div>
             <!-- FORM CONTAINER: END  -->
             
@@ -862,21 +929,34 @@
 
     <script>
         let currentSection = 0;
-        const sections = document.querySelectorAll('#collapsible-container > div');
+        const sections = document.querySelectorAll('#collapsible-container > div > #content');
+
+        function getParentId() {
+            if (currentSection < sections.length) {
+                const parentId = sections[currentSection].parentNode.id;
+                return parentId;
+            }
+        }
 
         function showNext() {
             if (currentSection < sections.length - 1) {
-                sections[currentSection].style.display = 'none';
+                sections[currentSection].style.height = "0px";
                 currentSection++;
-                sections[currentSection].style.display = 'block';
+                sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
+                setTimeout(function(){
+                    window.location.href = "#" + getParentId()
+                }, 300)
             }
         }
 
         function showPrev() {
             if (currentSection > 0) {
-                sections[currentSection].style.display = 'none';
-                currentSection--;
-                sections[currentSection].style.display = 'block';
+                sections[currentSection].style.height = "0px";
+                currentSection--;               
+                sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
+                setTimeout(function(){
+                    window.location.href = "#" + getParentId()
+                }, 300)
             }
         }
     </script>
