@@ -578,7 +578,7 @@
                                         const cornerContainer = document.createElement('div');
                                         cornerContainer.classList.add('corner-container');
                                         const cornerPart = document.createElement('div');
-                                        cornerPart.classList.add('genshin-corner-part', 'border-red-600');
+                                        cornerPart.classList.add('genshin-corner-part', 'border-red-600', 'text-xs', 'sm:text-base', 'w-6', 'h-6', 'sm:w-8', 'sm:h-8');
                                         cornerContainer.appendChild(cornerPart);
                                         card.appendChild(cornerContainer);
                     
@@ -590,7 +590,7 @@
                     
                                         // Char Name
                                         const weaponNameElement = document.createElement('p');
-                                        weaponNameElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'px-2');
+                                        weaponNameElement.classList.add('text-sm','sm:text-base','text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'px-2');
                                         weaponNameElement.textContent = weaponName;
                     
                                         card.appendChild(img);
