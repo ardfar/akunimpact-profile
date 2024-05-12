@@ -12,6 +12,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
         @font-face {
             font-family: "hsr-ui";
             src: url("assets/fonts/hsr-ui.ttf");
@@ -106,7 +110,7 @@
             <div class="border-0 max-w-[90%] flex flex-row justify-center sm:justify-between items-center w-screen overflow-x-auto z-10">
                 <div class="border-4 min-w-[180px] sm:w-fit bg-white border-gray-300 py-2 px-8 text-black text-center rounded-3xl">
                     <h1>
-                        Formulir Jual Akun Honkai Star Rai;
+                        Formulir Jual Akun Honkai Star Rail
                     </h1>
                 </div>
                 
@@ -119,62 +123,67 @@
             <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">
             
                 <!-- WELCOMING START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="welcome" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
-                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Halo, Reza!</span><br>Sudah siap untuk dapatkan cuan dari akunmu?</h2>
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="w-[80%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-md sm:text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Halo, Reza!</span><br>Sudah siap untuk dapatkan cuan dari akunmu?</h2>
                         </div>
 
-                        <div class="min-w-14 min-h-14 rounded-full bg-cyan-500 flex items-center justify-center">
-                            <i class="fas fa-door-open text-4xl sm:text-3xl text-white"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-door-open text-2xl sm:text-3xl text-white"></i>
                         </div>
             
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
 
-                        <p>
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Untuk menjual akunmu, Kamu perlu mengisi formulir dibawah ini dengan benar dan jujur agar cuan yang didapatkan bisa maksimal. <br>
                             Sebelum itu, Kamu harus memperhatikan hal-hal dibawah ini agara tidak ada kendala.
                         </p>
-                        <ol class="list-decimal list-inside">
+                        <ol class="text-md sm:text-xl list-decimal list-inside">
                             <li>Akun HSR bisa login</li>
                             <li>Akun Gmail bisa login dan masih aktif</li>
                             <li>Ubah email HSR ke email yang bisa diserahkan nanti</li>
                         </ol>
 
-                        <div class="w-full flex items-center justify-center sm:justify-end ">
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                        <div class="w-full flex items-center justify-center sm:justify-end pb-4">
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
-                    </div>                              
+                    </div>
+
                 </div>
                 <!-- WELCOMING END  -->
 
                 <!-- TUTORIAL START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="tutorial" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">
                                 Tutorial Isi Formulir
                             </h2>
                         </div>
             
-                        <div class="min-w-14 min-h-14 rounded-full bg-cyan-500 flex items-center justify-center">
-                            <i class="fas fa-question text-4xl sm:text-3xl text-white"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-question text-2xl sm:text-3xl text-white"></i>
                         </div>
 
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p>
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Kamu bisa melihat video tutorial dibawah ini sebelum mengisi formulir.
                         </p>
                         
@@ -182,9 +191,9 @@
                             <iframe width="560" height="315" class="rounded-xl" src="https://www.youtube.com/embed/LrqsaO9Cf2M?si=yWbTxiP8Gv2LjEpU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                        <div class="pb-4  w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -192,31 +201,33 @@
                 <!-- TUTORIAL END  -->
 
                 <!-- BASIC ACCOUNT INFO START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="account-info" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Informasi Akun</h2>
                         </div>
             
-                        <div class="min-w-14 min-h-14 rounded-full bg-cyan-500 flex items-center justify-center">
-                            <i class="fas fa-info text-4xl sm:text-3xl text-white"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-info text-2xl sm:text-3xl text-white"></i>
                         </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Formulir ini berisikan informasi mengenai informasi akunmu
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+                        <div class="pb-4 w-full h-fit grid grid-cols-12 my-6 gap-6">
                             
                             <!-- Server Loc  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="server" class="block text-xl">Server</label>
+                            <div class="col-span-12 sm:col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="server" class="block text-md sm:text-xl">Server</label>
                                 <select name="server" id="server" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="Asia">Asia</option>
                                     <option value="America">America</option>
@@ -226,14 +237,14 @@
                             </div>
 
                             <!-- AR  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="tl" class="block text-xl">Trailblazer Level</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="tl" class="block text-md sm:text-xl">Trailblazer Level</label>
                                 <input type="number" min="0" max="60" name="tl" id="tl" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                             </div>
 
                             <!-- is username set Loc  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="isUsernameSet" class="block text-xl">Apakah Sudah Set Username?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="isUsernameSet" class="block text-md sm:text-xl">Apakah Sudah Set Username?</label>
                                 <select name="isUsernameSet" id="isUsernameSet" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Sudah</option>
                                     <option value="false">Belum</option>
@@ -241,8 +252,8 @@
                             </div>
 
                             <!-- Ownership status  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="ownership" class="block text-xl">Apakah Akun Milik Pribadi?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="ownership" class="block text-md sm:text-xl">Apakah Akun Milik Pribadi?</label>
                                 <select name="ownership" id="ownership" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="selfowned">Milik Sendiri</option>
                                     <option value="bought">Beli Dari Orang Lain</option>
@@ -251,8 +262,8 @@
                             </div>
 
                             <!-- have topup set Loc  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="haveTopup" class="block text-xl">Apakah Sudah Pernah Topup?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="haveTopup" class="block text-md sm:text-xl">Apakah Sudah Pernah Topup?</label>
                                 <select name="haveTopup" id="haveTopup" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Sudah</option>
                                     <option value="false">Belum</option>
@@ -260,16 +271,16 @@
                             </div>
 
                             <!-- Reason  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="reason" class="block text-xl">Alasan Jual</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="reason" class="block text-md sm:text-xl">Alasan Jual</label>
                                 <input type="text" name="reason" id="reason" class="w-full h-14 pt-2 pb-3 px-4 border-gray-300 border-4 rounded-lg">
                             </div>
 
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -277,27 +288,29 @@
                 <!-- BASIC ACCOUNT INFO END  -->
 
                 <!-- ACCOUNT CHARACTER START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="account-characters" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Kepemilikan Karakter</h2>
                         </div>
             
-                        <div class="min-w-14 min-h-14 rounded-full bg-cyan-500 flex items-center justify-center">
-                            <i class="fas fa-user-tag text-4xl sm:text-3xl text-white"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-user-tag text-2xl sm:text-3xl text-white"></i>
                         </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Kamu bisa pilih karakter apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan konstelasi karakter.
                         </p>
                         
-                        <div class="w-full h-fit flex flex-wrap justify-center gap-8 my-6 gap-6" id="hsr-cards-container">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-6" id="hsr-cards-container">
                             
                             <!-- PUT CHARACTER CARD OF HONKAI STAR RAIL HERE  -->
 
@@ -341,7 +354,7 @@
                                     const cardContainer = document.getElementById("hsr-cards-container");
                         
                                     const card = document.createElement("div");
-                                    card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+                                    card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
                                     card.setAttribute('data-clicks', '0');
                                     card.setAttribute('title', 'Click to Select Character');
                                     card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
@@ -365,7 +378,7 @@
                                     const footer = document.createElement("div");
                                     footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]", "absolute", "bottom-0");
                                     const title = document.createElement("h3");
-                                    title.classList.add( "text-xl", "text-center");
+                                    title.classList.add( "text-sm","sm:text-xl", "text-center");
                                     title.textContent = characterName;
                                     footer.appendChild(title);
                         
@@ -418,13 +431,13 @@
                         </script>
                         <!-- CARD SCRIPTING: END -->
 
-                        <div class="flex items-center justify-between">
+                        <div class="pb-4 flex items-center flex-col sm:flex-row sm:justify-between gap-4">
 
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Reset Pilihan</button>                
+                            <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Hapus Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                             </div>
                         </div>
                         
@@ -433,27 +446,29 @@
                 <!-- ACCOUNT CHARACTER INFO END  -->
 
                 <!-- ACCOUNT WEAPON START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="account-weapons" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Kepemilikan Senjata</h2>
                         </div>
             
-                        <div class="min-w-14 min-h-14 rounded-full bg-cyan-500 flex items-center justify-center">
-                            <i class="fas fa-portrait text-4xl sm:text-3xl text-white"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-portrait text-2xl sm:text-3xl text-white"></i>
                         </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Kamu bisa pilih senjata apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan refinement senjata.
                         </p>
                         
-                        <div class="w-full h-fit flex flex-wrap justify-center gap-8 my-6 gap-6" id="hsr-weapon-cards-container">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-6" id="hsr-weapon-cards-container">
                             
                             <!-- PUT WEAPON CARD OF HONKAI STAR RAIL HERE  -->
 
@@ -497,7 +512,7 @@
                                 const cardContainer = document.getElementById("hsr-weapon-cards-container");
                     
                                 const card = document.createElement("div");
-                                card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-52", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+                                card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
                                 card.setAttribute('data-clicks', '0');
                                 card.setAttribute('title', 'Click to Select Character');
                                 card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
@@ -521,7 +536,7 @@
                                 const footer = document.createElement("div");
                                 footer.classList.add("hsr-card-footer", "border-b-[7px]", "rounded-lg", "w-full", "border-[#E3B668]", );
                                 const title = document.createElement("h3");
-                                title.classList.add("text-xl", "text-center", "my-4", "px-2");
+                                title.classList.add("text-sm","sm:text-xl", "text-center", "my-4", "px-2");
                                 title.textContent = characterName;
                                 footer.appendChild(title);
                     
@@ -582,13 +597,13 @@
                         </script>
                         <!-- CARD SCRIPTING: END  -->
 
-                        <div class="flex items-center justify-between">
+                        <div class="pb-4 flex items-center flex-col sm:flex-row sm:justify-between gap-4">
 
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
+                            <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                             </div>
                         </div>
                         
@@ -597,23 +612,25 @@
                 <!-- ACCOUNT WEAPON END  -->
 
                 <!-- ADDTIONAL ITEMS START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="additional-items" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Asset Tambahan</h2>
                         </div>
             
-                        <div class="min-w-14 min-h-14 rounded-full bg-cyan-500 flex items-center justify-center">
-                            <i class="fas fa-archive text-4xl sm:text-3xl text-white"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-archive text-2xl sm:text-3xl text-white"></i>
                         </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Silahkan isi berdasarkan item yang kamu miliki di akunmu
                         </p>
                         
@@ -621,7 +638,7 @@
 
                             <!-- welkin  -->
                             <div class="col-span-12 w-full h-fit flex flex-col gap-y-4">
-                                <label for="express_sp" class="text-xl capitalize">
+                                <label for="express_sp" class="text-md sm:text-xl capitalize">
                                     Express Supply Pass
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -632,7 +649,7 @@
                             
                             <!-- oneiric  -->
                             <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="oneiric" class="text-xl">
+                                <label for="oneiric" class="text-md sm:text-xl">
                                     Oneiric Shard
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -643,7 +660,7 @@
 
                             <!-- jade  -->
                             <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="jade" class="text-xl capitalize">
+                                <label for="jade" class="text-md sm:text-xl capitalize">
                                     Stellar Jade
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -654,7 +671,7 @@
 
                             <!-- special  -->
                             <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="special_pass" class="text-xl capitalize">
+                                <label for="special_pass" class="text-md sm:text-xl capitalize">
                                     special pass
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -665,7 +682,7 @@
 
                             <!-- regular  -->
                             <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="regular_pass" class="text-xl capitalize">
+                                <label for="regular_pass" class="text-md sm:text-xl capitalize">
                                     regular pass
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -677,9 +694,9 @@
 
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -687,31 +704,33 @@
                 <!-- ADDTIONAL ITEMS END  -->
 
                 <!-- PITY START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="pity-rate" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Status PITY</h2>
                         </div>
             
-                        <div class="min-w-14 min-h-14 rounded-full bg-cyan-500 flex items-center justify-center">
-                            <i class="fas fa-percentage text-4xl sm:text-3xl text-white"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-percentage text-2xl sm:text-3xl text-white"></i>
                         </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Silahkan isi berdasarkan berapa kali kamu pernah gacha di banner dibawah ini
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+                        <div class="pb-4 w-full h-fit grid grid-cols-12 my-6 gap-6">
 
                             <!-- char event  -->
                             <div class="col-span-12 w-full h-fit flex flex-col gap-y-4">
-                                <label for="char_event" class="text-xl capitalize">
+                                <label for="char_event" class="text-md sm:text-xl capitalize">
                                     Warp Karakter Event
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -720,8 +739,8 @@
                             </div>
 
                             <!-- weapon  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="weapon" class="text-xl capitalize">
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="weapon" class="text-md sm:text-xl capitalize">
                                     Warp Light Cone 
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -730,8 +749,8 @@
                             </div>
 
                             <!-- char standart  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="char_standart" class="text-xl capitalize">
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="char_standart" class="text-md sm:text-xl capitalize">
                                     Warp Karakter Standar 
                                 </label>
                                 <div class="relative w-full h-fit">
@@ -742,8 +761,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -751,31 +770,33 @@
                 <!-- PITY END  -->
 
                 <!-- ACCOUNT SECURITY START  -->
-                <div class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                <div id="security" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
-                    <div class="border-b-4 pb-5 flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
-                        <div class="min-w-[100%] lg:min-w-[50%] snap-center">
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
                             <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Keamanan Akun</h2>
                         </div>
             
-                        <div class="min-w-14 min-h-14 rounded-full bg-cyan-500 flex items-center justify-center">
-                            <i class="fas fa-shield-alt text-4xl sm:text-3xl text-white"></i>
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-2xl sm:text-3xl text-white"></i>
                         </div>
                     </div>        
             
                     <!-- ANOTHER DETAIL  -->
-                    <div class="border-0 my-4 flex flex-col gap-y-4 relative">
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
 
-                        <p class="text-xl">
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
                             Silahkan isi berdasarkan apa yang pernah kamu lakukan / alami dengan akunmu
                         </p>
                         
                         <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
 
                             <!-- was hacked  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="was_hacked" class="block text-xl">Apakah Pernah dihack?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="was_hacked" class="block text-md sm:text-xl">Apakah Pernah dihack?</label>
                                 <select name="was_hacked" id="was_hacked" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Iya, Pernah</option>
                                     <option value="false">Tidak, tidak pernah</option>
@@ -783,8 +804,8 @@
                             </div>
 
                             <!-- was banned  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="was_banned" class="block text-xl">Apakah Pernah diban?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="was_banned" class="block text-md sm:text-xl">Apakah Pernah diban?</label>
                                 <select name="was_banned" id="was_banned" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Iya, Pernah</option>
                                     <option value="false">Tidak, tidak pernah</option>
@@ -792,8 +813,8 @@
                             </div>
 
                             <!-- was cheat  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="was_cheated" class="block text-xl">Apakah Pernah Cheat?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="was_cheated" class="block text-md sm:text-xl">Apakah Pernah Cheat?</label>
                                 <select name="was_cheated" id="was_cheated" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Iya, Pernah</option>
                                     <option value="false">Tidak, tidak pernah</option>
@@ -801,8 +822,8 @@
                             </div>
 
                             <!-- was minus  -->
-                            <div class="col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="was_minus" class="block text-xl">Apakah Pernah Item Ingame Minus?</label>
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="was_minus" class="block text-md sm:text-xl">Apakah Pernah Item Ingame Minus?</label>
                                 <select name="was_minus" id="was_minus" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true">Iya, Pernah</option>
                                     <option value="false">Tidak, tidak pernah</option>
@@ -811,7 +832,7 @@
 
                             <!-- is attached  -->
                             <div class="col-span-12 w-full h-fit flex flex-col gap-y-4">
-                                <label for="is_genshin_attached" class="block text-xl">Apakah Akun Ini terikat dengan akun Genshin?</label>
+                                <label for="is_genshin_attached" class="block text-md sm:text-xl">Apakah Akun Ini terikat dengan akun Genshin?</label>
                                 <select name="is_genshin_attached" id="is_genshin_attached" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                     <option value="true_attach">Iya (Isi formulir genshin untuk jual keduanya)</option>
                                     <option value="true_give">Iya (Giveaway akun genshin yang terikat)</option>
@@ -821,9 +842,9 @@
 
                         </div>
 
-                        <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Lanjut</button>
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -839,6 +860,40 @@
 
     </section>
     <!-- PROFILE PAGE: END  -->
+
+    <script>
+        let currentSection = 0;
+        const sections = document.querySelectorAll('#collapsible-container > div > #content');
+
+        function getParentId() {
+            if (currentSection < sections.length) {
+                const parentId = sections[currentSection].parentNode.id;
+                return parentId;
+            }
+        }
+
+        function showNext() {
+            if (currentSection < sections.length - 1) {
+                sections[currentSection].style.height = "0px";
+                currentSection++;
+                sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
+                setTimeout(function(){
+                    window.location.href = "#" + getParentId()
+                }, 300)
+            }
+        }
+
+        function showPrev() {
+            if (currentSection > 0) {
+                sections[currentSection].style.height = "0px";
+                currentSection--;               
+                sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
+                setTimeout(function(){
+                    window.location.href = "#" + getParentId()
+                }, 300)
+            }
+        }
+    </script>
     
 </body>
 </html>
