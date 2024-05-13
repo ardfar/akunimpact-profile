@@ -171,3 +171,13 @@ body {
     transition: 0.2s;
 }
 /* FAQ -> END */
+
+
+/* KATALOG-ON-SALE -> START */
+.gradient-text-account-code {
+    background-image: linear-gradient(to right, #006eff, #ff0000);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+/* KATALOG-ON-SALE -> END */
