@@ -40,42 +40,6 @@
             background: #555;
         }
 
-        .genshin-card {
-            position: relative;
-            font-family: "genshin";
-        }
-
-        /* Container for the small part */
-        .corner-container {
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 1; /* Ensure it's above the image */
-        }
-
-        /* Styles for the small part */
-        .genshin-corner-part {
-            width: 2rem;
-            height: 2rem;
-            border-bottom-left-radius: 10px;
-            background: #a36b5e ;
-            color: #edc681;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            visibility: hidden; /* Hide by default */
-        }
-
-        .genshin-card.selected .genshin-corner-part {
-            visibility: visible; /* Show only when selected */
-        }
-
-        .genshin-corner-part p {
-            font-size: 1rem;
-            color: #edc681;
-            margin: 0;
-        }
-
     </style>
     
     
@@ -111,7 +75,7 @@
 
     
             <!-- FORM CONTAINER: START  -->
-            <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">
+            <div data-last-card="0" class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-form-container">
             
                 <!-- WELCOMING START  -->
                 <div id="welcome" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
@@ -144,7 +108,7 @@
                         </ol>
 
                         <div class="w-full flex items-center justify-center sm:justify-end pb-4">
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>
@@ -183,8 +147,8 @@
                         </div>
 
                         <div class="pb-4  w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -270,8 +234,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -362,7 +326,7 @@
                     
                                     // Create Card_genshin 
                                     const card_genshin = document.createElement('div');
-                                    card_genshin.classList.add('genshin-card', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer', 'sm:w-[150px]', 'w-full', 'object-scale-down', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
+                                    card_genshin.classList.add('relative', 'font-[genshin]', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer', 'sm:w-[150px]', 'w-full', 'object-scale-down', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
                                     card_genshin.setAttribute('data-clicks', '0');
                                     card_genshin.setAttribute('title', 'Click to Select Character');
                                     card_genshin.setAttribute('data-character-name', characterName_genshin); // Simpan nama karakter di sini
@@ -370,21 +334,21 @@
                     
                                     // Corner Container
                                     const cornerContainer_genshin = document.createElement('div');
-                                    cornerContainer_genshin.classList.add('corner-container');
+                                    cornerContainer_genshin.classList.add('corner-container','absolute', 'top-0', 'right-0', 'z-10');
                                     const cornerPart_genshin = document.createElement('div');
-                                    cornerPart_genshin.classList.add('genshin-corner-part', 'border-red-600');
+                                    cornerPart_genshin.classList.add('corner-content','w-8', 'aspect-square', 'rounded-bl-[10px]', 'bg-[#a36b5e]', 'text-[#edc681]', 'hidden', 'items-center', 'justify-center');
                                     cornerContainer_genshin.appendChild(cornerPart_genshin);
                                     card_genshin.appendChild(cornerContainer_genshin);
                     
                                     // Character Image 
                                     const img_genshin = document.createElement('img');
-                                    img_genshin.classList.add('w-full', 'border-0', 'border-red-600', 'h-[85%]', 'object-cover', 'bg-[#c7c7c7]', "rounded-br-3xl");
+                                    img_genshin.classList.add('w-full', 'border-0', 'h-[85%]', 'object-cover', 'bg-[#c7c7c7]', "rounded-br-3xl");
                                     img_genshin.src = 'assets/images/games/genshin/characters/' + filename_genshin;
                                     img_genshin.alt = 'Character Image';
                     
                                     // Char Name
                                     const characterName_genshinElement = document.createElement('p');
-                                    characterName_genshinElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'object-scale-down', 'bg-none', 'm-auto', 'border-0', 'border-red-600');
+                                    characterName_genshinElement.classList.add('text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'object-scale-down', 'bg-none', 'm-auto', 'border-0');
                                     characterName_genshinElement.textContent = characterName_genshin;
                     
                                     card_genshin.appendChild(img_genshin);
@@ -404,13 +368,21 @@
                                     image_genshin.classList.add("bg-[#efa525]")
                     
                                     card_genshin.classList.add('selected');
-                                    card_genshin.querySelector('.genshin-corner-part').innerHTML = `<p>C${clicks_genshin}</p>`;
+
+                                    card_genshin.querySelector(".corner-content").classList.remove("hidden")
+                                    card_genshin.querySelector(".corner-content").classList.add("flex")
+
+                                    card_genshin.querySelector('.corner-content').innerHTML = `<p>C${clicks_genshin}</p>`;
                                 } else {
+                                    card_genshin.classList.remove('selected');
+
                                     image_genshin.classList.remove("bg-[#efa525]")
                                     image_genshin.classList.add("bg-[#c7c7c7]")
+
+                                    card_genshin.querySelector(".corner-content").classList.remove("flex")
+                                    card_genshin.querySelector(".corner-content").classList.add("hidden")
                     
-                                    card_genshin.classList.remove('selected');
-                                    card_genshin.querySelector('.genshin-corner-part').innerHTML = '';
+                                    card_genshin.querySelector('.corner-content').innerHTML = '';
                                 }
                     
                                 card_genshin.setAttribute('data-clicks', clicks_genshin < 7 ? clicks_genshin + 1 : 0);
@@ -453,8 +425,8 @@
                             <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Hapus Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                             </div>
                         </div>
                         
@@ -571,7 +543,7 @@
                                     for (const [filename, weaponName] of Object.entries(category)) {
                                         // Create Card 
                                         const card = document.createElement('div');
-                                        card.classList.add('genshin-card', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer','w-full', 'object-scale-down', 'sm:w-[150px]', 'max-h-[250px]', 'pb-2', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
+                                        card.classList.add('relative', 'font-[genshin]', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer','w-full', 'object-scale-down', 'sm:w-[150px]', 'max-h-[250px]', 'pb-2', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
                                         card.setAttribute('data-clicks', '0');
                                         card.setAttribute('title', 'Click to Select Weapon');
                                         card.setAttribute('data-weapon-name', weaponName); // Simpan nama karakter di sini
@@ -579,9 +551,9 @@
                     
                                         // Corner Container
                                         const cornerContainer = document.createElement('div');
-                                        cornerContainer.classList.add('corner-container');
+                                        cornerContainer.classList.add('corner-container','absolute', 'top-0', 'right-0', 'z-10');
                                         const cornerPart = document.createElement('div');
-                                        cornerPart.classList.add('genshin-corner-part', 'border-red-600');
+                                        cornerPart.classList.add('corner-content','w-8', 'aspect-square', 'rounded-bl-[10px]', 'bg-[#a36b5e]', 'text-[#edc681]', 'hidden', 'items-center', 'justify-center');
                                         cornerContainer.appendChild(cornerPart);
                                         card.appendChild(cornerContainer);
                     
@@ -614,13 +586,21 @@
                                     image.classList.add("bg-[#efa525]")
                     
                                     card.classList.add('selected');
-                                    card.querySelector('.genshin-corner-part').innerHTML = `<p>R${clicks}</p>`;
+
+                                    card.querySelector(".corner-content").classList.remove("hidden")
+                                    card.querySelector(".corner-content").classList.add("flex")
+
+                                    card.querySelector('.corner-content').innerHTML = `<p>R${clicks}</p>`;
                                 } else {
+                                    card.classList.remove('selected');
+
                                     image.classList.remove("bg-[#efa525]")
                                     image.classList.add("bg-[#c7c7c7]")
+
+                                    card.querySelector(".corner-content").classList.remove("flex")
+                                    card.querySelector(".corner-content").classList.add("hidden")
                     
-                                    card.classList.remove('selected');
-                                    card.querySelector('.genshin-corner-part').innerHTML = '';
+                                    card.querySelector('.corner-content').innerHTML = '';
                                 }
                     
                                 card.setAttribute('data-clicks', clicks < 6 ? clicks + 1 : 0);
@@ -667,8 +647,8 @@
                             <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                             </div>
                         </div>
                         
@@ -761,8 +741,8 @@
                         </div>
 
                         <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -827,8 +807,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -909,8 +889,8 @@
                         </div>
 
                         <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="moveSectionTo('collapsible-form-container', 'collapsible-review-container')">Lanjut Ke Finalisasi</button>
                         </div>
                         
                     </div>                              
@@ -920,6 +900,354 @@
                 <button class="bg-red-600 block sm:hidden py-2 px-3 text-white rounded-3xl min-w-[180px]">Kembali</button> 
             </div>
             <!-- FORM CONTAINER: END  -->
+
+            <!-- REVIEW & FINALIZATION: START  -->
+            <div data-last-card="0" class="border-0 w-[90%] hidden grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-review-container">
+            
+                <!-- REVIEW - FINALIZATION START  -->
+                <div id="review" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
+                    
+                    <!-- TITLE CONTAINER  -->
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Review Informasi</h2>
+                        </div>
+            
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="far fa-eye text-2xl sm:text-3xl text-white"></i>
+                        </div>
+                    </div>           
+            
+                    <!-- ANOTHER DETAIL  -->
+                    <div id="content" class="flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
+                            Harap pastikan informasi dibawah ini sudah sesuai dengan akunmu yang mau kamu jual. Kembali jika kamu melalkukan kesalahan.
+                        </p>
+
+                        <!-- ACCOUNT INFO: START  -->
+                        <p class="text-md sm:text-xl mt-4">
+                            Informasi Akun
+                        </p>
+
+                        <div class="grid grid-cols-10 gap-4 my-4">
+
+                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-server text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                
+                                <h3 class="text-xl">Server</h3>
+
+                                <p id="server_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    Indo
+                                </p>
+                            </div>
+
+                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-level-up-alt text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                
+                                <h3 class="text-xl">Adventure Rank</h3>
+
+                                <p id="ar_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    AR 60
+                                </p>
+                            </div>
+
+                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-tag text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                
+                                <h3 class="text-xl">Sudah Set Username</h3>
+
+                                <p id="isset_username_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    Ya
+                                </p>
+                            </div>
+
+                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-user-cog text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                
+                                <h3 class="text-xl">Akun Punya Sendiri</h3>
+
+                                <p id="ownership_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    Beli
+                                </p>
+                            </div>
+
+                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-store text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                
+                                <h3 class="text-xl">Pernah Topup?</h3>
+
+                                <p id="has_topup_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    Ya
+                                </p>
+                            </div>
+
+                            <div class="col-span-10 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-lg">
+                                
+                                <h3 class="text-xl capitalize"> apakah akun terikat dengan Honkai Star Rail?</h3>
+
+                                <p id="minus_status_placeholder" class="text-lg text-[#efa525] capitalize">
+                                    tidak
+                                </p>
+                            </div>
+                        </div>
+                        <!-- ACCOUNT INFO: END -->
+
+                        <!-- CHARACTER OWN: START  -->
+                        <p class="text-md sm:text-xl">
+                            Kepemilikan Karakter
+                        </p>
+
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="genshin-cards-container_placeholder">
+                            
+                            <!-- PUT CHARACTER CARD OF GENSHIN IMPACT HERE  -->
+
+                        </div>
+                        <!-- CHARACTER OWN: END  -->
+
+                        <!-- WEAPON OWN: START  -->
+                        <p class="text-md sm:text-xl mt-4">
+                            Kepemilikan Senjata
+                        </p>
+
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="genshin-weapon-cards-container_placeholder">
+                            
+                            <!-- PUT CHARACTER CARD OF GENSHIN IMPACT HERE  -->
+
+                        </div>
+                        <!-- WEAPON OWN: END  -->
+
+                        <!-- ADDITIONAL: START  -->
+                        <p class="text-md sm:text-xl mt-4">
+                            Asset Tambahan
+                        </p>
+
+                        <div class="grid grid-cols-10 gap-4 my-4">
+
+                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <img src="assets/images/games/genshin/add/welkin.webp" class="w-20 h-20" alt="">
+                                </div>
+
+                                
+                                <h3 class="text-xl">Blessing Welkins</h3>
+
+                                <p id="welkin_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    2x
+                                </p>
+                            </div>
+
+                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <img src="assets/images/games/genshin/add/genesis.webp" class="w-20 h-20" alt="">
+                                </div>
+
+                                
+                                <h3 class="text-xl">Genesis Crystal</h3>
+
+                                <p id="genesis_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    1320x
+                                </p>
+                            </div>
+
+                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <img src="assets/images/games/genshin/add/primogem.webp" class="w-20 h-20" alt="">
+                                </div>
+
+                                
+                                <h3 class="text-xl">Primogems</h3>
+
+                                <p id="primogems_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    4800x
+                                </p>
+                            </div>
+
+                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <img src="assets/images/games/genshin/add/intertwined-fate.webp" class="w-20 h-20" alt="">
+                                </div>
+
+                                
+                                <h3 class="text-xl">Intertwined Fate</h3>
+
+                                <p id="if_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    10x
+                                </p>
+                            </div>
+
+                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <img src="assets/images/games/genshin/add/acquaint-fate.webp" class="w-20 h-20" alt="">
+                                </div>
+
+                                
+                                <h3 class="text-xl">Acquaint Fate</h3>
+
+                                <p id="af_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    100x
+                                </p>
+                            </div>
+                        </div>
+                        <!-- ADDITIONAL: END -->
+
+                        <!-- PITY: START  -->
+                        <p class="text-md sm:text-xl mt-4">
+                            Rate PITY
+                        </p>
+
+                        <div class="grid grid-cols-9 gap-4 my-4">
+
+                            <div class="col-span-3 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                
+                                <h3 class="text-xl">Karakter Event</h3>
+
+                                <p id="welkin_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    2 (on)
+                                </p>
+                            </div>
+
+                            <div class="col-span-3 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                
+                                <h3 class="text-xl">Senjata</h3>
+
+                                <p id="genesis_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    30 (off)
+                                </p>
+                            </div>
+
+                            <div class="col-span-3 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                
+                                <h3 class="text-xl">Karakter Standar</h3>
+
+                                <p id="primogems_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    70 (off)
+                                </p>
+                            </div>
+                        </div>
+                        <!-- PITY: END  -->
+
+                        <!-- SECURITY INFO: START  -->
+                        <p class="text-md sm:text-xl mt-4">
+                            Keamanan Akun
+                        </p>
+
+                        <div class="grid grid-cols-9 gap-4 my-4">
+
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-full">
+                                
+                                <h3 class="text-xl capitalize"> apakah akun pernah dihack?</h3>
+
+                                <p id="hack_status_placeholder" class="text-lg text-[#efa525] capitalize">
+                                    tidak
+                                </p>
+                            </div>
+
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-full">
+                                
+                                <h3 class="text-xl capitalize"> apakah akun pernah diban?</h3>
+
+                                <p id="ban_status_placeholder" class="text-lg text-[#efa525] capitalize">
+                                    tidak
+                                </p>
+                            </div>
+
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-full">
+                                
+                                <h3 class="text-xl capitalize"> apakah pernah cheating?</h3>
+
+                                <p id="cheat_status_placeholder" class="text-lg text-[#efa525] capitalize">
+                                    tidak
+                                </p>
+                            </div>
+
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-full">
+                                
+                                <h3 class="text-xl capitalize"> apakah pernah item in-game minus?</h3>
+
+                                <p id="minus_status_placeholder" class="text-lg text-[#efa525] capitalize">
+                                    tidak
+                                </p>
+                            </div>
+
+                        </div>
+                        <!-- SECURITY INFO: END  -->
+
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="moveSectionTo('collapsible-review-container', 'collapsible-form-container')">Kembali Ke Formulir</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-review-container')">Lanjut</button>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <!-- REVIEW - FINALIZATION END  -->
+
+                <!-- PRICE START  -->
+                <div id="price" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                    
+                    <!-- TITLE CONTAINER  -->
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Taksiran Harga</h2>
+                        </div>
+            
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-2xl sm:text-3xl text-white"></i>
+                        </div>
+                    </div>        
+            
+                    <!-- ANOTHER DETAIL  -->
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
+                            Silahkan tentukan harga taksiran atau perkiraan untuk akun yang kamu jual. Admin akan memvalidasi taksiran dan memberitahu harga yang pas untuk akunmu.
+                        </p>
+                        
+                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+
+                            <!-- was hacked  -->
+                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
+                                <label for="was_hacked" class="block text-md sm:text-xl">Apakah Pernah dihack?</label>
+                                <select name="was_hacked" id="was_hacked" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                    <option value="true">Iya, Pernah</option>
+                                    <option value="false">Tidak, tidak pernah</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-review-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Kirim Permintaan Consignment</button>
+                        </div>
+                        
+                    </div>                              
+                </div>
+                <!-- PRICE END  -->
+
+                <button class="bg-red-600 block sm:hidden py-2 px-3 text-white rounded-3xl min-w-[180px]">Kembali</button> 
+            </div>
+            <!-- REVIEW & FINALIZATION: END  -->
             
         </div>
         <!-- ANOTHER INNER CONTAINER: END  -->
@@ -929,33 +1257,73 @@
 
     <script>
         let currentSection = 0;
-        const sections = document.querySelectorAll('#collapsible-container > div > #content');
+    </script>
 
-        function getParentId() {
+    <!-- CHANGE ACTIVE SECTION (FORM -> REVIEW, vice versa) -->
+    <script>
+        function moveSectionTo(curr_id, target_id){
+            curr_sec = document.getElementById(curr_id);
+            target_sec = document.getElementById(target_id);
+
+            curr_sec.classList.remove("grid");
+            curr_sec.classList.add("hidden");
+
+            target_sec.classList.remove("hidden");
+            target_sec.classList.add("grid");
+
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE"
+
+            currentSection = target_sec.getAttribute("data-last-card");
+        }
+    </script>
+
+    <!-- COLLAPSIBLE OPERATOR -->
+    <script>
+        
+        function getSection(container_id){
+            const sections = document.querySelectorAll("#" + container_id + ' > div > #content');
+            return sections;
+        }
+
+        function updateContainerLastCard(container_id, value){
+            target_sec = document.getElementById(container_id);
+            target_sec.setAttribute("data-last-card", value);
+        }
+
+        function getParentId(container_id) {
+            sections = getSection(container_id);
+
             if (currentSection < sections.length) {
                 const parentId = sections[currentSection].parentNode.id;
                 return parentId;
             }
         }
 
-        function showNext() {
+        function showNext(container_id) {
+            sections = getSection(container_id);
+
             if (currentSection < sections.length - 1) {
                 sections[currentSection].style.height = "0px";
                 currentSection++;
+                updateContainerLastCard(container_id, currentSection)
                 sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
                 setTimeout(function(){
-                    window.location.href = "#" + getParentId()
+                    window.location.href = "#" + getParentId(container_id)
                 }, 300)
             }
         }
 
-        function showPrev() {
+        function showPrev(container_id) {
+            sections = getSection(container_id);
+
             if (currentSection > 0) {
                 sections[currentSection].style.height = "0px";
                 currentSection--;               
+                updateContainerLastCard(container_id, currentSection)
                 sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
                 setTimeout(function(){
-                    window.location.href = "#" + getParentId()
+                    window.location.href = "#" + getParentId(container_id)
                 }, 300)
             }
         }
