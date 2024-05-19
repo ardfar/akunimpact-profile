@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/custom.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://releases.transloadit.com/uppy/v3.25.2/uppy.min.css" rel="stylesheet">
+
 
     <style>
         * {
@@ -779,8 +781,13 @@
                                 <label for="char_event" class="text-md sm:text-xl capitalize">
                                     Banner Karakter Event
                                 </label>
-                                <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="char_event" id="char_event" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
+                                    <input type="number" min="0" name="char_event" id="char_event" value="0" class="w-full h-14 px-4 col-span-12 sm:col-span-10 border-gray-300 border-4 rounded-lg">
+                                    <select name="char_event_rate" id="char_event_rate" class="w-full h-14 col-span-12 sm:col-span-2 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                        <option>Pilih Rate PITY</option>
+                                        <option value="on">On</option>
+                                        <option value="off">Off</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -789,8 +796,13 @@
                                 <label for="weapon" class="text-md sm:text-xl capitalize">
                                     Banner Senjata
                                 </label>
-                                <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="weapon" id="weapon" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
+                                    <input type="number" min="0" name="weapon" id="weapon" value="0" class="w-full h-14 px-4 col-span-12 sm:col-span-8 border-gray-300 border-4 rounded-lg">
+                                    <select name="weapon_rate" id="weapon_rate" class="w-full h-14 col-span-12 sm:col-span-4 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                        <option>Pilih Rate PITY</option>
+                                        <option value="on">On</option>
+                                        <option value="off">Off</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -799,8 +811,13 @@
                                 <label for="char_standart" class="text-md sm:text-xl capitalize">
                                     Banner Karakter Standar 
                                 </label>
-                                <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="char_standart" id="char_standart" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
+                                    <input type="number" min="0" name="char_standart" id="char_standart" value="0" class="w-full h-14 px-4 col-span-12 sm:col-span-8 border-gray-300 border-4 rounded-lg">
+                                    <select name="char_rate" id="char_rate" class="w-full h-14 col-span-12 sm:col-span-4 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                        <option>Pilih Rate PITY</option>
+                                        <option value="on">On</option>
+                                        <option value="off">Off</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -932,9 +949,9 @@
                             Informasi Akun
                         </p>
 
-                        <div class="grid grid-cols-10 gap-4 my-4">
+                        <div class="flex flex-row flex-wrap items-center justify-center gap-4 my-4">
 
-                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="w-full sm:w-1/6 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 <div class="flex items-center justify-center">
                                     <i class="fas fa-server text-3xl text-[#efa525]"></i>
                                 </div>
@@ -947,7 +964,7 @@
                                 </p>
                             </div>
 
-                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="w-full sm:w-1/6 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 <div class="flex items-center justify-center">
                                     <i class="fas fa-level-up-alt text-3xl text-[#efa525]"></i>
                                 </div>
@@ -960,7 +977,7 @@
                                 </p>
                             </div>
 
-                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="w-full sm:w-1/6 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 <div class="flex items-center justify-center">
                                     <i class="fas fa-tag text-3xl text-[#efa525]"></i>
                                 </div>
@@ -973,7 +990,7 @@
                                 </p>
                             </div>
 
-                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="w-full sm:w-1/6 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 <div class="flex items-center justify-center">
                                     <i class="fas fa-user-cog text-3xl text-[#efa525]"></i>
                                 </div>
@@ -986,7 +1003,7 @@
                                 </p>
                             </div>
 
-                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="w-full sm:w-1/6 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 <div class="flex items-center justify-center">
                                     <i class="fas fa-store text-3xl text-[#efa525]"></i>
                                 </div>
@@ -999,7 +1016,7 @@
                                 </p>
                             </div>
 
-                            <div class="col-span-10 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-lg">
+                            <div class="w-full px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-lg">
                                 
                                 <h3 class="text-xl capitalize"> apakah akun terikat dengan Honkai Star Rail?</h3>
 
@@ -1039,67 +1056,67 @@
                             Asset Tambahan
                         </p>
 
-                        <div class="grid grid-cols-10 gap-4 my-4">
+                        <div class="flex flex-row flex-wrap items-center justify-center gap-4 my-4">
 
-                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="w-1/3 sm:w-1/5 flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 <div class="flex items-center justify-center">
                                     <img src="assets/images/games/genshin/add/welkin.webp" class="w-20 h-20" alt="">
                                 </div>
 
                                 
-                                <h3 class="text-xl">Blessing Welkins</h3>
+                                <h3 class="text-xl w-3/4 text-center sm:w-full">Blessing Welkins</h3>
 
                                 <p id="welkin_placeholder" class="text-lg my-4 text-[#efa525]">
                                     2x
                                 </p>
                             </div>
 
-                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="w-1/3 sm:w-1/5 flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 <div class="flex items-center justify-center">
                                     <img src="assets/images/games/genshin/add/genesis.webp" class="w-20 h-20" alt="">
                                 </div>
 
                                 
-                                <h3 class="text-xl">Genesis Crystal</h3>
+                                <h3 class="text-xl w-3/4 text-center sm:w-full">Genesis Crystal</h3>
 
                                 <p id="genesis_placeholder" class="text-lg my-4 text-[#efa525]">
                                     1320x
                                 </p>
                             </div>
 
-                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="w-full sm:w-1/5 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 <div class="flex items-center justify-center">
                                     <img src="assets/images/games/genshin/add/primogem.webp" class="w-20 h-20" alt="">
                                 </div>
 
                                 
-                                <h3 class="text-xl">Primogems</h3>
+                                <h3 class="text-xl w-3/4 text-center sm:w-full">Primogems</h3>
 
                                 <p id="primogems_placeholder" class="text-lg my-4 text-[#efa525]">
                                     4800x
                                 </p>
                             </div>
 
-                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="w-1/3 sm:w-1/5 flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 <div class="flex items-center justify-center">
                                     <img src="assets/images/games/genshin/add/intertwined-fate.webp" class="w-20 h-20" alt="">
                                 </div>
 
                                 
-                                <h3 class="text-xl">Intertwined Fate</h3>
+                                <h3 class="text-xl w-3/4 text-center sm:w-full">Intertwined Fate</h3>
 
                                 <p id="if_placeholder" class="text-lg my-4 text-[#efa525]">
                                     10x
                                 </p>
                             </div>
 
-                            <div class="col-span-2 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="w-1/3 sm:w-1/5 flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 <div class="flex items-center justify-center">
                                     <img src="assets/images/games/genshin/add/acquaint-fate.webp" class="w-20 h-20" alt="">
                                 </div>
 
                                 
-                                <h3 class="text-xl">Acquaint Fate</h3>
+                                <h3 class="text-xl w-3/4 text-center sm:w-full">Acquaint Fate</h3>
 
                                 <p id="af_placeholder" class="text-lg my-4 text-[#efa525]">
                                     100x
@@ -1113,32 +1130,32 @@
                             Rate PITY
                         </p>
 
-                        <div class="grid grid-cols-9 gap-4 my-4">
+                        <div class="grid grid-cols-6 gap-4 my-4">
 
-                            <div class="col-span-3 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                            <div class="col-span-6 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 
-                                <h3 class="text-xl">Karakter Event</h3>
+                                <h3 class="text-xl text-center">Karakter Event</h3>
 
-                                <p id="welkin_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    2 (on)
+                                <p id="char_event_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    2 ( <span>on</span> )
                                 </p>
                             </div>
 
                             <div class="col-span-3 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 
-                                <h3 class="text-xl">Senjata</h3>
+                                <h3 class="text-xl text-center">Senjata</h3>
 
-                                <p id="genesis_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    30 (off)
+                                <p id="weapon_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    30 ( <span>on</span> )
                                 </p>
                             </div>
 
                             <div class="col-span-3 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
                                 
-                                <h3 class="text-xl">Karakter Standar</h3>
+                                <h3 class="text-xl text-center">Karakter Standar</h3>
 
-                                <p id="primogems_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    70 (off)
+                                <p id="char_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    70 ( <span>on</span> )
                                 </p>
                             </div>
                         </div>
@@ -1151,7 +1168,7 @@
 
                         <div class="grid grid-cols-9 gap-4 my-4">
 
-                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-full">
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-3xl sm:rounded-full">
                                 
                                 <h3 class="text-xl capitalize"> apakah akun pernah dihack?</h3>
 
@@ -1160,7 +1177,7 @@
                                 </p>
                             </div>
 
-                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-full">
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-3xl sm:rounded-full">
                                 
                                 <h3 class="text-xl capitalize"> apakah akun pernah diban?</h3>
 
@@ -1169,7 +1186,7 @@
                                 </p>
                             </div>
 
-                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-full">
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-3xl sm:rounded-full">
                                 
                                 <h3 class="text-xl capitalize"> apakah pernah cheating?</h3>
 
@@ -1178,7 +1195,7 @@
                                 </p>
                             </div>
 
-                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-full">
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-3xl sm:rounded-full">
                                 
                                 <h3 class="text-xl capitalize"> apakah pernah item in-game minus?</h3>
 
@@ -1200,13 +1217,73 @@
                 </div>
                 <!-- REVIEW - FINALIZATION END  -->
 
+                <!-- SCREENSHOT START  -->
+                <div id="screenshot" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                    
+                    <!-- TITLE CONTAINER  -->
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Screenshot Akun</h2>
+                        </div>
+            
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-2xl sm:text-3xl text-white"></i>
+                        </div>
+                    </div>        
+            
+                    <!-- ANOTHER DETAIL  -->
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
+                            Silahkan upload screenshot akunmu untuk memberikan daya tarik lebih kepada penjual dan sebagai pendukung validasi.
+                        </p>
+                        
+                        <div class="w-full h-fit flex items-center justify-center my-6 gap-6">
+                            <div id="account_screenshot" class="w-full min-h-20">
+
+                            </div>
+
+                            <script type="module">
+                                import { Uppy, Dashboard, RemoteSources } from "https://releases.transloadit.com/uppy/v3.25.2/uppy.min.mjs"
+                                const uppy = new Uppy()
+
+                                const allowedHost = []
+
+                                uppy.use(Dashboard, { 
+                                    target: '#account_screenshot',
+                                    inline: true,
+                                    width: "100%",
+
+                                }).use(RemoteSources, {
+                                    companionUrl: "http://companion.uppy.io",
+                                    sources: [
+                                      "Dropbox",
+                                      "GoogleDrive",
+                                      "OneDrive",
+                                    ],
+                                    allowedHost,
+                                  })
+                            </script>
+                        </div>
+
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-review-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-review-container')">Selanjutnya</button>
+                        </div>
+                        
+                    </div>                              
+                </div>
+                <!-- SCREENSHOT END  -->
+
                 <!-- PRICE START  -->
                 <div id="price" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
                     
                     <!-- TITLE CONTAINER  -->
                     <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
                         <div class="min-w-[60%] lg:min-w-[50%] snap-center">
-                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Taksiran Harga</h2>
+                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Harga Akun</h2>
                         </div>
             
                         <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
@@ -1225,13 +1302,10 @@
                         
                         <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
 
-                            <!-- was hacked  -->
-                            <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
-                                <label for="was_hacked" class="block text-md sm:text-xl">Apakah Pernah dihack?</label>
-                                <select name="was_hacked" id="was_hacked" class="w-full h-14 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
-                                    <option value="true">Iya, Pernah</option>
-                                    <option value="false">Tidak, tidak pernah</option>
-                                </select>
+                            <!-- Price  -->
+                            <div class="col-span-12 w-full h-fit flex flex-col gap-y-4">
+                                <label for="price" class="block text-md sm:text-xl">Perkiraan Harga</label>
+                                <input type="number" name="price" id="price" class="w-full h-14 pt-2 pb-3 px-4 border-gray-300 border-4 rounded-lg">
                             </div>
 
                         </div>
@@ -1326,6 +1400,10 @@
                     window.location.href = "#" + getParentId(container_id)
                 }, 300)
             }
+        }
+
+        function clickSwitch(container_id, current_position){
+
         }
     </script>
     
