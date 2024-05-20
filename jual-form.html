@@ -280,7 +280,7 @@
                             const characters = {
                                 'albedo.webp': 'Albedo',
                                 'alhaitham.webp': 'Alhaitham',
-                                'arataki-itto.webp': 'Arataki Itto',
+                                'arataki-itto.webp': 'Itto',
                                 'baizhu.webp': 'Baizhu',
                                 'chiori.webp': 'Chiori',
                                 'cyno.webp': 'Cyno',
@@ -292,8 +292,8 @@
                                 'hu-tao.webp': 'Hu Tao',
                                 'jean.webp': 'Jean',
                                 'kaedehara-kazuha.webp': 'Kazuha',
-                                'kamisato-ayaka.webp': 'Kamisato Ayaka',
-                                'kamisato-ayato.webp': 'Kamisato Ayato',
+                                'kamisato-ayaka.webp': 'Ayaka',
+                                'kamisato-ayato.webp': 'Ayato',
                                 'keqing.webp': 'Keqing',
                                 'klee.webp': 'Klee',
                                 'lyney.webp': 'Lyney',
@@ -303,7 +303,7 @@
                                 'neuvillette.webp': 'Neuvillette',
                                 'nilou.webp': 'Nilou',
                                 'qiqi.webp': 'Qiqi',
-                                'raiden-shogun.webp': 'Raiden Shogun',
+                                'raiden-shogun.webp': 'Raiden',
                                 'sangonomiya-kokomi.webp': 'Kokomi',
                                 'shenhe.webp': 'Shenhe',
                                 'tartaglia.webp': 'Tartaglia',
@@ -328,7 +328,7 @@
                     
                                     // Create Card_genshin 
                                     const card_genshin = document.createElement('div');
-                                    card_genshin.classList.add('genshin-character-card','relative', 'font-[genshin]', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer', 'sm:w-[150px]', 'w-full', 'object-scale-down', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
+                                    card_genshin.classList.add('genshin-character-card','relative', 'font-[genshin]', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer', 'sm:w-[150px]', 'w-full', 'aspect-[3/4]', 'object-scale-down', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
                                     card_genshin.setAttribute('data-clicks', '0');
                                     card_genshin.setAttribute('title', 'Click to Select Character');
                                     card_genshin.setAttribute('data-character-name', characterName_genshin); // Simpan nama karakter di sini
@@ -572,7 +572,7 @@
                     
                                         // Char Name
                                         const weaponNameElement = document.createElement('p');
-                                        weaponNameElement.classList.add('text-sm','sm:text-base','text-black', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'm-auto', 'px-2');
+                                        weaponNameElement.classList.add('text-sm','sm:text-base','text-black', 'break-words', 'transition', 'duration-300', 'ease-in-out', 'text-center', 'bg-none', 'w-full', 'px-2');
                                         weaponNameElement.textContent = weaponName;
                     
                                         card.appendChild(img);
