@@ -196,7 +196,7 @@
                             <!-- AR  -->
                             <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
                                 <label for="ar" class="block text-md sm:text-xl">Adventure Rank</label>
-                                <input type="number" min="0" max="60" name="ar" id="ar" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <input type="number" min="0" max="60" name="ar" id="ar" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                             </div>
 
                             <!-- is username set Loc  -->
@@ -267,13 +267,13 @@
                             Kamu bisa pilih karakter apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan konstelasi karakter.
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="genshin-cards-container">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="genshin-character-cards-container">
                             
                             <!-- PUT CHARACTER CARD OF GENSHIN IMPACT HERE  -->
 
                         </div>
 
-                        <input type="text" hidden id="jsonDataHSRCharacter" name="jsonDataHSRCharacter" />
+                        <input type="text" hidden id="jsonDataGenshinCharacter" name="jsonDataGenshinCharacter" />
 
                         <!-- CARD SCRIPTING: START  -->
                         <script>
@@ -322,13 +322,13 @@
                     
                             // Function to fetch images from the JSON file
                             function createCard() {
-                                const imageContainerCharacter = document.getElementById('genshin-cards-container');
+                                const imageContainerCharacter = document.getElementById('genshin-character-cards-container');
                     
                                 for (const [filename_genshin, characterName_genshin] of Object.entries(characters)) {
                     
                                     // Create Card_genshin 
                                     const card_genshin = document.createElement('div');
-                                    card_genshin.classList.add('relative', 'font-[genshin]', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer', 'sm:w-[150px]', 'w-full', 'object-scale-down', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
+                                    card_genshin.classList.add('genshin-character-card','relative', 'font-[genshin]', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer', 'sm:w-[150px]', 'w-full', 'object-scale-down', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
                                     card_genshin.setAttribute('data-clicks', '0');
                                     card_genshin.setAttribute('title', 'Click to Select Character');
                                     card_genshin.setAttribute('data-character-name', characterName_genshin); // Simpan nama karakter di sini
@@ -392,21 +392,26 @@
                     
                             // Function to extract data from selected card_genshins
                             function extractDataCharacter() {
-                                const selectedCard_genshins = document.querySelectorAll('.genshin-card.selected');
-                                const data_genshin = {
-                                    characters: Array.from(selectedCard_genshins).map(card_genshin => ({
+                                const selectedCards = document.querySelectorAll('.genshin-character-card.selected');
+                                var data = {
+                                    characters: Array.from(selectedCards).map(card_genshin => ({
                                         name: card_genshin.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
                                         enhancement: parseInt(card_genshin.getAttribute('data-clicks')) % 7
                                     }))
                                 };
+
+                                if (selectedCards.length == 0) {
+                                    data = ""
+                                }
+
                                 const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinCharacter');
-                                jsonDataGenshinCharacterInput.value = JSON.stringify(data_genshin);
+                                jsonDataGenshinCharacterInput.value = data != "" ? JSON.stringify(data) : null 
                                 console.log(jsonDataGenshinCharacterInput.value); // Output JSON for debugging
                             }
                     
                             // Function to reset all selected card_genshins
                             function resetSelections() {
-                                const selectedCard_genshins = document.querySelectorAll('.genshin-card.selected');
+                                const selectedCard_genshins = document.querySelectorAll('.genshin-character-card.selected');
                                 for (const card_genshin of selectedCard_genshins) {
                                     card_genshin.classList.remove('selected');
                                     card_genshin.querySelector('.genshin-corner-part').innerHTML = '';
@@ -428,7 +433,7 @@
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                                 <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="extractDataCharacter();showNext('collapsible-form-container')">Lanjut</button>
                             </div>
                         </div>
                         
@@ -545,7 +550,7 @@
                                     for (const [filename, weaponName] of Object.entries(category)) {
                                         // Create Card 
                                         const card = document.createElement('div');
-                                        card.classList.add('relative', 'font-[genshin]', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer','w-full', 'object-scale-down', 'sm:w-[150px]', 'max-h-[250px]', 'pb-2', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
+                                        card.classList.add('genshin-weapon-card','relative', 'font-[genshin]', 'bg-[#f0f0f0]/[.5]', 'rounded-lg', 'cursor-pointer','w-full', 'object-scale-down', 'sm:w-[150px]', 'max-h-[250px]', 'pb-2', 'overflow-hidden', 'transition', 'duration-300', 'ease-in-out', 'cursor-pointer', 'flex', 'flex-col', 'items-center', 'justify-center');
                                         card.setAttribute('data-clicks', '0');
                                         card.setAttribute('title', 'Click to Select Weapon');
                                         card.setAttribute('data-weapon-name', weaponName); // Simpan nama karakter di sini
@@ -609,16 +614,21 @@
                             }
                     
                             // Function to extract data from selected cards
-                            function extractData() {
-                                const selectedCards = document.querySelectorAll('.genshin-card.selected');
-                                const data = {
-                                    characters: Array.from(selectedCards).map(card => ({
-                                        name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
+                            function extractWeaponData() {
+                                const selectedCards = document.querySelectorAll('.genshin-weapon-card.selected');
+                                var data = {
+                                    weapons: Array.from(selectedCards).map(card => ({
+                                        name: card.getAttribute('data-weapon-name'), // Ambil nama karakter langsung dari atribut data
                                         enhancement: parseInt(card.getAttribute('data-clicks')) % 7
                                     }))
                                 };
-                                const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinCharacter');
-                                jsonDataGenshinCharacterInput.value = JSON.stringify(data);
+
+                                if (selectedCards.length == 0) {
+                                    data = ""
+                                }
+
+                                const jsonDataGenshinCharacterInput = document.getElementById('jsonDataGenshinWeapon');
+                                jsonDataGenshinCharacterInput.value = data != "" ? JSON.stringify(data) : null 
                                 console.log(jsonDataGenshinCharacterInput.value); // Output JSON for debugging
                             }
                     
@@ -650,7 +660,7 @@
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                                 <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="extractWeaponData();showNext('collapsible-form-container')">Lanjut</button>
                             </div>
                         </div>
                         
@@ -689,7 +699,7 @@
                                     Blessing Welkin
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="welkin" id="welkin" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="welkin" id="welkin" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/genshin/add/welkin.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
@@ -700,7 +710,7 @@
                                     genesis crystal
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="genesis" id="genesis" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="genesis" id="genesis" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/genshin/add/genesis.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
@@ -711,7 +721,7 @@
                                     Primogems
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="primogem" id="primogem" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="primogem" id="primogem" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/genshin/add/primogem.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
@@ -723,7 +733,7 @@
                                     intertwined fate
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="if" id="if" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="if" id="if" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/genshin/add/intertwined-fate.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
@@ -734,7 +744,7 @@
                                     acquaint fate
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="af" id="af" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="af" id="af" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/genshin/add/acquaint-fate.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
@@ -782,7 +792,7 @@
                                     Banner Karakter Event
                                 </label>
                                 <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
-                                    <input type="number" min="0" name="char_event" id="char_event" value="0" class="w-full h-14 px-4 col-span-12 sm:col-span-10 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="char_event" id="char_event" class="w-full h-14 px-4 col-span-12 sm:col-span-10 border-gray-300 border-4 rounded-lg">
                                     <select name="char_event_rate" id="char_event_rate" class="w-full h-14 col-span-12 sm:col-span-2 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                         <option>Pilih Rate PITY</option>
                                         <option value="on">On</option>
@@ -797,7 +807,7 @@
                                     Banner Senjata
                                 </label>
                                 <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
-                                    <input type="number" min="0" name="weapon" id="weapon" value="0" class="w-full h-14 px-4 col-span-12 sm:col-span-8 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="weapon" id="weapon" class="w-full h-14 px-4 col-span-12 sm:col-span-8 border-gray-300 border-4 rounded-lg">
                                     <select name="weapon_rate" id="weapon_rate" class="w-full h-14 col-span-12 sm:col-span-4 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                         <option>Pilih Rate PITY</option>
                                         <option value="on">On</option>
@@ -812,8 +822,8 @@
                                     Banner Karakter Standar 
                                 </label>
                                 <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
-                                    <input type="number" min="0" name="char_standart" id="char_standart" value="0" class="w-full h-14 px-4 col-span-12 sm:col-span-8 border-gray-300 border-4 rounded-lg">
-                                    <select name="char_rate" id="char_rate" class="w-full h-14 col-span-12 sm:col-span-4 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                    <input type="number" min="0" name="char_standart" id="char_standart" class="w-full h-14 px-4 col-span-12 sm:col-span-8 border-gray-300 border-4 rounded-lg">
+                                    <select name="char_standart_rate" id="char_standart_rate" class="w-full h-14 col-span-12 sm:col-span-4 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
                                         <option>Pilih Rate PITY</option>
                                         <option value="on">On</option>
                                         <option value="off">Off</option>
@@ -907,7 +917,7 @@
 
                         <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
                             <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="moveSectionTo('collapsible-form-container', 'collapsible-review-container')">Lanjut Ke Finalisasi</button>
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="checkSubmission();">Lanjut Ke Finalisasi</button>
                         </div>
                         
                     </div>                              
@@ -957,7 +967,7 @@
                                 </div>
 
                                 
-                                <h3 class="text-xl">Server</h3>
+                                <h3 class="text-xl text-center">Server</h3>
 
                                 <p id="server_placeholder" class="text-lg my-4 text-[#efa525]">
                                     Indo
@@ -970,7 +980,7 @@
                                 </div>
 
                                 
-                                <h3 class="text-xl">Adventure Rank</h3>
+                                <h3 class="text-xl text-center">Adventure Rank</h3>
 
                                 <p id="ar_placeholder" class="text-lg my-4 text-[#efa525]">
                                     AR 60
@@ -983,9 +993,9 @@
                                 </div>
 
                                 
-                                <h3 class="text-xl">Sudah Set Username</h3>
+                                <h3 class="text-xl text-center">Sudah Set Username</h3>
 
-                                <p id="isset_username_placeholder" class="text-lg my-4 text-[#efa525]">
+                                <p id="isUsernameSet_placeholder" class="text-lg my-4 text-[#efa525]">
                                     Ya
                                 </p>
                             </div>
@@ -996,7 +1006,7 @@
                                 </div>
 
                                 
-                                <h3 class="text-xl">Akun Punya Sendiri</h3>
+                                <h3 class="text-xl text-center">Akun Punya Sendiri</h3>
 
                                 <p id="ownership_placeholder" class="text-lg my-4 text-[#efa525]">
                                     Beli
@@ -1009,18 +1019,18 @@
                                 </div>
 
                                 
-                                <h3 class="text-xl">Pernah Topup?</h3>
+                                <h3 class="text-xl text-center">Pernah Topup?</h3>
 
-                                <p id="has_topup_placeholder" class="text-lg my-4 text-[#efa525]">
+                                <p id="haveTopup_placeholder" class="text-lg my-4 text-[#efa525]">
                                     Ya
                                 </p>
                             </div>
 
                             <div class="w-full px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-lg">
                                 
-                                <h3 class="text-xl capitalize"> apakah akun terikat dengan Honkai Star Rail?</h3>
+                                <h3 class="text-xl text-center capitalize"> apakah akun terikat dengan Honkai Star Rail?</h3>
 
-                                <p id="minus_status_placeholder" class="text-lg text-[#efa525] capitalize">
+                                <p id="is_hsr_attached_placeholder" class="text-lg text-[#efa525] capitalize">
                                     tidak
                                 </p>
                             </div>
@@ -1032,7 +1042,7 @@
                             Kepemilikan Karakter
                         </p>
 
-                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="genshin-cards-container_placeholder">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="genshin-character-cards-placeholder-container">
                             
                             <!-- PUT CHARACTER CARD OF GENSHIN IMPACT HERE  -->
 
@@ -1044,7 +1054,7 @@
                             Kepemilikan Senjata
                         </p>
 
-                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="genshin-weapon-cards-container_placeholder">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="genshin-weapon-cards-placeholder-container">
                             
                             <!-- PUT CHARACTER CARD OF GENSHIN IMPACT HERE  -->
 
@@ -1067,7 +1077,7 @@
                                 <h3 class="text-xl w-3/4 text-center sm:w-full">Blessing Welkins</h3>
 
                                 <p id="welkin_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    2x
+                                    2
                                 </p>
                             </div>
 
@@ -1080,7 +1090,7 @@
                                 <h3 class="text-xl w-3/4 text-center sm:w-full">Genesis Crystal</h3>
 
                                 <p id="genesis_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    1320x
+                                    1320
                                 </p>
                             </div>
 
@@ -1092,8 +1102,8 @@
                                 
                                 <h3 class="text-xl w-3/4 text-center sm:w-full">Primogems</h3>
 
-                                <p id="primogems_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    4800x
+                                <p id="primogem_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    4800
                                 </p>
                             </div>
 
@@ -1106,7 +1116,7 @@
                                 <h3 class="text-xl w-3/4 text-center sm:w-full">Intertwined Fate</h3>
 
                                 <p id="if_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    10x
+                                    10
                                 </p>
                             </div>
 
@@ -1119,7 +1129,7 @@
                                 <h3 class="text-xl w-3/4 text-center sm:w-full">Acquaint Fate</h3>
 
                                 <p id="af_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    100x
+                                    100
                                 </p>
                             </div>
                         </div>
@@ -1137,7 +1147,7 @@
                                 <h3 class="text-xl text-center">Karakter Event</h3>
 
                                 <p id="char_event_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    2 ( <span>on</span> )
+                                    2
                                 </p>
                             </div>
 
@@ -1146,7 +1156,7 @@
                                 <h3 class="text-xl text-center">Senjata</h3>
 
                                 <p id="weapon_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    30 ( <span>on</span> )
+                                    30
                                 </p>
                             </div>
 
@@ -1154,8 +1164,8 @@
                                 
                                 <h3 class="text-xl text-center">Karakter Standar</h3>
 
-                                <p id="char_placeholder" class="text-lg my-4 text-[#efa525]">
-                                    70 ( <span>on</span> )
+                                <p id="char_standart_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    70
                                 </p>
                             </div>
                         </div>
@@ -1172,7 +1182,7 @@
                                 
                                 <h3 class="text-xl capitalize"> apakah akun pernah dihack?</h3>
 
-                                <p id="hack_status_placeholder" class="text-lg text-[#efa525] capitalize">
+                                <p id="was_hacked_placeholder" class="text-lg text-[#efa525] capitalize">
                                     tidak
                                 </p>
                             </div>
@@ -1181,7 +1191,7 @@
                                 
                                 <h3 class="text-xl capitalize"> apakah akun pernah diban?</h3>
 
-                                <p id="ban_status_placeholder" class="text-lg text-[#efa525] capitalize">
+                                <p id="was_banned_placeholder" class="text-lg text-[#efa525] capitalize">
                                     tidak
                                 </p>
                             </div>
@@ -1190,7 +1200,7 @@
                                 
                                 <h3 class="text-xl capitalize"> apakah pernah cheating?</h3>
 
-                                <p id="cheat_status_placeholder" class="text-lg text-[#efa525] capitalize">
+                                <p id="was_cheated_placeholder" class="text-lg text-[#efa525] capitalize">
                                     tidak
                                 </p>
                             </div>
@@ -1199,7 +1209,7 @@
                                 
                                 <h3 class="text-xl capitalize"> apakah pernah item in-game minus?</h3>
 
-                                <p id="minus_status_placeholder" class="text-lg text-[#efa525] capitalize">
+                                <p id="was_minus_placeholder" class="text-lg text-[#efa525] capitalize">
                                     tidak
                                 </p>
                             </div>
@@ -1328,6 +1338,202 @@
 
     </section>
     <!-- PROFILE PAGE: END  -->
+
+    <!-- Review Info Extraction  -->
+    <script>
+        function checkSubmission(){
+            inputs = [
+                "server", "ar", "isUsernameSet", "ownership", "haveTopup", "reason",
+                "jsonDataGenshinCharacter", "jsonDataGenshinWeapon",
+                "welkin", "genesis", "primogem", "if", "af",
+                "char_event", "char_event_rate", "weapon", "weapon_rate", "char_standart", "char_standart_rate",
+                "was_hacked", "was_banned", "was_cheated", "was_minus", "is_hsr_attached"  
+            ];
+
+            error_type = [
+                "Server", "Adventure Rank", "Kepemilikan Akun", "Pernah TopUp", "Alasan Jual",
+                "Kepemilikan Karakter", "Kepemilikan Senjata",
+                "Jumlah Welkin", "Jumlah Genesis Crystal", "Jumlah Primogems", "Jumlah Intertwined Fate", "Jumlah Acquaint Fate",
+                "PITY Karakter Event", "Rate PITY Karakter Event", "PITY Senjata", "Rate PITY Senjata", "PITY Karakter Standar", "Rate PITY Karakter Standar",
+                "Pernah DiHack", "Pernah DiBan", "Pernah Cheat", "Pernah Minus", "HSR Tersangkut"
+            ];
+
+            detected_error = []
+
+            inputs.forEach((input, index) => {
+                input_el = document.getElementById(input);
+                console.log(input + " => " + input_el.value)
+
+
+                if (input_el.value == "" || input_el.value == null){
+                    detected_error.push(error_type[index - 1])
+                }
+            })
+
+            if (detected_error.length != 0){
+                alert("Harap lengkapi informasi ini: " + detected_error)
+            } else {
+                extractSubmission()
+            }
+        }
+
+        function extractSubmission(){
+            
+            extractBasicInfo();
+            extractAdditionals();
+            extractPITY();
+            extractSecurity()
+            extractCharacters();
+            extractWeapons();
+
+            moveSectionTo('collapsible-form-container', 'collapsible-review-container') 
+        }
+
+        // Extract account basic info 
+        function extractBasicInfo() {
+            // Extract Server Value
+            server_val = document.getElementById("server").value
+            document.getElementById("server_placeholder").innerHTML = server_val
+
+            // Extract AR
+            ar_val = document.getElementById("ar").value
+            document.getElementById("ar_placeholder").innerHTML = "Level " + ar_val
+
+            // Extract Is Username Set
+            isUsernameSet_val = document.getElementById("isUsernameSet").value == "true" ? "Sudah" : "Belum"
+            document.getElementById("isUsernameSet_placeholder").innerHTML = isUsernameSet_val
+
+            // Extract Ownership
+            ownership_val = document.getElementById("ownership").value
+            switch (ownership_val){
+                case "selfowned":
+                    ownership_val = "Milik Sendiri"
+                    break;
+                case "bought":
+                    ownership_val = "Beli"
+                    break;
+                case "given":
+                    ownership_val = "Diberikan / Hadiah"
+                    break;
+            }
+            document.getElementById("ownership_placeholder").innerHTML = ownership_val
+
+            // Extract topup status
+            haveTopup_val = document.getElementById("haveTopup").value == "true" ? "Sudah" : "Belum"
+            document.getElementById("haveTopup_placeholder").innerHTML = haveTopup_val
+
+        }
+
+        // Extract Characters
+        function extractCharacters(){
+            const container = document.getElementById("genshin-character-cards-container")
+            const cards = container.querySelectorAll(".genshin-character-card.selected")
+
+            if (cards) {
+                const target_container = document.getElementById("genshin-character-cards-placeholder-container")
+
+                for (i = 0; i < cards.length; i++) {
+                    const cloned = cards[i].cloneNode(true)
+                    target_container.appendChild(cloned);
+                }
+            }
+        }
+
+        // Extract Characters
+        function extractWeapons(){
+            const container = document.getElementById("genshin-weapon-cards-container")
+            const cards = container.querySelectorAll(".genshin-weapon-card.selected")
+
+            if (cards) {
+
+                const target_container = document.getElementById("genshin-weapon-cards-placeholder-container")
+
+                for (i = 0; i < cards.length; i++) {
+                    const cloned = cards[i].cloneNode(true)
+                    target_container.appendChild(cloned);
+                }
+            }
+        }
+        
+        // Extract Additional Items
+        function extractAdditionals(){
+
+            // Extract Welkins
+            welkin_val = document.getElementById("welkin").value
+            document.getElementById("welkin_placeholder").innerHTML = welkin_val + "x"
+
+            // Extract Genesis
+            genesis_val = document.getElementById("genesis").value
+            document.getElementById("genesis_placeholder").innerHTML = genesis_val + "x"
+
+            // Extract Primo
+            primogem_val = document.getElementById("primogem").value
+            document.getElementById("primogem_placeholder").innerHTML = primogem_val + "x"
+
+            // Extract IF
+            if_val = document.getElementById("if").value
+            document.getElementById("if_placeholder").innerHTML = if_val + "x"
+
+            // Extract AF
+            af_val = document.getElementById("af").value
+            document.getElementById("af_placeholder").innerHTML = af_val + "x"
+        
+        }
+
+        //Extract PITY Information
+        function extractPITY(){
+
+            // Extract Char event
+            char_event_val = document.getElementById("char_event").value
+            char_event_rate = document.getElementById("char_event_rate").value
+            document.getElementById("char_event_placeholder").innerHTML = char_event_val + " (" + char_event_rate + ")"
+
+            // Extract Char standard
+            char_standart_val = document.getElementById("char_standart").value
+            char_standart_rate = document.getElementById("char_standart_rate").value
+            document.getElementById("char_standart_placeholder").innerHTML = char_standart_val + " (" + char_standart_rate + ")"
+
+            // Extract CWeapon
+            weapon_val = document.getElementById("weapon").value
+            weapon_rate = document.getElementById("weapon_rate").value
+            document.getElementById("weapon_placeholder").innerHTML = weapon_val + " (" + weapon_rate + ")"
+        }
+
+        // Extract Security INFO
+        function extractSecurity(){
+
+            // Was Hacked
+            was_hacked_val = document.getElementById("was_hacked").value == "true" ? "Ya" : "Tidak"
+            document.getElementById("was_hacked_placeholder").innerHTML = was_hacked_val
+
+            // Was cheated
+            was_cheated_val = document.getElementById("was_cheated").value == "true" ? "Ya" : "Tidak"
+            document.getElementById("was_cheated_placeholder").innerHTML = was_cheated_val
+
+            // Was minus
+            was_minus_val = document.getElementById("was_minus").value == "true" ? "Ya" : "Tidak"
+            document.getElementById("was_minus_placeholder").innerHTML = was_minus_val
+
+            // Was banned
+            was_banned_val = document.getElementById("was_banned").value == "true" ? "Ya" : "Tidak"
+            document.getElementById("was_banned_placeholder").innerHTML = was_banned_val
+
+            // HSR Attached
+            is_hsr_attached_val = document.getElementById("is_hsr_attached").value
+            switch (is_hsr_attached_val){
+                case "true_attach":
+                    is_hsr_attached_val = "Ya, Jual Sepaket"
+                    break;
+                case "true_give":
+                    is_hsr_attached_val = "Ya, Jadikan Gratis"
+                    break;
+                case "false":
+                    is_hsr_attached_val = "Tidak"
+                    break;
+            }
+            document.getElementById("is_hsr_attached_placeholder").innerHTML = is_hsr_attached_val
+        }
+    </script>
 
     <script>
         let currentSection = 0;
