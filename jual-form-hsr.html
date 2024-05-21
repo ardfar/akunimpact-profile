@@ -740,18 +740,28 @@
                                 <label for="char_event" class="text-md sm:text-xl capitalize">
                                     Warp Karakter Event
                                 </label>
-                                <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="char_event" id="char_event"  class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
+                                    <input type="number" min="0" name="char_event" id="char_event" class="w-full h-14 px-4 col-span-12 sm:col-span-10 border-gray-300 border-4 rounded-lg">
+                                    <select name="char_event_rate" id="char_event_rate" class="w-full h-14 col-span-12 sm:col-span-2 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                        <option>Pilih Rate PITY</option>
+                                        <option value="on">On</option>
+                                        <option value="off">Off</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <!-- weapon  -->
                             <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
                                 <label for="weapon" class="text-md sm:text-xl capitalize">
-                                    Warp Light Cone 
+                                    Warp Senjata
                                 </label>
-                                <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="weapon" id="weapon"  class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
+                                    <input type="number" min="0" name="weapon" id="weapon" class="w-full h-14 px-4 col-span-12 sm:col-span-8 border-gray-300 border-4 rounded-lg">
+                                    <select name="weapon_rate" id="weapon_rate" class="w-full h-14 col-span-12 sm:col-span-4 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                        <option>Pilih Rate PITY</option>
+                                        <option value="on">On</option>
+                                        <option value="off">Off</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -760,8 +770,13 @@
                                 <label for="char_standart" class="text-md sm:text-xl capitalize">
                                     Warp Karakter Standar 
                                 </label>
-                                <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="char_standart" id="char_standart"  class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
+                                    <input type="number" min="0" name="char_standart" id="char_standart" class="w-full h-14 px-4 col-span-12 sm:col-span-8 border-gray-300 border-4 rounded-lg">
+                                    <select name="char_standart_rate" id="char_standart_rate" class="w-full h-14 col-span-12 sm:col-span-4 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                        <option>Pilih Rate PITY</option>
+                                        <option value="on">On</option>
+                                        <option value="off">Off</option>
+                                    </select>
                                 </div>
                             </div>
 
