@@ -39,52 +39,7 @@
             background: #555;
         }
 
-        .hsr-card {
-            font-family: "hsr-ui";
-            height: auto;
-            overflow: hidden;
-        }
-
-        .hsr-card.selected::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.3) 100%); /* Gold gradient */
-            border-top-right-radius: 30px; /* Adjust as needed */
-            border-bottom-left-radius: 7px;
-            border-bottom-right-radius: 7px;
-        }
-
-        /* Styles for the small part */
-        .corner-part {
-            width: 5rem;
-            height: 1.5rem;
-            border-bottom-left-radius: 1.8rem;
-            background: #efa525;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            visibility: hidden; /* Hide by default */
-        }
-
-        .corner-container {
-            display: flex;
-            align-items: center;
-            justify-content: end;
-        }
-
-        .hsr-card.selected .corner-part {
-            visibility: visible; /* Show only when selected */
-        }
-
-        .corner-part p {
-            font-size: 1rem;
-            color: black;
-            margin: 0;
-        }
+        
     </style>
     
     
@@ -310,7 +265,7 @@
                             Kamu bisa pilih karakter apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan konstelasi karakter.
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-6" id="hsr-cards-container">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-6" id="hsr-character-cards-container">
                             
                             <!-- PUT CHARACTER CARD OF HONKAI STAR RAIL HERE  -->
 
@@ -351,24 +306,28 @@
                         
                                 // Function to create a card element for each image
                                 function createCard(filename, characterName) {
-                                    const cardContainer = document.getElementById("hsr-cards-container");
+                                    const cardContainer = document.getElementById("hsr-character-cards-container");
                         
                                     const card = document.createElement("div");
-                                    card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+                                    card.classList.add("hsr-character-card", "font-[hsr-ui]", 'h-auto', "overflow-hidden", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
                                     card.setAttribute('data-clicks', '0');
                                     card.setAttribute('title', 'Click to Select Character');
                                     card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
                                     card.onclick = function() { toggleSelected(this); };
+
+                                    const overlay = document.createElement("div");
+                                    overlay.classList.add('selected-overlay',"absolute",'hidden',  'w-full', 'h-full', 'top-0', 'left-0', 'rounded-tr-[30px]', 'rounded-b-[7px]', 'bg-gradient-to-b', 'from-[#ffd7001a]', 'to-[#ffd7004d]')
+                                    card.appendChild(overlay)
                         
                                     const cornerContainer = document.createElement('div');
-                                    cornerContainer.classList.add('corner-container');
+                                    cornerContainer.classList.add('flex', 'items-center', 'justify-end', 'absolute', 'top-0', 'right-0');
                                     const cornerPart = document.createElement('div');
-                                    cornerPart.classList.add('corner-part', 'border-red-500');
+                                    cornerPart.classList.add('corner-part', 'w-20', 'h-6' , 'rounded-bl-[1.8rem]', 'bg-[#efa525]', 'flex', 'items-center', 'justify-center', 'invisible', 'text-base', 'text-black', 'm-0');
                                     cornerContainer.appendChild(cornerPart);
                                     card.appendChild(cornerContainer);
                         
                                     const imageContainer = document.createElement("div");
-                                    imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "border-0", "border-red-500");
+                                    imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "border-0", "py-6");
                                     const image = document.createElement("img");
                                     image.src = `assets/images/games/hsr/characters/${filename}`;
                                     image.alt = "Character Image";
@@ -394,9 +353,22 @@
                         
                                     if (clicks < 7){
                                         card.classList.add('selected');
+
+                                        card.querySelector(".corner-part").classList.remove("invisible")
+                                        card.querySelector(".corner-part").classList.add("visible")
+
+                                        card.querySelector(".selected-overlay").classList.remove("hidden")
+                                        card.querySelector(".selected-overlay").classList.add("block")
+
                                         card.querySelector('.corner-part').innerHTML = `<p>E${clicks}</p>`;
                                     } else {
                                         card.classList.remove('selected');
+
+                                        card.querySelector(".selected-overlay").classList.remove("block")
+                                        card.querySelector(".selected-overlay").classList.add("hidden")
+
+                                        card.querySelector(".corner-part").classList.remove("visible")
+                                        card.querySelector(".corner-part").classList.add("invisible")
                                     }
                                 
                                     card.setAttribute('data-clicks', clicks < 7 ? clicks + 1 : 0);
@@ -404,13 +376,18 @@
                         
                                 // Function to extract data from selected cards
                                 function extractData() {
-                                    const selectedCards = document.querySelectorAll('.hsr-card.selected');
-                                    const data = {
+                                    const selectedCards = document.querySelectorAll('.hsr-character-card.selected');
+                                    var data = {
                                         characters: Array.from(selectedCards).map(card => ({
                                             name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
                                             enhancement: parseInt(card.getAttribute('data-clicks')) % 6 - 1
                                         }))
                                     };
+
+                                    if (selectedCards.length == 0) {
+                                        data = ""
+                                    }
+
                                     const jsonDataHSRCharacterInput = document.getElementById('jsonDataHSRCharacter');
                                     jsonDataHSRCharacterInput.value = JSON.stringify(data);
                                     console.log(jsonDataHSRCharacterInput.value); // Output JSON for debugging
@@ -418,10 +395,14 @@
                         
                                 // Function to reset all selected cards
                                 function resetSelections() {
-                                    const selectedCards = document.querySelectorAll('.hsr-card.selected');
+                                    const selectedCards = document.querySelectorAll('.hsr-character-card.selected');
                                     for (const card of selectedCards) {
                                         card.classList.remove('selected');
-                                        card.querySelector('.corner-part').innerHTML = '';
+                                        card.querySelector(".selected-overlay").classList.remove("block")
+                                        card.querySelector(".selected-overlay").classList.add("hidden")
+
+                                        card.querySelector(".corner-part").classList.remove("visible")
+                                        card.querySelector(".corner-part").classList.add("invisible")
                                         card.setAttribute('data-clicks', '0');
                                     }
 
@@ -512,16 +493,20 @@
                                 const cardContainer = document.getElementById("hsr-weapon-cards-container");
                     
                                 const card = document.createElement("div");
-                                card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+                                card.classList.add("hsr-weapon-card", "font-[hsr-ui]", 'h-auto', "overflow-hidden", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
                                 card.setAttribute('data-clicks', '0');
                                 card.setAttribute('title', 'Click to Select Character');
                                 card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
                                 card.onclick = function() { toggleSelectedWeapon(this); };
+
+                                const overlay = document.createElement("div");
+                                overlay.classList.add('selected-overlay',"absolute",'hidden',  'w-full', 'h-full', 'top-0', 'left-0', 'rounded-tr-[30px]', 'rounded-b-[7px]', 'bg-gradient-to-b', 'from-[#ffd7001a]', 'to-[#ffd7004d]','z-10')
+                                card.appendChild(overlay)
                     
                                 const cornerContainer = document.createElement('div');
-                                cornerContainer.classList.add('corner-container');
+                                cornerContainer.classList.add('flex', 'items-center', 'justify-end', 'absolute', 'top-0', 'right-0');
                                 const cornerPart = document.createElement('div');
-                                cornerPart.classList.add('corner-part', 'border-red-500');
+                                cornerPart.classList.add('corner-part', 'w-20', 'h-6' , 'rounded-bl-[1.8rem]', 'bg-[#efa525]', 'flex', 'items-center', 'justify-center', 'invisible', 'text-base', 'text-black', 'm-0');
                                 cornerContainer.appendChild(cornerPart);
                                 card.appendChild(cornerContainer);
                     
@@ -552,9 +537,22 @@
                     
                                 if (clicks < 6) {
                                     card.classList.add('selected');
+
+                                    card.querySelector(".corner-part").classList.remove("invisible")
+                                    card.querySelector(".corner-part").classList.add("visible")
+
+                                    card.querySelector(".selected-overlay").classList.remove("hidden")
+                                    card.querySelector(".selected-overlay").classList.add("block")
+
                                     card.querySelector('.corner-part').innerHTML = `<p>S${clicks}</p>`;
                                 } else {
                                     card.classList.remove('selected');
+
+                                    card.querySelector(".selected-overlay").classList.remove("block")
+                                    card.querySelector(".selected-overlay").classList.add("hidden")
+
+                                    card.querySelector(".corner-part").classList.remove("visible")
+                                    card.querySelector(".corner-part").classList.add("invisible")
                                 }
                     
                                 card.setAttribute('data-clicks', clicks < 6 ? clicks + 1 : 0);
@@ -562,14 +560,19 @@
                     
                             // Function to extract data from selected cards
                             function extractWeaponData() {
-                                const selectedCards = document.querySelectorAll('.hsr-card.selected');
-                                const data = {
-                                    characters: Array.from(selectedCards).map(card => ({
+                                const selectedCards = document.querySelectorAll('.hsr-weapon-card.selected');
+                                var data = {
+                                    weapons: Array.from(selectedCards).map(card => ({
                                         name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
                                         enhancement: parseInt(card.getAttribute('data-clicks')) % 7
                                     }))
                                 };
-                                const jsonDataHSRCharacterInput = document.getElementById('jsonDataHSRCharacter');
+
+                                if (selectedCards.length == 0) {
+                                    data = ""
+                                }
+
+                                const jsonDataHSRCharacterInput = document.getElementById('jsonDataHSRWeapon');
                                 jsonDataHSRCharacterInput.value = JSON.stringify(data);
                                 console.log(jsonDataHSRCharacterInput.value); // Output JSON for debugging
                             }
@@ -587,10 +590,14 @@
                     
                             // Function to reset all selected cards
                             function resetWeaponSelections() {
-                                const selectedCards = document.querySelectorAll('.hsr-card.selected');
+                                const selectedCards = document.querySelectorAll('.hsr-weapon-card.selected');
                                 for (const card of selectedCards) {
                                     card.classList.remove('selected');
-                                    card.querySelector('.corner-part').innerHTML = '';
+                                    card.querySelector(".selected-overlay").classList.remove("block")
+                                    card.querySelector(".selected-overlay").classList.add("hidden")
+
+                                    card.querySelector(".corner-part").classList.remove("visible")
+                                    card.querySelector(".corner-part").classList.add("invisible")
                                     card.setAttribute('data-clicks', '0');
                                 }
                             }
