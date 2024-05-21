@@ -75,7 +75,7 @@
 
     
             <!-- FORM CONTAINER: START  -->
-            <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">
+            <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-form-container" data-last-card="0">
             
                 <!-- WELCOMING START  -->
                 <div id="welcome" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
@@ -108,7 +108,7 @@
                         </ol>
 
                         <div class="w-full flex items-center justify-center sm:justify-end pb-4">
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>
@@ -147,8 +147,8 @@
                         </div>
 
                         <div class="pb-4  w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -234,8 +234,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -417,8 +417,8 @@
                             <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Hapus Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                             </div>
                         </div>
                         
@@ -609,8 +609,8 @@
                             <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                             </div>
                         </div>
                         
@@ -702,8 +702,8 @@
                         </div>
 
                         <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -768,8 +768,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -850,8 +850,8 @@
                         </div>
 
                         <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -870,33 +870,50 @@
 
     <script>
         let currentSection = 0;
-        const sections = document.querySelectorAll('#collapsible-container > div > #content');
 
-        function getParentId() {
+        function getSection(container_id){
+            const sections = document.querySelectorAll("#" + container_id + ' > div > #content');
+            return sections;
+        }
+
+        function updateContainerLastCard(container_id, value){
+            target_sec = document.getElementById(container_id);
+            target_sec.setAttribute("data-last-card", value);
+        }
+
+        function getParentId(container_id) {
+            sections = getSection(container_id);
+
             if (currentSection < sections.length) {
                 const parentId = sections[currentSection].parentNode.id;
                 return parentId;
             }
         }
 
-        function showNext() {
+        function showNext(container_id) {
+            sections = getSection(container_id);
+
             if (currentSection < sections.length - 1) {
                 sections[currentSection].style.height = "0px";
                 currentSection++;
+                updateContainerLastCard(container_id, currentSection)
                 sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
                 setTimeout(function(){
-                    window.location.href = "#" + getParentId()
+                    window.location.href = "#" + getParentId(container_id)
                 }, 300)
             }
         }
 
-        function showPrev() {
+        function showPrev(container_id) {
+            sections = getSection(container_id);
+
             if (currentSection > 0) {
                 sections[currentSection].style.height = "0px";
                 currentSection--;               
+                updateContainerLastCard(container_id, currentSection)
                 sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
                 setTimeout(function(){
-                    window.location.href = "#" + getParentId()
+                    window.location.href = "#" + getParentId(container_id)
                 }, 300)
             }
         }
