@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/custom.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://releases.transloadit.com/uppy/v3.25.2/uppy.min.css" rel="stylesheet">
 
     <style>
         * {
@@ -39,52 +40,7 @@
             background: #555;
         }
 
-        .hsr-card {
-            font-family: "hsr-ui";
-            height: auto;
-            overflow: hidden;
-        }
-
-        .hsr-card.selected::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.3) 100%); /* Gold gradient */
-            border-top-right-radius: 30px; /* Adjust as needed */
-            border-bottom-left-radius: 7px;
-            border-bottom-right-radius: 7px;
-        }
-
-        /* Styles for the small part */
-        .corner-part {
-            width: 5rem;
-            height: 1.5rem;
-            border-bottom-left-radius: 1.8rem;
-            background: #efa525;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            visibility: hidden; /* Hide by default */
-        }
-
-        .corner-container {
-            display: flex;
-            align-items: center;
-            justify-content: end;
-        }
-
-        .hsr-card.selected .corner-part {
-            visibility: visible; /* Show only when selected */
-        }
-
-        .corner-part p {
-            font-size: 1rem;
-            color: black;
-            margin: 0;
-        }
+        
     </style>
     
     
@@ -120,7 +76,7 @@
 
     
             <!-- FORM CONTAINER: START  -->
-            <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-container">
+            <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-form-container" data-last-card="0">
             
                 <!-- WELCOMING START  -->
                 <div id="welcome" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
@@ -153,7 +109,7 @@
                         </ol>
 
                         <div class="w-full flex items-center justify-center sm:justify-end pb-4">
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>
@@ -192,8 +148,8 @@
                         </div>
 
                         <div class="pb-4  w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -239,7 +195,7 @@
                             <!-- AR  -->
                             <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
                                 <label for="tl" class="block text-md sm:text-xl">Trailblazer Level</label>
-                                <input type="number" min="0" max="60" name="tl" id="tl" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <input type="number" min="0" max="60" name="tl" id="tl"  class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                             </div>
 
                             <!-- is username set Loc  -->
@@ -279,8 +235,8 @@
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -310,7 +266,7 @@
                             Kamu bisa pilih karakter apa saja yang akunmu miliki. Klik lebih dari sekali untuk menambahkan konstelasi karakter.
                         </p>
                         
-                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-6" id="hsr-cards-container">
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-6" id="hsr-character-cards-container">
                             
                             <!-- PUT CHARACTER CARD OF HONKAI STAR RAIL HERE  -->
 
@@ -351,24 +307,28 @@
                         
                                 // Function to create a card element for each image
                                 function createCard(filename, characterName) {
-                                    const cardContainer = document.getElementById("hsr-cards-container");
+                                    const cardContainer = document.getElementById("hsr-character-cards-container");
                         
                                     const card = document.createElement("div");
-                                    card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+                                    card.classList.add("hsr-character-card", "font-[hsr-ui]", 'h-auto', "overflow-hidden", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
                                     card.setAttribute('data-clicks', '0');
                                     card.setAttribute('title', 'Click to Select Character');
                                     card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
                                     card.onclick = function() { toggleSelected(this); };
+
+                                    const overlay = document.createElement("div");
+                                    overlay.classList.add('selected-overlay',"absolute",'hidden',  'w-full', 'h-full', 'top-0', 'left-0', 'rounded-tr-[30px]', 'rounded-b-[7px]', 'bg-gradient-to-b', 'from-[#ffd7001a]', 'to-[#ffd7004d]')
+                                    card.appendChild(overlay)
                         
                                     const cornerContainer = document.createElement('div');
-                                    cornerContainer.classList.add('corner-container');
+                                    cornerContainer.classList.add('flex', 'items-center', 'justify-end', 'absolute', 'top-0', 'right-0');
                                     const cornerPart = document.createElement('div');
-                                    cornerPart.classList.add('corner-part', 'border-red-500');
+                                    cornerPart.classList.add('corner-part', 'w-20', 'h-6' , 'rounded-bl-[1.8rem]', 'bg-[#efa525]', 'flex', 'items-center', 'justify-center', 'invisible', 'text-base', 'text-black', 'm-0');
                                     cornerContainer.appendChild(cornerPart);
                                     card.appendChild(cornerContainer);
                         
                                     const imageContainer = document.createElement("div");
-                                    imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "border-0", "border-red-500");
+                                    imageContainer.classList.add("hsr-image-container", "flex-grow", "flex", "justify-center", "items-center", "border-0", "py-6");
                                     const image = document.createElement("img");
                                     image.src = `assets/images/games/hsr/characters/${filename}`;
                                     image.alt = "Character Image";
@@ -394,23 +354,41 @@
                         
                                     if (clicks < 7){
                                         card.classList.add('selected');
+
+                                        card.querySelector(".corner-part").classList.remove("invisible")
+                                        card.querySelector(".corner-part").classList.add("visible")
+
+                                        card.querySelector(".selected-overlay").classList.remove("hidden")
+                                        card.querySelector(".selected-overlay").classList.add("block")
+
                                         card.querySelector('.corner-part').innerHTML = `<p>E${clicks}</p>`;
                                     } else {
                                         card.classList.remove('selected');
+
+                                        card.querySelector(".selected-overlay").classList.remove("block")
+                                        card.querySelector(".selected-overlay").classList.add("hidden")
+
+                                        card.querySelector(".corner-part").classList.remove("visible")
+                                        card.querySelector(".corner-part").classList.add("invisible")
                                     }
                                 
                                     card.setAttribute('data-clicks', clicks < 7 ? clicks + 1 : 0);
                                 }
                         
                                 // Function to extract data from selected cards
-                                function extractData() {
-                                    const selectedCards = document.querySelectorAll('.hsr-card.selected');
-                                    const data = {
+                                function extractCharacterData() {
+                                    const selectedCards = document.querySelectorAll('.hsr-character-card.selected');
+                                    var data = {
                                         characters: Array.from(selectedCards).map(card => ({
                                             name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
                                             enhancement: parseInt(card.getAttribute('data-clicks')) % 6 - 1
                                         }))
                                     };
+
+                                    if (selectedCards.length == 0) {
+                                        data = ""
+                                    }
+
                                     const jsonDataHSRCharacterInput = document.getElementById('jsonDataHSRCharacter');
                                     jsonDataHSRCharacterInput.value = JSON.stringify(data);
                                     console.log(jsonDataHSRCharacterInput.value); // Output JSON for debugging
@@ -418,10 +396,14 @@
                         
                                 // Function to reset all selected cards
                                 function resetSelections() {
-                                    const selectedCards = document.querySelectorAll('.hsr-card.selected');
+                                    const selectedCards = document.querySelectorAll('.hsr-character-card.selected');
                                     for (const card of selectedCards) {
                                         card.classList.remove('selected');
-                                        card.querySelector('.corner-part').innerHTML = '';
+                                        card.querySelector(".selected-overlay").classList.remove("block")
+                                        card.querySelector(".selected-overlay").classList.add("hidden")
+
+                                        card.querySelector(".corner-part").classList.remove("visible")
+                                        card.querySelector(".corner-part").classList.add("invisible")
                                         card.setAttribute('data-clicks', '0');
                                     }
 
@@ -436,8 +418,8 @@
                             <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetSelections()">Hapus Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="extractCharacterData();showNext('collapsible-form-container')">Lanjut</button>
                             </div>
                         </div>
                         
@@ -512,16 +494,20 @@
                                 const cardContainer = document.getElementById("hsr-weapon-cards-container");
                     
                                 const card = document.createElement("div");
-                                card.classList.add("hsr-card", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
+                                card.classList.add("hsr-weapon-card", "font-[hsr-ui]", 'h-auto', "overflow-hidden", "bg-gray-900", "text-white", "cursor-pointer", "rounded-tr-[30px]", "rounded-b-[7px]", "w-full", "flex", "flex-col", "justify-between", "shadow-xl", "relative", "border-0", "border-red-500");
                                 card.setAttribute('data-clicks', '0');
                                 card.setAttribute('title', 'Click to Select Character');
                                 card.setAttribute('data-character-name', characterName); // Simpan nama karakter di sini
                                 card.onclick = function() { toggleSelectedWeapon(this); };
+
+                                const overlay = document.createElement("div");
+                                overlay.classList.add('selected-overlay',"absolute",'hidden',  'w-full', 'h-full', 'top-0', 'left-0', 'rounded-tr-[30px]', 'rounded-b-[7px]', 'bg-gradient-to-b', 'from-[#ffd7001a]', 'to-[#ffd7004d]','z-10')
+                                card.appendChild(overlay)
                     
                                 const cornerContainer = document.createElement('div');
-                                cornerContainer.classList.add('corner-container');
+                                cornerContainer.classList.add('flex', 'items-center', 'justify-end', 'absolute', 'top-0', 'right-0');
                                 const cornerPart = document.createElement('div');
-                                cornerPart.classList.add('corner-part', 'border-red-500');
+                                cornerPart.classList.add('corner-part', 'w-20', 'h-6' , 'rounded-bl-[1.8rem]', 'bg-[#efa525]', 'flex', 'items-center', 'justify-center', 'invisible', 'text-base', 'text-black', 'm-0');
                                 cornerContainer.appendChild(cornerPart);
                                 card.appendChild(cornerContainer);
                     
@@ -552,9 +538,22 @@
                     
                                 if (clicks < 6) {
                                     card.classList.add('selected');
+
+                                    card.querySelector(".corner-part").classList.remove("invisible")
+                                    card.querySelector(".corner-part").classList.add("visible")
+
+                                    card.querySelector(".selected-overlay").classList.remove("hidden")
+                                    card.querySelector(".selected-overlay").classList.add("block")
+
                                     card.querySelector('.corner-part').innerHTML = `<p>S${clicks}</p>`;
                                 } else {
                                     card.classList.remove('selected');
+
+                                    card.querySelector(".selected-overlay").classList.remove("block")
+                                    card.querySelector(".selected-overlay").classList.add("hidden")
+
+                                    card.querySelector(".corner-part").classList.remove("visible")
+                                    card.querySelector(".corner-part").classList.add("invisible")
                                 }
                     
                                 card.setAttribute('data-clicks', clicks < 6 ? clicks + 1 : 0);
@@ -562,14 +561,19 @@
                     
                             // Function to extract data from selected cards
                             function extractWeaponData() {
-                                const selectedCards = document.querySelectorAll('.hsr-card.selected');
-                                const data = {
-                                    characters: Array.from(selectedCards).map(card => ({
+                                const selectedCards = document.querySelectorAll('.hsr-weapon-card.selected');
+                                var data = {
+                                    weapons: Array.from(selectedCards).map(card => ({
                                         name: card.getAttribute('data-character-name'), // Ambil nama karakter langsung dari atribut data
                                         enhancement: parseInt(card.getAttribute('data-clicks')) % 7
                                     }))
                                 };
-                                const jsonDataHSRCharacterInput = document.getElementById('jsonDataHSRCharacter');
+
+                                if (selectedCards.length == 0) {
+                                    data = ""
+                                }
+
+                                const jsonDataHSRCharacterInput = document.getElementById('jsonDataHSRWeapon');
                                 jsonDataHSRCharacterInput.value = JSON.stringify(data);
                                 console.log(jsonDataHSRCharacterInput.value); // Output JSON for debugging
                             }
@@ -587,10 +591,14 @@
                     
                             // Function to reset all selected cards
                             function resetWeaponSelections() {
-                                const selectedCards = document.querySelectorAll('.hsr-card.selected');
+                                const selectedCards = document.querySelectorAll('.hsr-weapon-card.selected');
                                 for (const card of selectedCards) {
                                     card.classList.remove('selected');
-                                    card.querySelector('.corner-part').innerHTML = '';
+                                    card.querySelector(".selected-overlay").classList.remove("block")
+                                    card.querySelector(".selected-overlay").classList.add("hidden")
+
+                                    card.querySelector(".corner-part").classList.remove("visible")
+                                    card.querySelector(".corner-part").classList.add("invisible")
                                     card.setAttribute('data-clicks', '0');
                                 }
                             }
@@ -602,8 +610,8 @@
                             <button class="bg-gray-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="resetWeaponSelections()">Reset Pilihan</button>                
                                 
                             <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                                <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                                <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="extractWeaponData();showNext('collapsible-form-container')">Lanjut</button>
                             </div>
                         </div>
                         
@@ -642,7 +650,7 @@
                                     Express Supply Pass
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="express_sp" id="express_sp" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="express_sp" id="express_sp"  class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/hsr/add/Daily_Express_Supply_Pass_Icon.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
@@ -653,7 +661,7 @@
                                     Oneiric Shard
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="oneiric" id="oneiric" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="oneiric" id="oneiric"  class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/hsr/add/oneiric-shard.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
@@ -664,7 +672,7 @@
                                     Stellar Jade
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="jade" id="jade" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="jade" id="jade"  class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/hsr/add/stellar-jade.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
@@ -675,7 +683,7 @@
                                     special pass
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="special_pass" id="special_pass" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="special_pass" id="special_pass"  class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/hsr/add/special-pass-clean.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
@@ -686,7 +694,7 @@
                                     regular pass
                                 </label>
                                 <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="regular_pass" id="regular_pass" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                    <input type="number" min="0" name="regular_pass" id="regular_pass"  class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
                                     <img src="assets/images/games/hsr/add/regular-pass-clean.webp" alt="" class="w-10 h-10 absolute top-1/2 -translate-y-1/2 right-2">
                                 </div>
                             </div>
@@ -695,8 +703,8 @@
                         </div>
 
                         <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -733,18 +741,28 @@
                                 <label for="char_event" class="text-md sm:text-xl capitalize">
                                     Warp Karakter Event
                                 </label>
-                                <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="char_event" id="char_event" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
+                                    <input type="number" min="0" name="char_event" id="char_event" class="w-full h-14 px-4 col-span-12 sm:col-span-10 border-gray-300 border-4 rounded-lg">
+                                    <select name="char_event_rate" id="char_event_rate" class="w-full h-14 col-span-12 sm:col-span-2 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                        <option>Pilih Rate PITY</option>
+                                        <option value="on">On</option>
+                                        <option value="off">Off</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <!-- weapon  -->
                             <div class="col-span-12 sm:col-span-6 w-full h-fit flex flex-col gap-y-4">
                                 <label for="weapon" class="text-md sm:text-xl capitalize">
-                                    Warp Light Cone 
+                                    Warp Senjata
                                 </label>
-                                <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="weapon" id="weapon" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
+                                    <input type="number" min="0" name="weapon" id="weapon" class="w-full h-14 px-4 col-span-12 sm:col-span-8 border-gray-300 border-4 rounded-lg">
+                                    <select name="weapon_rate" id="weapon_rate" class="w-full h-14 col-span-12 sm:col-span-4 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                        <option>Pilih Rate PITY</option>
+                                        <option value="on">On</option>
+                                        <option value="off">Off</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -753,16 +771,21 @@
                                 <label for="char_standart" class="text-md sm:text-xl capitalize">
                                     Warp Karakter Standar 
                                 </label>
-                                <div class="relative w-full h-fit">
-                                    <input type="number" min="0" name="char_standart" id="char_standart" value="0" class="w-full h-14 px-4 border-gray-300 border-4 rounded-lg">
+                                <div class="relative w-full grid grid-cols-12 gap-4 h-fit">
+                                    <input type="number" min="0" name="char_standart" id="char_standart" class="w-full h-14 px-4 col-span-12 sm:col-span-8 border-gray-300 border-4 rounded-lg">
+                                    <select name="char_standart_rate" id="char_standart_rate" class="w-full h-14 col-span-12 sm:col-span-4 px-4 leading-10 border-gray-300 border-4 rounded-lg ">
+                                        <option>Pilih Rate PITY</option>
+                                        <option value="on">On</option>
+                                        <option value="off">Off</option>
+                                    </select>
                                 </div>
                             </div>
 
                         </div>
 
                         <div class="w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-form-container')">Lanjut</button>
                         </div>
                         
                     </div>                              
@@ -843,8 +866,8 @@
                         </div>
 
                         <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
-                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev()">Sebelumnya</button>                
-                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext()">Lanjut</button>
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-form-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="checkSubmission();">Lanjut Ke Finalisasi</button>
                         </div>
                         
                     </div>                              
@@ -854,6 +877,411 @@
                 <button class="bg-red-600 block sm:hidden py-2 px-3 text-white rounded-3xl min-w-[180px]">Kembali</button> 
             </div>
             <!-- FORM CONTAINER: END  -->
+
+            <!-- REVIEW & FINALIZATION: START  -->
+            <div data-last-card="0" class="border-0 w-[90%] hidden grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10" id="collapsible-review-container">
+            
+                <!-- REVIEW - FINALIZATION START  -->
+                <div id="review" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
+                    
+                    <!-- TITLE CONTAINER  -->
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Review Informasi</h2>
+                        </div>
+            
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="far fa-eye text-2xl sm:text-3xl text-white"></i>
+                        </div>
+                    </div>           
+            
+                    <!-- ANOTHER DETAIL  -->
+                    <div id="content" class="flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
+                            Harap pastikan informasi dibawah ini sudah sesuai dengan akunmu yang mau kamu jual. Kembali jika kamu melalkukan kesalahan.
+                        </p>
+
+                        <!-- ACCOUNT INFO: START  -->
+                        <p class="text-md sm:text-xl mt-4">
+                            Informasi Akun
+                        </p>
+
+                        <div class="flex flex-row flex-wrap items-center justify-center gap-4 my-4">
+
+                            <div class="w-full sm:w-1/6 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-server text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                
+                                <h3 class="text-xl text-center">Server</h3>
+
+                                <p id="server_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    Indo
+                                </p>
+                            </div>
+
+                            <div class="w-full sm:w-1/6 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-level-up-alt text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                
+                                <h3 class="text-xl text-center">Trailblazer Level</h3>
+
+                                <p id="tl_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    AR 60
+                                </p>
+                            </div>
+
+                            <div class="w-full sm:w-1/6 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-tag text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                
+                                <h3 class="text-xl text-center">Sudah Set Username</h3>
+
+                                <p id="isUsernameSet_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    Ya
+                                </p>
+                            </div>
+
+                            <div class="w-full sm:w-1/6 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-user-cog text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                
+                                <h3 class="text-xl text-center">Akun Punya Sendiri</h3>
+
+                                <p id="ownership_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    Beli
+                                </p>
+                            </div>
+
+                            <div class="w-full sm:w-1/6 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <i class="fas fa-store text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                
+                                <h3 class="text-xl text-center">Pernah Topup?</h3>
+
+                                <p id="haveTopup_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    Ya
+                                </p>
+                            </div>
+
+                            <div class="w-full px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-lg">
+                                
+                                <h3 class="text-xl text-center capitalize"> apakah akun terikat dengan Genshin Impact?</h3>
+
+                                <p id="is_genshin_attached_placeholder" class="text-lg text-[#efa525] capitalize">
+                                    tidak
+                                </p>
+                            </div>
+                        </div>
+                        <!-- ACCOUNT INFO: END -->
+
+                        <!-- CHARACTER OWN: START  -->
+                        <p class="text-md sm:text-xl">
+                            Kepemilikan Karakter
+                        </p>
+
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="hsr-character-cards-placeholder-container">
+                            
+                            <!-- PUT CHARACTER CARD OF GENSHIN IMPACT HERE  -->
+
+                        </div>
+                        <!-- CHARACTER OWN: END  -->
+
+                        <!-- WEAPON OWN: START  -->
+                        <p class="text-md sm:text-xl mt-4">
+                            Kepemilikan Senjata
+                        </p>
+
+                        <div class="w-full h-fit grid grid-cols-3 place-content-center sm:grid-cols-7 my-6 gap-2 sm:gap-4" id="hsr-weapon-cards-placeholder-container">
+                            
+                            <!-- PUT CHARACTER CARD OF GENSHIN IMPACT HERE  -->
+
+                        </div>
+                        <!-- WEAPON OWN: END  -->
+
+                        <!-- ADDITIONAL: START  -->
+                        <p class="text-md sm:text-xl mt-4">
+                            Asset Tambahan
+                        </p>
+
+                        <div class="flex flex-row flex-wrap items-center justify-center gap-4 my-4">
+
+                            <div class="w-1/3 sm:w-1/5 flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <img src="assets/images/games/hsr/add/Daily_Express_Supply_Pass_Icon.webp" class="w-20 h-20" alt="">
+                                </div>
+
+                                
+                                <h3 class="text-xl w-3/4 text-center sm:w-full">Express Supply</h3>
+
+                                <p id="express_sp_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    2
+                                </p>
+                            </div>
+
+                            <div class="w-1/3 sm:w-1/5 flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <img src="assets/images/games/hsr/add/oneiric-shard.webp" class="w-20 h-20" alt="">
+                                </div>
+
+                                
+                                <h3 class="text-xl w-3/4 text-center sm:w-full">Oneiric Shard</h3>
+
+                                <p id="oneiric_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    1320
+                                </p>
+                            </div>
+
+                            <div class="w-full sm:w-1/5 sm:flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <img src="assets/images/games/hsr/add/stellar-jade.webp" class="w-20 h-20" alt="">
+                                </div>
+
+                                
+                                <h3 class="text-xl w-3/4 text-center sm:w-full">Stellar Jade</h3>
+
+                                <p id="jade_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    4800
+                                </p>
+                            </div>
+
+                            <div class="w-1/3 sm:w-1/5 flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <img src="assets/images/games/hsr/add/special-pass-clean.webp" class="w-20 h-20" alt="">
+                                </div>
+
+                                
+                                <h3 class="text-xl w-3/4 text-center sm:w-full">Special Pass</h3>
+
+                                <p id="special_pass_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    10
+                                </p>
+                            </div>
+
+                            <div class="w-1/3 sm:w-1/5 flex-1 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                <div class="flex items-center justify-center">
+                                    <img src="assets/images/games/hsr/add/regular-pass-clean.webp" class="w-20 h-20" alt="">
+                                </div>
+
+                                
+                                <h3 class="text-xl w-3/4 text-center sm:w-full">Regular Pass</h3>
+
+                                <p id="regular_pass_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    100
+                                </p>
+                            </div>
+                        </div>
+                        <!-- ADDITIONAL: END -->
+
+                        <!-- PITY: START  -->
+                        <p class="text-md sm:text-xl mt-4">
+                            Rate PITY
+                        </p>
+
+                        <div class="grid grid-cols-6 gap-4 my-4">
+
+                            <div class="col-span-6 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                
+                                <h3 class="text-xl text-center">Karakter Event</h3>
+
+                                <p id="char_event_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    2
+                                </p>
+                            </div>
+
+                            <div class="col-span-3 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                
+                                <h3 class="text-xl text-center">Senjata</h3>
+
+                                <p id="weapon_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    30
+                                </p>
+                            </div>
+
+                            <div class="col-span-3 pt-4 flex flex-col items-center bg-[#f0f0f0] rounded-lg">
+                                
+                                <h3 class="text-xl text-center">Karakter Standar</h3>
+
+                                <p id="char_standart_placeholder" class="text-lg my-4 text-[#efa525]">
+                                    70
+                                </p>
+                            </div>
+                        </div>
+                        <!-- PITY: END  -->
+
+                        <!-- SECURITY INFO: START  -->
+                        <p class="text-md sm:text-xl mt-4">
+                            Keamanan Akun
+                        </p>
+
+                        <div class="grid grid-cols-9 gap-4 my-4">
+
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-3xl sm:rounded-full">
+                                
+                                <h3 class="text-xl capitalize"> apakah akun pernah dihack?</h3>
+
+                                <p id="was_hacked_placeholder" class="text-lg text-[#efa525] capitalize">
+                                    tidak
+                                </p>
+                            </div>
+
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-3xl sm:rounded-full">
+                                
+                                <h3 class="text-xl capitalize"> apakah akun pernah diban?</h3>
+
+                                <p id="was_banned_placeholder" class="text-lg text-[#efa525] capitalize">
+                                    tidak
+                                </p>
+                            </div>
+
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-3xl sm:rounded-full">
+                                
+                                <h3 class="text-xl capitalize"> apakah pernah cheating?</h3>
+
+                                <p id="was_cheated_placeholder" class="text-lg text-[#efa525] capitalize">
+                                    tidak
+                                </p>
+                            </div>
+
+                            <div class="col-span-9 px-6 py-4 flex flex-row items-center justify-between bg-[#f0f0f0] rounded-3xl sm:rounded-full">
+                                
+                                <h3 class="text-xl capitalize"> apakah pernah item in-game minus?</h3>
+
+                                <p id="was_minus_placeholder" class="text-lg text-[#efa525] capitalize">
+                                    tidak
+                                </p>
+                            </div>
+
+                        </div>
+                        <!-- SECURITY INFO: END  -->
+
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="moveSectionTo('collapsible-review-container', 'collapsible-form-container')">Kembali Ke Formulir</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-review-container')">Lanjut</button>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <!-- REVIEW - FINALIZATION END  -->
+
+                <!-- SCREENSHOT START  -->
+                <div id="screenshot" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                    
+                    <!-- TITLE CONTAINER  -->
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Screenshot Akun</h2>
+                        </div>
+            
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-2xl sm:text-3xl text-white"></i>
+                        </div>
+                    </div>        
+            
+                    <!-- ANOTHER DETAIL  -->
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
+                            Silahkan upload screenshot akunmu untuk memberikan daya tarik lebih kepada penjual dan sebagai pendukung validasi.
+                        </p>
+                        
+                        <div class="w-full h-fit flex items-center justify-center my-6 gap-6">
+                            <div id="account_screenshot" class="w-full min-h-20">
+
+                            </div>
+
+                            <script type="module">
+                                import { Uppy, Dashboard, RemoteSources } from "https://releases.transloadit.com/uppy/v3.25.2/uppy.min.mjs"
+                                const uppy = new Uppy()
+
+                                const allowedHost = []
+
+                                uppy.use(Dashboard, { 
+                                    target: '#account_screenshot',
+                                    inline: true,
+                                    width: "100%",
+
+                                }).use(RemoteSources, {
+                                    companionUrl: "http://companion.uppy.io",
+                                    sources: [
+                                      "Dropbox",
+                                      "GoogleDrive",
+                                      "OneDrive",
+                                    ],
+                                    allowedHost,
+                                  })
+                            </script>
+                        </div>
+
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-review-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl" onclick="showNext('collapsible-review-container')">Selanjutnya</button>
+                        </div>
+                        
+                    </div>                              
+                </div>
+                <!-- SCREENSHOT END  -->
+
+                <!-- PRICE START  -->
+                <div id="price" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6">
+                    
+                    <!-- TITLE CONTAINER  -->
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="min-w-[60%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-xl font-extrabold text-cyan-500 "><span class="text-2xl sm:text-4xl my-2">Harga Akun</h2>
+                        </div>
+            
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-2xl sm:text-3xl text-white"></i>
+                        </div>
+                    </div>        
+            
+                    <!-- ANOTHER DETAIL  -->
+                    <div id="content" class="border-0 flex flex-col gap-y-4 relative h-0 transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <p class="text-md sm:text-xl">
+                            Silahkan tentukan harga taksiran atau perkiraan untuk akun yang kamu jual. Admin akan memvalidasi taksiran dan memberitahu harga yang pas untuk akunmu.
+                        </p>
+                        
+                        <div class="w-full h-fit grid grid-cols-12 my-6 gap-6">
+
+                            <!-- Price  -->
+                            <div class="col-span-12 w-full h-fit flex flex-col gap-y-4">
+                                <label for="price" class="block text-md sm:text-xl">Perkiraan Harga</label>
+                                <input type="number" name="price" id="price" class="w-full h-14 pt-2 pb-3 px-4 border-gray-300 border-4 rounded-lg">
+                            </div>
+
+                        </div>
+
+                        <div class="pb-4 w-full flex items-center flex-col sm:flex-row justify-center sm:justify-end gap-x-4">
+                            <button class="bg-red-600 block py-2 px-3 text-white rounded-3xl min-w-[180px]" onclick="showPrev('collapsible-review-container')">Sebelumnya</button>                
+                            <button class="bg-cyan-500 my-1 pt-1 pb-2 px-12 text-white rounded-3xl">Kirim Permintaan Consignment</button>
+                        </div>
+                        
+                    </div>                              
+                </div>
+                <!-- PRICE END  -->
+
+                <button class="bg-red-600 block sm:hidden py-2 px-3 text-white rounded-3xl min-w-[180px]">Kembali</button> 
+            </div>
+            <!-- REVIEW & FINALIZATION: END  -->
             
         </div>
         <!-- ANOTHER INNER CONTAINER: END  -->
@@ -861,35 +1289,267 @@
     </section>
     <!-- PROFILE PAGE: END  -->
 
+    <!-- Review Info Extraction  -->
+    <script>
+        function checkSubmission(){
+            inputs = [
+                "server", "tl", "isUsernameSet", "ownership", "haveTopup", "reason",
+                "jsonDataHSRCharacter", "jsonDataHSRWeapon",
+                "express_sp", "oneiric", "jade", "special_pass", "regular_pass",
+                "char_event", "char_event_rate", "weapon", "weapon_rate", "char_standart", "char_standart_rate",
+                "was_hacked", "was_banned", "was_cheated", "was_minus", "is_genshin_attached"  
+            ];
+
+            error_type = [
+                "Server", "Trailblazer Level", "Username Status" ,"Kepemilikan Akun", "Pernah TopUp", "Alasan Jual",
+                "Kepemilikan Karakter", "Kepemilikan Senjata",
+                "Jumlah Express Supply Pass", "Jumlah Oneiric Shard", "Jumlah Stellar Jade", "Jumlah Special Pass", "Jumlah Regular Pass",
+                "PITY Warp Karakter Event", "Rate PITY Warp Karakter Event", "PITY Warp Senjata", "Rate PITY Warp Senjata", "PITY Warp Karakter Standar", "Rate PITY Warp Karakter Standar",
+                "Pernah DiHack", "Pernah DiBan", "Pernah Cheat", "Pernah Minus", "Genshin Tersangkut"
+            ];
+
+            detected_error = []
+
+            inputs.forEach((input, index) => {
+                input_el = document.getElementById(input);
+                console.log(input + " => " + input_el.value)
+
+
+                if (input_el.value == "" || input_el.value == null){
+                    detected_error.push(error_type[index])
+                }
+            })
+
+            if (detected_error.length != 0){
+                alert("Harap lengkapi informasi ini: " + detected_error)
+            } else {
+                extractSubmission()
+            }
+        }
+
+        function extractSubmission(){
+            
+            extractBasicInfo();
+            extractAdditionals();
+            extractPITY();
+            extractSecurity()
+            extractCharacters();
+            extractWeapons();
+
+            moveSectionTo('collapsible-form-container', 'collapsible-review-container') 
+        }
+
+        // Extract account basic info 
+        function extractBasicInfo() {
+            // Extract Server Value
+            server_val = document.getElementById("server").value
+            document.getElementById("server_placeholder").innerHTML = server_val
+
+            // Extract tl
+            tl_val = document.getElementById("tl").value
+            document.getElementById("tl_placeholder").innerHTML = "Level " + tl_val
+
+            // Extract Is Username Set
+            isUsernameSet_val = document.getElementById("isUsernameSet").value == "true" ? "Sudah" : "Belum"
+            document.getElementById("isUsernameSet_placeholder").innerHTML = isUsernameSet_val
+
+            // Extract Ownership
+            ownership_val = document.getElementById("ownership").value
+            switch (ownership_val){
+                case "selfowned":
+                    ownership_val = "Milik Sendiri"
+                    break;
+                case "bought":
+                    ownership_val = "Beli"
+                    break;
+                case "given":
+                    ownership_val = "Diberikan / Hadiah"
+                    break;
+            }
+            document.getElementById("ownership_placeholder").innerHTML = ownership_val
+
+            // Extract topup status
+            haveTopup_val = document.getElementById("haveTopup").value == "true" ? "Sudah" : "Belum"
+            document.getElementById("haveTopup_placeholder").innerHTML = haveTopup_val
+
+        }
+
+        // Extract Characters
+        function extractCharacters(){
+            const container = document.getElementById("hsr-character-cards-container")
+            const cards = container.querySelectorAll(".hsr-character-card.selected")
+
+            if (cards) {
+                const target_container = document.getElementById("hsr-character-cards-placeholder-container")
+
+                for (i = 0; i < cards.length; i++) {
+                    const cloned = cards[i].cloneNode(true)
+                    target_container.appendChild(cloned);
+                }
+            }
+        }
+
+        // Extract Characters
+        function extractWeapons(){
+            const container = document.getElementById("hsr-weapon-cards-container")
+            const cards = container.querySelectorAll(".hsr-weapon-card.selected")
+
+            if (cards) {
+
+                const target_container = document.getElementById("hsr-weapon-cards-placeholder-container")
+
+                for (i = 0; i < cards.length; i++) {
+                    const cloned = cards[i].cloneNode(true)
+                    target_container.appendChild(cloned);
+                }
+            }
+        }
+        
+        // Extract Additional Items
+        function extractAdditionals(){
+
+            // Extract Exp SP
+            express_sp_val = document.getElementById("express_sp").value
+            document.getElementById("express_sp_placeholder").innerHTML = express_sp_val + "x"
+
+            // Extract Oneiric
+            oneiric_val = document.getElementById("oneiric").value
+            document.getElementById("oneiric_placeholder").innerHTML = oneiric_val + "x"
+
+            // Extract Stellar
+            jade_val = document.getElementById("jade").value
+            document.getElementById("jade_placeholder").innerHTML = jade_val + "x"
+            
+            // Extract Special pass
+            special_pass_val = document.getElementById("special_pass").value
+            document.getElementById("special_pass_placeholder").innerHTML = special_pass_val + "x"
+
+            // Extract Regular pass
+            regular_pass_val = document.getElementById("regular_pass").value
+            document.getElementById("regular_pass_placeholder").innerHTML = regular_pass_val + "x"
+        
+        }
+
+        //Extract PITY Information
+        function extractPITY(){
+
+            // Extract Char event
+            char_event_val = document.getElementById("char_event").value
+            char_event_rate = document.getElementById("char_event_rate").value
+            document.getElementById("char_event_placeholder").innerHTML = char_event_val + " (" + char_event_rate + ")"
+
+            // Extract Char standard
+            char_standart_val = document.getElementById("char_standart").value
+            char_standart_rate = document.getElementById("char_standart_rate").value
+            document.getElementById("char_standart_placeholder").innerHTML = char_standart_val + " (" + char_standart_rate + ")"
+
+            // Extract CWeapon
+            weapon_val = document.getElementById("weapon").value
+            weapon_rate = document.getElementById("weapon_rate").value
+            document.getElementById("weapon_placeholder").innerHTML = weapon_val + " (" + weapon_rate + ")"
+        }
+
+        // Extract Security INFO
+        function extractSecurity(){
+
+            // Was Hacked
+            was_hacked_val = document.getElementById("was_hacked").value == "true" ? "Ya" : "Tidak"
+            document.getElementById("was_hacked_placeholder").innerHTML = was_hacked_val
+
+            // Was cheated
+            was_cheated_val = document.getElementById("was_cheated").value == "true" ? "Ya" : "Tidak"
+            document.getElementById("was_cheated_placeholder").innerHTML = was_cheated_val
+
+            // Was minus
+            was_minus_val = document.getElementById("was_minus").value == "true" ? "Ya" : "Tidak"
+            document.getElementById("was_minus_placeholder").innerHTML = was_minus_val
+
+            // Was banned
+            was_banned_val = document.getElementById("was_banned").value == "true" ? "Ya" : "Tidak"
+            document.getElementById("was_banned_placeholder").innerHTML = was_banned_val
+
+            // genshin Attached
+            is_genshin_attached_val = document.getElementById("is_genshin_attached").value
+            switch (is_genshin_attached_val){
+                case "true_attach":
+                    is_genshin_attached_val = "Ya, Jual Sepaket"
+                    break;
+                case "true_give":
+                    is_genshin_attached_val = "Ya, Jadikan Gratis"
+                    break;
+                case "false":
+                    is_genshin_attached_val = "Tidak"
+                    break;
+            }
+            document.getElementById("is_genshin_attached_placeholder").innerHTML = is_genshin_attached_val
+        }
+    </script>
+
+    <!-- CHANGE ACTIVE SECTION (FORM -> REVIEW, vice versa) -->
+    <script>
+        function moveSectionTo(curr_id, target_id){
+            curr_sec = document.getElementById(curr_id);
+            target_sec = document.getElementById(target_id);
+
+            curr_sec.classList.remove("grid");
+            curr_sec.classList.add("hidden");
+
+            target_sec.classList.remove("hidden");
+            target_sec.classList.add("grid");
+
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE"
+
+            currentSection = target_sec.getAttribute("data-last-card");
+        }
+    </script>
+
     <script>
         let currentSection = 0;
-        const sections = document.querySelectorAll('#collapsible-container > div > #content');
 
-        function getParentId() {
+        function getSection(container_id){
+            const sections = document.querySelectorAll("#" + container_id + ' > div > #content');
+            return sections;
+        }
+
+        function updateContainerLastCard(container_id, value){
+            target_sec = document.getElementById(container_id);
+            target_sec.setAttribute("data-last-card", value);
+        }
+
+        function getParentId(container_id) {
+            sections = getSection(container_id);
+
             if (currentSection < sections.length) {
                 const parentId = sections[currentSection].parentNode.id;
                 return parentId;
             }
         }
 
-        function showNext() {
+        function showNext(container_id) {
+            sections = getSection(container_id);
+
             if (currentSection < sections.length - 1) {
                 sections[currentSection].style.height = "0px";
                 currentSection++;
+                updateContainerLastCard(container_id, currentSection)
                 sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
                 setTimeout(function(){
-                    window.location.href = "#" + getParentId()
+                    window.location.href = "#" + getParentId(container_id)
                 }, 300)
             }
         }
 
-        function showPrev() {
+        function showPrev(container_id) {
+            sections = getSection(container_id);
+
             if (currentSection > 0) {
                 sections[currentSection].style.height = "0px";
                 currentSection--;               
+                updateContainerLastCard(container_id, currentSection)
                 sections[currentSection].style.height = sections[currentSection].scrollHeight + "px";
                 setTimeout(function(){
-                    window.location.href = "#" + getParentId()
+                    window.location.href = "#" + getParentId(container_id)
                 }, 300)
             }
         }
