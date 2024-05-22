@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AkunImpact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: "genshin";
+            src: url("assets/fonts/genshin.ttf");
+        }
+
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 1px;
+        }
+    
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+    
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+    
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+    </style>
+    
+    
+</head>
+
+<body>
+
+    <!-- PROFILE PAGE: START  -->
+    <section class="relative min-w-screen min-h-screen cursor-default border-0 border-green-400 p-0 flex flex-col items-center">
+
+        <div id="background" class="fixed w-full h-screen bg-[url('assets/images/backgrounds/main.png')] bg-cover bg-no-repeat z-0">
+            <!-- INNER CONTAINER: START  -->
+            <div class="relative bg-gradient-to-b from-[#f0f0f0] via-[#f0f0f0]/60 to-[#f0f0f0] bg-cover bg-no-repeat  z-10">
+            </div>
+            <!-- INNER CONTAINER: END  -->
+        </div>
+        
+
+        <!-- ANOTHER INNER CONTAINER: START  -->
+        <div class="border-0 border-red-800 w-fit min-h-screen flex flex-col items-center rounded-2xl my-12" >
+
+            <!-- BUTTON CONTAINER: START  -->
+            <div class="border-0 max-w-[90%] flex flex-row justify-center sm:justify-between items-center w-screen overflow-x-auto z-10">
+                <div class="border-4 min-w-[180px] sm:w-fit bg-white border-gray-300 py-2 px-8 text-black text-center rounded-3xl">
+                    <h1>
+                        Seller Dashboard - Riwayat Penjualan Akun
+                    </h1>
+                </div>
+                
+                <div class="flex gap-x-4">
+                    <button class="bg-cyan-500 hidden sm:block py-2 px-3 text-white rounded-3xl min-w-[180px]">Jual Akun Lagi</button>                
+                    <button class="bg-red-600 hidden sm:block py-2 px-3 text-white rounded-3xl min-w-[180px]">Kembali</button> 
+                </div>               
+            </div>
+            <!-- BUTTON CONTAINER: END  -->
+
+
+            <!-- LATEST 5 TRANSACTION: START  -->
+            <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10">
+            
+                <!-- TABLE HEADER START  -->
+                <div class="hidden sm:block border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">   
+            
+                    <!-- ANOTHER DETAIL  -->
+                    <div id="content" class="flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
+
+                        <!-- TABLE ITEM: START  -->
+                        <div class="grid grid-cols-12 gap-4 my-6">
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    kode
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    game
+                                </p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    jumlah karakter
+                                </p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    jumlah senjata
+                                </p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    harga
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    status
+                                </p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    aksi
+                                </p>
+                            </div>
+
+                            
+                        </div>
+                        <!-- TABLE ITEM: END  -->
+
+                    </div>
+
+                </div>
+                <!-- TABLE HEADER END  -->
+
+                <!-- TABLE ITEM START  -->
+                <div class="border-4 col-span-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">   
+            
+                    <!-- CONTENT DETAIL  -->
+                    <div class="flex flex-col  relative transition-all duration-300 overflow-hidden">
+
+                        <!-- TABLE ITEM: START  -->
+                        <div class="grid grid-rows-7 sm:grid-rows-1 sm:grid-cols-12 gap-4 my-6">
+
+                            <div class="sm:col-span-2">
+                                <p class="text-3xl text-[#efa525] sm:text-black sm:text-xl capitalize text-center">
+                                    AIM-123456
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="text-xl capitalize text-center">
+                                    genshin
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    5
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    10
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    Rp. 150.000
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="text-xl capitalize text-center">
+                                    verifikasi
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2 flex justify-evenly">
+                                <a class="text-lg underline text-red-500 capitalize text-center">
+                                    Batalkan
+                                </a>
+
+                                <a class="text-lg underline text-blue-500 capitalize text-center">
+                                    edit
+                                </a>
+                            </div>
+
+                            
+                        </div>
+                        <!-- TABLE ITEM: END  -->
+
+                    </div>
+
+                </div>
+                <!-- TABLE ITEM END  -->
+
+                <!-- TABLE ITEM START  -->
+                <div class="border-4 col-span-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">   
+            
+                    <!-- CONTENT DETAIL  -->
+                    <div class="flex flex-col  relative transition-all duration-300 overflow-hidden">
+
+                        <!-- TABLE ITEM: START  -->
+                        <div class="grid grid-rows-7 sm:grid-rows-1 sm:grid-cols-12 gap-4 my-6">
+
+                            <div class="sm:col-span-2">
+                                <p class="text-3xl text-[#efa525] sm:text-black sm:text-xl capitalize text-center">
+                                    AIM-123456
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="text-xl capitalize text-center">
+                                    genshin
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    5
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    10
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    Rp. 150.000
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="text-xl capitalize text-center">
+                                    verifikasi
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2 flex justify-evenly">
+                                <a class="text-lg underline text-red-500 capitalize text-center">
+                                    Batalkan
+                                </a>
+
+                                <a class="text-lg underline text-blue-500 capitalize text-center">
+                                    edit
+                                </a>
+                            </div>
+
+                            
+                        </div>
+                        <!-- TABLE ITEM: END  -->
+
+                    </div>
+
+                </div>
+                <!-- TABLE ITEM END  -->
+
+                <!-- TABLE ITEM START  -->
+                <div class="border-4 col-span-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">   
+            
+                    <!-- CONTENT DETAIL  -->
+                    <div class="flex flex-col  relative transition-all duration-300 overflow-hidden">
+
+                        <!-- TABLE ITEM: START  -->
+                        <div class="grid grid-rows-7 sm:grid-rows-1 sm:grid-cols-12 gap-4 my-6">
+
+                            <div class="sm:col-span-2">
+                                <p class="text-3xl text-[#efa525] sm:text-black sm:text-xl capitalize text-center">
+                                    AIM-123456
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="text-xl capitalize text-center">
+                                    genshin
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    5
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    10
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    Rp. 150.000
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="text-xl capitalize text-center">
+                                    verifikasi
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2 flex justify-evenly">
+                                <a class="text-lg underline text-red-500 capitalize text-center">
+                                    Batalkan
+                                </a>
+
+                                <a class="text-lg underline text-blue-500 capitalize text-center">
+                                    edit
+                                </a>
+                            </div>
+
+                            
+                        </div>
+                        <!-- TABLE ITEM: END  -->
+
+                    </div>
+
+                </div>
+                <!-- TABLE ITEM END  -->
+            </div>
+            <!-- LATEST 5 TRANSACTION: END  -->
+            
+        </div>
+        <!-- ANOTHER INNER CONTAINER: END  -->
+
+    </section>
+    <!-- PROFILE PAGE: END  -->
+</body>
+</html>
