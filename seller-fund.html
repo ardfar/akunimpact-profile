@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AkunImpact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: "genshin";
+            src: url("assets/fonts/genshin.ttf");
+        }
+
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 1px;
+        }
+    
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+    
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+    
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+    </style>
+    
+    
+</head>
+
+<body>
+
+    <!-- PROFILE PAGE: START  -->
+    <section class="relative min-w-screen min-h-screen cursor-default border-0 border-green-400 p-0 flex flex-col items-center">
+
+        <div id="background" class="fixed w-full h-screen bg-[url('assets/images/backgrounds/main.png')] bg-cover bg-no-repeat z-0">
+            <!-- INNER CONTAINER: START  -->
+            <div class="relative bg-gradient-to-b from-[#f0f0f0] via-[#f0f0f0]/60 to-[#f0f0f0] bg-cover bg-no-repeat  z-10">
+            </div>
+            <!-- INNER CONTAINER: END  -->
+        </div>
+        
+
+        <!-- ANOTHER INNER CONTAINER: START  -->
+        <div class="border-0 border-red-800 w-fit min-h-screen flex flex-col items-center rounded-2xl my-12" >
+
+            <!-- BUTTON CONTAINER: START  -->
+            <div class="border-0 max-w-[90%] flex flex-row justify-center sm:justify-between items-center w-screen overflow-x-auto z-10">
+                <div class="border-4 min-w-[180px] sm:w-fit bg-white border-gray-300 py-2 px-8 text-black text-center rounded-3xl">
+                    <h1>
+                        Seller Dashboard - Saldo Akun
+                    </h1>
+                </div>
+                
+                <button class="bg-red-600 hidden sm:block py-2 px-3 text-white rounded-3xl min-w-[180px]">Kembali</button>                
+            </div>
+            <!-- BUTTON CONTAINER: END  -->
+
+    
+            <!-- OVERVIEW: START  -->
+            <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10">
+            
+                <!-- OVERVIEW START  -->
+                <div id="welcome" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
+                    
+                    <!-- TITLE CONTAINER  -->
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="w-[80%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-md sm:text-4xl font-extrabold text-cyan-500 capitalize">saldo akun</h2>
+                        </div>
+
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-money-bill-wave text-2xl sm:text-3xl text-white"></i>
+                        </div>
+            
+                    </div>        
+            
+                    <!-- ANOTHER DETAIL  -->
+                    <div id="content" class="flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <div class="flex flex-row flex-wrap items-center justify-center gap-4 my-4">
+                            <!-- available  -->
+                            <div class="w-full sm:w-1/6 sm:flex-1 py-6 grid grid-cols-12 gap-x-4 bg-[#f0f0f0] rounded-lg">
+                                <p class="text-6xl text-center mb-6 text-[#efa525] col-span-12">
+                                    Rp. 500.000
+                                </p>
+
+                                <div class="flex flex-col items-center justify-center col-span-12">
+                                    <i class="fas fa-wallet text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                <h3 class="text-xl text-center col-span-12">Saldo Tersedia</h3>
+                            </div>
+
+                            <!-- on process  -->
+                            <div class="w-full sm:w-1/6 sm:flex-1 py-6 grid grid-cols-12 gap-x-4 bg-[#f0f0f0] rounded-lg">
+                                <p class="text-6xl text-center mb-6 text-[#efa525] col-span-12">
+                                    Rp. 0
+                                </p>
+
+                                <div class="flex flex-col items-center justify-center col-span-12">
+                                    <i class="fas fa-hand-holding-usd text-3xl text-[#efa525]"></i>
+                                </div>
+
+                                <h3 class="text-xl text-center col-span-12">Saldo dalam Proses</h3>
+                            </div>
+
+                            <div class="w-full flex items-center justify-center gap-x-4 rounded-lg">
+                                <a href="" class="w-1/2 text-center bg-cyan-500 py-2 rounded-lg text-white flex-1">Cairkan Saldo</a>
+                                <a href="" class="w-1/2 text-center bg-green-400 py-2 rounded-lg text-white flex-1">Deposit ke Saldo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- OVERVIEW END  -->
+
+                <!-- BANK INFO START  -->
+                <div id="welcome" class="border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">
+                    
+                    <!-- TITLE CONTAINER  -->
+                    <div class=" flex flex-row items-center justify-between max-w-[100%] sm:w-full overflow-x-auto snap-x">
+                        <div class="w-[80%] lg:min-w-[50%] snap-center">
+                            <h2 class="border-0 text-md sm:text-4xl font-extrabold text-cyan-500 capitalize">Informasi rekening</h2>
+                        </div>
+
+                        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-cyan-500 flex items-center justify-center">
+                            <i class="fas fa-university text-2xl sm:text-3xl text-white"></i>
+                        </div>
+            
+                    </div>        
+            
+                    <!-- ANOTHER DETAIL  -->
+                    <div id="content" class="flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
+
+                        <div class="border-t-4 w-full mt-4"></div>
+
+                        <div class="flex flex-row flex-wrap items-center justify-center gap-4 my-4">
+                            <p class="w-full text-xl">
+                                Silahkan pastikan informasi rekening dibawah ini sebelum mencairkan saldo. Kamu bisa mengubah informasi ini dengan klik tombol dibawah.
+                            </p>
+
+                            <div class="w-full grid grid-cols-12 gap-y-2 py-6">
+                                <h3 class="col-span-6 text-[#efa525] text-xl">
+                                    Pemilik Rekening
+                                </h3>
+                                <p class="col-span-6 text-xl">
+                                    Reza Rahardian
+                                </p>
+
+                                <h3 class="col-span-6 text-[#efa525] text-xl">
+                                    Bank
+                                </h3>
+                                <p class="col-span-6 text-xl">
+                                    BCA Digital
+                                </p>
+
+                                <h3 class="col-span-6 text-[#efa525] text-xl">
+                                    Nomor Rekening
+                                </h3>
+                                <p class="col-span-6 text-xl">
+                                    06069904954
+                                </p>
+                            </div>
+
+                            <a href="" class="w-1/2 text-center bg-cyan-400 py-2 rounded-lg text-white flex-1">Perbaharui Informasi Rekening</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- BANK INFO END  -->
+
+                <button class="bg-red-600 block sm:hidden py-2 px-3 text-white rounded-3xl min-w-[180px]">Kembali</button> 
+            </div>
+            <!-- OVERVIEW: END  -->
+
+            <!-- LATEST 5 TRANSACTION: START  -->
+            <div class="border-0 w-[90%] grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-3 gap-y-4 sm:gap-x-4 my-4 z-10">
+            
+                <!-- TABLE HEADER START  -->
+                <div class="hidden sm:block border-4 col-span-3 p-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">   
+            
+                    <!-- ANOTHER DETAIL  -->
+                    <div id="content" class="flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
+
+                        <div class="grid grid-cols-12 gap-4 my-6">
+
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    kode
+                                </p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    jenis transaksi
+                                </p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    nominal
+                                </p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    biaya admin
+                                </p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    total
+                                </p>
+                            </div>
+                            <div class="col-span-2">
+                                <p class="text-2xl text-[#efa525] capitalize text-center">
+                                    status
+                                </p>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- TABLE HEADER END  -->
+
+                <!-- TABLE CONTENT START  -->
+                <div class="border-4 col-span-3 rounded-3xl bg-white px-6 w-full h-fit overflow-hidden">   
+            
+                    <!-- CONTENT DETAIL  -->
+                    <div id="content" class="flex flex-col gap-y-4 relative transition-all duration-300 overflow-hidden">
+
+                        <div class="grid grid-rows-7 sm:grid-rows-1 sm:grid-cols-12 gap-4 my-6">
+
+                            <div class="sm:col-span-2">
+                                <p class="text-3xl text-[#efa525] sm:text-black sm:text-xl capitalize text-center">
+                                    TO-1234
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    Top Up
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    50.000
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    2.500
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    52.500
+                                </p>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <p class="text-xl capitalize text-center">
+                                    berhasil
+                                </p>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- TABLE CONTENT END  -->
+            </div>
+            <!-- LATEST 5 TRANSACTION: END  -->
+            
+        </div>
+        <!-- ANOTHER INNER CONTAINER: END  -->
+
+    </section>
+    <!-- PROFILE PAGE: END  -->
+</body>
+</html>
