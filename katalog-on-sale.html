@@ -14,39 +14,404 @@
 
 </head>
 
-<body class="cursor-default">
+<body class="box-border">
 
-    <div class="bg-[url('./assets/images/backgrounds/main.png')] bg-cover bg-no-repeat min-w-screen min-h-screen pt-8">
-        <h1 class="text-3xl font-bold text-center">AkunImpact Catalog</h1>
+    <section class="relative grid grid-cols-12 gap-y-8 bg-[url('./assets/images/backgrounds/main.png')] bg-cover bg-no-repeat w-fit h-fit pt-8 px-4 sm:px-8">
+
+        <div class="col-span-12 border-0 w-full flex flex-row justify-center sm:justify-between items-center overflow-hidden z-10 ">
+            <div class="border-4 min-w-[180px] sm:w-fit bg-white border-gray-300 py-2 px-8 text-black text-center rounded-3xl">
+                <h1 class="capitalize">
+                    katalog akun
+                </h1>
+            </div>
+            
+            <button class="bg-cyan-600 hidden sm:block py-2 px-6 text-white rounded-3xl min-w-[180px]">Jual Akunmu Sekarang</button>                
+        </div>
+
+        <div class="col-span-12 border-0 w-full grid grid-cols-12 overflow-hidden z-10 gap-x-2">
+            <input type="text" name="search_query" id="search_query" class="col-span-12 px-6 pb-1 pt-2 sm:py-3 leading-loose  text-lg sm:text-xl border-4 border-gray-300 rounded-xl w-full" placeholder="Cari berdasarkan Game / Karakter / Senjata">  
+        </div>
         
-        <div class="w-full border-0 border-red-800 flex flex-row flex-wrap justify-center items-center min-h-screen py-2 px-4 gap-3">
+        <div class="col-span-12 w-full grid grid-cols-12 min-h-screen py-2 gap-3">
     
             <!-- Card Product 1 -->
-            <div class="max-w-sm rounded-lg shadow-lg p-2 sm:p-3 bg-white my-4">
-                <img class="w-full h-64 object-cover object-center rounded-lg" src="https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201104/2020110416383068401.png" alt="Product 1">
+            <a class="cursor-pointer col-span-6 sm:col-span-3 w-full h-fit rounded-lg shadow-lg p-2 sm:p-3 bg-white">
+                <div class="w-full aspect-[4/3] sm:aspect-video overflow-hidden">
+                    <img class="w-full h-full object-cover object-left sm:object-center rounded-lg" src="https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201104/2020110416383068401.png" alt="Product 1">
+                </div>
 
                 <div class="p-2 sm:p-4 sm:pt-2">
-                    <p class="text-xl underline gradient-text-account-code">#AA-203922</p>
-                    <h1 class="text-[15px] font-extrabold mb-4">Genshin Immpact</h1>
-                    <div class="mb-2 border-0 border-red-800 pt-3 rounded-lg bg-cyan-100/20">
-                        <ul class="list-disc pl-6 mx-4 border-0">
-                            <li class="text-cyan-700 my-2 font-extrabold">Adventure Rank: <span class="text-black font-extralight">45</span></li>
-                            <li class="text-cyan-700 my-2 font-extrabold">Primogems: <span class="text-black font-extralight">5000</span></li>
-                            <li class="text-cyan-700 my-2 font-extrabold">Characters: <br><span class="text-black">Childe, Neuvillette, Furina</span></li>
-                        </ul>
+                    <p class="text-xl sm:text-2xl leading- text-center underline gradient-text-account-code tracking-wide">AAA-203922</p>
+                    <h1 class="text-md text-center font-extrabold mb-4">Genshin Impact</h1>
+                    
 
-                        <p class="text-xl font-bold bg-orange-300 mt-8 w-fit py-1 pt-[-10px] rounded-b-lg text-center w-full">Rp <span>70.000</span></p>
-                    </div>
+                    <div class="sm:mb-2  border-0 border-red-800 py-4 rounded-lg bg-cyan-100/20">
 
-                    <div class="w-2/5 mx-auto border-0 mt-5">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full pt-[-10px] w-full">Buy Now</button>
-                    </div>
-                </div>
-            </div>  
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                AR <span class="text-black">50</span>
+                            </h6>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Primogems
+                            </h6>
     
+                            <p class="block text-center text-md">
+                                60x
+                            </p>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Karakter
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                Hu Tao, Albedo, Neuvillette, Furina
+                            </p>
+                        </div>
+
+                        
+                    </div>
+
+                    <p class="text-xl font-bold bg-orange-300 w-full py-1 my-2 rounded-lg text-center w-full">Rp <span>70.000</span></p>
+
+                </div>
+            </a>
+
+            <!-- Card Product 1 -->
+            <a class="cursor-pointer col-span-6 sm:col-span-3 w-full h-fit rounded-lg shadow-lg p-2 sm:p-3 bg-white">
+                <div class="w-full aspect-[4/3] sm:aspect-video overflow-hidden">
+                    <img class="w-full h-full object-cover object-left sm:object-center rounded-lg" src="https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201104/2020110416383068401.png" alt="Product 1">
+                </div>
+
+                <div class="p-2 sm:p-4 sm:pt-2">
+                    <p class="text-xl sm:text-2xl leading- text-center underline gradient-text-account-code tracking-wide">AAA-203922</p>
+                    <h1 class="text-md text-center font-extrabold mb-4">Genshin Impact</h1>
+                    
+
+                    <div class="sm:mb-2  border-0 border-red-800 py-4 rounded-lg bg-cyan-100/20">
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                AR <span class="text-black">50</span>
+                            </h6>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Primogems
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                60x
+                            </p>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Karakter
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                Hu Tao, Albedo, Neuvillette, Furina
+                            </p>
+                        </div>
+
+                        
+                    </div>
+
+                    <p class="text-xl font-bold bg-orange-300 w-full py-1 my-2 rounded-lg text-center w-full">Rp <span>70.000</span></p>
+
+                </div>
+            </a>
+
+            <!-- Card Product 1 -->
+            <a class="cursor-pointer col-span-6 sm:col-span-3 w-full h-fit rounded-lg shadow-lg p-2 sm:p-3 bg-white">
+                <div class="w-full aspect-[4/3] sm:aspect-video overflow-hidden">
+                    <img class="w-full h-full object-cover object-left sm:object-center rounded-lg" src="https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201104/2020110416383068401.png" alt="Product 1">
+                </div>
+
+                <div class="p-2 sm:p-4 sm:pt-2">
+                    <p class="text-xl sm:text-2xl leading- text-center underline gradient-text-account-code tracking-wide">AAA-203922</p>
+                    <h1 class="text-md text-center font-extrabold mb-4">Genshin Impact</h1>
+                    
+
+                    <div class="sm:mb-2  border-0 border-red-800 py-4 rounded-lg bg-cyan-100/20">
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                AR <span class="text-black">50</span>
+                            </h6>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Primogems
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                60x
+                            </p>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Karakter
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                Hu Tao, Albedo, Neuvillette, Furina
+                            </p>
+                        </div>
+
+                        
+                    </div>
+
+                    <p class="text-xl font-bold bg-orange-300 w-full py-1 my-2 rounded-lg text-center w-full">Rp <span>70.000</span></p>
+
+                </div>
+            </a>
+
+            <!-- Card Product 1 -->
+            <a class="cursor-pointer col-span-6 sm:col-span-3 w-full h-fit rounded-lg shadow-lg p-2 sm:p-3 bg-white">
+                <div class="w-full aspect-[4/3] sm:aspect-video overflow-hidden">
+                    <img class="w-full h-full object-cover object-left sm:object-center rounded-lg" src="https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201104/2020110416383068401.png" alt="Product 1">
+                </div>
+
+                <div class="p-2 sm:p-4 sm:pt-2">
+                    <p class="text-xl sm:text-2xl leading- text-center underline gradient-text-account-code tracking-wide">AAA-203922</p>
+                    <h1 class="text-md text-center font-extrabold mb-4">Genshin Impact</h1>
+                    
+
+                    <div class="sm:mb-2  border-0 border-red-800 py-4 rounded-lg bg-cyan-100/20">
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                AR <span class="text-black">50</span>
+                            </h6>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Primogems
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                60x
+                            </p>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Karakter
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                Hu Tao, Albedo, Neuvillette, Furina
+                            </p>
+                        </div>
+
+                        
+                    </div>
+
+                    <p class="text-xl font-bold bg-orange-300 w-full py-1 my-2 rounded-lg text-center w-full">Rp <span>70.000</span></p>
+
+                </div>
+            </a>
+
+            <!-- Card Product 1 -->
+            <a class="cursor-pointer col-span-6 sm:col-span-3 w-full h-fit rounded-lg shadow-lg p-2 sm:p-3 bg-white">
+                <div class="w-full aspect-[4/3] sm:aspect-video overflow-hidden">
+                    <img class="w-full h-full object-cover object-left sm:object-center rounded-lg" src="https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201104/2020110416383068401.png" alt="Product 1">
+                </div>
+
+                <div class="p-2 sm:p-4 sm:pt-2">
+                    <p class="text-xl sm:text-2xl leading- text-center underline gradient-text-account-code tracking-wide">AAA-203922</p>
+                    <h1 class="text-md text-center font-extrabold mb-4">Genshin Impact</h1>
+                    
+
+                    <div class="sm:mb-2  border-0 border-red-800 py-4 rounded-lg bg-cyan-100/20">
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                AR <span class="text-black">50</span>
+                            </h6>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Primogems
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                60x
+                            </p>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Karakter
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                Hu Tao, Albedo, Neuvillette, Furina
+                            </p>
+                        </div>
+
+                        
+                    </div>
+
+                    <p class="text-xl font-bold bg-orange-300 w-full py-1 my-2 rounded-lg text-center w-full">Rp <span>70.000</span></p>
+
+                </div>
+            </a>
+
+            <!-- Card Product 1 -->
+            <a class="cursor-pointer col-span-6 sm:col-span-3 w-full h-fit rounded-lg shadow-lg p-2 sm:p-3 bg-white">
+                <div class="w-full aspect-[4/3] sm:aspect-video overflow-hidden">
+                    <img class="w-full h-full object-cover object-left sm:object-center rounded-lg" src="https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201104/2020110416383068401.png" alt="Product 1">
+                </div>
+
+                <div class="p-2 sm:p-4 sm:pt-2">
+                    <p class="text-xl sm:text-2xl leading- text-center underline gradient-text-account-code tracking-wide">AAA-203922</p>
+                    <h1 class="text-md text-center font-extrabold mb-4">Genshin Impact</h1>
+                    
+
+                    <div class="sm:mb-2  border-0 border-red-800 py-4 rounded-lg bg-cyan-100/20">
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                AR <span class="text-black">50</span>
+                            </h6>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Primogems
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                60x
+                            </p>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Karakter
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                Hu Tao, Albedo, Neuvillette, Furina
+                            </p>
+                        </div>
+
+                        
+                    </div>
+
+                    <p class="text-xl font-bold bg-orange-300 w-full py-1 my-2 rounded-lg text-center w-full">Rp <span>70.000</span></p>
+
+                </div>
+            </a>
+
+            <!-- Card Product 1 -->
+            <a class="cursor-pointer col-span-6 sm:col-span-3 w-full h-fit rounded-lg shadow-lg p-2 sm:p-3 bg-white">
+                <div class="w-full aspect-[4/3] sm:aspect-video overflow-hidden">
+                    <img class="w-full h-full object-cover object-left sm:object-center rounded-lg" src="https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201104/2020110416383068401.png" alt="Product 1">
+                </div>
+
+                <div class="p-2 sm:p-4 sm:pt-2">
+                    <p class="text-xl sm:text-2xl leading- text-center underline gradient-text-account-code tracking-wide">AAA-203922</p>
+                    <h1 class="text-md text-center font-extrabold mb-4">Genshin Impact</h1>
+                    
+
+                    <div class="sm:mb-2  border-0 border-red-800 py-4 rounded-lg bg-cyan-100/20">
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                AR <span class="text-black">50</span>
+                            </h6>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Primogems
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                60x
+                            </p>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Karakter
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                Hu Tao, Albedo, Neuvillette, Furina
+                            </p>
+                        </div>
+
+                        
+                    </div>
+
+                    <p class="text-xl font-bold bg-orange-300 w-full py-1 my-2 rounded-lg text-center w-full">Rp <span>70.000</span></p>
+
+                </div>
+            </a>
+
+            <!-- Card Product 1 -->
+            <a class="cursor-pointer col-span-6 sm:col-span-3 w-full h-fit rounded-lg shadow-lg p-2 sm:p-3 bg-white">
+                <div class="w-full aspect-[4/3] sm:aspect-video overflow-hidden">
+                    <img class="w-full h-full object-cover object-left sm:object-center rounded-lg" src="https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201104/2020110416383068401.png" alt="Product 1">
+                </div>
+
+                <div class="p-2 sm:p-4 sm:pt-2">
+                    <p class="text-xl sm:text-2xl leading- text-center underline gradient-text-account-code tracking-wide">AAA-203922</p>
+                    <h1 class="text-md text-center font-extrabold mb-4">Genshin Impact</h1>
+                    
+
+                    <div class="sm:mb-2  border-0 border-red-800 py-4 rounded-lg bg-cyan-100/20">
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                AR <span class="text-black">50</span>
+                            </h6>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Primogems
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                60x
+                            </p>
+                        </div>
+
+                        <div>
+                            <h6 class="block text-center text-cyan-700 sm:text-lg">
+                                Karakter
+                            </h6>
+    
+                            <p class="block text-center text-md">
+                                Hu Tao, Albedo, Neuvillette, Furina
+                            </p>
+                        </div>
+
+                        
+                    </div>
+
+                    <p class="text-xl font-bold bg-orange-300 w-full py-1 my-2 rounded-lg text-center w-full">Rp <span>70.000</span></p>
+
+                </div>
+            </a>
     
         </div>
-    </div>
+    </section>
 </body>
 
 </html>
