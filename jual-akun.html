@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AkunImpact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://releases.transloadit.com/uppy/v3.25.2/uppy.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 1px;
+        }
+    
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+    
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+    
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .gradient-background {
+            background: linear-gradient(to bottom,
+                    #003048 0%,
+                    transparent 50%,
+                    #003048 100%);
+        }
+    </style>
+    
+    
+</head>
+
+<body>
+
+    <section class="relative flex flex-col justify-center items-center gap-y-4 min-h-screen w-full">
+        <!-- BG IMAGE LINEAR GRADIENT -->
+        <div class="absolute w-full h-full gradient-background z-10"></div>
+        <div
+            class="absolute w-full h-full bg-[url('http://akunimpact.com/images/backgrounds/bg-waves-big.png')] bg-center bg-cover bg-no-repeat z-0 opacity-10">
+        </div>
+
+        <div class="bg-white border-4 border-gray-300 px-6 lg:px-20 py-5 rounded-lg flex flex-col gap-y-3 w-[85%] lg:w-2/3 z-20">
+
+            <h1 class="text-4xl text-cyan-500 text-center">
+                Dapatkan Cuan dari Akunmu
+            </h1>
+            <p class="text-lg text-cyan-500 text-center capitalize border-0 w-full px-4">
+                Silahkan pilih akun apa yang kamu ingin jual
+            </p>
+        </div>
+
+        <div class="w-[85%] lg:w-2/3 h-fit grid grid-cols-12 gap-x-4">
+
+            <a href="" class="col-span-6 grid grid-cols-12 bg-white border-4 border-gray-300 p-0 lg:px-20 py-5 rounded-lg z-20">
+
+                <div class="col-span-12 flex items-center justify-center px-4">
+                    <img src="assets/images/icon/genshin-impact-alt.webp" class="w-full" alt="">
+                </div>
+
+            </a>
+
+            <a href="" class="col-span-6 bg-white border-4 border-gray-300 p-0 lg:px-20 py-5 rounded-lg  z-20">
+                <div class="col-span-12 flex items-center justify-center px-4">
+                    <img src="assets/images/icon/hsr-alt.webp" class="w-full" alt="">
+                </div>
+            </a>
+
+        </div>
+
+
+    </section>
+</body>
+</html>
