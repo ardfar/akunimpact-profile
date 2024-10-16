@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
+
+    <style>
+        @font-face {
+            font-family: 'sifonn';
+            src: url('assets/fonts/sifonn-basic.otf');
+        }
+        .glow {
+            color: #fff;
+            text-shadow: 0 0 50px white;
+        }
+    </style>
+</head>
+<body class="bg-[#003048] font-[sifonn]">
+    <section class="relative w-full h-screen">
+    
+        <div id="background" class="fixed w-full h-full bg-[url('http://127.0.0.1:8000/images/backgrounds/bg-waves-big.png')] bg-cover bg-no-repeat z-0 opacity-5">
+            <!-- INNER CONTAINER: START  -->
+            <div class="relative bg-gradient-to-b from-[#f0f0f0] via-[#f0f0f0]/60 to-[#f0f0f0] bg-cover bg-no-repeat  z-10">
+            </div>
+            <!-- INNER CONTAINER: END  -->
+        </div>
+
+        <div class="relative w-full h-full flex items-center justify-center z-20">
+            <div class="bg-white w-3/5 h-fit p-4 rounded-xl">
+                <!-- Title  -->
+                <div class="grid grid-cols-12">
+                    <div class="col-span-4 flex flex-col justify-center">
+                        <h1 class="text-3xl">
+                            Checkout
+                        </h1>
+                    </div>
+                    <div class="col-span-4 flex flex-col justify-center">
+                        <h2 class="text-sm text-gray-400 text-center">
+                            Pembelian Akun
+                        </h2>
+                    </div>
+                    <div class="col-span-4 flex flex-col justify-center">
+                        <p class="text-base text-right">
+                            Farras Arrafi <br>
+                            +62-812-3456-7890
+                        </p>
+                    </div>
+                    <div class="col-span-10"></div>
+                </div>
+                
+
+                <!-- Item Info  -->
+                <div class="flex flex-col mt-8 gap-4">
+                    <h3>Item</h3>
+
+                    <div class="w-full h-fit p-3 bg-[#f0f0f0] grid grid-cols-12">
+                        <div class="col-span-3">
+                            <p class="text-xl">G-AAA-000123</p>
+                            <p>Genshin Impact</p>
+                        </div>
+                        <div class="col-span-3 text-center">
+                            <p>1x</p>
+                        </div>
+                        <div class="col-span-3 text-center">
+                            <p>Rp. 100.000</p>
+                        </div>
+                        <div class="col-span-3 text-right">
+                            <p>Rp. 100.000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total & Payment Method  -->
+                <div class="grid grid-cols-12 gap-4 mt-6">
+
+                    <!-- Total  -->
+                    <div class="col-span-6 grid w-full h-fit">
+
+                        <div class="grid grid-cols-2">
+                            <p>
+                                Subtotal
+                            </p>
+                            <p>
+                                Rp. 100.000
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <p>
+                                Biaya Layanan
+                            </p>
+                            <p>
+                                Rp. 1.000
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2">
+                            <p>
+                                Total
+                            </p>
+                            <p>
+                                Rp. 101.000
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="col-span-6 grid w-full h-fit">
+                        <p>
+                            Pilih Metode Pembayaran
+                        </p>
+
+                        <select name="method" id="method" class="h-[60px]">
+                            <option value="qris">QRIS</option>
+                            <option value="dana">Dana</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
